@@ -1,0 +1,105 @@
+.presentacion{
+    background-image: url(../../../assets/img/imagen-de-fondo.png);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 300px;
+}
+
+.presentacion-senavanza{
+    display: grid;
+    grid-template-columns: repeat(2fr,1fr);
+}
+.texto-presentacion{
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.texto-ayuda{
+    font-size: 18px;
+    font-weight: lighter;
+    margin-top: 5px;
+    color: #ffffffc5;
+    text-align: center;
+}
+.texto-diagnostico{
+    font-size: 21px;
+    color: #ffffffd0;
+}
+.responde-diagnostico{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.diagnostico{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 200px;
+    padding-left: 20px;
+    background-image: url(../../../assets/img/imagen-diagnostico-home.png);
+    background-repeat: no-repeat;
+    background-position: left 30px center;
+    border-radius: 6px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    animation: pulso 2.5s infinite;
+
+}
+@keyframes pulso{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .presentacion {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .presentacion-senavanza {
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .texto-presentacion {
+        font-size: 28px; 
+        text-align: center;
+    }
+
+    .diagnostico {
+        width: 80%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .texto-presentacion {
+        font-size: 24px;
+    }
+
+    .texto-ayuda {
+        font-size: 16px;
+    }
+
+    .diagnostico {
+        width: 100%;
+        max-width: 250px;
+    }
+}
