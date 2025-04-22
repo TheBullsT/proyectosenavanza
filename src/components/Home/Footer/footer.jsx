@@ -8,7 +8,7 @@ function Footer(){
             <div className="logo-sena">
                 <img src={logo} alt="Logo senavanza" />
             </div>
-            <p>Copyright - 2025 - SENA - SENAVANZA</p>
+            <p>Copyright SENAVANZA - SENA - 2025</p>
         </footer>
     );
 }

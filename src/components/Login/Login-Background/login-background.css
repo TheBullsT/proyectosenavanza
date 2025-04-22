@@ -1,0 +1,39 @@
+body{
+    margin:  0;
+}
+.background {
+    background-image: url(../../../assets/img/img-login/fondo.png);
+    background-repeat: no-repeat;
+    background-size: contain; 
+    background-position: center right; 
+    width: 100vw; 
+    height: 100vh;
+}
+
+
+.imgage {
+    position: absolute;
+    right: 0;
+    top: 140px;
+    height: 50%;
+}
+
+
+@media(max-width: 786px) {
+    .background {
+        background-image: url(../../../assets/img/img-login/fondo.png);
+        background-repeat: no-repeat;
+        background-size: contain; 
+        transform: rotate(-90deg);
+        width: 100%;
+
+    }
+    .imgage {
+        position: absolute;
+        transform: rotate(90deg);
+        right: 0;
+        top: 140px;
+        height: 50%;
+    }
+    
+}
