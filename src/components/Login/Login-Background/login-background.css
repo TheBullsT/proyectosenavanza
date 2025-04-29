@@ -1,39 +1,37 @@
-body{
-    margin:  0;
+body {
+    margin: 0;
 }
+
 .background {
     background-image: url(../../../assets/img/img-login/fondo.png);
     background-repeat: no-repeat;
-    background-size: contain; 
-    background-position: center right; 
-    width: 100vw; 
+    background-size: contain;
+    background-position: center right;
+    width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
-
 
 .imgage {
     position: absolute;
     right: 0;
     top: 140px;
     height: 50%;
+    z-index: 1;
 }
 
-
-@media(max-width: 786px) {
+@media (max-width: 786px) {
     .background {
-        background-image: url(../../../assets/img/img-login/fondo.png);
-        background-repeat: no-repeat;
-        background-size: contain; 
-        transform: rotate(-90deg);
-        width: 100%;
+        background: none; 
+        position: relative;
+    }
 
-    }
     .imgage {
-        position: absolute;
-        transform: rotate(90deg);
-        right: 0;
-        top: 140px;
-        height: 50%;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -1;
     }
-    
 }
