@@ -1,0 +1,171 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(black);
+    margin: 0;
+    padding: 0;
+  }
+  
+  .profile-layout {
+
+    max-width: 1250px;
+    margin-top: 1%;
+    margin-left: 10%;
+  }
+  .title{
+    font-family: light;
+  }
+  .breadcrumb {
+    font-size: 14px;
+    margin-bottom: 1rem;
+    color: #555;
+  }
+  
+  .main-section {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .company-card {
+    flex: 1 1 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .company-image {
+    background-size: cover;
+    background-image: url('C:\Users\maxnu\OneDrive\Escritorio\Proyecto\proyectosenavanza\src\assets\img\Imagen_Profile_Empresa.png');
+    background-position: center;
+    height: 240px;
+    width: 240px;
+    margin: 0 auto 1rem;
+    margin-bottom: -10%;
+    border-radius: 50%;
+  }
+
+  
+  .company-name {
+    margin: 0.5rem 0;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .company-info{
+    margin-top: 10%;
+    margin-right: 40%;
+  }
+  .company-info p {
+    margin: 4px 0;
+    margin-top: 2%;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .company-details {
+    flex: 2 1 500px;
+    color: #2e9e21;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+    background-color: #fff;
+    padding: 1.5rem;
+    /*border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); */
+  }
+  .answer-details {
+    color: #777;
+  }
+  
+  .footer-section {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-section p {
+    font-size: 14px;
+    color: #777;
+    margin: 0.5rem 0;
+  }
+  
+  .edit-button {
+    background-color: #35b226;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .edit-button:hover {
+    background-color: #2e9e21;
+  }
+
+  .cancel-button{
+    border: 1px solid #9a9a9a;
+    border-radius: 4px;
+    padding: 0.6rem 1.2rem;
+    font-size: 14px;
+    font-weight: bold;
+    color: #777;
+    margin-left: 58%;
+  }
+
+  .cancel-button:hover {
+    background-color: #d4d4d4;
+    color: black;
+  }
+
+  .barra {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .linea {
+    flex-grow: 1;
+    border-top: 2px solid #ebebeb;
+  }
+  
+  .texto {
+    margin: 0 10px;
+    font-weight: bolder;
+    font-size: 14px;
+    color: #bebebe
+  }
+  
+  .barra {
+    width: 160%; /* Ajusta el ancho de la barra según lo necesites */
+  }
+
+  .text-info{
+    padding: 10px;
+    text-align: left;
+  }
+  .barra2 {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  .linea2 {
+    flex-grow: 1;
+    border-top: 4px solid #39a900;
+    border-radius: 6px;
+    margin-bottom: 10%;
+  }
+  .barra2 {
+    width: 25%; /*Ancho*/
+  }
+  
+  .blocked {
+    color: #777;
+  }
