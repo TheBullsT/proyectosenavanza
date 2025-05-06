@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from '../../../assets/img/Logo_SENAVANZA.jpg';
+import logoLogin from '../../../assets/img/Logo_SENAVANZA.jpg';
 import './form-login.css';
 
 function FormLogin() {
@@ -7,8 +7,8 @@ function FormLogin() {
 
     return (
         <div className="login">
-            <div className="logo">
-                <img src={logo} alt="Logo de SENAVANZA" />
+            <div className="logoLogin">
+                <img src={logoLogin} alt="Logo de SENAVANZA" />
             </div>
             <div className="form-login">
                 <form action="POST">

@@ -1,4 +1,4 @@
-
+import NavFooter from '../layouts/Layout';
 import React from 'react';
 import ProfileLayout from '../components/Empresa/EditarPerfilEmpresa';
 
@@ -21,7 +21,11 @@ const dummyDetails = {
 };
 
 const EditarPerfilPage = () => {
-  return <ProfileLayout company={dummyCompany} details={dummyDetails} />;
+  return (
+    <NavFooter>
+    <ProfileLayout company={dummyCompany} details={dummyDetails} />
+    </NavFooter>
+  );
 };
 
 export default EditarPerfilPage;

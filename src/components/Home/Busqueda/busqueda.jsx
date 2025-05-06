@@ -4,13 +4,20 @@ import logo from '../../../assets/img/Logo_SENAVANZA.jpg';
 import modo from '../../../assets/img/modo.png';
 import notificaciones from '../../../assets/img/notificaciones.png';
 import avatar from '../../../assets/img/avatar-imagen.png';
+import { useNavigate } from 'react-router-dom';
+
 
 
 function Busqueda() {
+    const navigate = useNavigate();
+
+    const IraPerfil = () => {
+        navigate('/Perfil');
+    }
     return (
         <div className='barra-busqueda'>
             <div className='senavanza'>
-                <img className='logo' src={logo} alt="Logo de SENAVANZA" />
+                <img className='logo' src={logo} alt="Logo de SENAVANZA"  />
                 <h1>SENAVANZA</h1>
             </div>
             <div className='search'>
@@ -23,7 +30,7 @@ function Busqueda() {
                 <button className='notifiaciones'>
                     <img src={notificaciones} alt="Ver notificaciones" />
                 </button>
-                <button className='avatar'>
+                <button className='avatar' onClick={IraPerfil}>
                     <img src={avatar} alt="Ver perfil" />
                 </button>
             </div>

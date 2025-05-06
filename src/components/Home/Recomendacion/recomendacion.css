@@ -16,10 +16,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 25px;
     background-image: url(../../../assets/img/recomendaciones.png);
     background-repeat: no-repeat;
-    background-position: left 20px center;
+    background-position: left 10px center;
 }
 .conocer p{
     font-size: 18px;
