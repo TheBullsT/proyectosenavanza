@@ -1,7 +1,13 @@
 import React from "react";
 import './presentacion.css';
+import { useNavigate } from "react-router-dom";
 
 function Presentacion(){
+    const navegate = useNavigate();
+
+    const diagnostico  = () => {
+        navegate('/diagnostico');
+    }
     return (
         <div className="presentacion">
             <div className="presentacion-senavanza">
@@ -12,7 +18,7 @@ function Presentacion(){
             </div>
             <div className="responde-diagnostico">
                 <p className="texto-diagnostico">!Responde a nuestro diagnostico empresarial!</p>
-                <button className="diagnostico">Diagnostico</button>
+                <button className="diagnostico" onClick={diagnostico}>Diagnostico</button>
             </div>
         </div>
     );

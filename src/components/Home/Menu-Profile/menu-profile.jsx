@@ -1,15 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { forwardRef } from "react";
 import "../Busqueda/busqueda.css";
 
-const MenuProfile = React.forwardRef((props, ref) => {
+const MenuProfile = forwardRef(function MyInput(props, ref) {
     return (
-        <div ref={ref} className="dropdown-menu">
+        <div input ref={ref} className="dropdown-menu">
             <ul>
-                <p>Informacion de perfil</p>
+               <div className="titulo1">
+                <div className="subtitulo">Informacion de perfil</div>
+                <div className="linea"></div>
+               </div>
                 <li><Link to="/perfil">Perfil</Link></li>
                 <li><Link to="/editarperfil">Editar perfil</Link></li>
-                <li><Link to="/editarperfil">Notificaciones del Perfil</Link></li>
+                <li><Link to="/notificacionesdelperfil">Notificaciones del Perfil</Link></li>
+                <div className="titulo2">
+                <div className="subtitulo">Opciones de empresa</div>
+                <div className="linea"></div>
+                </div>
+                <li><Link to="/diagnostico">Diagnostico Empresarial</Link></li>
+                <li><Link to="/resultadosdediagnostico">Resultados de Diagnostico</Link></li>
+                <div className="linea"></div>
+                <li><Link to="/login">Cerrar Sesión</Link></li>
             </ul>
         </div>
     );
