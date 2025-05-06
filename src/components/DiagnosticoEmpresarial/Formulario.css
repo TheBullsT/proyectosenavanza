@@ -1,0 +1,84 @@
+body {
+    font-family: '';
+    color: var(black);
+    margin: 0;
+    padding: 0;
+  }
+  
+  .forms-layout{
+    max-width: 1250px;
+    margin-top: 1%;
+    margin-left: 10%;
+  }
+  .title{
+    font-weight: bold;
+  }
+  .barra2 {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  .linea2 {
+    flex-grow: 1;
+    border-top: 4px solid #39a900;
+    border-radius: 6px;
+    margin-bottom: 10%;
+    margin-top: -10%;
+  }
+  .barra2 {
+    width: 13%; /*Ancho*/
+  }
+  .information{
+    font-size: 28px;
+    font-weight: '';
+  }
+  .container-banner{
+    border: 1px solid #39a900;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    width: 125%;
+    height: 150px;
+    background-color: #38a90025;
+
+  }
+  .banner-info p{
+    transform: translate( 200px, -40px);
+    font-size: 24px;
+  }
+
+  .banner-info {
+    transform: translate( 200px, -40px);
+    font-size: 22px;
+    margin-top: -20px;
+  }
+  .icon-banner{
+    transform: translate(50px, 50px);
+  }
+  .press{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .diagnostico-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 200px;
+    padding-left: 20px;
+    background-image: url(../../assets/img/imagen-diagnostico-home.png);
+    background-repeat: no-repeat;
+    background-position: left 30px center;
+    border-radius: 6px;
+    text-align: center;
+    background-color: #39a900;
+    color: white;
+    transform: translate(-140px ,140px);
+
+  }
+  .person-image{
+    width: 400px;
+    height: 400px;
+    transform: translate(200px, -80px);
+  }
