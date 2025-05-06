@@ -50,3 +50,23 @@
     --h5: 14px;
     --h6: 12px;
   }
+.sidebar-links ul{
+    list-style: none;
+    padding: 40px;
+    gap: 10px;
+}
+
+.sidebar-links li{
+  margin: 10;
+  gap: 30PX;
+}
+
+.sidebar-links{
+  background-color: var(--gray-2);
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  align-items: center;
+  position: absolute;
+  top: 0;
+}

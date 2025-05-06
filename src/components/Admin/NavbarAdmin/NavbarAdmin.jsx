@@ -15,10 +15,8 @@ function NavbarAdmin() {
 
     return (
         <div className='NavbarAdmin'>
-            <div className='senavanza'>
-                <img className='logo' src={logo} alt="Logo de SENAVANZA"  />
-            </div>
             <div className='opciones'>
+                <img className='logo' src={logo} alt="Logo de SENAVANZA"  />
                 <button className='modo'>
                     <img src={modo} alt="Modo de la pagina" />
                 </button>

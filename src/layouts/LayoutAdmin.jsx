@@ -7,7 +7,7 @@ const NavFooterAdmin = ({ children }) => {
     <div> 
         <NavbarAdmin/>
         <SidebarClose/>
-        {children} 
+        {children}
         <Footer/>
     </div>
   );
