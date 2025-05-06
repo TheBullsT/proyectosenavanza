@@ -5,6 +5,7 @@
     text-align: center;
     height: 40px;
     width: 100%;
+    border-bottom: 1px solid rgb(185, 184, 184);
 }
 
 .nav-links ul,
@@ -16,6 +17,7 @@
     font-size: 18px;
     border-bottom: 2px solid transparent;
     cursor: pointer;
+    
 }
 .nav-links li a {
     color: black; 
