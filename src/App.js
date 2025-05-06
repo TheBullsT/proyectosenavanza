@@ -1,4 +1,4 @@
-import React ,{ BrowserRouter as Router, Routes, Route, Navigate, Suspense, Lazy } from 'react-router-dom';
+import React ,{ BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import PerfilPage from './pages/PerfilPage';
