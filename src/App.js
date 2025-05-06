@@ -1,22 +1,21 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import PerfilPage from './pages/PerfilPage';
 import EditarPerfilPage from './pages/EditarPerfilPage';
 
-
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/Home" element={<Home/>} />
-        <Route path="/Login" element={<Login/>} />
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/perfil" element={<PerfilPage />} />
-        <Route path="/EditarPerfil" element={<EditarPerfilPage />} />
+        <Route path="/editarperfil" element={<EditarPerfilPage />} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
-

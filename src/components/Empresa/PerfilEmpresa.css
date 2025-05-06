@@ -39,7 +39,7 @@ body {
   
   .company-image {
     background-size: cover;
-    background-image: url('C:\Users\maxnu\OneDrive\Escritorio\Proyecto\proyectosenavanza\src\assets\img\Imagen_Profile_Empresa.png');
+    background-image: url('./../../assets/img/Imagen_Profile_Empresa.png');
     background-position: center;
     height: 240px;
     width: 240px;
