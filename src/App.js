@@ -3,6 +3,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import PerfilPage from './pages/PerfilPage';
 import EditarPerfilPage from './pages/EditarPerfilPage';
+import AdminHome from './pages/AdminHome';
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/perfil" element={<PerfilPage />} />
         <Route path="/editarperfil" element={<EditarPerfilPage />} />
+        <Route path="/adminhome" element={<AdminHome />} />
       </Routes>
     </Router>
   );
