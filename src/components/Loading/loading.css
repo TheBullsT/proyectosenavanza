@@ -50,65 +50,66 @@
     --h5: 14px;
     --h6: 12px;
   }
-.recomendaciones {
-    position: absolute;
-    top: 75%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    width: 750px; 
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-}
-.titulo-recomendacion{
-    color: #878787;
-}
-.conocer{
+
+  html {
+    margin: 0;
+    font-size: 62.5%;
+    box-sizing: border-box;
+  }
+  :before,*:after{
+  box-sizing: inherit;
+  }
+  body{
+    font-size: 16px;
+    font-family: 'Work Sans', sans-serif;
+  }
+  a {
+    text-decoration: none;
+  }
+  h1 {
+      font-size: 3.2rem;
+  }
+  h2 {
+      font-size: 2.4rem;
+  }
+  h3 {
+      font-size: 2.0rem;
+  }
+  h4 {
+      font-size: 1.6rem;
+  }
+  h5 {
+      font-size: 1.4rem;
+  }
+
+  .loading-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    background-image: url(../../../assets/img/recomendaciones.png);
-    background-repeat: no-repeat;
-    background-position: left 5px center;
-}
-.conocer p{
-    font-size: 18px;
-}
-.boton-recomendacion{
-    position: relative;
-    left: 50px;
-    font-family: 'Work Sans';
-    font-size: 18px;
-    border-radius: 6px;
+    justify-content: center;
+    height: 100vh;
+    background: #ffffff;
+    color: #333;
+    font-size: 20px;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ccc;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .loading-text {
+    margin-top: 15px;
     font-weight: bold;
-    color: white;
-    background-color: #32a900;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-    height: 45px;
-    width: 180px;
-}
-
-@media (max-width: 768px) {
-    .recomendaciones {
-        position: relative;
-        top: 100px;
-        max-width: 100%; 
-        margin: 20px auto;
-        padding: 15px;
-        text-align: center;
-    }
-
-    .conocer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .boton-recomendacion {
-        width: 200px; 
-
-    }
-}
+  }
+  
 

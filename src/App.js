@@ -1,22 +1,34 @@
-import React ,{ BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import PerfilPage from './pages/PerfilPage';
-import EditarPerfilPage from './pages/EditarPerfilPage';
-import AdminHome from './pages/AdminHome';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Loading from './components/Loading/loading';
 
+const Home = lazy(() => import('./pages/Home'));
+const Login = lazy(() => import('./pages/Login'));
+const PerfilPage = lazy(() => import('./pages/PerfilPage'));
+const EditarPerfilPage = lazy(() => import('./pages/EditarPerfilPage'));
+const AdminHome = lazy(() => import('./pages/AdminHome'));
 
 function App() {
-  return (
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), 1000); 
+  }, []);
+
+  return isLoading ? (
+    <Loading />
+  ) : (
     <Router>
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/perfil" element={<PerfilPage />} />
-        <Route path="/editarperfil" element={<EditarPerfilPage />} />
-        <Route path="/adminhome" element={<AdminHome />} />
-      </Routes>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/perfil" element={<PerfilPage />} />
+          <Route path="/editarperfil" element={<EditarPerfilPage />} />
+          <Route path="/adminhome" element={<AdminHome />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 }
