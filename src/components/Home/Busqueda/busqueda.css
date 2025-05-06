@@ -163,7 +163,7 @@ Menu desplegable
 .subtitulo{
     padding: 0px 0px 0px 10px;
 }
-.line {
+.linea {
     flex-grow: 1;
     height: 1px; 
     background-color: #ccc; 
