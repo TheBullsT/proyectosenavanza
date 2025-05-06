@@ -1,19 +1,19 @@
-import React from 'react';
+import React , { useState , useRef} from 'react';
 import './busqueda.css';
 import logo from '../../../assets/img/Logo_SENAVANZA.jpg';
 import modo from '../../../assets/img/modo.png';
 import notificaciones from '../../../assets/img/notificaciones.png';
 import avatar from '../../../assets/img/avatar-imagen.png';
-import { useNavigate } from 'react-router-dom';
+import MenuProfile from '../Menu-Profile/menu-profile';
+import ClickOutMenu from '../Menu-Profile/click-out-menu';
 
 
 
 function Busqueda() {
-    const navigate = useNavigate();
+    const [menuVisible, setMenuVisible] = useState(false);
+    const menuRef = useRef(null);
 
-    const IraPerfil = () => {
-        navigate('/Perfil');
-    }
+    ClickOutMenu(menuRef, () => setMenuVisible(false));
     return (
         <div className='barra-busqueda'>
             <div className='senavanza'>
@@ -30,10 +30,11 @@ function Busqueda() {
                 <button className='notifiaciones'>
                     <img src={notificaciones} alt="Ver notificaciones" />
                 </button>
-                <button className='avatar' onClick={IraPerfil}>
-                    <img src={avatar} alt="Ver perfil" />
+                <button className='avatar' onClick={() => setMenuVisible(!menuVisible)} >
+                    <img src={avatar} alt="Perfil y Menu desplegable" />
                 </button>
             </div>
+            {menuVisible && <MenuProfile ref={menuRef} />}
         </div>
     );
 }
