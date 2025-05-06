@@ -14,7 +14,7 @@ function SidebarClose() {
         <div className="sidebar">
             <nav className="sidebar-links">
                 <ul>
-                    <li><Link to="/perfil"><img src={perfil} alt="Perfil" /></Link></li>
+                    <div className="adminperfil"><Link to="/perfil"><img src={perfil} alt="Perfil" /></Link></div>
                     <li><Link to="/home"><img src={home} alt="home" /></Link></li>
                     <li><Link to="/formacion"><img src={programas} alt="Programas de Formacion" /></Link></li>
                     <li><Link to="/empresas"><img src={empresa} alt="Empresas" /></Link></li>
