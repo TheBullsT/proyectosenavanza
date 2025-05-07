@@ -18,7 +18,7 @@ const MenuProfile = forwardRef(function MyInput(props, ref) {
                 <div className="subtitulo">Opciones de empresa</div>
                 <div className="linea"></div>
                 </div>
-                <li><Link to="/diagnostico">Diagnostico Empresarial</Link></li>
+                <li><Link to="/diagnostico-empresarial">Diagnostico Empresarial</Link></li>
                 <li><Link to="/resultadosdediagnostico">Resultados de Diagnostico</Link></li>
                 <div className="linea"></div>
                 <li><Link to="/login">Cerrar Sesión</Link></li>
