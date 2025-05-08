@@ -8,6 +8,7 @@ const PerfilPage = lazy(() => import('./pages/PerfilPage'));
 const EditarPerfilPage = lazy(() => import('./pages/EditarPerfilPage'));
 const AdminHome = lazy(() => import('./pages/AdminHome'));
 const DiagnosticoEmpresarial = lazy(() => import('./pages/FormularioEmp'))
+const ResultadosDiagnostico = lazy(() => import('./pages/ResultadosDiagnostico'));
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/editarperfil" element={<EditarPerfilPage />} />
           <Route path="/adminhome" element={<AdminHome />} />
           <Route path="/diagnostico-empresarial" element={<DiagnosticoEmpresarial />} />
+          <Route path="/resultado-diagnostico" element={<ResultadosDiagnostico />} />
         </Routes>
       </Suspense>
     </Router>

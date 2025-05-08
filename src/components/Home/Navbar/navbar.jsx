@@ -9,7 +9,7 @@ function NavBar() {
         <ul>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/diagnostico-empresarial">Diagnóstico Empresarial</Link></li>
-          <li><Link to="/resultados">Resultados de Diagnóstico</Link></li>
+          <li><Link to="/resultado-diagnostico">Resultados de Diagnóstico</Link></li>
         </ul>
       </nav>
     </div>
