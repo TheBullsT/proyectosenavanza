@@ -20,9 +20,6 @@ function Busqueda() {
                 <img className='logo' src={logo} alt="Logo de SENAVANZA"  />
                 <h1>SENAVANZA</h1>
             </div>
-            <div className='search'>
-                <input className='input-buscar' type="text" placeholder='Buscar Programa de Formación' />
-            </div>
             <div className='opciones'>
                 <button className='modo'>
                     <img src={modo} alt="Modo de la pagina" />
