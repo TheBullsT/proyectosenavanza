@@ -5,6 +5,7 @@ const AdminHome = () => {
     return (
         
       <NavFooterAdmin>
+        <h1>Esto si o si va a funcionar</h1>
       </NavFooterAdmin>
     );
   };

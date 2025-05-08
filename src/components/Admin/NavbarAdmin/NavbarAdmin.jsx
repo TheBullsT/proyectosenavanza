@@ -1,3 +1,4 @@
+// Importaciones
 import React from "react";
 import logo from '../../../assets/img/Logo_SENAVANZA.jpg';
 import modo from '../../../assets/img/modo.png';
@@ -6,6 +7,7 @@ import avatar from '../../../assets/img/avatar-imagen.png';
 import { useNavigate } from 'react-router-dom';
 import "./NavbarAdmin.css";
 
+// Componente NavbarAdmin
 function NavbarAdmin() {
     const navigate = useNavigate();
     
@@ -14,7 +16,9 @@ function NavbarAdmin() {
     }
 
     return (
+        // Estructura del componente NavbarAdmin
         <div className='NavbarAdmin'>
+            {/* Logo y opciones de navegación */}
             <div className='opciones'>
                 <img className='logo' src={logo} alt="Logo de SENAVANZA"  />
                 <button className='modo'>
