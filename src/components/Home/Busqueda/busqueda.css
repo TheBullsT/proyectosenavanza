@@ -189,7 +189,6 @@ Menu desplegable
     padding: 0px 15px 5px 0px;
     right: 10px;
     top: 40px;
-    right: 100px;
     background: white;
     border: 1px solid #ddd;
     list-style: none;
@@ -224,4 +223,26 @@ Menu desplegable
     background-color: #f0f0f0;
     border-bottom: 3px solid #39A900;
     box-sizing: border-box;
+}
+
+
+/* Responsive */
+
+/* Responsive PC Grande */
+@media(max-width: 1920px) {
+    .dropdown-menu {
+        width: 400px; 
+        right: 20%;
+    }
+ }
+
+ /* Responsive Smarthphone */
+ @media (max-width: 786px) {
+    .dropdown-menu {
+        width: 90%;
+        right: 5%;
+        top: 50px; 
+        font-size: var(--h2);
+    }
+
 }
