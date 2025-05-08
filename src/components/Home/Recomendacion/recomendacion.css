@@ -89,12 +89,46 @@
     width: 180px;
 }
 
+/* Responsive */
+
+
+/* Responsive PC grande */
+@media (max-width: 1920px) {
+    .recomendaciones {
+        position: absolute;
+        top: 450px;
+        width: 100% auto;
+        left: 200px auto;
+        margin: 20px auto;
+        padding: 15px;
+        text-align: center;
+    }
+}
+
+
+/* Responsive Ordenador */
+@media (max-width: 1440px) {
+    .recomendaciones {
+        position: absolute;
+        top: 450px;
+        width: 100% auto; 
+        left: 200px auto;
+        margin: 20px auto;
+        padding: 15px;
+        text-align: center;
+    }
+
+}
+
+
+
+/* Responsive Smartphone */
 @media (max-width: 768px) {
     .recomendaciones {
         position: relative;
         top: 100px;
-        width: 100%; 
-        right: 5px;
+        width: 90%; 
+        left: 340px auto;
         margin: 20px auto;
         padding: 15px;
         text-align: center;
@@ -113,3 +147,27 @@
     }
 }
 
+/* Responsive Movil medio */
+@media (max-width: 500px) {
+    .recomendaciones {
+        position: relative;
+        top: 100px;
+        width: 80%; 
+        left: 300px auto;
+        margin: 20px auto;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .conocer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .boton-recomendacion {
+        width: 200px; 
+
+    }
+}
