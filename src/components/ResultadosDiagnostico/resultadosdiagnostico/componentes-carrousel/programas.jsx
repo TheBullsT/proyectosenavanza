@@ -1,7 +1,7 @@
 import React from "react";
 import imagenprograma from '../../../../assets/img/img-resultados-diagnostico/imagen-programa.png';
 import recomendados from '../../../../assets/img/img-resultados-diagnostico/recomendados-programa.png';
-import './resultado.css';
+import './programas.css';
 
 function Programas(){
     return(
@@ -21,8 +21,8 @@ function Programas(){
                     <div className="progrmas-formacion">
                         <img src={imagenprograma} alt="Imagen del programa" />
                     </div>
-                    <img src={recomendados} alt="Recomendados imagen" />
                 </div>
+                <img src={recomendados} alt="Recomendados imagen" />
             </div>
         </div>
     );

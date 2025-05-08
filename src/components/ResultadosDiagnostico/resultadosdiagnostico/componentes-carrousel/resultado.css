@@ -102,13 +102,6 @@ h5 {
 
 }
 
-.resultado-total {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-
-}
 
 .resultado-total img{
     width: 500px;
