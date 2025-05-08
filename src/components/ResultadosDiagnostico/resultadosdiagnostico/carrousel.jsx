@@ -23,13 +23,23 @@ function Carrousel() {
         if (currentItem) {
             currentItem.scrollIntoView({
                 behavior: "smooth",
-                block: "center" 
+                block: "center"
             });
         }
     }, [currentIndex]);
 
     return (
-        <div className="main-container">
+        <div className="carousel-wrapper">
+            <div className="carousel-indicators">
+                {componentes.map((_, index) => (
+                    <div
+                        key={index}
+                        className={`circle ${currentIndex === index ? "active" : ""}`}
+                        onClick={() => setCurrentIndex(index)}
+                    ></div>
+                ))}
+            </div>
+
             <div className="slider-container">
                 <div className="container-recomendados">
                     <ul ref={listRef} className="carousel-list-vertical">
@@ -39,11 +49,6 @@ function Carrousel() {
                             </li>
                         ))}
                     </ul>
-                </div>
-
-                <div className="controls">
-                    <button onClick={() => setCurrentIndex((prev) => Math.max(prev - 1, 0))}>⬆</button>
-                    <button onClick={() => setCurrentIndex((prev) => Math.min(prev + 1, componentes.length - 1))}>⬇</button>
                 </div>
             </div>
         </div>

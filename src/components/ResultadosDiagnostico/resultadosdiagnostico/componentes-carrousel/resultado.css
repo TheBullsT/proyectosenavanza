@@ -85,7 +85,6 @@ h5 {
     display: grid;
     grid-template-rows: auto auto;
     grid-template-columns: 1fr;
-    gap: 10px;
     text-align: center;
 }
 
@@ -99,14 +98,48 @@ h5 {
     grid-row: 2;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
 }
 
 .resultado-total {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-right: 10px;
 
 }
 
+.resultado-total img{
+    width: 500px;
+    height: 500px;
+}
+
 .programa-recomendado {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    border-radius: 6px;
+    font-size: var(--h3);
+    font-weight: bold;
+    width: 530px;
+    height: 430px;
     border: 1px solid var(--gray-12);
     margin-left: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
+
+
+.boton-ver-mas{
+    font-family: 'Work Sans';
+    font-size: 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+    background-color: #32a900;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    height: 45px;
+    width: 180px;
+}
+
