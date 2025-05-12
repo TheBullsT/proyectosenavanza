@@ -69,6 +69,7 @@ a {
 }
 .acceso{
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
 }
 .direccion{
     display: grid;
