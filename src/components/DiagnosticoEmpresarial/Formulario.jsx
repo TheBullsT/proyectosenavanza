@@ -20,7 +20,7 @@ const FormsLayout = () => {
             <BannerHelp />
             <div className='main-section'>
                 <span className='information'>
-                    ¡Presiona este botón para conocer qué programas de formación son perfectos para usted!
+                    ¡Presiona este botón <br />para conocer qué <br /> programas de formación de <br /> formación son <br /> perfectos para usted!
                 </span>
             </div>
             <div className='press'>
