@@ -83,6 +83,11 @@
       font-size: 1.4rem;
   }
 
+/* Dark mode */
+.dark-mode {
+  background-color: black;
+  color: white;
+}
 
 .barra-busqueda{
     display: flex;
