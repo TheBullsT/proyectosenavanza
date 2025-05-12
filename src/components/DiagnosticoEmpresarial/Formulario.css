@@ -62,6 +62,7 @@ body {
     box-sizing: border-box;
     overflow-x: hidden;
   }
+  
 .container-banner {
   display: flex;
   flex-direction: row;
@@ -77,7 +78,7 @@ body {
 }
 
 .icon-banner img {
-  width: 30px; /* Tamaño adecuado del ícono */
+  width: 30px; 
   height: 30px;
 }
 
@@ -125,6 +126,7 @@ body {
 
 .information {
   font-size: 22px;
+  font-weight: lighter;
   line-height: 1.4;
   margin-top: 10px;
 }
@@ -160,12 +162,12 @@ body {
 
 .press {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  padding: 20px;
-  gap: 50px;
+  width: 100%;
+  gap: 200px;
+  flex-direction: row;
+  position: relative; 
 }
+
 
 .press-boton {
   display: flex;
@@ -196,27 +198,32 @@ body {
 }
 
 .person-image {
-  width: 300px;
+  position: absolute;
+  right: 15%;
+  bottom: -30px;
+  width: 400px;
   height: auto;
+  z-index: 1;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-  .press {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
 
+/* Responsivo */
+
+/* Movil */
+@media (max-width: 768px) {
+
+  .press {
+    display: flex;
+    margin-top: 30px;
+    width: 100%;
+    gap: 200px;
+    flex-direction: row;
+  }
   .information {
     font-size: 18px;
     text-align: center;
   }
 
-  .diagnostico-button {
-    width: 90%;
-    background-position: left 15px center;
-  }
 
   .imagen-flecha {
     width: 100px;
@@ -227,13 +234,69 @@ body {
   }
 
   .container-banner {
-    width: 95%;
+    width: 90%;
   }
 
   .banner-info {
     margin-left: 20px;
   }
+  .person-image {
+    position: relative;
+    width: 300px;
+    margin-top: 50px;
+    height: auto;
+    transform: translate(-140px);
+  }
 }
 
-/* Responsive */
+/* Movil pequeño */
+@media(max-width: 650px) {
+    .person-image {
+    position: relative;
+    width: 300px;
+    margin-top: 50px;
+    height: auto;
+    transform: translate(-170px);
+  }
+  .container-banner {
+    width: 80%;
+  }
+    
+ }
+
+@media(max-width: 500px) {
+    .person-image {
+    position: relative;
+    width: 300px;
+    margin-top: 50px;
+    height: auto;
+    transform: translate(-280px);
+  }
+  .container-banner {
+    width: 80%;
+  }
+    .press-boton{
+    transform: translate(-70px);
+  }
+    
+ }
+
+ /* Movil mas pequeño */
+@media(max-width: 360px) {
+    .person-image {
+    position: relative;
+    width: 300px;
+    margin-top: 50px;
+    height: auto;
+    transform: translate(-280px);
+  }
+  .container-banner {
+    width: 90%;
+  }
+
+  .press-boton{
+    transform: translate(-90px);
+  }
+    
+ }
 
