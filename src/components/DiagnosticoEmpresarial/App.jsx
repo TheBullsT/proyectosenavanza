@@ -9,5 +9,5 @@ function App() {
     </div>
   );
 }
-/* Prueba */
+
 export default App;

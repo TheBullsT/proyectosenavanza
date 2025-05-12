@@ -12,5 +12,5 @@ function Popup({ cerrar }) {
     </div>
   );
 }
-/* Prueba */
+
 export default Popup;
