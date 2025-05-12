@@ -100,9 +100,14 @@ h5 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: -20px;
 
 }
 
+.imagen-recomendados{
+    width: 500px;
+    height: 500px;
+}
 
 .programas{
     display: flex;
@@ -114,7 +119,26 @@ h5 {
     font-weight: bold;
     width: 530px;
     height: 430px;
-    border: 1px solid var(--gray-12);
     margin-left: 10px;
+
+}
+
+.programas-formacion{
+    display: flex;
+    flex-direction: row;
+    width: 450px;
+    height: 500px;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--h4);
+    border-radius: 6px;
+    border: 1px solid var(--gray-12);
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.imagen-programa{
+    width: 95px;
+    height: 95px;
 }

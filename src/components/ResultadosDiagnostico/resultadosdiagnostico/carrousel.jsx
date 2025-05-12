@@ -5,15 +5,17 @@ import Resultados from './componentes-carrousel/resultado';
 import Programas from './componentes-carrousel/programas';
 import GenerarReporte from './componentes-carrousel/generarreporte';
 
-function Carrousel() {
-    const listRef = useRef();
-    const [currentIndex, setCurrentIndex] = useState(0);
 
     const componentes = [
         <Resultados key={0} />,
         <Programas key={1} />,
         <GenerarReporte key={2} />
     ];
+
+function Carrousel() {
+    const listRef = useRef();
+    const [currentIndex, setCurrentIndex] = useState(0);
+
 
     useEffect(() => {
         const listNode = listRef.current;
@@ -27,6 +29,14 @@ function Carrousel() {
             });
         }
     }, [currentIndex]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex(prev => (prev + 1) % componentes.length);
+        }, 5000); 
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <div className="carousel-wrapper">
