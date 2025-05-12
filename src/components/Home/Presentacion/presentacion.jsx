@@ -6,7 +6,7 @@ function Presentacion(){
     const navegate = useNavigate();
 
     const diagnostico  = () => {
-        navegate('/diagnostico');
+        navegate('/diagnostico-empresarial');
     }
     return (
         <div className="presentacion">
