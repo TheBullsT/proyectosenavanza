@@ -67,3 +67,40 @@ a{
     grid-template-columns: 1fr;
     text-align: center;
 }
+
+.titulo-reporte {
+    grid-column: 1;
+    grid-row: 1;
+}
+.generar-reporte {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.container-reporte{
+    display: grid;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+}
+.generar-reporte img{
+    width: 500px;
+    height: 500px;
+}
+.texto-reporte {
+    grid-column: 1;
+    grid-row: 1;
+}
+.boton-generar-reporte {
+    font-family: 'Work Sans';
+    font-size: 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+    background-color: #32a900;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    height: 45px;
+    width: 180px;
+}
