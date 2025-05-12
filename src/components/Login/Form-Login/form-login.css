@@ -51,6 +51,7 @@
     --h6: 12px;
   }
 body{
+    background-color: var(--white);
     font-family: 'Work Sans';
     margin: 0;
     padding: 0;
