@@ -72,7 +72,7 @@ body {
   }
   .linea2 {
     flex-grow: 1;
-    border-top: 4px solid #39a900;
+    border-top: 4px solid var(--primary-1);
     border-radius: 6px;
     margin-bottom: 10%;
     margin-top: -10%;
@@ -85,7 +85,7 @@ body {
     font-weight: '';
   }
   .container-banner{
-    border: 1px solid #39a900;
+    border: 1px solid var(--primary-1);
     margin-top: 20px;
     margin-bottom: 20px;
     border-radius: 6px;
@@ -124,8 +124,8 @@ body {
     background-position: left 30px center;
     border-radius: 6px;
     text-align: center;
-    background-color: #39a900;
-    color: white;
+    background-color: var(--primary-1);
+    color: var(--white);
     transform: translate(-140px ,140px);
 
   }
