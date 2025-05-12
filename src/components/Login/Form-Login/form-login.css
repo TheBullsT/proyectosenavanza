@@ -52,7 +52,15 @@
   }
 body{
     font-family: 'Work Sans';
-}
+    margin: 0;
+    padding: 0;
+  }
+   html {
+    margin: 0;
+    font-size: 62.5%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
 .logoLogin{
     position: absolute;
     top: 0;
@@ -63,7 +71,8 @@ body{
 .form-login{
     display: flex;
     position: absolute;
-    left: 330px;
+    left: 25%;
+    top: 18%;
     bottom: 80px;
     justify-content: center;
     flex-direction: row;
