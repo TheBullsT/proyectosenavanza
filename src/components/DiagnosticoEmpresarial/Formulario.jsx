@@ -37,6 +37,6 @@ function FormsLayout() {
             </div>
             
         </div>
-    )
-}
+    )/* Prueba */
+} 
 export default FormsLayout;
