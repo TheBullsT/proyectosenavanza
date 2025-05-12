@@ -264,6 +264,7 @@ body {
     
  }
 
+ /* Responsive movil pequeño */
 @media(max-width: 500px) {
     .person-image {
     position: relative;
