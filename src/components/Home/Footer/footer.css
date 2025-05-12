@@ -51,10 +51,8 @@
     --h6: 12px;
   }
 .footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
     gap: 20px;
     background-color: white;
     color: black;
@@ -62,7 +60,7 @@
     text-align: center;
     font-family: 'Work Sans';
     font-weight: bold;
-    border-top: 1px solid rgb(185, 184, 184);
+
 }
   
 .logo-sena img {
@@ -76,3 +74,18 @@
     color: black;
 }
   
+.linea-footer {
+    display: flex;
+    flex-grow: 1;
+    height: 1px;
+    width: 80%;
+    background-color: var(--gray-10);
+    margin: 0 auto; 
+}
+
+.footer-total{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
