@@ -4,12 +4,14 @@ import './carrousel.css';
 import Resultados from './componentes-carrousel/resultado';
 import Programas from './componentes-carrousel/programas';
 import GenerarReporte from './componentes-carrousel/generarreporte';
+import Caprendizaje from './componentes-carrousel/caprendizaje';
 
 
     const componentes = [
         <Resultados key={0} />,
         <Programas key={1} />,
-        <GenerarReporte key={2} />
+        <GenerarReporte key={2} />,
+        <Caprendizaje key={3} />
     ];
 
 function Carrousel() {
