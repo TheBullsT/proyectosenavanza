@@ -15,6 +15,7 @@ import GenerarReporte from './componentes-carrousel/generarreporte';
 function Carrousel() {
     const listRef = useRef();
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [pause, setPause] = useState(false);
 
 
     useEffect(() => {
@@ -32,14 +33,20 @@ function Carrousel() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentIndex(prev => (prev + 1) % componentes.length);
+            if (!pause){
+                setCurrentIndex(prev => (prev + 1) % componentes.length);
+            }
         }, 5000); 
 
         return () => clearInterval(interval);
-    }, []);
+    }, [pause]);
 
     return (
-        <div className="carousel-wrapper">
+        <div className="carousel-wrapper"
+        onMouseEnter = {() => setPause(true)}
+        onMouseLeave = {() => setPause(false)}
+        >
+
             <div className="carousel-indicators">
                 {componentes.map((_, index) => (
                     <div
