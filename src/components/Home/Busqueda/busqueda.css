@@ -102,23 +102,6 @@
     gap: 3px;
 }
 
-input{
-    width: 100%;
-}
-.input-buscar {
-    border: 2px solid rgb(185, 184, 184); 
-    border-radius: 6px;
-    padding: 8px;
-    width: 450px;
-    height: 34;
-    background-image: url('../../../assets/img/lupa.png'), url('../../../assets/img/filtro.png');
-    background-repeat: no-repeat, no-repeat;
-    background-position: left 10px center, right 10px center; 
-    background-size: 20px, 20px;
-    padding-left: 40px; 
-    padding-right: 40px; 
-}
-
 .opciones{
     display: flex;
     justify-content: center;

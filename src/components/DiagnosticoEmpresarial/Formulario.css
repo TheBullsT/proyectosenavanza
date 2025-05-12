@@ -78,8 +78,9 @@ body {
 }
 
 .icon-banner img {
-  width: 30px; 
-  height: 30px;
+  width: 100%; 
+  height: 100%;
+  transform: translate(0px,10px);
 }
 
 .banner-info {
