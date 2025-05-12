@@ -3,6 +3,7 @@ import './Formulario.css';
 import BannerHelp from './BannerHelp';
 import arrow from '../../assets/img/arrow-green.png'; 
 import person from '../../assets/img/person-form.png';
+
 const FormsLayout = () => {
     return (
         <div className="forms-layout">
@@ -11,20 +12,26 @@ const FormsLayout = () => {
                 <span className="linea2"></span>
             </div>
             <div className='main-section'>
-                <span className='information'>¡Realiza nuestro formulario<br /> 
-                de diagnostico empresarial!</span>
+                <span className='information'>
+                    ¡Realiza nuestro formulario<br />
+                    de diagnóstico empresarial!
+                </span>
             </div>
             <BannerHelp />
             <div className='main-section'>
-                <span className='information'>¡Presiona este boton<br/> para conocer que <br/> programas de formación son <br/> perfectos para usted!</span>
+                <span className='information'>
+                    ¡Presiona este botón para conocer qué programas de formación son perfectos para usted!
+                </span>
             </div>
             <div className='press'>
-                <img src={arrow} alt="" />
-                <button className="diagnostico-button">Diagnostico</button>
-                <img className='person-image' src={person} alt="" />
+                <div className='press-boton'>
+                    <img className='imagen-flecha' src={arrow} alt="Imagen de flecha" />
+                    <button className="diagnostico-button">Diagnóstico</button>
+                </div>
+                <img className='person-image' src={person} alt="Persona formulario" />
             </div>
-            
         </div>
-    )
+    );
 }
+
 export default FormsLayout;

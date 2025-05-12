@@ -56,81 +56,184 @@ body {
     margin: 0;
     padding: 0;
   }
-  
-  .forms-layout{
-    max-width: 1250px;
-    margin-top: 1%;
-    margin-left: 10%;
+   html {
+    margin: 0;
+    font-size: 62.5%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
-  .title{
-    font-weight: bold;
-  }
-  .barra2 {
-    display: flex;
+.container-banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #39a900;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  width: 85%;
+  padding: 15px;
+  background-color: #38a90025;
+  gap: 20px; /* Espacio entre icono y texto */
+}
+
+.icon-banner img {
+  width: 30px; /* Tamaño adecuado del ícono */
+  height: 30px;
+}
+
+.banner-info {
+  font-size: 16px;
+}
+
+.banner-info p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.banner-info ul {
+  margin: 5px 0 0 0;
+  padding-left: 20px;
+}
+
+.banner-info li {
+  font-size: 14px;
+}
+
+.forms-layout {
+  margin-top: 1%;
+  margin-left: 10%;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.barra2 {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 13%;
+}
+
+.linea2 {
+  flex-grow: 1;
+  border-top: 4px solid #39a900;
+  border-radius: 6px;
+  margin-bottom: 10%;
+  margin-top: -10%;
+}
+
+.information {
+  font-size: 22px;
+  line-height: 1.4;
+  margin-top: 10px;
+}
+
+.container-banner {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #39a900;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  width: 85%;
+  height: auto;
+  background-color: #38a90025;
+  padding: 20px;
+}
+
+.banner-info p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.banner-info {
+  font-size: 18px;
+  margin-left: 50px;
+}
+
+.icon-banner {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.press {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 20px;
+  gap: 50px;
+}
+
+.press-boton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imagen-flecha {
+  width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.diagnostico-button {
+  height: 40px;
+  width: 200px;
+  padding-left: 35px;
+  background-image: url(../../assets/img/imagen-diagnostico-home.png);
+  background-repeat: no-repeat;
+  background-position: left 10px center;
+  background-color: #39a900;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transform: translate(150px, -90px);
+  cursor: pointer;
+}
+
+.person-image {
+  width: 300px;
+  height: auto;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .press {
+    flex-direction: column;
     align-items: center;
+    gap: 30px;
+  }
+
+  .information {
+    font-size: 18px;
     text-align: center;
   }
-  .linea2 {
-    flex-grow: 1;
-    border-top: 4px solid #39a900;
-    border-radius: 6px;
-    margin-bottom: 10%;
-    margin-top: -10%;
-  }
-  .barra2 {
-    width: 13%; /*Ancho*/
-  }
-  .information{
-    font-size: 28px;
-    font-weight: '';
-  }
-  .container-banner{
-    border: 1px solid #39a900;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    width: 125%;
-    height: 150px;
-    background-color: #38a90025;
 
+  .diagnostico-button {
+    width: 90%;
+    background-position: left 15px center;
   }
-  .banner-info p{
-    transform: translate( 200px, -40px);
-    font-size: 24px;
+
+  .imagen-flecha {
+    width: 100px;
+  }
+
+  .person-image {
+    width: 80%;
+  }
+
+  .container-banner {
+    width: 95%;
   }
 
   .banner-info {
-    transform: translate( 200px, -40px);
-    font-size: 22px;
-    margin-top: -20px;
+    margin-left: 20px;
   }
-  .icon-banner{
-    transform: translate(50px, 50px);
-  }
-  .press{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  .diagnostico-button{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    width: 200px;
-    padding-left: 20px;
-    background-image: url(../../assets/img/imagen-diagnostico-home.png);
-    background-repeat: no-repeat;
-    background-position: left 30px center;
-    border-radius: 6px;
-    text-align: center;
-    background-color: #39a900;
-    color: white;
-    transform: translate(-140px ,140px);
+}
 
-  }
-  .person-image{
-    width: 400px;
-    height: 400px;
-    transform: translate(200px, -80px);
-  }
+/* Responsive */
+
