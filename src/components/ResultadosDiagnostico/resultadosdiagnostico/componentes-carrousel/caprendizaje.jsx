@@ -13,9 +13,9 @@ function Caprendizaje(){
             </div>
             <div className="caprendizaje-contenido">
                 <div className="texto-caprendizaje">
-                    <h2>¡Pulsa aquí para ir a Caprendizaje 
+                    <p>¡Pulsa aquí para ir a <strong>Caprendizaje</strong> 
                         <br />y encontrarás los  
-                        <br />programas de formación!</h2>
+                        <br />programas de formación!</p>
                 </div>
                 <div className="caprendizaje-contenido2">
                     <div className="acceso">

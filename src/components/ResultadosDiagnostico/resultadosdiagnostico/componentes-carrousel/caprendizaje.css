@@ -63,9 +63,16 @@ a {
 }
 
 .titulo-caprendizaje{
-  color: var(--primary-1);
+  color: var(--black);
   text-align: center;
   gap: 10px;
+}
+.texto-caprendizaje{
+  color: var(--black);
+  font-weight: lightert;
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: var(--h2);
 }
 .caprendizaje-contenido{
   display: grid;
