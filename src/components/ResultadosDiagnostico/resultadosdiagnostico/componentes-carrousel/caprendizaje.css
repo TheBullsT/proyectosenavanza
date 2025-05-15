@@ -61,6 +61,7 @@ box-sizing: inherit;
 a {
   text-decoration: none;
 }
+
 .titulo-caprendizaje{
   color: var(--primary-1);
   text-align: center;
@@ -102,12 +103,12 @@ a {
 
 }
 .logo-capre{
-  width: 343px;
-  height: 128px;
+  width: 242px;
+  height: 99px;
 }
 .flecha{
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
 }
 .imagen-apoyo{
   width: 400px;
