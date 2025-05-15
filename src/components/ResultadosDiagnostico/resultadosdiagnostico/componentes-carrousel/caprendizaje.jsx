@@ -9,7 +9,8 @@ function Caprendizaje(){
         //Caja del carrusel
         <div className="container-caprendizaje"> 
             <div className="titulo-caprendizaje">
-                <h1>¿Quieres buscar los programas de formación?</h1>
+                <h1>¿Quieres buscar los 
+                    <br />programas de formación?</h1>
             </div>
             <div className="caprendizaje-contenido">
                 <div className="texto-caprendizaje">

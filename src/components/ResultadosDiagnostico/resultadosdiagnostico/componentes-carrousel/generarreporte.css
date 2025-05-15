@@ -105,3 +105,17 @@ a{
     height: 45px;
     width: 180px;
 }
+
+@media (max-width: 768px) {
+    .titulo-reporte{
+        font-size: var(--h3);
+    }
+    .texto-reporte{
+        font-size: var(--h4);
+    }
+    .generar-reporte img{
+        width: 300px;
+        height: 300px;
+    }
+    
+}
