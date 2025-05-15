@@ -61,15 +61,30 @@ box-sizing: inherit;
 a {
   text-decoration: none;
 }
+.titulo-caprendizaje{
+    color: var(--primary-1);
+    text-align: center;
+}
 .caprendizaje-contenido{
     display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 .caprendizaje-contenido2{
     grid-template-columns: 1fr;
 }
+.logo-capre{
+    width: 363px;
+    height: 148px;
+}
 .acceso{
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
+}
+.flecha{
+    width: 200px;
+    height: 200px;
 }
 .direccion{
     display: grid;
@@ -77,12 +92,11 @@ a {
     text-align: center;
 }
 .imagen-apoyo{
-    width: 500px;
-    height: 500px;
+    width: 100px;
+    height: 100px;
 }
-
 .boton-ir-a-buscar{
-    font-family: 'Work Sans';
+    font-family: var(--font-primary);
     font-size: 18px;
     border-radius: 6px;
     font-weight: bold;
