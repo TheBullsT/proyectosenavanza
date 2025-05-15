@@ -106,7 +106,7 @@ a {
 
 
 .boton-ver-mas{
-    font-family: 'Work Sans';
+    font-family: var(--font-primary);
     font-size: 18px;
     border-radius: 6px;
     font-weight: bold;
