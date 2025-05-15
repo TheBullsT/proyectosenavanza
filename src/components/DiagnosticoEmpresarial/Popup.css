@@ -132,14 +132,26 @@ body {
 
 @media(max-width: 480px) {
     .popup-overlay{
-      position: absolute;
-      justify-content: start;
-      align-items: start;
-      width: 0;
-      height: 0;
-      left: 20%;
+      position: absolute ;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+      transform: translate(40px,-500px);
     }
     .popup{
-      width: 350px;
+      position: absolute;
+      width: 320px;
+    }
+    .popup img{
+      width: 200px;
+      height: 200px;
+    }
+    .diagnostico-completo h2{
+      font-size: var(--h3);
+    }
+    .botones-diagnostico{
+      flex-direction: column;
+      gap: 15px;
     }
  }
