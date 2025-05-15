@@ -79,19 +79,35 @@ a {
   text-align: center;
   grid-template-columns: 1fr 1fr;
 }
+.acceso{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.flecha-contenedor{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
 .direccion{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 10px;
+
 }
 .logo-capre{
-  width: 363px;
-  height: 148px;
+  width: 343px;
+  height: 128px;
 }
 .flecha{
-  width: 50px;
-  height: 50px;
+  width: 300px;
+  height: 300px;
 }
 .imagen-apoyo{
   width: 400px;

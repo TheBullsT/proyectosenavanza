@@ -19,8 +19,8 @@ function Caprendizaje(){
                 </div>
                 <div className="caprendizaje-contenido2">
                     <div className="acceso">
-                         <div className="flecha">
-                            <img src={Flecha} alt="Flecha" />
+                        <div className="flecha-contenedor">
+                            <img className="flecha" src={Flecha} alt="Flecha" />
                         </div>
                         <div className="direccion">
                             <img className="logo-capre" src={CaprendizajeLogo} alt="logo Caprendizaje" />
