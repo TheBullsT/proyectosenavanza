@@ -10,13 +10,14 @@ const EditarPerfilPage = lazy(() => import('./pages/EditarPerfilPage'));
 const AdminHome = lazy(() => import('./pages/AdminHome'));
 const DiagnosticoEmpresarial = lazy(() => import('./pages/FormularioEmp'))
 const ResultadosDiagnostico = lazy(() => import('./pages/ResultadosDiagnostico'));
+const Inicio = lazy(() => import('./pages/Inicio'));
 
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setIsLoading(false), 1000); 
+    setTimeout(() => setIsLoading(false), 1000);
   }, []);
 
   return isLoading ? (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/adminhome" element={<AdminHome />} />
             <Route path="/diagnostico-empresarial" element={<DiagnosticoEmpresarial />} />
             <Route path="/resultado-diagnostico" element={<ResultadosDiagnostico />} />
+            <Route path="/inicio" element={<Inicio/>} />
           </Routes>
         </Suspense>
       </Router>
