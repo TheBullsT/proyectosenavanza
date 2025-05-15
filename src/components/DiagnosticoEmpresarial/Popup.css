@@ -80,17 +80,29 @@ body {
 .popup {
   background: white;
   padding: 2rem;
+  width: 550px;
+  height: 520px;
   border-radius: 10px;
   text-align: center;
   z-index: 1001;
 }
+.diagnostico-completo p{
+  font-weight: lighter;
+}
+.diagnostico-completo img{
+  margin-bottom: 10px;
+}
 .botones-diagnostico{
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 35px;
 
 }
 .resultados{
-  height: 40px;
-  width: 200px;
+  height: 48px;
+  width: 140px;
   padding-left: 35px;
   background-image: url(../../assets/img/img-resultados-diagnostico/iconoir_page.png);
   background-repeat: no-repeat;
@@ -104,8 +116,8 @@ body {
 }
 
 .descargar{
-  height: 40px;
-  width: 200px;
+  height: 48px;
+  width: 140px;
   padding-left: 35px;
   background-image: url(../../assets/img/img-resultados-diagnostico//descargar.png);
   background-repeat: no-repeat;
@@ -117,3 +129,17 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
+
+@media(max-width: 480px) {
+    .popup-overlay{
+      position: absolute;
+      justify-content: start;
+      align-items: start;
+      width: 0;
+      height: 0;
+      left: 20%;
+    }
+    .popup{
+      width: 350px;
+    }
+ }
