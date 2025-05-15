@@ -84,6 +84,7 @@ a{
     text-align: center;
     align-items: center;
     justify-items: center;
+    font-size: var(--h2);
 }
 .generar-reporte img{
     width: 500px;

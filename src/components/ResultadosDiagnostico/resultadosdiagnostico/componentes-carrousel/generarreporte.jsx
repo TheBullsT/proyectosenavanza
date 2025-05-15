@@ -13,10 +13,10 @@ function GenerarReporte(){
             </div>
             <div className="generar-reporte">
                 <div className="contenido-reporte">
-                    <h2 className="texto-reporte">Genera un reporte del 
+                    <p className="texto-reporte">Genera un <strong> reporte </strong> del 
                         <br />resultado del diagnóstico 
                         <br />para que puedas verlos 
-                        <br />con más calma</h2>
+                        <br />con más calma</p>
                     <button className="boton-generar-reporte">Generar Reporte</button>
                 </div>
                 <img src={reporte} alt="Imagen reporte" />
