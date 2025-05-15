@@ -136,3 +136,13 @@
         height: 600px;
     }
 }
+
+@media(max-width: 786px) {
+    .carousel-wrapper{
+        width: 100%;
+        flex-direction: column;
+    }
+    .carousel-indicators{
+        flex-direction: row;
+    }
+ }

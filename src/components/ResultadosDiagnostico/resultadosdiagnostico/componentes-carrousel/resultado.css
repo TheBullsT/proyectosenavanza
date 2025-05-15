@@ -117,3 +117,15 @@ a {
     width: 180px;
 }
 
+@media(max-width: 786px) {
+  .resultado-total{
+    justify-content: center;
+  }
+    .resultado-total img{
+      width: 200px;
+      height: 200px;
+    }
+    .programa-recomendado{
+      width: 350px;
+    }
+ }
