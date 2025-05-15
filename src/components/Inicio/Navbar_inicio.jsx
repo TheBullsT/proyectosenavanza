@@ -6,7 +6,7 @@ const NavBarInicio = () => {
     //Scrolling Navbar 
     const [color, setColor] = useState(false)
     const changeColor = () => {
-        if (window.scrollY >= ''/*Decide en que momento del scrolling, cambia el color*/ ) {
+        if (window.scrollY >= '200'/*Decide en que momento del scrolling, cambia el color*/ ) {
             setColor(true)
         } else {
             setColor(false)
