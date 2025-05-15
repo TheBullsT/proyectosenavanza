@@ -142,3 +142,35 @@ h5 {
     width: 95px;
     height: 95px;
 }
+
+@media(max-width: 786px) {
+    .programas-total{
+        justify-content: center;
+        margin-top: 5px;
+        gap: 20px;
+    }
+    .programas-total img{
+        width: 200px;
+        height: 200px;
+    }
+    .programas{
+        width: 300px;
+    }
+    .programas-formacion{
+        width: 100%;
+        height: 100px;
+    }
+    .programas-formacion img{
+        width: 90px;
+        height: 90px;
+    }
+    .informacion-ficha p{
+        font-size: var(--h5);
+        margin: 5px;
+    }
+    .boton-ver-mas{
+        width: 100px;
+        font-size: var(--h5);
+    }
+
+ }
