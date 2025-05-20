@@ -13,8 +13,8 @@ const ProfileLayout = ({ company, details }) => {
   return (
 
     <div className="profile-layout">
-      <div className='title'><h1>Informacion de Perfil</h1></div> 
-      <div className='barra2'>
+      <div className='title-empresa'><h1>Informacion de Perfil</h1></div> 
+      <div className='barra-empresa'>
         <span className='linea2'></span>
       </div>
       
@@ -23,8 +23,8 @@ const ProfileLayout = ({ company, details }) => {
         <CompanyCard {...company} />
         <CompanyDetails data={details} />
       </div>
-      <footer className="footer-section">
-        <p>Aquí habrá un mensaje relacionado a que esta<br></br> visualizando el perfil de la empresa.</p>
+      <footer className="footer-section-2">
+        <p>Aquí habrá un mensaje relacionado a <br /> que esta<br></br> visualizando el perfil de la empresa.</p>
         <button className='cancel-button' onClick={IraPerfil} >Cancelar</button>
         <button className="edit-button" onClick={IraPerfil}>Guardar</button>
       </footer>

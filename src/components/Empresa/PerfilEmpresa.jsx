@@ -23,8 +23,8 @@ const ProfileLayout = ({ company, details }) => {
         <CompanyCard {...company} />
         <CompanyDetails data={details} />
       </div>
-      <footer className="footer-section">
-        <p>Aquí habrá un mensaje relacionado a que esta<br />visualizando el perfil de la empresa.</p>
+      <footer className="footer-section-1">
+        <p>Aquí habrá un mensaje relacionado a <br /> que esta<br></br> visualizando el perfil de la empresa.</p>
         <button className="edit-button" onClick={editar}>Editar</button>
       </footer>
     </div>
