@@ -103,7 +103,6 @@ html {
   height: 240px;
   width: 240px;
   margin: 0 auto 1rem;
-  transform: translateY(20px);
   border-radius: 50%;
 }
 
@@ -139,7 +138,16 @@ html {
   color: #777;
 }
 
-.footer-section {
+.footer-section-1 {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 350px;
+  height: 58px;
+
+}
+.footer-section-2 {
   margin-top: 2rem;
   display: flex;
   justify-content: space-around;
@@ -147,7 +155,12 @@ html {
 
 }
 
-.footer-section p {
+.footer-section-1 p {
+  font-size: 14px;
+  color: #777;
+  margin: 0.5rem 30rem 0 0;
+}
+.footer-section-2 p {
   font-size: 14px;
   color: #777;
   margin: 0.5rem 0;
