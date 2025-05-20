@@ -7,10 +7,10 @@ const hero_info = () => {
             <h1 className="titulo_hero">
                 Detalles de Programas 
                 <br /> de Formación
-            </h1>  
-                <p className="ubicacion_hero">
-                    Home {">"} <strong>Programas</strong> 
-                </p>
+            </h1>
+            <p className="ubicacion_hero">
+                Home {">"} <strong>Programas</strong> 
+            </p>
         </div>
     )
 } 
