@@ -3,7 +3,6 @@ import { ThemeContext } from '../../../layouts/Dark-Mode/temacontexto';
 import './busqueda.css';
 import logo from '../../../assets/img/Logo_SENAVANZA.png';
 import modo from '../../../assets/img/modo.png';
-import notificaciones from '../../../assets/img/notificaciones.png';
 import avatar from '../../../assets/img/avatar-imagen.png';
 import MenuProfile from '../Menu-Profile/menu-profile';
 import ClickOutMenu from '../Menu-Profile/click-out-menu';
