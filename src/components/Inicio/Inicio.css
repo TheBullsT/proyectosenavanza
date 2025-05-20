@@ -64,55 +64,75 @@ body {
 :before,*:after{
 box-sizing: inherit;
 }
+  body{
+    font-family: var(--font-primary);
+  }
 a {
   text-decoration: none;
 }
+/* Transicion */
 .header {
     position: fixed;
-    height: 90px;
+    height: 70px;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1;
     transition: .3s ease-in;
     overflow: hidden;
-
 }
 
 .header-bg {
     background-color: rgba(0, 0, 0,.9);
 }
-
-.header .navbar{
+/* Navbar */
+.nav-links ul{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin: auto;
-    height: 100%;
-    padding: 0 1rem;
+    gap: 100px;
+    font-size: 18px;
+    border-bottom: 2px solid transparent;
+    color: var(--black);
+    margin: 0;
 }
-
-.nav-links ul,
 .nav-links li{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 150px;
+    gap: 100px;
     font-size: 18px;
-    border-bottom: 2px solid transparent;
     cursor: pointer;
-    
+    border-bottom: 2px solid transparent;
+    color: var(--black);
 }
-.nav-links li a {
-    color: var(--black); 
-    text-decoration: none; 
-}
-.nav-links li:hover{
-    border-bottom: 3px solid var(--primary-1);
-    box-sizing: border-box;
+
+.nav-links ul{
+    display: flex;
+    justify-content: space-around;
 }
 
 
+
+.nav-links .marca-sena p{
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.button-init {
+  width: 120px;
+  height: 40px;
+  background-color: var(--gray-1);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Info */
+
+/* Responsive */
 @media (max-width: 768px) {
     .nav-bar {
         flex-direction: column; 

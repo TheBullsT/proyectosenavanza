@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './Inicio.css';
-
+import logo from '../../assets/img/Logo_SENAVANZA.png';
 const NavBarInicio = () => {
     
     //Scrolling Navbar 
@@ -19,11 +19,13 @@ const NavBarInicio = () => {
 
     return(
         <div className={color ? 'header header-bg' : 'header'}> {/* Depende el color escogido en la propiedad, se cambiara */}
-            <nav className='nav-links'>
-                <ul>
-                    <li>Pages</li>
-                </ul>
-            </nav>
+                <nav className='nav-links'>
+                    <ul>
+                        <li className='marca-sena'><img src={logo} alt="" className='imagen-navbar' /><p>SENAVANZA</p></li>
+                        <li>Pages</li>
+                        <li><button className='button-init'><p>Iniciar sesion</p></button></li>
+                    </ul>
+                </nav>
         </div>
     )
 }
