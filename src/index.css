@@ -1,52 +1,82 @@
 :root {
-    /* Colores Primarios */
-    --primary-1: #39A900;
-    --primary-2: #36AE0F;
-    --primary-3: #42B31E;
-    --primary-4: #4FB82D;
-    --primary-5: #5BBD3C;
-    --primary-6: #68C24B;
-    --primary-7: #75C75A;
-    --primary-8: #81CC69;
-    --primary-9: #8ED178;
-    --primary-10: #9AD787;
-    --primary-11: #A7DC96;
-    --primary-12: #B3E1A5;
-    --primary-13: #C0E6B4;
-    --primary-14: #CDEBC3;
-    --primary-15: #D9F0D2;
-    --primary-16: #E6F5E1;
-    --primary-17: #F2FAF0;
-  
-    /* Grises y Neutros */
-    --black: #000000;
-    --gray-1: #0F0F0F;
-    --gray-2: #1E1E1E;
-    --gray-3: #2D2D2D;
-    --gray-4: #3C3C3C;
-    --gray-5: #5A5A5A;
-    --gray-6: #696969;
-    --gray-7: #787878;
-    --gray-8: #878787;
-    --gray-9: #A5A5A5;
-    --gray-10: #969696;
-    --gray-11: #A5A5A5;
-    --gray-12: #B4B4B4;
-    --gray-13: #C3C3C3;
-    --gray-14: #D2D2D2;
-    --gray-15: #E1E1E1;
-    --gray-16: #F0F0F0;
-    --white: #FFFFFF;
-  
-    /* Tipografía */
-    --font-primary: 'Work Sans', sans-serif;
-    --font-secondary: 'Calibri', sans-serif;
-  
-    /* Jerarquías tipográficas */
-    --h1: 32px;
-    --h2: 24px;
-    --h3: 20px;
-    --h4: 16px;
-    --h5: 14px;
-    --h6: 12px;
-  }
+  /* Colores Primarios */
+  --primary-1: #39A900;
+  --primary-2: #36AE0F;
+  --primary-3: #42B31E;
+  --primary-4: #4FB82D;
+  --primary-5: #5BBD3C;
+  --primary-6: #68C24B;
+  --primary-7: #75C75A;
+  --primary-8: #81CC69;
+  --primary-9: #8ED178;
+  --primary-10: #9AD787;
+  --primary-11: #A7DC96;
+  --primary-12: #B3E1A5;
+  --primary-13: #C0E6B4;
+  --primary-14: #CDEBC3;
+  --primary-15: #D9F0D2;
+  --primary-16: #E6F5E1;
+  --primary-17: #F2FAF0;
+
+  /* Grises y Neutros */
+  --black: #000000;
+  --gray-1: #0F0F0F;
+  --gray-2: #1E1E1E;
+  --gray-3: #2D2D2D;
+  --gray-4: #3C3C3C;
+  --gray-5: #5A5A5A;
+  --gray-6: #696969;
+  --gray-7: #787878;
+  --gray-8: #878787;
+  --gray-9: #A5A5A5;
+  --gray-10: #969696;
+  --gray-11: #A5A5A5;
+  --gray-12: #B4B4B4;
+  --gray-13: #C3C3C3;
+  --gray-14: #D2D2D2;
+  --gray-15: #E1E1E1;
+  --gray-16: #F0F0F0;
+  --white: #FFFFFF;
+
+  /* Tipografía */
+  --font-primary: 'Work Sans', sans-serif;
+  --font-secondary: 'Calibri', sans-serif;
+
+  /* Jerarquías tipográficas */
+  --h1: 32px;
+  --h2: 24px;
+  --h3: 20px;
+  --h4: 16px;
+  --h5: 14px;
+  --h6: 12px;
+}
+html {
+  margin: 0;
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+:before,*:after{
+box-sizing: inherit;
+}
+body{
+  font-size: 16px;
+  font-family: 'Work Sans', sans-serif;
+}
+a {
+  text-decoration: none;
+}
+h1 {
+    font-size: 3.2rem;
+}
+h2 {
+    font-size: 2.4rem;
+}
+h3 {
+    font-size: 2.0rem;
+}
+h4 {
+    font-size: 1.6rem;
+}
+h5 {
+    font-size: 1.4rem;
+}
