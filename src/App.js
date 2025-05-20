@@ -11,6 +11,7 @@ const AdminHome = lazy(() => import('./pages/AdminHome'));
 const DiagnosticoEmpresarial = lazy(() => import('./pages/FormularioEmp'))
 const ResultadosDiagnostico = lazy(() => import('./pages/ResultadosDiagnostico'));
 const Inicio = lazy(() => import('./pages/Inicio'));
+const Informacion = lazy (() => import('./pages/informacion'))
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path="/diagnostico-empresarial" element={<DiagnosticoEmpresarial />} />
             <Route path="/resultado-diagnostico" element={<ResultadosDiagnostico />} />
             <Route path="/inicio" element={<Inicio/>} />
+            <Route path="/informacion" element={<Informacion/>}/>
           </Routes>
         </Suspense>
       </Router>
