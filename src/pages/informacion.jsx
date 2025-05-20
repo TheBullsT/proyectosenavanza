@@ -1,7 +1,7 @@
 import NavBarInicio from "../components/Inicio/Navbar_inicio";
 import Footer from "../components/Home/Footer/footer";
 
-const Inicio = () => {
+const Informacion = () => {
     return (
         <div>
             <NavBarInicio/>
@@ -11,4 +11,4 @@ const Inicio = () => {
     )
 }
 
-export default Inicio;
+export default Informacion;
