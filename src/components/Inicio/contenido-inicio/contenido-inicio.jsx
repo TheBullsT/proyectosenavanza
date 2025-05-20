@@ -61,4 +61,4 @@ function ContenidoInicio(){
     );
 }
 
-export default ContenidoInicio
+export default ContenidoInicio;
