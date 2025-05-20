@@ -59,10 +59,11 @@ html {
   box-sizing: inherit;
 }
 .contenedor_principal{
-    
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     width: 100%;
-    height: 50vh;
+    height: 60vh;
 }
