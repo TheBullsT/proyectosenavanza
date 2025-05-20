@@ -20,7 +20,7 @@ const MenuProfile = forwardRef(function MyInput(props, ref) {
                 <li><Link to="/diagnostico-empresarial">Diagnostico Empresarial</Link></li>
                 <li><Link to="/resultadosdediagnostico">Resultados de Diagnostico</Link></li>
                 <div className="linea"></div>
-                <li><Link to="/login">Cerrar Sesión</Link></li>
+                <li><Link to="/inicio">Cerrar Sesión</Link></li>
             </ul>
         </div>
     );
