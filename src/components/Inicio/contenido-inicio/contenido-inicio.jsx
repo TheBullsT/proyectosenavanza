@@ -16,8 +16,8 @@ function ContenidoInicio(){
                     <div className="imagen-programa">
                         <img src={computador} alt="Computador" />
                     </div>
-                    <div className="nombre-programa"><p>Programa de Formación</p></div>
-                    <div className="descripcion-programa">Descripción corta del programa <br /> de Formación</div>
+                    <div className="nombre-programa"><p>{"<"}Programa de Formación{">"}</p></div>
+                    <div className="descripcion-programa">{"<"}Descripción corta del programa <br /> de Formación{">"}</div>
                     <div className="botones-inicio">
                         <img src={flechita} alt="Flecha" />
                         <button className="boton-inicio">¡PRESIONA AQUI!</button>
@@ -27,8 +27,8 @@ function ContenidoInicio(){
                     <div className="imagen-programa">
                         <img src={computador} alt="Computador" />
                     </div>
-                    <div className="nombre-programa"><p>Programa de Formación</p></div>
-                    <div className="descripcion-programa">Descripción corta del programa <br /> de Formación</div>
+                    <div className="nombre-programa"><p>{"<"}Programa de Formación{">"}</p></div>
+                    <div className="descripcion-programa">{"<"}Descripción corta del programa <br /> de Formación{">"}</div>
                     <div className="botones-inicio">
                         <img src={flechita} alt="Flecha" />
                         <button className="boton-inicio">¡PRESIONA AQUI!</button>
@@ -38,8 +38,8 @@ function ContenidoInicio(){
                     <div className="imagen-programa">
                         <img src={computador} alt="Computador" />
                     </div>
-                    <div className="nombre-programa"><p>Programa de Formación</p></div>
-                    <div className="descripcion-programa">Descripción corta del programa <br /> de Formación</div>
+                    <div className="nombre-programa"><p>{"<"}Programa de Formación{">"}</p></div>
+                    <div className="descripcion-programa">{"<"}Descripción corta del programa <br /> de Formación{">"}</div>
                     <div className="botones-inicio">
                         <img src={flechita} alt="Flecha" />
                         <button className="boton-inicio">¡PRESIONA AQUI!</button>
@@ -49,8 +49,8 @@ function ContenidoInicio(){
                     <div className="imagen-programa">
                         <img src={computador} alt="Computador" />
                     </div>
-                    <div className="nombre-programa"><p>Programa de Formación</p></div>
-                    <div className="descripcion-programa">Descripción corta del programa <br /> de Formación</div>
+                    <div className="nombre-programa"><p>{"<"}Programa de Formación{">"}</p></div>
+                    <div className="descripcion-programa">{"<"}Descripción corta del programa <br /> de Formación{">"}</div>
                     <div className="botones-inicio">
                         <img src={flechita} alt="Flecha" />
                         <button className="boton-inicio">¡PRESIONA AQUI!</button>
