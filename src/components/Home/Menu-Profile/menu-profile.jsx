@@ -13,7 +13,6 @@ const MenuProfile = forwardRef(function MyInput(props, ref) {
                </div>
                 <li><Link to="/perfil">Perfil</Link></li>
                 <li><Link to="/editarperfil">Editar perfil</Link></li>
-                <li><Link to="/notificacionesdelperfil">Notificaciones del Perfil</Link></li>
                 <div className="titulo2">
                 <div className="subtitulo">Opciones de empresa</div>
                 <div className="linea"></div>

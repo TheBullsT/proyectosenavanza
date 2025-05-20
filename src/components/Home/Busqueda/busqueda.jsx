@@ -27,9 +27,6 @@ function Busqueda() {
                 <button className='modo' onClick={() => setDarkMode(!darkMode)}>
                     <img src={modo} alt="Modo de la pagina" />
                 </button>
-                <button className='notifiaciones'>
-                    <img src={notificaciones} alt="Ver notificaciones" />
-                </button>
                 <button className='avatar' onClick={() => setMenuVisible(!menuVisible)} >
                     <img src={avatar} alt="Perfil y Menu desplegable" />
                 </button>
