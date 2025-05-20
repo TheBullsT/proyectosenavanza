@@ -17,8 +17,8 @@ function FormsLayout() {
   const cerrarPopup = () => setMostrarPopup(false);
    return (
         <div className="forms-layout">
-            <div className="title"><h1>Formulario</h1></div>
-            <div className="barra2">
+            <div className="title-formulario"><h1>Formulario</h1></div>
+            <div className="barra-formulario">
                 <span className="linea2"></span>
             </div>
             <div className='main-section'>

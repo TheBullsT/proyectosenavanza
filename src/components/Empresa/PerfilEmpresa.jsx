@@ -13,8 +13,8 @@ const ProfileLayout = ({ company, details }) => {
 
   return (
     <div className="profile-layout">
-      <div className='title'><h1>Informacion de Perfil</h1></div> 
-      <div className='barra2'>
+      <div className='title-empresa'><h1>Informacion de Perfil</h1></div> 
+      <div className='barra-empresa'>
         <span className='linea2'></span>
       </div>
       

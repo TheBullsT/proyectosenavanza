@@ -50,8 +50,7 @@
     --h5: 14px;
     --h6: 12px;
   }
-
-  html {
+    html {
     margin: 0;
     font-size: 62.5%;
     box-sizing: border-box;
@@ -59,9 +58,10 @@
   :before,*:after{
   box-sizing: inherit;
   }
+
   body{
     font-size: 16px;
-    font-family: 'Work Sans', sans-serif;
+    font-family: var(--font-primary);
   }
   a {
     text-decoration: none;
@@ -81,6 +81,7 @@
   h5 {
       font-size: 1.4rem;
   }
+
 
   .loading-container {
     display: flex;

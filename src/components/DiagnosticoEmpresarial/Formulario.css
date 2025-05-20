@@ -106,15 +106,18 @@ body {
   margin-left: 10%;
 }
 
-.title {
+.title-formulario {
   font-weight: bold;
 }
+.title-formulario h1{
+  margin-bottom: 0;
+}
 
-.barra2 {
+.barra-formulario {
   display: flex;
   align-items: center;
   text-align: center;
-  width: 13%;
+  width: 15%;
 }
 
 .linea2 {
@@ -122,7 +125,6 @@ body {
   border-top: 4px solid #39a900;
   border-radius: 6px;
   margin-bottom: 10%;
-  margin-top: -10%;
 }
 
 .information {
@@ -224,7 +226,9 @@ body {
     font-size: 18px;
     text-align: center;
   }
-
+  .barra-formulario{
+    width: 30%;
+  }
 
   .imagen-flecha {
     width: 100px;
@@ -262,7 +266,6 @@ body {
   .container-banner {
     width: 80%;
   }
-    
  }
 
  /* Responsive movil pequeño */

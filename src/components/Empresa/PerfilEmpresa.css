@@ -67,8 +67,11 @@ html {
   margin-left: 10%;
 }
 
-.title {
+.title-empresa {
   font-weight: 300;
+}
+.title-empresa h1{
+  margin-bottom: 0;
 }
 
 .breadcrumb {
@@ -208,11 +211,12 @@ html {
   text-align: left;
 }
 
-.barra2 {
+.barra-empresa {
   display: flex;
   align-items: center;
   text-align: center;
-  width: 25%;
+  margin-top: 1px;
+  width: 30%;
 }
 
 .linea2 {
