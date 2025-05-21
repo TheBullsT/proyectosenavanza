@@ -1,6 +1,7 @@
 import React from "react";
 import './contenido.css';
 import Cultivo from "../../assets/img/inicio/Cultivo_grande.png"
+import Cultivo2 from "../../assets/img/inicio/Cultivo_pequeño.png"
 
 const Contenido = () => {
     return(
@@ -39,6 +40,30 @@ const Contenido = () => {
                         </p>
                     </div>
                 </div>
+
+            </div>
+            <div className="contenedor2">
+                <div className="contratar">
+                    <h2>¿Por qué contratar a un 
+                        <br />aprendiz?
+                    </h2>
+                    <p> 
+                        A continuación, los beneficios  
+                        <br />que brindan el contratar
+                        <br />a un aprendiz:
+                    </p>
+                    <br />
+                    <p>Beneficio {"(1)"}</p>
+                    <br />
+                    <p>Beneficio {"(2)"}</p>
+                    <br />
+                    <p>Beneficio {"(3)"}</p>
+                    <br />
+                    <p>Beneficio {"(4)"}</p>
+                    <br />
+                    <p>Beneficio {"(5)"}</p>
+                </div>
+                <img className="cultivo" src={Cultivo2} alt="Cultivo pequeño de arroz" />
             </div> 
         </div>
     )
