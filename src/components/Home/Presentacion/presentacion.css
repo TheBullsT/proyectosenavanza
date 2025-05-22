@@ -120,23 +120,32 @@
     align-items: center;
 }
 
-.diagnostico{
+.diagnostico {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 10px; 
     height: 40px;
     width: 200px;
-    padding-left: 20px;
-    background-image: url(../../../assets/img/imagen-diagnostico-home.png);
-    background-repeat: no-repeat;
-    background-position: left 30px center;
-    border-radius: 6px;
-    text-align: center;
-    background-color: black;
+    padding: 0 20px;
+    background-color: #000;
     color: white;
-
+    border: none;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
+
+.diagnostico:hover {
+    background-color: #222;
+}
+
+.icono-diagnostico {
+    font-size: 28px; /* Tamaño del ícono */
+}
+
 
 @media (max-width: 768px) {
     .presentacion {

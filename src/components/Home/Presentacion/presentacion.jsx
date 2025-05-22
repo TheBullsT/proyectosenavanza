@@ -1,6 +1,8 @@
 import React from "react";
 import './presentacion.css';
 import { useNavigate } from "react-router-dom";
+import { BsListTask } from "react-icons/bs";
+
 
 function Presentacion(){
     const navegate = useNavigate();
@@ -18,7 +20,7 @@ function Presentacion(){
             </div>
             <div className="responde-diagnostico">
                 <p className="texto-diagnostico">!Responde a nuestro diagnostico empresarial!</p>
-                <button className="diagnostico" onClick={diagnostico}>Diagnostico</button>
+                <button  className="diagnostico" onClick={diagnostico}> <BsListTask className="icon-diagnostico" /> Diagnostico</button>
             </div>
         </div>
     );

@@ -52,7 +52,7 @@
 }
 body {
     font-family: var(--font-primary);
-    color: var(black);
+    color: var(--black);
     margin: 0;
     padding: 0;
   }
@@ -152,6 +152,9 @@ body {
   font-weight: bold;
   margin-bottom: 5px;
 }
+.popup {
+  transition: opacity 0.3s ease-in-out;
+}
 
 .banner-info {
   font-size: 18px;
@@ -162,7 +165,11 @@ body {
   margin-left: 20px;
   margin-bottom: 10px;
 }
-
+.icon-banner-diagnostico{
+  color: var(--primary-1);
+  font-size: 40px;
+  transform: translate(10px, 5px);
+}
 .press {
   display: flex;
   width: 100%;
@@ -185,15 +192,17 @@ body {
 }
 
 .diagnostico-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   height: 40px;
   width: 200px;
-  padding-left: 35px;
-  background-image: url(../../assets/img/imagen-diagnostico-home.png);
-  background-repeat: no-repeat;
-  background-position: left 10px center;
+  padding: 0 20px;
   background-color: #39a900;
   color: white;
   border: none;
+  font-size: var(--h5);
   border-radius: 6px;
   font-weight: bold;
   transform: translate(150px, -90px);

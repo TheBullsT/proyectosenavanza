@@ -4,6 +4,7 @@ import BannerHelp from './BannerHelp';
 import arrow from '../../assets/img/arrow-green.png'; 
 import person from '../../assets/img/person-form.png';
 import Popup from './PopUp'; 
+import { BsListTask } from "react-icons/bs";
 
 
 function FormsLayout() {
@@ -36,7 +37,7 @@ function FormsLayout() {
             <div className='press'>
                 <div className='press-boton'>
                     <img className='imagen-flecha' src={arrow} alt="Imagen de flecha" />
-                <button className="diagnostico-button" type='button' onClick={abrirPopup}>Diagnostico</button>
+                <button className="diagnostico-button"type="button"onClick={abrirPopup}aria-haspopup="dialog"aria-expanded={mostrarPopup}> <BsListTask className='icon-diagnostico' />Diagnostico</button>
                 {mostrarPopup && <Popup cerrar={cerrarPopup} />}
                 </div>
                 <img className='person-image' src={person} alt="Persona formulario" />

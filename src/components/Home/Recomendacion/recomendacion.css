@@ -90,7 +90,7 @@
     background-color: #f4f4f4;
     padding: 20px;
     border-radius: 10px;
-    width: 750px; 
+    width: 760px; 
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 .titulo-recomendacion{
@@ -100,8 +100,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../../../assets/img/recomendaciones.png);
-    background-repeat: no-repeat;
+    /* background-image: url(../../../assets/img/recomendaciones.png); */
+    /* background-repeat: no-repeat;
+    background-position: left 5px center; */
+}
+.icono-recomendacion{
+  margin-right: 8px;
+  font-size: 24px;
+  transform: translateX(-10px);
+}
+.conocer svg{
     background-position: left 5px center;
 }
 .conocer p{

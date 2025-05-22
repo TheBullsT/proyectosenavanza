@@ -110,6 +110,10 @@
     gap: 50px;
 }
 
+.luna-home{
+    font-size: 28px;
+}
+
 button {
     background: none;
     border: none;

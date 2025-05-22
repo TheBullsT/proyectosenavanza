@@ -1,12 +1,12 @@
 import React from 'react';
 import './Formulario.css';
-import icon from '../../assets/img/icon-form.png'
+import { BiTask } from "react-icons/bi";
 
 const BannerHelp = () => {
     return (
         <div className='container-banner'>
             <div className='icon-banner'>
-                <img src={icon} alt="Icono de Formulario" />
+                <BiTask className='icon-banner-diagnostico' />
             </div>
             <div className='banner-info'>
                 <p><b>¿Qué beneficios trae el diagnóstico empresarial?</b></p>
