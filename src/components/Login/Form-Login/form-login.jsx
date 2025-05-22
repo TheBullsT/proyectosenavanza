@@ -25,7 +25,7 @@ function FormLogin() {
                         <label className="documentType" htmlFor="documentType">
                             Tipo de documento
                             <select 
-                                id="documentType" value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}
+                                id="documentType" required value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}
                             >
                                 <option value="default" disabled>Tipo de documento</option>
                                 <option value="opcion1">NIT</option>
