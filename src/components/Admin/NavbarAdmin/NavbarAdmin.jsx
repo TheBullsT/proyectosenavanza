@@ -24,9 +24,6 @@ function NavbarAdmin() {
                 <button className='modo'>
                     <img src={modo} alt="Modo de la pagina" />
                 </button>
-                <button className='notifiaciones'>
-                    <img src={notificaciones} alt="Ver notificaciones" />
-                </button>
                 <button className='avatar' onClick={IraPerfil}>
                     <img src={avatar} alt="Ver perfil" />
                 </button>
