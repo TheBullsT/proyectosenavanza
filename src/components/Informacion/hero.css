@@ -77,6 +77,12 @@ html {
     color: var(--white);
 }
 
+.page-select:hover strong{
+    filter: brightness(0) invert(1);
+}
+.page-select:hover p{
+    color: var(--black);
+}
 .page-select strong {
     color: var(--black)
 }
