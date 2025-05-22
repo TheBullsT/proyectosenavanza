@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './Inicio.css';
 import logo from '../../assets/img/Logo_SENAVANZA.png';
 import { useNavigate } from 'react-router-dom';
+
 const NavBarInicio = () => {
     
     //Scrolling Navbar 
@@ -29,10 +30,16 @@ const NavBarInicio = () => {
     return(
         <div className={color ? 'header header-bg' : 'header'}> {/* Depende el color escogido en la propiedad, se cambiara */}
                 <nav className='nav-links'>
-                    <ul>
-                        <li className='marca-sena'><img onClick={irInicio} src={logo} alt="" className='imagen-navbar' /><p>SENAVANZA</p></li>
-                        <li><button onClick={irLogin} className='button-init'><p>Iniciar sesión</p></button></li>
-                    </ul>
+                    <div className='inicio-nav'>
+                        <div className='marca-sena'>
+                            <img onClick={irInicio} src={logo} alt="" className='imagen-navbar'/>
+                            <p>SENAVANZA</p>
+                        </div>
+                        <div >
+                            <button onClick={irLogin} className='button-init'>
+                            Iniciar sesión</button>
+                        </div>
+                    </div>
                 </nav>
         </div>
     )

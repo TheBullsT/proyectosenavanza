@@ -18,7 +18,7 @@ const Hero = () => {
             <div className='hero-content'>
                 <div className='hero-text'>
                     <p className='texto-ayuda'>¿Necesitas personal?</p>
-                    <h1>CONSEGUIMOS LOS APRENDICES<br/>PARA TU EMPRESA</h1>
+                    <p className='titulo-principal'>CONSEGUIMOS LOS APRENDICES<br/>PARA TU EMPRESA</p>
                     <p className='texto-ayuda2'>¡INICIA SESIÓN!</p>
                     <div className='apuntar-boton'>
                         <img src={arrow} alt="flecha" />
