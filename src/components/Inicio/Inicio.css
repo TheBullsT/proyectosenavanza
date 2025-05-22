@@ -148,6 +148,7 @@ a {
 .hero-content{
   display: flex;
   flex-direction: row;
+  margin: 20px;
 }
 .hero-text{
   display: flex;
