@@ -116,3 +116,29 @@ html {
     border: solid 1px var(--gray-7);
     border-radius: 6px;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenedor-principal{
+        margin-top: 50px;
+    }
+    .imagen_ayuda{
+        width: 90%;
+        height: 90%;
+    }
+    .textos2{
+        flex-direction: column;
+        gap: 0px;
+    }
+    .contenedor2{
+        flex-direction: column;
+        gap: 0px;
+    }
+}
+@media (max-width: 430px) {
+    .cultivo{
+        width: 300px;
+        height: 300px;
+        margin-top: 10px;
+    }
+}
