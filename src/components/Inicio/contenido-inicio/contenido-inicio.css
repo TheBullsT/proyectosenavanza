@@ -89,6 +89,12 @@ h5 {
     flex-direction: column;
     margin-top: 50px;
 }
+.icon-inicio-contenido{
+    font-size: 150px;
+}
+.icon-computador{
+    font-size: 34px;
+}
 
 .titulo-inicio{
     display: flex;
