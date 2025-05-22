@@ -66,6 +66,8 @@ html {
 .contenedor_principal{
     display: flex;
     background-image: url(../../assets/img/inicio/fondo_completo.png);
+    background-size: 100% 80vh;
+    background-repeat: no-repeat;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -73,9 +75,21 @@ html {
     width: 100%;
     height: 80vh;
     color: var(--white);
-    /* margin-bottom: 250px; */
 }
 
 .page-select strong {
     color: var(--black)
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contenedor_principal h1{
+        font-size: var(--h2);
+    }
+    .contenedor_principal h2{
+        font-size: var(--h3);
+    }
+
+}
+
+
