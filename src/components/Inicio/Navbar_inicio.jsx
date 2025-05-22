@@ -20,7 +20,9 @@ const NavBarInicio = () => {
         navigate('/login')
     }
 
-
+    const irInicio = () => {
+        navigate('/inicio');
+    }
 
     window.addEventListener('scroll', changeColor) //Aplicamos el cambio de color con el scrolling
 
@@ -28,7 +30,7 @@ const NavBarInicio = () => {
         <div className={color ? 'header header-bg' : 'header'}> {/* Depende el color escogido en la propiedad, se cambiara */}
                 <nav className='nav-links'>
                     <ul>
-                        <li className='marca-sena'><img src={logo} alt="" className='imagen-navbar' /><p>SENAVANZA</p></li>
+                        <li className='marca-sena'><img onClick={irInicio} src={logo} alt="" className='imagen-navbar' /><p>SENAVANZA</p></li>
                         <li><button onClick={irLogin} className='button-init'><p>Iniciar sesión</p></button></li>
                     </ul>
                 </nav>

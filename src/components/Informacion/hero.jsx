@@ -8,9 +8,9 @@ const hero_info = () => {
                 Detalles de Programas 
                 <br /> de Formación
             </h1>
-            <p className="ubicacion_hero">
-                Home {">"} <strong>Programas</strong> 
-            </p>
+            <div className='page-select'>
+                <p>Home {">"} <strong>Programas</strong> </p>
+            </div>
         </div>
     )
 } 

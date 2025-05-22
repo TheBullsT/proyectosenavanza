@@ -2,9 +2,18 @@ import React from "react";
 import image from '../../../assets/img/img-inicio/imagen-inicio.png'
 import computador from '../../../assets/img/img-inicio/material-symbols_computer-rounded.png'
 import flechita from '../../../assets/img/img-inicio/ion_arrow-redo.png'
+import { useNavigate } from "react-router-dom";
 import './contenido-inicio.css';
 
 function ContenidoInicio(){
+
+    const navigate = useNavigate();
+
+    const irInformacion = () => {
+        navigate('/informacion');
+    }
+
+
     return(
         <div className="contenido-inicio">
             <div className="titulo-inicio">
@@ -20,7 +29,7 @@ function ContenidoInicio(){
                     <div className="descripcion-programa">{"<"}Descripción corta del programa <br /> de Formación{">"}</div>
                     <div className="botones-inicio">
                         <img src={flechita} alt="Flecha" />
-                        <button className="boton-inicio">¡PRESIONA AQUI!</button>
+                        <button onClick={irInformacion} className="boton-inicio">¡PRESIONA AQUI!</button>
                     </div>
                 </div>
                 <div className="programa-inicio">
@@ -31,7 +40,7 @@ function ContenidoInicio(){
                     <div className="descripcion-programa">{"<"}Descripción corta del programa <br /> de Formación{">"}</div>
                     <div className="botones-inicio">
                         <img src={flechita} alt="Flecha" />
-                        <button className="boton-inicio">¡PRESIONA AQUI!</button>
+                        <button onClick={irInformacion} className="boton-inicio">¡PRESIONA AQUI!</button>
                     </div>
                 </div>
                 <div className="programa-inicio">
@@ -42,7 +51,7 @@ function ContenidoInicio(){
                     <div className="descripcion-programa">{"<"}Descripción corta del programa <br /> de Formación{">"}</div>
                     <div className="botones-inicio">
                         <img src={flechita} alt="Flecha" />
-                        <button className="boton-inicio">¡PRESIONA AQUI!</button>
+                        <button onClick={irInformacion} className="boton-inicio">¡PRESIONA AQUI!</button>
                     </div>
                 </div>
                 <div className="programa-inicio">
@@ -53,7 +62,7 @@ function ContenidoInicio(){
                     <div className="descripcion-programa">{"<"}Descripción corta del programa <br /> de Formación{">"}</div>
                     <div className="botones-inicio">
                         <img src={flechita} alt="Flecha" />
-                        <button className="boton-inicio">¡PRESIONA AQUI!</button>
+                        <button onClick={irInformacion} className="boton-inicio">¡PRESIONA AQUI!</button>
                     </div>
                 </div>
             </div>

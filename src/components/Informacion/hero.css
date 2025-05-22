@@ -65,11 +65,17 @@ html {
 }
 .contenedor_principal{
     display: flex;
+    background-image: url(../../assets/img/inicio/fondo_completo.png);
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     width: 100%;
     height: 60vh;
+    color: var(--white);
     /* margin-bottom: 250px; */
+}
+
+.page-select strong {
+    color: var(--black)
 }
