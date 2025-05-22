@@ -68,6 +68,7 @@ body{
     left: 0;
     margin: 30px;
     width: 10px;
+    cursor: pointer;
 }
 .form-login{
     display: flex;

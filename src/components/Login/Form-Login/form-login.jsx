@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import logoLogin from '../../../assets/img/Logo_SENAVANZA.jpg';
 import './form-login.css';
+import { useNavigate } from "react-router-dom";
 
 function FormLogin() {
     const [selectedOption, setSelectedOption] = useState("default");
 
+    const navigate = useNavigate();
+
+    const irInicio = () => {
+        navigate('/inicio');
+    }
+
     return (
         <div className="login">
-            <div className="logoLogin">
-                <img src={logoLogin} alt="Logo de SENAVANZA" />
+            <div onClick={irInicio} className="logoLogin">
+                <img onClick={irInicio} src={logoLogin} alt="Logo de SENAVANZA" />
             </div>
             <div className="form-login">
                 <form action="POST">

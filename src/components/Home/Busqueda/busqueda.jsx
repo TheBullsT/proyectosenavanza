@@ -6,6 +6,7 @@ import modo from '../../../assets/img/modo.png';
 import avatar from '../../../assets/img/avatar-imagen.png';
 import MenuProfile from '../Menu-Profile/menu-profile';
 import ClickOutMenu from '../Menu-Profile/click-out-menu';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -16,10 +17,16 @@ function Busqueda() {
     ClickOutMenu(menuRef, () => setMenuVisible(false));
 
     const { darkMode, setDarkMode } = useContext(ThemeContext)
+
+    const navigate = useNavigate();
+
+    const irHome = () =>{
+        navigate('/home');
+    }
     return (
         <div className='barra-busqueda'>
-            <div className='senavanza'>
-                <img className='logo' src={logo} alt="Logo de SENAVANZA"  />
+            <div onClick={irHome} className='senavanza'>
+                <img onClick={irHome} className='logo' src={logo} alt="Logo de SENAVANZA"  />
                 <h1>SENAVANZA</h1>
             </div>
             <div className='opciones'>
