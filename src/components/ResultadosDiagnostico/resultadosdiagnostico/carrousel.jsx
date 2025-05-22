@@ -38,7 +38,7 @@ function Carrousel() {
             if (!pause){
                 setCurrentIndex(prev => (prev + 1) % componentes.length);
             }
-        }, 5000); 
+        }, 4000); 
 
         return () => clearInterval(interval);
     }, [pause]);
