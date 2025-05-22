@@ -56,7 +56,7 @@ body {
     margin: 0;
     padding: 0;
   }
-   html {
+  html {
     margin: 0;
     font-size: 62.5%;
     box-sizing: border-box;
@@ -87,6 +87,7 @@ a {
 /* Navbar */
 .nav-links ul{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 100px;
@@ -106,17 +107,15 @@ a {
     color: var(--white);
 }
 
-.nav-links ul{
-    display: flex;
-    justify-content: space-around;
-}
-
 
 
 .nav-links .marca-sena p{
     font-weight: bolder;
     font-size: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
+
 
 .button-init {
   width: 120px;
@@ -130,7 +129,57 @@ a {
 }
 
 /* Info */
+.hero {
+  position: relative;
+  width: 100%;              /* Ajusta el tamaño */
+  height: 700px;
+  background-image: url('/src/assets/img/inicio/fondo_completo.png'); /* Ruta de la imagen */
+  background-size: cover;    /* Ajusta la imagen para cubrir todo el div */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que se repita */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+}
 
+.hero-content{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.hero-text{
+  margin-top: 140px;
+  margin-right: 80px;
+  white-space: normal; /* ignora múltiples espacios */
+  text-align: left;    /* alinea todo a la izquierda */
+}
+
+.texto-ayuda{
+  font-weight: lighter;
+  font-size: 24px;
+}
+
+.texto-ayuda2{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.apuntar-boton{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button-init2 {
+  width: 120px;
+  height: 40px;
+  background-color: var(--gray-1);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
 /* Responsive */
 @media (max-width: 768px) {
     .nav-bar {

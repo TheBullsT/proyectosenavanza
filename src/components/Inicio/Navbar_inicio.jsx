@@ -29,8 +29,7 @@ const NavBarInicio = () => {
                 <nav className='nav-links'>
                     <ul>
                         <li className='marca-sena'><img src={logo} alt="" className='imagen-navbar' /><p>SENAVANZA</p></li>
-                        <li>Pages</li>
-                        <li><button onClick={irLogin} className='button-init'><p>Iniciar sesion</p></button></li>
+                        <li><button onClick={irLogin} className='button-init'><p>Iniciar sesión</p></button></li>
                     </ul>
                 </nav>
         </div>
