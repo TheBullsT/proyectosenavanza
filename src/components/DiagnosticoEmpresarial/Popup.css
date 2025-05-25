@@ -101,12 +101,12 @@ body {
 
 }
 .resultados{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 48px;
   width: 140px;
-  padding-left: 35px;
-  background-image: url(../../assets/img/img-resultados-diagnostico/iconoir_page.png);
-  background-repeat: no-repeat;
-  background-position: left 10px center;
+  padding-left: 25px;
   background-color: #39a900;
   color: white;
   border: none;
@@ -114,14 +114,16 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
+.icon-resultados{
+  font-size: 16px;
+  transform: translateX(-10px);
+
+}
 
 .descargar{
   height: 48px;
   width: 140px;
-  padding-left: 35px;
-  background-image: url(../../assets/img/img-resultados-diagnostico//descargar.png);
-  background-repeat: no-repeat;
-  background-position: left 10px center;
+  padding-left: 25px;
   background-color: var(--white);
   color: var(--gray-10);
   border: 1px var(--gray-10) solid;
@@ -129,7 +131,10 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
-
+.icon-descargar{
+  font-size: 16px;
+  transform: translateX(-10px);
+}
 @media(max-width: 480px) {
     .popup-overlay{
       position: absolute ;

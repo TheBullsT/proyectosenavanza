@@ -1,5 +1,7 @@
 import React from 'react';
 import exito from '../../assets/img/img-resultados-diagnostico/exito.png'
+import { FaDownload } from "react-icons/fa";
+import { FaRegFileArchive } from "react-icons/fa";
 import "./Popup.css";
 
 function Popup({ cerrar }) {
@@ -12,8 +14,8 @@ function Popup({ cerrar }) {
           <p>Descarga tu reporte y <br />revisa los resultados al detalle</p>
         </div>
         <div className='botones-diagnostico'>
-          <button className='resultados' onClick={cerrar}>Resultados</button>
-          <button className='descargar' onClick={cerrar}>Descargar</button>
+          <button className='resultados' onClick={cerrar}><FaRegFileArchive className='icon-resultados' />Resultados</button>
+          <button className='descargar' onClick={cerrar}><FaDownload className='icon-descargar' /> Descargar</button>
         </div>
       </div>
     </div>
