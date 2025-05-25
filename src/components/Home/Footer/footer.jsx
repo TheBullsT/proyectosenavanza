@@ -1,5 +1,5 @@
 import React from "react";
-import logo from '../../../assets/img/Logo_SENAVANZA.jpg'
+import logo from '../../../assets/img/Logo_SENAVANZA.png'
 import './footer.css';
 
 function Footer(){
