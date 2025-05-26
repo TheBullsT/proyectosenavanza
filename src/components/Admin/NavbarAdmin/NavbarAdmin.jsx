@@ -1,32 +1,29 @@
 // Importaciones
 import React from "react";
-import logo from '../../../assets/img/Logo_SENAVANZA.jpg';
-import modo from '../../../assets/img/modo.png';
-import notificaciones from '../../../assets/img/notificaciones.png';
-import avatar from '../../../assets/img/avatar-imagen.png';
-import { useNavigate } from 'react-router-dom';
+import logo from '../../../assets/img/Logo_SENAVANZA.png';
 import "./NavbarAdmin.css";
+import { FaMoon } from "react-icons/fa";
+import { FaCircle } from "react-icons/fa6";
 
 // Componente NavbarAdmin
 function NavbarAdmin() {
-    const navigate = useNavigate();
-    
-    const IraPerfil = () => {
-        navigate('/perfil');
-    }
-
     return (
         // Estructura del componente NavbarAdmin
-        <div className='NavbarAdmin'>
-            {/* Logo y opciones de navegación */}
-            <div className='opciones'>
-                <img className='logo' src={logo} alt="Logo de SENAVANZA"  />
-                <button className='modo'>
-                    <img src={modo} alt="Modo de la pagina" />
-                </button>
-                <button className='avatar' onClick={IraPerfil}>
-                    <img src={avatar} alt="Ver perfil" />
-                </button>
+        <div className="MainNavBarContainer">
+            <div className="dashboardContainer">
+                <h1 className="dashText">Dashboard</h1>
+            </div>
+            <div className="NavBarAdmin">
+                <div className="logoNavBar">
+                    <img src={logo} alt="Logo Senavanza" />
+                </div>
+                <div className="logoModoOscuro">
+                    <FaMoon className="navIcon"/>
+                </div>
+                <div className="logoAdmin">
+                    <FaCircle className="navIcon"/>
+                    <p className="profileName">@Admin</p>
+                </div>
             </div>
         </div>
         )
