@@ -40,6 +40,8 @@ function App() {
             <Route path="/resultado-diagnostico" element={<ResultadosDiagnostico />} />
             <Route path="/inicio" element={<Inicio/>} />
             <Route path="/informacion" element={<Informacion/>}/>
+            <Route path="/crear-empresa" element={<CrearEmpresa/>}/>
+            <Route path="/visualizar-empresa" element={<VisualizarEmpresa/>}/>
           </Routes>
         </Suspense>
       </Router>
