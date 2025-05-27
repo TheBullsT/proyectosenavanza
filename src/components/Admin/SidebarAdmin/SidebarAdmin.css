@@ -96,6 +96,9 @@ a {
   cursor: pointer;
   transition: background 0.3s ease;
 }
+.liContainer svg{
+  transform: translateX(10px);
+}
 .liContainer:hover {
   background-color: var(--primary-1);
   color: var(--white);
@@ -109,7 +112,7 @@ a {
 }
 
 .itemNames{
-  margin-left: 10px;
+  margin-left: 15px;
   border-radius: 6px;
 }
 
