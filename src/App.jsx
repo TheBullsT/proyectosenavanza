@@ -15,6 +15,8 @@ const Informacion = lazy (() => import('./pages/informacion'))
 const VisualizarEmpresa = lazy(() => import('./pages/VisualizarEmpresa'));
 const CrearEmpresa = lazy(() => import('./pages/AdminCrearEmpresa'));
 const ListarEmpresa = lazy(() => import('./pages/ListarEmpresa'));
+const ModificarEmpresa = lazy(() => import('./pages/AdminModificarEmpresa'));
+
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

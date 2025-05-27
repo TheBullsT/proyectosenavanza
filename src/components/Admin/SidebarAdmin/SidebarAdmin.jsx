@@ -31,7 +31,7 @@ function SidebarAdmin() {
                 {ActiveMenu === "empresas" && (
                     <ul className="subMenu">
                         <Link to="/crear-empresa" className="no-estilo"><li>Crear Empresa</li></Link>
-                        <li>Modificar Empresa</li>
+                        <Link to="/modificar-empresa" className="no-estilo"><li>Modificar Empresa</li></Link>
                         <Link to="/visualizar-empresa" className="no-estilo"><li>Visualizar Empresa</li></Link>
                         <li>Listar Empresa</li>
                     </ul>
