@@ -12,6 +12,7 @@ const DiagnosticoEmpresarial = lazy(() => import('./pages/FormularioEmp'))
 const ResultadosDiagnostico = lazy(() => import('./pages/ResultadosDiagnostico'));
 const Inicio = lazy(() => import('./pages/Inicio'));
 const Informacion = lazy (() => import('./pages/informacion'))
+const CrearEmpresa = lazy(() => import('./pages/AdminCrearEmpresa'));
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path="/resultado-diagnostico" element={<ResultadosDiagnostico />} />
             <Route path="/inicio" element={<Inicio/>} />
             <Route path="/informacion" element={<Informacion/>}/>
+            <Route path="/crear-empresa" element={<CrearEmpresa/>}/>
           </Routes>
         </Suspense>
       </Router>
