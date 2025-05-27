@@ -1,6 +1,7 @@
 import react from "react";
 import './CrearModificar.css';
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
+import { MdHomeRepairService } from "react-icons/md";
 
 const  CrearEmpresa= () => {
     return(
@@ -8,11 +9,11 @@ const  CrearEmpresa= () => {
         <div className="main-right-bar">
             <NavbarAdmin />
             <div className="empresa-container-modificar">
-                <h1 className="title">Crear Empresa</h1>
-                <p className="breadcrumb">You are here: <span className="breadcrumb-active">Empresas</span></p>
+                <p className="title">Crear Empresa
+                <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Empresas</strong></span></p>
 
                 <div className="form-info">
-                    <div className="icon">🏢</div>
+                    <div className="icon"><MdHomeRepairService/><i className="fas fa-home"></i></div>
                     <p>
                     En este espacio se podrá crear el usuario de la empresa que esté vinculada con nosotros.<br />
                     <strong>Debe ser creada para aparecer en la <span className="highlight">BASE DE DATOS</span>.</strong>
