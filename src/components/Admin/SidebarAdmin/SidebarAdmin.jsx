@@ -31,10 +31,9 @@ function SidebarAdmin() {
                 {ActiveMenu === "empresas" && (
                     <ul className="subMenu">
                         <Link to="/crear-empresa" className="no-estilo"><li>Crear Empresa</li></Link>
-                        <li>Modificar Empresa</li>
+                        <Link to="/modificar-empresa" className="no-estilo"><li>Modificar Empresa</li></Link>
                         <Link to="/visualizar-empresa" className="no-estilo"><li>Visualizar Empresa</li></Link>
                         <li>Listar Empresa</li>
-                        <li>Estado Empresa</li>
                     </ul>
                 )}
 
@@ -48,7 +47,6 @@ function SidebarAdmin() {
                         <li>Modificar Programa de formación</li>
                         <li>Visualizar Programa de formación</li>
                         <li>Listar Programa de formación</li>
-                        <li>Estado de Programa de formación</li>
                     </ul>
                 )}
 
@@ -62,7 +60,6 @@ function SidebarAdmin() {
                         <li>Modificar Usuarios</li>
                         <li>Visualizar Usuarios</li>
                         <li>Listar Usuarios</li>
-                        <li>Estado de Usuarios</li>
                     </ul>
                 )}
             </ul>

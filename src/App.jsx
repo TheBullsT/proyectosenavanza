@@ -14,6 +14,7 @@ const Inicio = lazy(() => import('./pages/Inicio'));
 const Informacion = lazy (() => import('./pages/informacion'))
 const VisualizarEmpresa = lazy(() => import('./pages/VisualizarEmpresa'));
 const CrearEmpresa = lazy(() => import('./pages/AdminCrearEmpresa'));
+const ModificarEmpresa = lazy(() => import('./pages/AdminModificarEmpresa'));
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
             <Route path="/informacion" element={<Informacion/>}/>
             <Route path="/crear-empresa" element={<CrearEmpresa/>}/>
             <Route path="/visualizar-empresa" element={<VisualizarEmpresa/>}/>
+            <Route path="/modificar-empresa" element={<ModificarEmpresa/>}/>
           </Routes>
         </Suspense>
       </Router>
