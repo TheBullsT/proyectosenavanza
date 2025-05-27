@@ -14,7 +14,7 @@ const Inicio = lazy(() => import('./pages/Inicio'));
 const Informacion = lazy (() => import('./pages/informacion'))
 const VisualizarEmpresa = lazy(() => import('./pages/VisualizarEmpresa'));
 const CrearEmpresa = lazy(() => import('./pages/AdminCrearEmpresa'));
-
+const ListarEmpresa = lazy(() => import('./pages/ListarEmpresa'));
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -42,6 +42,7 @@ function App() {
             <Route path="/informacion" element={<Informacion/>}/>
             <Route path="/crear-empresa" element={<CrearEmpresa/>}/>
             <Route path="/visualizar-empresa" element={<VisualizarEmpresa/>}/>
+            <Route path="/Listar-empresa" element={<ListarEmpresa/>}/>
           </Routes>
         </Suspense>
       </Router>
