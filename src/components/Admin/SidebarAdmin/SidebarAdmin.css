@@ -76,7 +76,10 @@ a {
   align-items: center;
   margin-top: -7px;
 }
-
+.ulContainer{
+  margin-right: 0;
+  padding: 0px 0px 0px 30px;
+}
 .menu{
   display: flex;
   font-size: var(--h2);
@@ -115,10 +118,12 @@ a {
 .subMenu {
   list-style-type: none;
   padding-left: 20px;
+  padding-right: 30px;
 }
 
 .subMenu li {
   font-size: var(--h5);
+  text-align: center;
   padding: 8px 0;
   cursor: pointer;
   border-radius: 6px;

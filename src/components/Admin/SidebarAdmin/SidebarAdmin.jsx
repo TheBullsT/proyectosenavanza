@@ -43,7 +43,7 @@ function SidebarAdmin() {
 
                 <li className="liContainer" onClick={() => abrirMenu("programas")}>
                     <MdSchool className="sidebaricon" />
-                    <p className="itemNames">Programas de Formación</p>
+                    <p className="itemNames">Programas</p>
                 </li>
                 {ActiveMenu === "programas" && (
                     <ul className="subMenu">
