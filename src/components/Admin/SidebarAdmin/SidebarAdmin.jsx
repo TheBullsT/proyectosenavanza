@@ -23,7 +23,7 @@ function SidebarAdmin() {
 
                 <li className="liContainer">
                     <FaHome className="sidebaricon" />
-                    <p className="itemNames">Home</p>
+                    <Link to="/adminhome" className="no-estilo"><p className="itemNames">Home</p></Link>
                 </li>
 
 
@@ -33,9 +33,9 @@ function SidebarAdmin() {
                 </li>
                 {ActiveMenu === "empresas" && (
                     <ul className="subMenu">
-                        <li>Crear Empresa</li>
+                        <Link to="/crear-empresa" className="no-estilo"><li>Crear Empresa</li></Link>
                         <li>Modificar Empresa</li>
-                        <li>Visualizar Empresa</li>
+                        <Link to="/visualizar-empresa" className="no-estilo"><li>Visualizar Empresa</li></Link>
                         <li>Listar Empresa</li>
                         <li>Estado Empresa</li>
                     </ul>

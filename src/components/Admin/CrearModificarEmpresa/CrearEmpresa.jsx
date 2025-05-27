@@ -7,7 +7,7 @@ const  CrearEmpresa= () => {
     
         <div className="main-right-bar">
             <NavbarAdmin />
-            <div className="empresa-container">
+            <div className="empresa-container-modificar">
                 <h1 className="title">Crear Empresa</h1>
                 <p className="breadcrumb">You are here: <span className="breadcrumb-active">Empresas</span></p>
 
