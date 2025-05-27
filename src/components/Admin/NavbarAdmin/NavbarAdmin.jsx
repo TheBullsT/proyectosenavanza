@@ -11,7 +11,7 @@ function NavbarAdmin() {
         // Estructura del componente NavbarAdmin
         <div className="MainNavBarContainer">
             <div className="dashboardContainer">
-                <h1 className="dashText">Dashboard</h1>
+                <h1 className="dashText">SENAVANZA</h1>
             </div>
             <div className="NavBarAdmin">
                 <div className="logoNavBar">
