@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Loading from './components/Loading/loading';
 import { ThemeProvider } from './layouts/Dark-Mode/temacontexto';
 
+
 const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
+const LoginAdministrador = lazy(() => import('./pages/LoginAdmin'))
 const PerfilPage = lazy(() => import('./pages/PerfilPage'));
 const EditarPerfilPage = lazy(() => import('./pages/EditarPerfilPage'));
 const AdminHome = lazy(() => import('./pages/AdminHome'));
@@ -36,6 +38,8 @@ function App() {
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Navigate to="/inicio" />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/login-admin" element={<LoginAdministrador />} />
             <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/perfil" element={<PerfilPage />} />

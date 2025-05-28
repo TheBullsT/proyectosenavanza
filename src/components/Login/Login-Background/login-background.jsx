@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function LoginBackground (){
     return (
         <div className="background">
-            <Link to="/AdminHome" className="hidden-link">
+            <Link to="/login-admin" className="hidden-link">
                 <img className="imgage" src={mobile} alt="Imagen del login"/>
             </Link>
         </div>
