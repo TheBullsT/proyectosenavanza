@@ -82,6 +82,7 @@ a {
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--white);
+  margin-right: 30px;
 }
 
 .liContainer{
