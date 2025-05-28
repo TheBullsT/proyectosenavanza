@@ -1,6 +1,7 @@
 import React from "react";
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
 import "./ListarEmpresa.css";
+import { Link } from 'react-router-dom';
 import { MdHomeRepairService } from "react-icons/md";
 import { FaEye, FaEdit, FaLock } from "react-icons/fa";
 
@@ -56,7 +57,7 @@ const Listar_Empresa = () => {
                 <td>{empresa.telefono}</td>
                 <td>{empresa.direccion}</td>
                 <td className="opciones">
-                  <FaEye className="icon-action" />
+                  <Link to='/visualizacion-empresa'><FaEye className="icon-action" /></Link>
                   <FaEdit className="icon-action" />
                   <FaLock className="icon-action" />
                 </td>

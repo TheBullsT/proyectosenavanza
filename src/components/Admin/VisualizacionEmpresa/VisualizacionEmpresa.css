@@ -113,6 +113,7 @@ body {
     align-items: center;
     justify-content: start;
     flex-direction: row;
+    width: 900px;
 }
 
 .icon-box .icon {
@@ -142,15 +143,22 @@ body {
   display: flex;
   flex-direction: column;
 }
+.campo-nombre-empresa {
+  width: 950px; /* O el tamaño que necesites */
+}
+.input-empresa-nombre {
+  width: 100%;
+}
 
 .campo-form label {
   margin-bottom: 0.5rem;
   font-size: var(--h5);
   color: var(--gray-4);
 }
-
+.empresa-camp{
+  width: 500px;
+}
 .campo-form input {
-  width: 100%;
   padding: 1rem 1.2rem;
   border-radius: 0.5rem;
   border: 1px solid var(--gray-13);
@@ -162,7 +170,7 @@ body {
 
 .grid-doble {
   display: flex;
-  gap: 2rem;
+  gap: 100px;
   flex-wrap: wrap;
 }
 

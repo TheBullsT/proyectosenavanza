@@ -32,7 +32,6 @@ function SidebarAdmin() {
                     <ul className="subMenu">
                         <Link to="/crear-empresa" className="no-estilo"><li>Crear Empresa</li></Link>
                         <Link to="/modificar-empresa" className="no-estilo"><li>Modificar Empresa</li></Link>
-                        <Link to="/visualizar-empresa" className="no-estilo"><li>Visualizar Empresa</li></Link>
                         <Link to="/listar-empresa" className="no-estilo"><li>Listar Empresa</li></Link>
                     </ul>
                 )}
@@ -45,7 +44,6 @@ function SidebarAdmin() {
                     <ul className="subMenu">
                         <Link to="/crear-programa" className="no-estilo"><li>Crear Programa de formación</li></Link>
                         <Link to="/modificar-programa" className="no-estilo"><li>Modificar Programa de formación</li></Link>
-                        <Link to="/visualizar-programa" className="no-estilo"><li>Visualizar Programa de formación</li></Link>
                         <Link to="/listar-programa" className="no-estilo"><li>Listar Programa de formación</li></Link>
                     </ul>
                 )}
