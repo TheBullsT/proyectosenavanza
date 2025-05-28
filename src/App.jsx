@@ -12,13 +12,11 @@ const DiagnosticoEmpresarial = lazy(() => import('./pages/FormularioEmp'))
 const ResultadosDiagnostico = lazy(() => import('./pages/ResultadosDiagnostico'));
 const Inicio = lazy(() => import('./pages/Inicio'));
 const Informacion = lazy (() => import('./pages/informacion'))
-const VisualizarEmpresa = lazy(() => import('./pages/VisualizarEmpresa'));
 const CrearEmpresa = lazy(() => import('./pages/AdminCrearEmpresa'));
 const ListarEmpresa = lazy(() => import('./pages/ListarEmpresa'));
 const ModificarEmpresa = lazy(() => import('./pages/AdminModificarEmpresa'));
 const CrearProgramaDeFormacion = lazy(() => import('./pages/CrearProgramaFormacion'));
 const ModificarPrograma = lazy(() => import('./pages/ModificaraPrograma'));
-const VisualizarPrograma = lazy(() => import('./pages/VisulizarPrograma'));
 const ListarPrograma = lazy(() => import('./pages/ListarPrograma'));
 const VisualizacionEmpresa = lazy(() => import('./pages/VisualizacionEmpresa'));
 
@@ -48,12 +46,10 @@ function App() {
             <Route path="/inicio" element={<Inicio/>} />
             <Route path="/informacion" element={<Informacion/>}/>
             <Route path="/crear-empresa" element={<CrearEmpresa/>}/>
-            <Route path="/visualizar-empresa" element={<VisualizarEmpresa/>}/>
             <Route path="/listar-empresa" element={<ListarEmpresa/>}/>
             <Route path="/modificar-empresa" element={<ModificarEmpresa/>}/>
             <Route path="/crear-programa" element={<CrearProgramaDeFormacion/>}/>
             <Route path="/modificar-programa" element={<ModificarPrograma/>}/>
-            <Route path="/visualizar-programa" element={<VisualizarPrograma/>}/>
             <Route path="/listar-programa" element={<ListarPrograma/>}/>
             <Route path="/visualizacion-empresa" element={<VisualizacionEmpresa />} />
           </Routes>
