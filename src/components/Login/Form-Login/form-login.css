@@ -103,7 +103,8 @@ body{
 }
 .documentType,
 .numberType,
-.emailType{
+.emailType,
+.passwordType{
     margin-top: 20px;
 
 }
