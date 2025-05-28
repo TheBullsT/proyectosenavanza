@@ -129,18 +129,11 @@ a {
 /* SEARCH + BUTTON */
 .search-bar {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   margin-bottom: 30px;
 }
 
-.search-bar input {
-  width: 75%;
-  padding: 12px 20px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
 
 .btn-agregar, .btn-reporte {
   background-color: var(--primary-1);
@@ -196,4 +189,16 @@ a {
 
 .icon-action:hover {
   color: var(--primary-1);
+}
+
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  color: var(--primary-1);
+}
+.grupo-botones {
+  display: flex;
+  gap: 10px;
 }

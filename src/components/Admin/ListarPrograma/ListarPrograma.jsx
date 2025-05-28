@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import './ListarPrograma.css';
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
-import { MdSchool, MdVisibility, MdEdit, MdDelete } from "react-icons/md";
+import { FaEye, FaEdit, FaLock } from "react-icons/fa";
+import { MdSchool } from "react-icons/md";
 
 const programasMock = [
   { nombre: "<Nombre del PF>", codigo: "11111111111", nivel: "Tecnico" },
@@ -35,7 +36,7 @@ const ListarProgramas = () => {
 
         <div className="form-info">
           <div className="icon">
-            <MdSchool />
+            < MdSchool/>
           </div>
           <p>
             En este espacio se podrán listar los programas de formación que estén vinculados con nosotros.<br />
@@ -44,14 +45,11 @@ const ListarProgramas = () => {
         </div>
 
         <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Código de Programa de Formación"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <button className="btn-agregar">Agregar PF</button>
-          <button className="btn-reporte">Generar Reporte</button>
+          <h2 className="empresas-label">Empresas</h2>
+          <div className="grupo-botones">
+            <button className="btn-agregar">Agregar PF</button>
+            <button className="btn-reporte">Generar Reporte</button>
+          </div>
         </div>
 
         <table className="program-table">
@@ -70,9 +68,9 @@ const ListarProgramas = () => {
                 <td>{pf.codigo}</td>
                 <td>{pf.nivel}</td>
                 <td className="opciones">
-                  <MdVisibility className="icon-action" title="Ver" />
-                  <MdEdit className="icon-action" title="Editar" />
-                  <MdDelete className="icon-action" title="Eliminar" />
+                  <FaEye className="icon-action" title="Ver" />
+                  <FaEdit className="icon-action" title="Editar" />
+                  <FaLock className="icon-action" title="Eliminar" />
                 </td>
               </tr>
             ))}
