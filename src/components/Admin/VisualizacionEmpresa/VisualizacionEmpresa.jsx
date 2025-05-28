@@ -23,9 +23,8 @@ const Visualizacion_Empresa = () => {
                         <strong>Debe ser creada para aparecer en la BASE DE DATOS.</strong>
                     </p>
                 </div>
-                <div className="info-box">
+                <div className="info-box-visualizacion-empresa">
                     <h2 className="subtitulo">Nombre de Empresa</h2>
-
                     <form className="formulario-empresa">
                         <div className="campo-form campo-nombre-empresa">
                             <label>Nombre de la Empresa</label>

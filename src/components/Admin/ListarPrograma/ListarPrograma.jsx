@@ -27,13 +27,8 @@ const ListarProgramas = () => {
       <NavbarAdmin />
 
       <div className="visualizar-container">
-        <p className="title">
-          Listar Programa de Formación
-          <span className="breadcrumb">
-            You are here: <strong className="breadcrumb-active">Programas de Formación</strong>
-          </span>
-        </p>
-
+        <p className="title">Listar Programa de formación
+          <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Empresas</strong></span></p>
         <div className="form-info">
           <div className="icon">
             < MdSchool/>

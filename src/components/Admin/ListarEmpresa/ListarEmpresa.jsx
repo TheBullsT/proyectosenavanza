@@ -16,14 +16,10 @@ const Listar_Empresa = () => {
     <div className="empresa-container">
       <NavbarAdmin />
       <div className="visualizar-empresa-contenido">
-        <h1 className="titulo">
-          Listar Empresa
-          <span className="breadcrumb">
-            You are here: <strong className="breadcrumb-actual">Empresas</strong>
-          </span>
-        </h1>
+        <p className="title">Listar Empresa
+          <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Empresas</strong></span></p>
 
-        <div className="info-box">
+        <div className="form-info">
           <div className="icon">
             <MdHomeRepairService />
           </div>
