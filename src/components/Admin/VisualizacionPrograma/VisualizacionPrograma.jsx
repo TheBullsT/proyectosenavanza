@@ -1,6 +1,7 @@
 import React from "react";
 import "./VisualizacionPrograma.css";
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
+import { MdHomeRepairService } from "react-icons/md";
 
 const Visualizacion_Programa = () => {
     return (
@@ -8,9 +9,9 @@ const Visualizacion_Programa = () => {
             <NavbarAdmin />
             <div className="visualizacion-programa-contenido">
                 <h1 className="titulo-programa">
-                    Visualización de Empresa
+                    Visualización de Programa de Formación
                     <span className="breadcrumb-programa">
-                        You are here: <strong className="breadcrumb-actual-programa">Empresas</strong>
+                        You are here: <strong className="breadcrumb-actual-programa">Programa de Formacion</strong>
                     </span>
                 </h1>
                 <div className="icon-box-programa">
@@ -23,34 +24,30 @@ const Visualizacion_Programa = () => {
                     </p>
                 </div>
                 <div className="info-box-visualizacion-programa">
-                    <h2 className="subtitulo-programa">Nombre de Empresa</h2>
+                    <h2 className="subtitulo-programa">Nombre de Programa</h2>
                     <form className="formulario-programa">
                         <div className="campo-form-programa campo-nombre-programa">
-                            <label>Nombre de la Empresa</label>
-                            <input className="input-programa-nombre" type="text" defaultValue="programa de Ejemplo" />
+                            <label>Descripción</label>
+                            <input className="input-programa-nombre" type="text" defaultValue="Descripcion lorem ns holi" />
                         </div>
 
                         <div className="grid-doble-programa">
                             <div className="campo-form-programa">
-                                <label>Teléfono</label>
-                                <input type="text" defaultValue="+57 300 000 0000" />
+                                <label>Modalidad</label>
+                                <input type="text" defaultValue="Presencial" />
                             </div>
 
                             <div className="campo-form-programa">
-                                <label>Correo Electrónico</label>
-                                <input type="email" defaultValue="contacto@empresa.com" />
+                                <label>Nivel Formativo</label>
+                                <input type="email" defaultValue="Nivel de ejemplo" />
                             </div>
                         </div>
 
                         <div className="campo-form-programa">
-                            <label>Dirección</label>
-                            <input type="text" defaultValue="Cra#0 Trans #0 - 00" />
+                            <label>Duración</label>
+                            <input type="text" defaultValue="El tiempo que es" />
                         </div>
 
-                        <div className="campo-form-programa">
-                            <label>Actividad Económica</label>
-                            <input type="text" defaultValue="Cra#0 Trans #0 - 00" />
-                        </div>
                         <div className="boton-contenedor-programa">
                             <button className="boton-modificar-programa">Modificar</button>
                         </div>
