@@ -7,8 +7,8 @@ function Resultados(){
         //Caja del carrusel
         <div className="container-resultado"> 
             <div className="titulo-reporte"> {/*Titulo de la caja */}
-                <h1>!Conoce el programa de formación <br /> 
-                más recomendado para ti¡</h1>
+                <h1>Conoce el programa de formación <br /> 
+                más recomendado para ti</h1>
             </div>
             <div className="resultado-total"> {/*Caja de la imagen y resultado*/}
                 <img src={result} alt="Imagen de resultados" /> {/*Imagen */}
