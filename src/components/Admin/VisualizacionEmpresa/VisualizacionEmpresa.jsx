@@ -53,7 +53,7 @@ const Visualizacion_Empresa = () => {
                             <input type="text" defaultValue="Cra#0 Trans #0 - 00" />
                         </div>
                         <div className="boton-contenedor">
-                            <button type="submit" className="boton-modificar">Modificar</button>
+                            <button className="boton-modificar">Modificar</button>
                         </div>
                     </form>
                 </div>
