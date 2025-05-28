@@ -21,6 +21,7 @@ const CrearProgramaDeFormacion = lazy(() => import('./pages/CrearProgramaFormaci
 const ModificarPrograma = lazy(() => import('./pages/ModificaraPrograma'));
 const ListarPrograma = lazy(() => import('./pages/ListarPrograma'));
 const VisualizacionEmpresa = lazy(() => import('./pages/VisualizacionEmpresa'));
+const VisualizacionPrograma = lazy(() => import('./pages/VisualizacionPrograma'));
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
             <Route path="/modificar-programa" element={<ModificarPrograma/>}/>
             <Route path="/listar-programa" element={<ListarPrograma/>}/>
             <Route path="/visualizacion-empresa" element={<VisualizacionEmpresa />} />
+            <Route path="/visualizacion-programa" element={<VisualizacionPrograma />} />
           </Routes>
         </Suspense>
       </Router>
