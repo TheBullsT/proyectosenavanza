@@ -82,12 +82,12 @@ a {
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--white);
-  margin-right: 30px;
 }
 
 .liContainer{
   display: flex;
   align-items: center;
+  width: 80%;
   margin-top: -7px;
 }
 .ulContainer{
