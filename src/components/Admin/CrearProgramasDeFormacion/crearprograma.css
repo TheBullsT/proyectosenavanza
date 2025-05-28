@@ -1,0 +1,187 @@
+:root {
+  /* Colores Primarios */
+  --primary-1: #39A900;
+  --primary-2: #36AE0F;
+  --primary-3: #42B31E;
+  --primary-4: #4FB82D;
+  --primary-5: #5BBD3C;
+  --primary-6: #68C24B;
+  --primary-7: #75C75A;
+  --primary-8: #81CC69;
+  --primary-9: #8ED178;
+  --primary-10: #9AD787;
+  --primary-11: #A7DC96;
+  --primary-12: #B3E1A5;
+  --primary-13: #C0E6B4;
+  --primary-14: #CDEBC3;
+  --primary-15: #D9F0D2;
+  --primary-16: #E6F5E1;
+  --primary-17: #F2FAF0;
+
+  /* Grises y Neutros */
+  --black: #000000;
+  --gray-1: #0F0F0F;
+  --gray-2: #1E1E1E;
+  --gray-3: #2D2D2D;
+  --gray-4: #3C3C3C;
+  --gray-5: #5A5A5A;
+  --gray-6: #696969;
+  --gray-7: #787878;
+  --gray-8: #878787;
+  --gray-9: #A5A5A5;
+  --gray-10: #969696;
+  --gray-11: #A5A5A5;
+  --gray-12: #B4B4B4;
+  --gray-13: #C3C3C3;
+  --gray-14: #D2D2D2;
+  --gray-15: #E1E1E1;
+  --gray-16: #F0F0F0;
+  --white: #FFFFFF;
+
+  /* Tipografía */
+  --font-primary: 'Work Sans', sans-serif;
+  --font-secondary: 'Calibri', sans-serif;
+
+  /* Jerarquías tipográficas */
+  --h1: 32px;
+  --h2: 24px;
+  --h3: 20px;
+  --h4: 16px;
+  --h5: 14px;
+  --h6: 12px;
+}
+html {
+  margin: 0;
+  font-size: 62.5%;
+  box-sizing: border-box;
+  text-decoration: none;
+
+}
+body {
+    font-family: var(--font-primary);
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+:before,*:after{
+box-sizing: inherit;
+}
+a {
+  text-decoration: none;
+}
+
+.main-right-bar {
+  flex: 4;
+  background-color: rgb(228, 228, 228);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formacion-container {
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-1);
+  margin-bottom: 10px;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #999;
+  margin-left: 10px;
+}
+
+.breadcrumb-active {
+  color: var(--primary-1);
+}
+
+.form-info {
+  display: flex;
+  align-items: flex-start;
+  background: #e8f5e9;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.icon {
+  color: white;
+  background-color: var(--primary-1);
+  padding: 10px;
+  border-radius: 50%;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.highlight {
+  color: var(--black);
+}
+
+.form-title {
+  margin-bottom: 20px;
+  color: var(--primary-1);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-create {
+  background-color: var(--primary-1);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background-color: white;
+  color: var(--black);
+  border: 1px solid var(--black);
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}

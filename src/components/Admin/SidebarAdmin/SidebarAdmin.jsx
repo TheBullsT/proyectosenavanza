@@ -43,9 +43,9 @@ function SidebarAdmin() {
                 </li>
                 {ActiveMenu === "programas" && (
                     <ul className="subMenu">
-                        <li>Crear Programa de formación</li>
-                        <li>Modificar Programa de formación</li>
-                        <li>Visualizar Programa de formación</li>
+                        <Link to="/crear-programa" className="no-estilo"><li>Crear Programa de formación</li></Link>
+                        <Link to="/modificar-programa" className="no-estilo"><li>Modificar Programa de formación</li></Link>
+                        <Link to="/visualizar-programa" className="no-estilo"><li>Visualizar Programa de formación</li></Link>
                         <li>Listar Programa de formación</li>
                     </ul>
                 )}
