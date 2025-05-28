@@ -28,9 +28,7 @@ const  CrearEmpresa= () => {
                         <label>Tipo de documentos</label>
                         <select>
                         <option>Seleccione</option>
-                        <option>RUC</option>
-                        <option>DNI</option>
-                        <option>Pasaporte</option>
+                        <option>NIT</option>
                         </select>
                     </div>
                     <div className="form-group">

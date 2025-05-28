@@ -161,7 +161,7 @@ a {
 
 .form-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space;
   gap: 10px;
   margin-top: 20px;
 }
