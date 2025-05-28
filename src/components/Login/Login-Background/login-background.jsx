@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 function LoginBackground (){
     return (
         <div className="background">
-            {/* Hacer que esta imagen sea un boton oculto */}
             <Link to="/AdminHome" className="hidden-link">
                 <img className="imgage" src={mobile} alt="Imagen del login"/>
             </Link>
