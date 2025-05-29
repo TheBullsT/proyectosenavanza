@@ -1,7 +1,10 @@
+// Importa el layout general que contiene Navbar y Footer
 import NavFooter from '../layouts/Layout';
 import React from 'react';
+// Importa el componente principal para mostrar el perfil de la empresa
 import ProfileLayout from '../components/Empresa/PerfilEmpresa';
 
+// Datos ficticios de la empresa para pasar como props
 const dummyCompany = {
   name: 'Nombre Empresa',
   address: 'Dirección Empresa',
@@ -9,6 +12,7 @@ const dummyCompany = {
   email: 'correo@empresa.com',
 };
 
+// Detalles ficticios adicionales de la empresa
 const dummyDetails = {
   documentType: 'NIT',
   documentNumber: '1234567890',
@@ -20,12 +24,15 @@ const dummyDetails = {
   economicActivity: 'Mucho Dinero',
 };
 
+// Componente funcional que renderiza el perfil de la empresa dentro del layout general
 const PerfilPage = () => {
   return (
     <NavFooter>
+      {/* Se pasa la información ficticia como props al componente del perfil */}
       <ProfileLayout company={dummyCompany} details={dummyDetails} />
     </NavFooter>
   );
 };
 
+// Exporta el componente para usarlo en rutas o en otros módulos
 export default PerfilPage;
