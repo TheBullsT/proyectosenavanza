@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // Importa la imagen del logo para mostrar en el login
 import logoLogin from '../../../assets/img/Logo_SENAVANZA.jpg'; 
 // Importa los estilos CSS específicos para este component
-import './LoginAdmin.css'; e
+import './LoginAdmin.css'; 
 // Importa useNavigate para navegación programática entre rutas
 import { useNavigate } from "react-router-dom"; 
 
