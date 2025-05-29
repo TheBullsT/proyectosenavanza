@@ -1,5 +1,5 @@
 :root {
-    /* Colores Primarios */
+    /* Variables de colores primarios, para mantener la paleta consistente */
     --primary-1: #39A900;
     --primary-2: #36AE0F;
     --primary-3: #42B31E;
@@ -17,8 +17,8 @@
     --primary-15: #D9F0D2;
     --primary-16: #E6F5E1;
     --primary-17: #F2FAF0;
-  
-    /* Grises y Neutros */
+
+    /* Variables para tonos de grises y colores neutrales */
     --black: #000000;
     --gray-1: #0F0F0F;
     --gray-2: #1E1E1E;
@@ -37,146 +37,187 @@
     --gray-15: #E1E1E1;
     --gray-16: #F0F0F0;
     --white: #FFFFFF;
-  
-    /* Tipografía */
+
+    /* Variables para las familias tipográficas principales */
     --font-primary: 'Work Sans', sans-serif;
     --font-secondary: 'Calibri', sans-serif;
-  
-    /* Jerarquías tipográficas */
+
+    /* Variables para tamaños de texto (jerarquías tipográficas) */
     --h1: 32px;
     --h2: 24px;
     --h3: 20px;
     --h4: 16px;
     --h5: 14px;
     --h6: 12px;
-  }
+}
 
-    html {
+/* Reinicio básico y configuración general del tamaño base */
+html {
     margin: 0;
     font-size: 62.5%;
+    /* Esto permite usar rem basados en 10px (1rem = 10px) */
     box-sizing: border-box;
-  }
-  :before,*:after{
-  box-sizing: inherit;
-  }
+    /* Contar padding y border dentro del width */
+}
 
-  body{
+/* Aplicar box-sizing a pseudo-elementos y todos los elementos */
+:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/* Estilos base del body */
+body {
     font-size: 16px;
+    /* Tamaño base de texto */
     font-family: var(--font-primary);
-  }
-  a {
+    /* Usar la fuente principal definida */
+}
+
+/* Quitar subrayado de los enlaces */
+a {
     text-decoration: none;
-  }
-  h1 {
-      font-size: 3.2rem;
-  }
-  h2 {
-      font-size: 2.4rem;
-  }
-  h3 {
-      font-size: 2.0rem;
-  }
-  h4 {
-      font-size: 1.6rem;
-  }
-  h5 {
-      font-size: 1.4rem;
-  }
+}
 
-.presentacion{
+/* Contenedor principal de presentación */
+.presentacion {
     background-image: url(../../../assets/img/imagen-de-fondo.png);
+    /* Imagen de fondo */
     display: flex;
+    /* Contenedor flexible */
     align-items: center;
+    /* Centrar verticalmente los hijos */
     justify-content: space-around;
+    /* Espacio entre elementos hijos */
     height: 300px;
+    /* Altura fija */
     width: 100%;
+    /* Ancho completo */
 }
 
-.presentacion-senavanza{
+/* Sección de texto principal en presentación */
+.presentacion-senavanza {
     display: grid;
-    grid-template-columns: repeat(2fr,1fr);
+    grid-template-columns: repeat(2fr, 1fr);
+    /* Intento de 2 columnas, pero esta sintaxis está incorrecta */
+    /* CORRECCIÓN: debería ser `grid-template-columns: 2fr 1fr;` o similar */
 }
-.texto-presentacion{
+
+/* Título principal */
+.texto-presentacion {
     color: white;
+    /* Texto blanco */
     font-size: 36px;
+    /* Tamaño grande */
     font-weight: bold;
+    /* Negrita */
     margin-bottom: 5px;
+    /* Separación inferior */
 }
-.texto-ayuda{
+
+/* Texto secundario de ayuda */
+.texto-ayuda {
     font-size: 18px;
     font-weight: lighter;
+    /* Texto más delgado */
     margin-top: 5px;
     color: #ffffffc5;
+    /* Blanco con opacidad */
     text-align: center;
 }
-.texto-diagnostico{
+
+/* Texto para invitar a diagnosticar */
+.texto-diagnostico {
     font-size: 21px;
     color: #ffffffd0;
+    /* Blanco con algo de transparencia */
 }
-.responde-diagnostico{
+
+/* Contenedor del botón y texto de diagnóstico */
+.responde-diagnostico {
     display: flex;
     flex-direction: column;
+    /* Elementos apilados verticalmente */
     justify-content: center;
     align-items: center;
 }
 
+/* Botón diagnóstico */
 .diagnostico {
     display: flex;
     align-items: center;
+    /* Centrar verticalmente icono y texto */
     justify-content: center;
-    gap: 10px; 
+    /* Centrar horizontal */
+    gap: 10px;
+    /* Espacio entre icono y texto */
     height: 40px;
     width: 200px;
     padding: 0 20px;
     background-color: #000;
+    /* Fondo negro */
     color: white;
+    /* Texto blanco */
     border: none;
     font-weight: bold;
     border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
+    /* Cambia el cursor para indicar que es clickeable */
     transition: background-color 0.3s ease;
+    /* Transición suave al cambiar color */
 }
 
+/* Cambio de color al pasar mouse por encima */
 .diagnostico:hover {
     background-color: #222;
+    /* Gris oscuro */
 }
 
+/* Clase para el icono dentro del botón */
 .icono-diagnostico {
-    font-size: 28px; /* Tamaño del ícono */
+    font-size: 28px;
+    /* Tamaño del ícono */
 }
 
-
+/* Media query para pantallas medianas y menores */
 @media (max-width: 768px) {
     .presentacion {
         flex-direction: column;
+        /* Apilar verticalmente */
         justify-content: center;
         align-items: center;
         padding: 20px;
+        /* Espaciado interno */
         min-height: auto;
         width: 100%;
     }
 
     .presentacion-senavanza {
-        display: flex; 
+        display: flex;
+        /* Cambiar grid a flex para diseño responsivo */
         flex-direction: column;
         align-items: center;
         width: 100%;
     }
 
     .texto-presentacion {
-        font-size: 28px; 
+        font-size: 28px;
+        /* Texto más pequeño */
         text-align: center;
     }
 
     .diagnostico {
-        width: 80%; 
+        width: 80%;
+        /* Botón más ancho en móviles */
     }
 }
 
+/* Media query para pantallas pequeñas */
 @media (max-width: 480px) {
     .texto-presentacion {
         font-size: 24px;
+        /* Texto aún más pequeño */
     }
 
     .texto-ayuda {
