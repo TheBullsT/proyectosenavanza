@@ -11,11 +11,6 @@ function FormLogin() {
         navigate('/inicio');
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault(); // Evita el comportamiento por defecto del formulario
-        // Aquí puedes agregar la lógica de autenticación o validación
-        console.log("Formulario enviado");
-    };
 
     return (
         <div className="login">
@@ -24,7 +19,7 @@ function FormLogin() {
             </div>
 
             <div className="form-login">
-                <form onSubmit={handleSubmit}>
+                <form method="POST">
                     <h1 className="titulo">Iniciar Sesión</h1>
                     <h4 className="subtitulo">¡Vamos a Empezar!</h4>
 

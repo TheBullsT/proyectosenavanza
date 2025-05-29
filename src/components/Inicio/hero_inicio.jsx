@@ -1,15 +1,11 @@
 // Importación de React
 import React from 'react';
-
 // Importación de imagen de persona (lado derecho del hero)
 import person from '../../assets/img/inicio/Biblioteca.png';
-
 // Importación de imagen de flecha (ícono al lado del botón)
 import arrow from '../../assets/img/inicio/typcn_arrow-back.png';
-
 // Importación del archivo de estilos específicos del componente
 import './Inicio.css';
-
 // Importación de hook para navegación de React Router
 import { useNavigate } from 'react-router-dom';
 
