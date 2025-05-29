@@ -3,6 +3,7 @@ import './ListarPrograma.css';
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
 import { FaEye, FaEdit, FaLock } from "react-icons/fa";
 import { MdSchool } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const programasMock = [
   { nombre: "<Nombre del PF>", codigo: "11111111111", nivel: "Tecnico" },
@@ -63,7 +64,7 @@ const ListarProgramas = () => {
                 <td>{pf.codigo}</td>
                 <td>{pf.nivel}</td>
                 <td className="opciones">
-                  <FaEye className="icon-action" title="Ver" />
+                  <Link to='/visualizacion-programa'><FaEye className="icon-action" title="Ver" /></Link>
                   <FaEdit className="icon-action" title="Editar" />
                   <FaLock className="icon-action" title="Eliminar" />
                 </td>

@@ -28,7 +28,7 @@ function LoginAdmin() {
                         </label>
                         <label className="passwordType" htmlFor="passwordType">
                             Contraseña
-                            <input type="text" placeholder="Contraseña" required />
+                            <input type="password" placeholder="Contraseña" required />
                         </label>
                     </div>
                     <button className="iniciar-sesion">Iniciar Sesión</button>
