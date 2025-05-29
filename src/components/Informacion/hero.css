@@ -1,5 +1,5 @@
 :root {
-    /* Colores Primarios */
+    /* Paleta de Colores Primarios (Verde en distintos tonos) */
     --primary-1: #39A900;
     --primary-2: #36AE0F;
     --primary-3: #42B31E;
@@ -17,8 +17,8 @@
     --primary-15: #D9F0D2;
     --primary-16: #E6F5E1;
     --primary-17: #F2FAF0;
-  
-    /* Grises y Neutros */
+
+    /* Colores Grises y Neutros */
     --black: #000000;
     --gray-1: #0F0F0F;
     --gray-2: #1E1E1E;
@@ -37,12 +37,12 @@
     --gray-15: #E1E1E1;
     --gray-16: #F0F0F0;
     --white: #FFFFFF;
-  
-    /* Tipografía */
+
+    /* Tipografías principales */
     --font-primary: 'Work Sans', sans-serif;
     --font-secondary: 'Calibri', sans-serif;
-  
-    /* Jerarquías tipográficas */
+
+    /* Jerarquía de tamaños de fuente */
     --h1: 32px;
     --h2: 24px;
     --h3: 20px;
@@ -50,52 +50,69 @@
     --h5: 14px;
     --h6: 12px;
 }
+
+/* Reset general del HTML */
 html {
     margin: 0;
     font-size: 62.5%;
+    /* Facilita el uso de rem (1rem = 10px) */
     box-sizing: border-box;
 }
-/* body{
-    background: url('../../assets/img/inicio/fondo_completo.png');
-    background-size: ;
-    background-repeat: no-repeat;
-} */
-  :before,*:after{
-  box-sizing: inherit;
+
+/* Herencia de box-sizing para pseudoelementos */
+:before,
+*:after {
+    box-sizing: inherit;
 }
-.contenedor_principal{
+
+/* Estilos del contenedor principal del hero */
+.contenedor_principal {
     display: flex;
+    /* Usa Flexbox para distribuir contenido */
     background-image: url(../../assets/img/inicio/fondo_completo.png);
+    /* Imagen de fondo */
     background-size: 100% 80vh;
+    /* Escala la imagen al ancho completo y 80% del alto visible */
     background-repeat: no-repeat;
     flex-direction: column;
+    /* Apila elementos en columna */
     justify-content: center;
+    /* Centra verticalmente */
     align-items: center;
+    /* Centra horizontalmente */
     text-align: center;
+    /* Alinea texto al centro */
     width: 100%;
     height: 80vh;
+    /* Altura del hero */
     color: var(--white);
+    /* Texto blanco por defecto */
 }
 
-.page-select:hover strong{
+/* Efecto al pasar el mouse por encima: invierte el color del texto en strong */
+.page-select:hover strong {
     filter: brightness(0) invert(1);
 }
-.page-select:hover p{
+
+/* Al pasar el mouse, cambia el color del texto general a negro */
+.page-select:hover p {
     color: var(--black);
 }
+
+/* Color de texto en negrita dentro del breadcrumb */
 .page-select strong {
-    color: var(--black)
+    color: var(--black);
 }
 
-/* Responsive */
+/* Estilos Responsivos para pantallas pequeñas */
 @media (max-width: 768px) {
-    .contenedor_principal h1{
+    .contenedor_principal h1 {
         font-size: var(--h2);
+        /* Reduce el tamaño del h1 */
     }
-    .contenedor_principal h2{
+
+    .contenedor_principal h2 {
         font-size: var(--h3);
+        /* Reduce el tamaño del h2 */
     }
-
 }
-
-

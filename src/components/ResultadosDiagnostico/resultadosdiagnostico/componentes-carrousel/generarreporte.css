@@ -1,5 +1,5 @@
 :root {
-  /* Colores Primarios */
+  /* Definición de variables CSS para colores primarios con diferentes tonalidades */
   --primary-1: #39A900;
   --primary-2: #36AE0F;
   --primary-3: #42B31E;
@@ -18,7 +18,7 @@
   --primary-16: #E6F5E1;
   --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
+  /* Variables para grises y colores neutros */
   --black: #000000;
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Variables para tipografías principales */
   --font-primary: 'Work Sans', sans-serif;
   --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
+  /* Tamaños para jerarquía tipográfica */
   --h1: 32px;
   --h2: 24px;
   --h3: 20px;
@@ -50,72 +50,120 @@
   --h5: 14px;
   --h6: 12px;
 }
+
+/* Reseteo y configuración base */
 html {
   margin: 0;
+  /* Elimina margen predeterminado del navegador */
   font-size: 62.5%;
+  /* Facilita cálculo de rem (1rem = 10px) */
   box-sizing: border-box;
-}
-:before,*:after{
-box-sizing: inherit;
-}
-a{
-    text-decoration: none;
-}
-.container-reporte{
-    display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: 1fr;
-    text-align: center;
+  /* Incluye padding y border dentro del width/height */
 }
 
+/* Asegura que todos los elementos y pseudoelementos usen box-sizing heredado */
+:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* Elimina subrayado en todos los enlaces */
+a {
+  text-decoration: none;
+}
+
+/* Contenedor principal del componente "Generar Reporte" */
+.container-reporte {
+  display: grid;
+  /* Uso de grid layout */
+  grid-template-rows: auto auto;
+  /* Dos filas automáticas (título y contenido) */
+  grid-template-columns: 1fr;
+  /* Una columna que ocupa todo el ancho */
+  text-align: center;
+  /* Centra el texto en todo el contenedor */
+  align-items: center;
+  /* Centra verticalmente los elementos dentro del grid */
+  justify-items: center;
+  /* Centra horizontalmente los items dentro del grid */
+  font-size: var(--h2);
+  /* Tamaño de fuente base para el contenedor */
+}
+
+/* Estilos para el título */
 .titulo-reporte {
-    grid-column: 1;
-    grid-row: 1;
-}
-.generar-reporte {
-    grid-column: 1;
-    grid-row: 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.container-reporte{
-    display: grid;
-    text-align: center;
-    align-items: center;
-    justify-items: center;
-    font-size: var(--h2);
-}
-.generar-reporte img{
-    width: 500px;
-    height: 500px;
-}
-.texto-reporte {
-    grid-column: 1;
-    grid-row: 1;
-}
-.boton-generar-reporte {
-    font-family: 'Work Sans';
-    font-size: 18px;
-    border-radius: 6px;
-    font-weight: bold;
-    color: white;
-    background-color: #32a900;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-    height: 45px;
-    width: 180px;
+  grid-column: 1;
+  /* Ocupa la primera columna */
+  grid-row: 1;
+  /* Está en la primera fila */
 }
 
+/* Contenedor que agrupa el contenido y la imagen */
+.generar-reporte {
+  grid-column: 1;
+  /* También en la primera columna */
+  grid-row: 2;
+  /* Segunda fila */
+  display: flex;
+  /* Flexbox para organizar horizontalmente contenido e imagen */
+  justify-content: space-between;
+  /* Separación máxima entre texto y la imagen */
+  align-items: center;
+  /* Centrado vertical dentro del flex container */
+}
+
+/* Texto descriptivo del reporte */
+.texto-reporte {
+  grid-column: 1;
+  /* No tiene efecto directo aquí, queda por claridad */
+  grid-row: 1;
+}
+
+/* Imagen que acompaña al contenido */
+.generar-reporte img {
+  width: 500px;
+  /* Ancho fijo para la imagen en pantallas grandes */
+  height: 500px;
+  /* Alto fijo para mantener proporción */
+}
+
+/* Estilos para el botón de generar reporte */
+.boton-generar-reporte {
+  font-family: 'Work Sans';
+  /* Tipografía primaria */
+  font-size: 18px;
+  /* Tamaño legible */
+  border-radius: 6px;
+  /* Bordes redondeados */
+  font-weight: bold;
+  /* Texto en negrita */
+  color: white;
+  /* Texto blanco */
+  background-color: #32a900;
+  /* Verde (se parece a primary-1) */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  /* Sombra para profundidad */
+  height: 45px;
+  /* Altura del botón */
+  width: 180px;
+  /* Ancho fijo */
+}
+
+/* Adaptaciones para dispositivos con ancho máximo de 768px (tablets y móviles) */
 @media (max-width: 768px) {
-    .titulo-reporte{
-        font-size: var(--h3);
-    }
-    .texto-reporte{
-        font-size: var(--h4);
-    }
-    .generar-reporte img{
-        width: 300px;
-        height: 300px;
-    }
-    
+  .titulo-reporte {
+    font-size: var(--h3);
+    /* Reduce tamaño del título para mejor ajuste */
+  }
+
+  .texto-reporte {
+    font-size: var(--h4);
+    /* Reduce tamaño del texto */
+  }
+
+  .generar-reporte img {
+    width: 300px;
+    /* Imagen más pequeña en móviles */
+    height: 300px;
+  }
 }

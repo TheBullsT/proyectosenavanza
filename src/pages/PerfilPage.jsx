@@ -22,9 +22,9 @@ const dummyDetails = {
 
 const PerfilPage = () => {
   return (
-   <NavFooter> 
-    <ProfileLayout company={dummyCompany} details={dummyDetails} />
-    </NavFooter> 
+    <NavFooter>
+      <ProfileLayout company={dummyCompany} details={dummyDetails} />
+    </NavFooter>
   );
 };
 

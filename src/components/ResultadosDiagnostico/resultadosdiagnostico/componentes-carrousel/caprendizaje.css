@@ -18,7 +18,7 @@
   --primary-16: #E6F5E1;
   --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
+  /* Colores Neutros */
   --black: #000000;
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
@@ -38,119 +38,159 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Tipografías */
   --font-primary: 'Work Sans', sans-serif;
   --font-secondary: 'Calibri', sans-serif;
 
   /* Jerarquías tipográficas */
-  --h1: 32px;
-  --h2: 24px;
-  --h3: 20px;
-  --h4: 16px;
-  --h5: 14px;
-  --h6: 12px;
+  --h1: 3.2rem;
+  --h2: 2.4rem;
+  --h3: 2rem;
+  --h4: 1.6rem;
+  --h5: 1.4rem;
+  --h6: 1.2rem;
 }
+
+/* Configuración base del documento */
 html {
   margin: 0;
   font-size: 62.5%;
+  /* 1rem = 10px */
   box-sizing: border-box;
 }
-:before,*:after{
-box-sizing: inherit;
+
+*:before,
+*:after {
+  box-sizing: inherit;
+  /* Hereda box-sizing */
 }
+
 a {
   text-decoration: none;
 }
 
-.titulo-caprendizaje{
+/* Título principal */
+.titulo-caprendizaje {
   color: var(--black);
   text-align: center;
-  padding-top: 30px;
+  padding-top: 3rem;
+  font-size: var(--h1);
 }
-.texto-caprendizaje{
+
+/* Texto descriptivo */
+.texto-caprendizaje {
   color: var(--black);
-  font-weight: lightert;
   text-align: center;
   font-family: var(--font-primary);
   font-size: var(--h2);
 }
-.caprendizaje-contenido{
+
+/* Contenedor general centrado */
+.caprendizaje-contenido {
   display: grid;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-.caprendizaje-contenido2{
+
+/* Contenedor con dos columnas para elementos */
+.caprendizaje-contenido2 {
   display: grid;
   justify-content: center;
   align-items: center;
   text-align: center;
   grid-template-columns: 1fr 1fr;
 }
-.acceso{
+
+/* Sección de acceso, distribución en fila */
+.acceso {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  gap: 10px;
+  gap: 1rem;
 }
-.flecha-contenedor{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
-}
-.direccion{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
 
+/* Contenedor de flechas en columna */
+.flecha-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
 }
-.logo-capre{
-  width: 242px;
-  height: 99px;
+
+/* Contenedor de dirección u orientación */
+.direccion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
 }
-.flecha{
-  width: 200px;
-  height: 200px;
+
+/* Logo de la aplicación */
+.logo-capre {
+  width: 24.2rem;
+  height: 9.9rem;
 }
-.imagen-apoyo{
-  width: 400px;
-  height: 400px;
+
+/* Imagen de flecha */
+.flecha {
+  width: 20rem;
+  height: 20rem;
 }
-.boton-ir-a-buscar{
+
+/* Imagen de apoyo visual */
+.imagen-apoyo {
+  width: 40rem;
+  height: 40rem;
+}
+
+/* Botón para ir a buscar aprendices */
+.boton-ir-a-buscar {
   font-family: var(--font-primary);
-  font-size: 18px;
-  border-radius: 6px;
+  font-size: 1.8rem;
   font-weight: bold;
   color: var(--white);
   background-color: var(--primary-1);
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-  height: 45px;
-  width: 180px;
+  border-radius: 0.6rem;
+  box-shadow: 0.4rem 0.4rem 1rem rgba(0, 0, 0, 0.3);
+  width: 18rem;
+  height: 4.5rem;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
+/* Estado :focus para accesibilidad */
+.boton-ir-a-buscar:focus {
+  outline: 2px solid var(--primary-4);
+  outline-offset: 2px;
+}
+
+/* Adaptación a pantallas pequeñas */
 @media (max-width: 768px) {
-  .titulo-caprendizaje{
+  .titulo-caprendizaje {
     font-size: var(--h3);
   }
-  .texto-caprendizaje{
+
+  .texto-caprendizaje {
     font-size: var(--h4);
   }
-  .flecha{
-    width: 100px;
-    height: 100px;
-  }
-  .logo-capre{
-    width: 121px;
-    height: 50px;
-  }
-  .imagen-apoyo{
-    width: 200px;
-    height: 200px;
+
+  .flecha {
+    width: 10rem;
+    height: 10rem;
   }
 
+  .logo-capre {
+    width: 12.1rem;
+    height: 5rem;
+  }
+
+  .imagen-apoyo {
+    width: 20rem;
+    height: 20rem;
+  }
 }

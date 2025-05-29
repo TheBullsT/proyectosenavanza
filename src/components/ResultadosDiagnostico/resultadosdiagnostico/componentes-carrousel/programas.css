@@ -1,134 +1,170 @@
 :root {
-  /* Colores Primarios */
-  --primary-1: #39A900;
-  --primary-2: #36AE0F;
-  --primary-3: #42B31E;
-  --primary-4: #4FB82D;
-  --primary-5: #5BBD3C;
-  --primary-6: #68C24B;
-  --primary-7: #75C75A;
-  --primary-8: #81CC69;
-  --primary-9: #8ED178;
-  --primary-10: #9AD787;
-  --primary-11: #A7DC96;
-  --primary-12: #B3E1A5;
-  --primary-13: #C0E6B4;
-  --primary-14: #CDEBC3;
-  --primary-15: #D9F0D2;
-  --primary-16: #E6F5E1;
-  --primary-17: #F2FAF0;
+    /* Colores primarios degradados de verde */
+    --primary-1: #39a900;
+    --primary-2: #36ae0f;
+    --primary-3: #42b31e;
+    --primary-4: #4fb82d;
+    --primary-5: #5bbd3c;
+    --primary-6: #68c24b;
+    --primary-7: #75c75a;
+    --primary-8: #81cc69;
+    --primary-9: #8ed178;
+    --primary-10: #9ad787;
+    --primary-11: #a7dc96;
+    --primary-12: #b3e1a5;
+    --primary-13: #c0e6b4;
+    --primary-14: #cdebc3;
+    --primary-15: #d9f0d2;
+    --primary-16: #e6f5e1;
+    --primary-17: #f2faf0;
 
-  /* Grises y Neutros */
-  --black: #000000;
-  --gray-1: #0F0F0F;
-  --gray-2: #1E1E1E;
-  --gray-3: #2D2D2D;
-  --gray-4: #3C3C3C;
-  --gray-5: #5A5A5A;
-  --gray-6: #696969;
-  --gray-7: #787878;
-  --gray-8: #878787;
-  --gray-9: #A5A5A5;
-  --gray-10: #969696;
-  --gray-11: #A5A5A5;
-  --gray-12: #B4B4B4;
-  --gray-13: #C3C3C3;
-  --gray-14: #D2D2D2;
-  --gray-15: #E1E1E1;
-  --gray-16: #F0F0F0;
-  --white: #FFFFFF;
+    /* Grises y neutros para sombras, textos y fondos */
+    --black: #000000;
+    --gray-1: #0f0f0f;
+    --gray-2: #1e1e1e;
+    --gray-3: #2d2d2d;
+    --gray-4: #3c3c3c;
+    --gray-5: #5a5a5a;
+    --gray-6: #696969;
+    --gray-7: #787878;
+    --gray-8: #878787;
+    --gray-9: #a5a5a5;
+    --gray-10: #969696;
+    --gray-11: #a5a5a5;
+    --gray-12: #b4b4b4;
+    --gray-13: #c3c3c3;
+    --gray-14: #d2d2d2;
+    --gray-15: #e1e1e1;
+    --gray-16: #f0f0f0;
+    --white: #ffffff;
 
-  /* Tipografía */
-  --font-primary: 'Work Sans', sans-serif;
-  --font-secondary: 'Calibri', sans-serif;
+    /* Tipografías principales */
+    --font-primary: "Work Sans", sans-serif;
+    --font-secondary: "Calibri", sans-serif;
 
-  /* Jerarquías tipográficas */
-  --h1: 32px;
-  --h2: 24px;
-  --h3: 20px;
-  --h4: 16px;
-  --h5: 14px;
-  --h6: 12px;
+    /* Tamaños base para jerarquía tipográfica */
+    --h1: 32px;
+    --h2: 24px;
+    --h3: 20px;
+    --h4: 16px;
+    --h5: 14px;
+    --h6: 12px;
 }
+
+/* Estilos globales */
 html {
-  margin: 0;
-  font-size: 62.5%;
-  box-sizing: border-box;
+    margin: 0;
+    font-size: 62.5%;
+    /* Esto hace 1rem = 10px para facilitar cálculos */
+    box-sizing: border-box;
+    /* Padding y border incluidos en el tamaño */
 }
-:before,*:after{
-box-sizing: inherit;
+
+:before,
+*:after {
+    box-sizing: inherit;
+    /* Heredan el box-sizing del html */
 }
-body{
-  font-size: 16px;
-  font-family: 'Work Sans', sans-serif;
+
+body {
+    font-size: 16px;
+    /* Tamaño base del texto */
+    font-family: var(--font-primary);
 }
+
 a {
-  text-decoration: none;
+    text-decoration: none;
+    /* Quitar subrayado de enlaces */
 }
+
+/* Definición de tamaños tipográficos para encabezados en rem */
 h1 {
     font-size: 3.2rem;
+    /* 32px */
 }
+
 h2 {
     font-size: 2.4rem;
+    /* 24px */
 }
+
 h3 {
-    font-size: 2.0rem;
+    font-size: 2rem;
+    /* 20px */
 }
+
 h4 {
     font-size: 1.6rem;
+    /* 16px */
 }
+
 h5 {
     font-size: 1.4rem;
+    /* 14px */
 }
 
-
-.container-programas{
+/* Contenedor principal de los programas, usa grid para dos filas */
+.container-programas {
     display: grid;
     grid-template-rows: auto auto;
+    /* Dos filas automáticas */
     grid-template-columns: 1fr;
+    /* Una columna */
     text-align: center;
 }
 
+/* Contenedor para el título, ubicado en la primera fila */
 .titulo-reporte {
     grid-column: 1;
     grid-row: 1;
 }
 
+/* Contenedor que agrupa los programas y la imagen de recomendados */
 .programas-total {
     grid-column: 1;
     grid-row: 2;
     display: flex;
+    /* Layout flexible para alinear contenido horizontalmente */
     justify-content: space-between;
+    /* Separar al máximo los hijos */
     align-items: center;
+    /* Alinear verticalmente al centro */
     margin-top: -20px;
-
+    /* Levantar un poco respecto al título */
 }
 
-.imagen-recomendados{
+/* Imagen decorativa de "recomendados" */
+.imagen-recomendados {
     width: 500px;
     height: 500px;
 }
 
-.programas{
+/* Contenedor que agrupa las tarjetas de programas */
+.programas {
     display: flex;
     align-items: center;
     flex-direction: column;
+    /* Apilar verticalmente */
     gap: 50px;
+    /* Espacio entre tarjetas */
     border-radius: 6px;
     font-size: var(--h3);
+    /* Tamaño de texto */
     font-weight: bold;
     width: 530px;
     height: 430px;
     margin-left: 10px;
-
 }
 
-.programas-formacion{
+/* Cada tarjeta individual de programa */
+.programas-formacion {
     display: flex;
     flex-direction: row;
+    /* Imagen e info lado a lado */
     width: 450px;
     height: 500px;
     gap: 30px;
+    /* Espacio entre imagen y texto */
     justify-content: center;
     align-items: center;
     font-size: var(--h4);
@@ -137,40 +173,55 @@ h5 {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-
-.imagen-programa{
+/* Imagen dentro de la tarjeta */
+.imagen-programa {
     width: 95px;
     height: 95px;
 }
 
-@media(max-width: 786px) {
-    .programas-total{
+/* Media query para pantallas pequeñas (móviles/tablets) */
+@media (max-width: 786px) {
+    .programas-total {
         justify-content: center;
+        /* Centrar los hijos */
         margin-top: 5px;
+        /* Ajustar margen superior */
         gap: 20px;
+        /* Reducir espacio entre elementos */
     }
-    .programas-total img{
+
+    /* Ajuste tamaño imagen recomendados */
+    .programas-total img {
         width: 200px;
         height: 200px;
     }
-    .programas{
+
+    /* Ajuste ancho del contenedor de programas */
+    .programas {
         width: 300px;
     }
-    .programas-formacion{
+
+    /* Ajustar tarjeta individual para que ocupe todo el ancho disponible y menos alto */
+    .programas-formacion {
         width: 100%;
         height: 100px;
     }
-    .programas-formacion img{
+
+    /* Reducir tamaño imagen en tarjetas */
+    .programas-formacion img {
         width: 90px;
         height: 90px;
     }
-    .informacion-ficha p{
+
+    /* Ajuste tamaño y margen del texto dentro de la tarjeta */
+    .informacion-ficha p {
         font-size: var(--h5);
         margin: 5px;
     }
-    .boton-ver-mas{
+
+    /* Ajustar tamaño y ancho del botón "Ver más" */
+    .boton-ver-mas {
         width: 100px;
         font-size: var(--h5);
     }
-
- }
+}

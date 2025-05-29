@@ -1,73 +1,72 @@
+// Importación de React y componentes necesarios
 import React from "react";
+// Icono de grupo de personas
 import { FaPeopleGroup } from "react-icons/fa6";
+// Icono de computador
 import { RiComputerFill } from "react-icons/ri";
-import flechita from '../../../assets/img/img-inicio/ion_arrow-redo.png'
+// Imagen de flechita usada en los botones
+import flechita from '../../../assets/img/img-inicio/ion_arrow-redo.png';
+// Hook de navegación de React Router
 import { useNavigate } from "react-router-dom";
+// Estilos CSS del componente
 import './contenido-inicio.css';
 
-function ContenidoInicio(){
-
+function ContenidoInicio() {
+    // Hook para manejar la navegación entre rutas
     const navigate = useNavigate();
 
+    // Función que redirige a la ruta '/informacion'
     const irInformacion = () => {
         navigate('/informacion');
     }
 
+    const programas = [
+        {
+            nombre: "<Programa de Formación>",
+            descripcion: "<Descripción corta del programa de Formación>",
+        },
+        {
+            nombre: "<Programa de Formación>",
+            descripcion: "<Descripción corta del programa de Formación>",
+        },
+        {
+            nombre: "<Programa de Formación>",
+            descripcion: "<Descripción corta del programa de Formación>",
+        },
+        {
+            nombre: "<Programa de Formación>",
+            descripcion: "<Descripción corta del programa de Formación>",
+        },
+        // Agrega más si es necesariox
+    ];
 
-    return(
+    return (
+        //Contenido General
         <div className="contenido-inicio">
-            <div className="titulo-inicio">
+            {/*Titulo del contenido */}
+            <h2 className="titulo-inicio">
                 <FaPeopleGroup className="icon-inicio-contenido" />
-                <p>¿INTERESADO EN <br /> NUESTROS PROGRAMAS DE <br /> FORMACION?</p>
-            </div>
+                <span>¿Interesado en <br /> nuestros programas de <br /> formación?</span>
+            </h2>
+            {/*Cajas para los programas */}
             <div className="programas-inicio">
-                <div className="programa-inicio">
-                    <div className="imagen-programa">
-                        <RiComputerFill className="icon-computador" />
+                {programas.map((programa, index) => (
+                    <div key={index} className="programa-inicio">
+                        <div className="imagen-programa">
+                            <RiComputerFill className="icon-computador" />
+                        </div>
+                        <div className="nombre-programa"><p>{programa.nombre}</p></div>
+                        <div className="descripcion-programa">{programa.descripcion}</div>
+                        <div className="botones-inicio">
+                            <img src={flechita} alt="Flecha" />
+                            <button onClick={irInformacion} className="boton-inicio">¡PRESIONA AQUÍ!</button>
+                        </div>
                     </div>
-                    <div className="nombre-programa"><p>{"<"}Programa de Formación{">"}</p></div>
-                    <div className="descripcion-programa">{"<"}Descripción corta del programa <br /> de Formación{">"}</div>
-                    <div className="botones-inicio">
-                        <img src={flechita} alt="Flecha" />
-                        <button onClick={irInformacion} className="boton-inicio">¡PRESIONA AQUI!</button>
-                    </div>
-                </div>
-                <div className="programa-inicio">
-                    <div className="imagen-programa">
-                        <RiComputerFill className="icon-computador" />
-                    </div>
-                    <div className="nombre-programa"><p>{"<"}Programa de Formación{">"}</p></div>
-                    <div className="descripcion-programa">{"<"}Descripción corta del programa <br /> de Formación{">"}</div>
-                    <div className="botones-inicio">
-                        <img src={flechita} alt="Flecha" />
-                        <button onClick={irInformacion} className="boton-inicio">¡PRESIONA AQUI!</button>
-                    </div>
-                </div>
-                <div className="programa-inicio">
-                    <div className="imagen-programa">
-                        <RiComputerFill className="icon-computador" />
-                    </div>
-                    <div className="nombre-programa"><p>{"<"}Programa de Formación{">"}</p></div>
-                    <div className="descripcion-programa">{"<"}Descripción corta del programa <br /> de Formación{">"}</div>
-                    <div className="botones-inicio">
-                        <img src={flechita} alt="Flecha" />
-                        <button onClick={irInformacion} className="boton-inicio">¡PRESIONA AQUI!</button>
-                    </div>
-                </div>
-                <div className="programa-inicio">
-                    <div className="imagen-programa">
-                        <RiComputerFill className="icon-computador" />
-                    </div>
-                    <div className="nombre-programa"><p>{"<"}Programa de Formación{">"}</p></div>
-                    <div className="descripcion-programa">{"<"}Descripción corta del programa <br /> de Formación{">"}</div>
-                    <div className="botones-inicio">
-                        <img src={flechita} alt="Flecha" />
-                        <button onClick={irInformacion} className="boton-inicio">¡PRESIONA AQUI!</button>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     );
+
 }
 
 export default ContenidoInicio;
