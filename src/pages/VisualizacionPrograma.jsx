@@ -9,10 +9,10 @@ const VisualizacionPrograma = () => {
     <div>
       <div className='mainhomecontainer'>
         <SidebarAdmin />
-        <Visualizacion_Programa/>
+        <Visualizacion_Programa />
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 };

@@ -1,3 +1,4 @@
+/* ================= VARIABLES ================= */
 :root {
   /* Colores Primarios */
   --primary-1: #39A900;
@@ -50,195 +51,230 @@
   --h5: 14px;
   --h6: 12px;
 }
-body {
-    font-family: var(--font-primary);
-    color: var(black);
-    margin: 0;
-    padding: 0;
-  }
-  html {
-    margin: 0;
-    font-size: 62.5%;
-    box-sizing: border-box;
-  }
-:before,*:after{
-box-sizing: inherit;
+
+/* ================= RESET ================= */
+html {
+  margin: 0;
+  font-size: 62.5%;
+  box-sizing: border-box;
 }
-  body{
-    font-family: var(--font-primary);
-  }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--black);
+  margin: 0;
+  padding: 0;
+  background-color: var(--white);
+}
+
 a {
   text-decoration: none;
 }
-/* Transicion */
+
+/* ================= NAVBAR ================= */
 .header {
-    position: fixed;
-    height: 70px;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    transition: .3s ease-in;
-    overflow: hidden;
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  transition: .3s ease-in;
+  overflow: hidden;
 }
+
 .header-bg {
-    background-image: url(../../assets/img/inicio/Fondo-navbar.png);
-}
-/* Navbar */
-.inicio-nav{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 18px;
-    border-bottom: 2px solid transparent;
-    color: var(--white);
-    margin: 0;
-    width: 100%;
-}
-.marca-sena{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    color: var(--white);
+  background-image: url(../../assets/img/inicio/Fondo-navbar.png);
 }
 
-
-
-.nav-links .marca-sena p{
-    font-weight: bolder;
-    font-size: 20px;
-
+.inicio-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 18px;
+  color: var(--white);
+  width: 100%;
 }
 
+.marca-sena {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--white);
+}
+
+.nav-links .marca-sena p {
+  font-weight: bolder;
+  font-size: 20px;
+}
 
 .button-init {
   width: 120px;
   height: 40px;
-  right:10%;
   background-color: var(--gray-1);
   border: none;
   color: white;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  transition: all 0.3s ease;
 }
 
-/* Info */
+.button-init:hover {
+  background-color: var(--primary-2);
+  transform: scale(1.05);
+}
+
+/* ================= HERO ================= */
 .hero {
   position: relative;
-  width: 100%;              /* Ajusta el tamaño */
+  width: 100%;
   height: 700px;
-  background-image: url('/src/assets/img/inicio/fondo_completo.png'); /* Ruta de la imagen */
-  background-size: cover;    /* Ajusta la imagen para cubrir todo el div */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que se repita */
+  background-image: url('/src/assets/img/inicio/fondo_completo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ffffff;
   text-align: center;
 }
-.image-person img{
-  width: 500px;
-  height: 500px;
-}
-.hero-content{
+
+.hero-content {
   display: flex;
   flex-direction: row;
   margin: 20px;
+  animation: fadeInUp 1s ease-in-out;
 }
-.hero-text{
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-text {
   display: flex;
   justify-content: center;
   align-items: start;
   flex-direction: column;
 }
-.titulo-principal{
+
+.titulo-principal {
   font-size: var(--h1);
   font-weight: bold;
   margin: 0;
 }
 
-.hero-text h1{
-  margin: 0;
-}
-
-.texto-ayuda{
+.texto-ayuda {
   font-weight: lighter;
   font-size: 24px;
   margin: 0;
 }
 
-.texto-ayuda2{
+.texto-ayuda2 {
+  font-family: var(--font-secondary);
   font-size: 20px;
   font-weight: 500;
-}
-.texto-ayuda2 p{
+  color: var(--white);
   margin-top: 10px;
 }
 
-.apuntar-boton{
+.apuntar-boton {
   display: flex;
   flex-wrap: wrap;
   margin-top: 10px;
+  gap: 10px;
 }
-.apuntar-boton img{
-  transform: translate(0px,-10px);
+
+.apuntar-boton img {
+  transform: translate(0px, -10px);
 }
 
 .button-init2 {
   width: 120px;
   height: 40px;
-  background-color: var(--gray-1);
-  border: none;
+  background: var(--black);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  transition: all 0.3s ease;
 }
-/* Responsive */
+
+.button-init2:hover {
+  background-color: var(--primary-2);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.image-person img {
+  width: 500px;
+  height: 500px;
+}
+
+/* ================= RESPONSIVE ================= */
 @media (max-width: 786px) {
-  
-  .hero-content{
+  .hero-content {
     width: 90%;
   }
-  .image-person{
+
+  .image-person {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .image-person img{
+
+  .image-person img {
     width: 400px;
     height: 400px;
   }
 }
 
 @media (max-width: 676px) {
-  .inicio-nav{
+  .inicio-nav {
     width: 100%;
+    flex-direction: column;
   }
-  .image-person img{
+
+  .image-person img {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
 }
 
-@media(max-width: 430px) {
-  .hero-content{
+@media (max-width: 430px) {
+  .hero-content {
     flex-direction: column;
   }
-    .hero-text{
-      font-size: var(--h4);
-    }
-    .titulo-principal{
-      font-size: var(--h3);
-      font-weight: bold;
-    }
-    .image-person{
-      position: absolute;
-      z-index: -1;
-    }
- }
+
+  .hero-text {
+    font-size: var(--h4);
+  }
+
+  .titulo-principal {
+    font-size: var(--h3);
+  }
+
+  .image-person {
+    position: absolute;
+    z-index: -1;
+  }
+}

@@ -17,7 +17,7 @@
     --primary-15: #D9F0D2;
     --primary-16: #E6F5E1;
     --primary-17: #F2FAF0;
-  
+
     /* Grises y Neutros */
     --black: #000000;
     --gray-1: #0F0F0F;
@@ -37,11 +37,11 @@
     --gray-15: #E1E1E1;
     --gray-16: #F0F0F0;
     --white: #FFFFFF;
-  
+
     /* Tipografía */
     --font-primary: 'Work Sans', sans-serif;
     --font-secondary: 'Calibri', sans-serif;
-  
+
     /* Jerarquías tipográficas */
     --h1: 32px;
     --h2: 24px;
@@ -49,11 +49,13 @@
     --h4: 16px;
     --h5: 14px;
     --h6: 12px;
-  }
+}
+
 body {
     margin: 0;
 }
 
+/* Para que se quede en la izquierda y no se repita */
 .background {
     background-image: url(../../../assets/img/img-login/fondo.png);
     background-repeat: no-repeat;
@@ -64,6 +66,7 @@ body {
     overflow: hidden;
 }
 
+/* Ajustar la iamgen en general */
 .imgage {
     position: absolute;
     right: 0;
@@ -72,9 +75,11 @@ body {
     z-index: 1;
 }
 
+
+/* Responsive */
 @media (max-width: 786px) {
     .background {
-        background: none; 
+        background: none;
         position: relative;
     }
 

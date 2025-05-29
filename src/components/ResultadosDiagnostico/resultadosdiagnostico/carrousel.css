@@ -17,7 +17,7 @@
     --primary-15: #D9F0D2;
     --primary-16: #E6F5E1;
     --primary-17: #F2FAF0;
-  
+
     /* Grises y Neutros */
     --black: #000000;
     --gray-1: #0F0F0F;
@@ -37,11 +37,11 @@
     --gray-15: #E1E1E1;
     --gray-16: #F0F0F0;
     --white: #FFFFFF;
-  
+
     /* Tipografía */
     --font-primary: 'Work Sans', sans-serif;
     --font-secondary: 'Calibri', sans-serif;
-  
+
     /* Jerarquías tipográficas */
     --h1: 32px;
     --h2: 24px;
@@ -49,41 +49,53 @@
     --h4: 16px;
     --h5: 14px;
     --h6: 12px;
-  }
-  html {
+}
+
+html {
     margin: 0;
     font-size: 62.5%;
     box-sizing: border-box;
-  }
-  :before,*:after{
-  box-sizing: inherit;
-  }
-  body{
+}
+
+:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
     font-size: 16px;
     font-family: 'Work Sans', sans-serif;
-  }
-  a {
+}
+
+a {
     text-decoration: none;
-  }
-  h1 {
-      font-size: 3.2rem;
-  }
-  h2 {
-      font-size: 2.4rem;
-  }
-  h3 {
-      font-size: 2.0rem;
-  }
-  h4 {
-      font-size: 1.6rem;
-  }
-  h5 {
-      font-size: 1.4rem;
-  }
+}
+
+h1 {
+    font-size: 3.2rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+}
+
+h3 {
+    font-size: 2.0rem;
+}
+
+h4 {
+    font-size: 1.6rem;
+}
+
+h5 {
+    font-size: 1.4rem;
+}
 
 
 .carousel-wrapper {
     display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -108,23 +120,26 @@
 
 .circle.active {
     background-color: var(--white);
-    box-shadow: 0 0 0 2px var(--primary-5);
+    box-shadow: 0 0 8px var(--primary-5);
 }
 
 .carousel-list-vertical {
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: auto;
     scroll-behavior: smooth;
     height: 600px;
     list-style: none;
     padding: 0;
     margin: 0;
+    scroll-snap-type: y mandatory;
+
 }
 
 .carousel-item-vertical {
     min-height: 600px;
+    scroll-snap-align: start;
     flex-shrink: 0;
     padding: 1rem;
     box-sizing: border-box;
@@ -138,11 +153,12 @@
 }
 
 @media(max-width: 786px) {
-    .carousel-wrapper{
+    .carousel-wrapper {
         width: 100%;
         flex-direction: column;
     }
-    .carousel-indicators{
+
+    .carousel-indicators {
         flex-direction: row;
     }
- }
+}

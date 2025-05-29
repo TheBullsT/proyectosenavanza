@@ -1,50 +1,58 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Inicio.css';
 import logo from '../../assets/img/Logo_SENAVANZA.png';
 import { useNavigate } from 'react-router-dom';
 
 const NavBarInicio = () => {
-    
-    //Scrolling Navbar 
-    const [color, setColor] = useState(false)
-    const changeColor = () => {
-        if (window.scrollY >= '410'/*Decide en que momento del scrolling, cambia el color*/ ) {
-            setColor(true)
-        } else {
-            setColor(false)
-        }
+  const [color, setColor] = useState(false); // Estado para cambiar la clase del header
+  const navigate = useNavigate();
+
+  // Función que detecta el scroll para cambiar el color de fondo del header
+  const changeColor = () => {
+    if (window.scrollY >= 410) {
+      setColor(true);
+    } else {
+      setColor(false);
     }
+  };
 
-    const navigate = useNavigate();
+  // useEffect para agregar el listener del scroll al montar el componente
+  useEffect(() => {
+    window.addEventListener('scroll', changeColor);
 
-    const irLogin= () =>{
-        navigate('/login')
-    }
+    // Cleanup para evitar múltiples listeners
+    return () => {
+      window.removeEventListener('scroll', changeColor);
+    };
+  }, []);
 
-    const irInicio = () => {
-        navigate('/inicio');
-    }
+  // Redirección al login
+  const irLogin = () => {
+    navigate('/login');
+  };
 
-    window.addEventListener('scroll', changeColor) //Aplicamos el cambio de color con el scrolling
+  // Redirección al inicio
+  const irInicio = () => {
+    navigate('/inicio');
+  };
 
-    return(
-        <div className={color ? 'header header-bg' : 'header'}> {/* Depende el color escogido en la propiedad, se cambiara */}
-                <nav className='nav-links'>
-                    <div className='inicio-nav'>
-                        <div className='marca-sena'>
-                            <img onClick={irInicio} src={logo} alt="" className='imagen-navbar'/>
-                            <p>SENAVANZA</p>
-                        </div>
-                        <div >
-                            <button onClick={irLogin} className='button-init'>
-                            Iniciar sesión</button>
-                        </div>
-                    </div>
-                </nav>
+  return (
+    <div className={color ? 'header header-bg' : 'header'}>
+      <nav className='nav-links'>
+        <div className='inicio-nav'>
+          <div className='marca-sena'>
+            <img onClick={irInicio} src={logo} alt="Logo SENA" className='imagen-navbar' />
+            <p>SENAVANZA</p>
+          </div>
+          <div>
+            <button onClick={irLogin} className='button-init'>
+              Iniciar sesión
+            </button>
+          </div>
         </div>
-    )
-}
+      </nav>
+    </div>
+  );
+};
 
 export default NavBarInicio;
-
-

@@ -4,7 +4,7 @@ import Carrousel from "../components/ResultadosDiagnostico/resultadosdiagnostico
 const ResultadoDiagnostico = () => {
     return (
         <NavFooter>
-            <Carrousel/>
+            <Carrousel />
         </NavFooter>
     );
 }

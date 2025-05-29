@@ -1,7 +1,9 @@
-import NavFooter from '../layouts/Layout';
+import NavFooter from '../layouts/Layout'; // Layout principal con Navbar y Footer
 import React from 'react';
+// Componente para editar el perfil de la empresa
 import ProfileLayout from '../components/Empresa/EditarPerfilEmpresa';
 
+// Datos dummy o de prueba para la empresa
 const dummyCompany = {
   name: 'Nombre Empresa',
   address: 'Dirección Empresa',
@@ -9,6 +11,7 @@ const dummyCompany = {
   email: 'correo@empresa.com',
 };
 
+// Datos dummy o de prueba con detalles adicionales de la empresa
 const dummyDetails = {
   documentType: 'NIT',
   documentNumber: '1234567890',
@@ -20,10 +23,13 @@ const dummyDetails = {
   economicActivity: 'Mucho Dinero',
 };
 
+// Componente funcional que renderiza la página para editar perfil de la empresa
 const EditarPerfilPage = () => {
   return (
+    // Usamos el layout NavFooter que incluye navegación y pie de página
     <NavFooter>
-    <ProfileLayout company={dummyCompany} details={dummyDetails} />
+      {/* Pasamos los datos dummy como props al componente ProfileLayout */}
+      <ProfileLayout company={dummyCompany} details={dummyDetails} />
     </NavFooter>
   );
 };

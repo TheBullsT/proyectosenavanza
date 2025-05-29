@@ -38,11 +38,11 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Tipografías principales */
   --font-primary: 'Work Sans', sans-serif;
   --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
+  /* Tamaños estándar para encabezados */
   --h1: 32px;
   --h2: 24px;
   --h3: 20px;
@@ -50,82 +50,125 @@
   --h5: 14px;
   --h6: 12px;
 }
+
+/* Reseteo y base para html */
 html {
   margin: 0;
+  /* Eliminar margen por defecto */
   font-size: 62.5%;
+  /* 1rem = 10px para facilitar cálculos */
   box-sizing: border-box;
+  /* Incluir padding y border dentro del tamaño */
 }
-:before,*:after{
-box-sizing: inherit;
+
+/* Aplicar box-sizing a pseudo-elementos y todos los elementos */
+:before,
+*:after {
+  box-sizing: inherit;
 }
+
+/* Quitar subrayado a todos los enlaces */
 a {
   text-decoration: none;
 }
 
-.container-resultado{
-    display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: 2fr;
-    text-align: center;
+/* Contenedor principal del componente Resultado, usando Grid para organizar filas */
+.container-resultado {
+  display: grid;
+  grid-template-rows: auto auto;
+  /* Dos filas: una para título y otra para contenido */
+  grid-template-columns: 2fr;
+  /* Solo una columna, se usa 2fr para posible extensión futura */
+  text-align: center;
+  /* Centrar texto */
 }
 
+/* Contenedor para el título del reporte */
 .titulo-reporte {
-    grid-column: 1;
-    grid-row: 1;
+  grid-column: 1;
+  /* Ocupa primera columna */
+  grid-row: 1;
+  /* Primera fila */
 }
 
+/* Contenedor que incluye la imagen y el bloque con el programa recomendado */
 .resultado-total {
-    grid-column: 1;
-    grid-row: 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  grid-column: 1;
+  /* Columna 1 */
+  grid-row: 2;
+  /* Fila 2 */
+  display: flex;
+  /* Flexbox para alinear horizontalmente */
+  justify-content: space-between;
+  /* Separar elementos al máximo */
+  align-items: center;
+  /* Centrar verticalmente */
 }
 
-
-.resultado-total img{
-    width: 500px;
-    height: 500px;
+/* Imagen del resultado */
+.resultado-total img {
+  width: 500px;
+  height: 500px;
 }
 
+/* Caja del programa recomendado */
 .programa-recomendado {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 50px;
-    border-radius: 6px;
-    font-size: var(--h3);
-    font-weight: bold;
-    width: 530px;
-    height: 430px;
-    border: 1px solid var(--gray-12);
-    margin-left: 10px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  /* Apilar elementos verticalmente */
+  align-items: center;
+  /* Centrar horizontalmente */
+  gap: 50px;
+  /* Separación entre elementos internos */
+  border-radius: 6px;
+  /* Bordes redondeados */
+  font-size: var(--h3);
+  /* Tamaño de fuente principal */
+  font-weight: bold;
+  /* Texto en negrita */
+  width: 530px;
+  height: 430px;
+  border: 1px solid var(--gray-12);
+  /* Borde gris claro */
+  margin-left: 10px;
+  /* Espacio a la izquierda */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  /* Sombra para dar profundidad */
 }
 
-
-.boton-ver-mas{
-    font-family: var(--font-primary);
-    font-size: 18px;
-    border-radius: 6px;
-    font-weight: bold;
-    color: white;
-    background-color: #32a900;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-    height: 45px;
-    width: 180px;
+/* Estilos para el botón "Ver más" */
+.boton-ver-mas {
+  font-family: var(--font-primary);
+  /* Fuente principal */
+  font-size: 18px;
+  border-radius: 6px;
+  /* Bordes redondeados */
+  font-weight: bold;
+  color: white;
+  /* Texto blanco */
+  background-color: #32a900;
+  /* Fondo verde */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  /* Sombra */
+  height: 45px;
+  width: 180px;
 }
 
+/* Media query para pantallas menores a 786px (tablets y móviles) */
 @media(max-width: 786px) {
-  .resultado-total{
+  .resultado-total {
     justify-content: center;
+    /* Centrar contenido horizontalmente */
   }
-    .resultado-total img{
-      width: 200px;
-      height: 200px;
-    }
-    .programa-recomendado{
-      width: 350px;
-    }
- }
+
+  .resultado-total img {
+    width: 200px;
+    /* Reducir tamaño imagen */
+    height: 200px;
+  }
+
+  .programa-recomendado {
+    width: 350px;
+    /* Reducir ancho caja recomendada */
+  }
+}
