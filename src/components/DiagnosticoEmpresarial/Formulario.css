@@ -1,5 +1,5 @@
 :root {
-  /* Colores Primarios */
+  /* Variables de Colores Primarios (Verde) */
   --primary-1: #39A900;
   --primary-2: #36AE0F;
   --primary-3: #42B31E;
@@ -18,7 +18,7 @@
   --primary-16: #E6F5E1;
   --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
+  /* Variables de Grises y Neutros */
   --black: #000000;
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Variables Tipográficas */
   --font-primary: 'Work Sans', sans-serif;
   --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
+  /* Jerarquías Tipográficas (Tamaños de fuente) */
   --h1: 32px;
   --h2: 24px;
   --h3: 20px;
@@ -50,48 +50,59 @@
   --h5: 14px;
   --h6: 12px;
 }
+
+/* Estilos Base para body y html */
 body {
-    font-family: var(--font-primary);
-    color: var(--black);
-    margin: 0;
-    padding: 0;
-  }
-   html {
-    margin: 0;
-    font-size: 62.5%;
-    box-sizing: border-box;
-    overflow-x: hidden;
-  }
-  
+  font-family: var(--font-primary);
+  color: var(--black);
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  margin: 0;
+  font-size: 62.5%; /* 1rem = 10px para facilitar cálculos */
+  box-sizing: border-box;
+  overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+/* Contenedor del banner de ayuda */
 .container-banner {
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: 1px solid #39a900;
+  border: 1px solid var(--primary-1);
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 6px;
   width: 85%;
-  padding: 15px;
-  background-color: #38a90025;
-  gap: 20px; /* Espacio entre icono y texto */
+  padding: 20px;
+  background-color: rgba(57, 169, 0, 0.15); /* Verde con opacidad */
+  gap: 20px; /* Separación entre icono y texto */
 }
 
+/* Imagen dentro del icono del banner */
 .icon-banner img {
-  width: 100%; 
+  width: 100%;
   height: 100%;
-  transform: translate(0px,10px);
+  transform: translate(0px, 10px); /* Pequeño desplazamiento vertical */
 }
 
+/* Texto principal del banner */
 .banner-info {
-  font-size: 16px;
+  font-size: 18px;
+  margin-left: 50px;
 }
 
+/* Párrafo dentro del banner */
 .banner-info p {
   margin: 0;
   font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 5px;
 }
 
+/* Lista dentro del banner */
 .banner-info ul {
   margin: 5px 0 0 0;
   padding-left: 20px;
@@ -101,18 +112,22 @@ body {
   font-size: 14px;
 }
 
+/* Layout general del formulario */
 .forms-layout {
   margin-top: 1%;
   margin-left: 10%;
 }
 
+/* Título del formulario */
 .title-formulario {
   font-weight: bold;
 }
-.title-formulario h1{
+
+.title-formulario h1 {
   margin-bottom: 0;
 }
 
+/* Barra debajo del título */
 .barra-formulario {
   display: flex;
   align-items: center;
@@ -122,11 +137,12 @@ body {
 
 .linea2 {
   flex-grow: 1;
-  border-top: 4px solid #39a900;
+  border-top: 4px solid var(--primary-1);
   border-radius: 6px;
   margin-bottom: 10%;
 }
 
+/* Texto de información */
 .information {
   font-size: 22px;
   font-weight: lighter;
@@ -134,50 +150,14 @@ body {
   margin-top: 10px;
 }
 
-.container-banner {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid #39a900;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border-radius: 6px;
-  width: 85%;
-  height: auto;
-  background-color: #38a90025;
-  padding: 20px;
-}
-
-.banner-info p {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-.popup {
-  transition: opacity 0.3s ease-in-out;
-}
-
-.banner-info {
-  font-size: 18px;
-  margin-left: 50px;
-}
-
-.icon-banner {
-  margin-left: 20px;
-  margin-bottom: 10px;
-}
-.icon-banner-diagnostico{
-  color: var(--primary-1);
-  font-size: 40px;
-  transform: translate(10px, 5px);
-}
+/* Sección del botón y la imagen en la parte inferior */
 .press {
   display: flex;
   width: 100%;
   gap: 200px;
   flex-direction: row;
-  position: relative; 
+  position: relative; /* Para posicionar la imagen persona */
 }
-
 
 .press-boton {
   display: flex;
@@ -185,12 +165,14 @@ body {
   align-items: center;
 }
 
+/* Imagen flecha sobre el botón */
 .imagen-flecha {
   width: 150px;
   height: auto;
   margin-bottom: 10px;
 }
 
+/* Botón diagnóstico */
 .diagnostico-button {
   display: flex;
   align-items: center;
@@ -199,31 +181,40 @@ body {
   height: 40px;
   width: 200px;
   padding: 0 20px;
-  background-color: #39a900;
-  color: white;
+  background-color: var(--primary-1);
+  color: var(--white);
   border: none;
   font-size: var(--h5);
   border-radius: 6px;
   font-weight: bold;
-  transform: translate(150px, -90px);
+  transform: translate(150px, -90px); /* Ajusta la posición del botón */
   cursor: pointer;
 }
 
+/* Imagen persona al lado derecho */
 .person-image {
   position: absolute;
   right: 15%;
   bottom: -30px;
   width: 400px;
   height: auto;
-  z-index: -1;
+  z-index: -1; /* Detrás del contenido */
 }
 
+/* Icono dentro del banner de diagnóstico*/
+.icon-banner-diagnostico {
+  color: var(--primary-1);
+  font-size: 40px;
+  transform: translate(10px, 5px);
+}
 
-/* Responsivo */
+/* Popup transición (suave apertura y cierre) */
+.popup {
+  transition: opacity 0.3s ease-in-out;
+}
 
-/* Movil */
+/* Responsive: Ajustes para móvil (max-width: 768px) */
 @media (max-width: 768px) {
-
   .press {
     display: flex;
     margin-top: 30px;
@@ -231,11 +222,13 @@ body {
     gap: 200px;
     flex-direction: row;
   }
+
   .information {
     font-size: 18px;
     text-align: center;
   }
-  .barra-formulario{
+
+  .barra-formulario {
     width: 30%;
   }
 
@@ -245,6 +238,10 @@ body {
 
   .person-image {
     width: 80%;
+    position: relative;
+    margin-top: 50px;
+    height: auto;
+    transform: translateX(-140px);
   }
 
   .container-banner {
@@ -254,63 +251,57 @@ body {
   .banner-info {
     margin-left: 20px;
   }
+}
+
+/* Responsive: Ajustes para pantallas <= 650px */
+@media (max-width: 650px) {
   .person-image {
     position: relative;
     width: 300px;
     margin-top: 50px;
     height: auto;
-    transform: translate(-140px);
+    transform: translateX(-170px);
+  }
+
+  .container-banner {
+    width: 80%;
   }
 }
 
-/* Movil pequeño */
-@media(max-width: 650px) {
-    .person-image {
+/* Responsive: Ajustes para pantallas <= 500px */
+@media (max-width: 500px) {
+  .person-image {
     position: relative;
     width: 300px;
     margin-top: 50px;
     height: auto;
-    transform: translate(-170px);
+    transform: translateX(-280px);
   }
+
   .container-banner {
     width: 80%;
   }
- }
 
- /* Responsive movil pequeño */
-@media(max-width: 500px) {
-    .person-image {
+  .press-boton {
+    transform: translateX(-70px);
+  }
+}
+
+/* Responsive: Ajustes para pantallas <= 360px (móvil más pequeño) */
+@media (max-width: 360px) {
+  .person-image {
     position: relative;
     width: 300px;
     margin-top: 50px;
     height: auto;
-    transform: translate(-280px);
+    transform: translateX(-280px);
   }
-  .container-banner {
-    width: 80%;
-  }
-    .press-boton{
-    transform: translate(-70px);
-  }
-    
- }
 
- /* Movil mas pequeño */
-@media(max-width: 360px) {
-    .person-image {
-    position: relative;
-    width: 300px;
-    margin-top: 50px;
-    height: auto;
-    transform: translate(-280px);
-  }
   .container-banner {
     width: 90%;
   }
 
-  .press-boton{
-    transform: translate(-90px);
+  .press-boton {
+    transform: translateX(-90px);
   }
-    
- }
-
+}
