@@ -1,46 +1,46 @@
 :root {
   /* Colores Primarios */
-  --primary-1: #39A900;
-  --primary-2: #36AE0F;
-  --primary-3: #42B31E;
-  --primary-4: #4FB82D;
-  --primary-5: #5BBD3C;
-  --primary-6: #68C24B;
-  --primary-7: #75C75A;
-  --primary-8: #81CC69;
-  --primary-9: #8ED178;
-  --primary-10: #9AD787;
-  --primary-11: #A7DC96;
-  --primary-12: #B3E1A5;
-  --primary-13: #C0E6B4;
-  --primary-14: #CDEBC3;
-  --primary-15: #D9F0D2;
-  --primary-16: #E6F5E1;
-  --primary-17: #F2FAF0;
+  --primary-1: #39a900;
+  --primary-2: #36ae0f;
+  --primary-3: #42b31e;
+  --primary-4: #4fb82d;
+  --primary-5: #5bbd3c;
+  --primary-6: #68c24b;
+  --primary-7: #75c75a;
+  --primary-8: #81cc69;
+  --primary-9: #8ed178;
+  --primary-10: #9ad787;
+  --primary-11: #a7dc96;
+  --primary-12: #b3e1a5;
+  --primary-13: #c0e6b4;
+  --primary-14: #cdebc3;
+  --primary-15: #d9f0d2;
+  --primary-16: #e6f5e1;
+  --primary-17: #f2faf0;
 
   /* Grises y Neutros */
   --black: #000000;
-  --gray-1: #0F0F0F;
-  --gray-2: #1E1E1E;
-  --gray-3: #2D2D2D;
-  --gray-4: #3C3C3C;
-  --gray-5: #5A5A5A;
+  --gray-1: #0f0f0f;
+  --gray-2: #1e1e1e;
+  --gray-3: #2d2d2d;
+  --gray-4: #3c3c3c;
+  --gray-5: #5a5a5a;
   --gray-6: #696969;
   --gray-7: #787878;
   --gray-8: #878787;
-  --gray-9: #A5A5A5;
+  --gray-9: #a5a5a5;
   --gray-10: #969696;
-  --gray-11: #A5A5A5;
-  --gray-12: #B4B4B4;
-  --gray-13: #C3C3C3;
-  --gray-14: #D2D2D2;
-  --gray-15: #E1E1E1;
-  --gray-16: #F0F0F0;
-  --white: #FFFFFF;
+  --gray-11: #a5a5a5;
+  --gray-12: #b4b4b4;
+  --gray-13: #c3c3c3;
+  --gray-14: #d2d2d2;
+  --gray-15: #e1e1e1;
+  --gray-16: #f0f0f0;
+  --white: #ffffff;
 
   /* Tipografía */
-  --font-primary: 'Work Sans', sans-serif;
-  --font-secondary: 'Calibri', sans-serif;
+  --font-primary: "Work Sans", sans-serif;
+  --font-secondary: "Calibri", sans-serif;
 
   /* Jerarquías tipográficas */
   --h1: 32px;
@@ -50,33 +50,37 @@
   --h5: 14px;
   --h6: 12px;
 }
+
+/* Estilo base del body */
 body {
-    font-family: var(--font-primary);
-    color: var(black);
-    margin: 0;
-    padding: 0;
-  }
-   html {
-    margin: 0;
-    font-size: 62.5%;
-    box-sizing: border-box;
-  }
-  
+  font-family: var(--font-primary); /* Usa fuente principal */
+  color: var(--black); /* Texto en negro */
+  margin: 0;
+  padding: 0;
+}
 
+/* Ajustes generales del html */
+html {
+  margin: 0;
+  font-size: 62.5%; /* 1rem = 10px */
+  box-sizing: border-box;
+}
 
+/* Fondo oscuro semitransparente que cubre toda la pantalla */
 .popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+  background-color: rgba(0, 0, 0, 0.5); /* Oscurece fondo */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1000; /* Se asegura de estar sobre todo */
 }
 
+/* Contenedor del popup */
 .popup {
   background: white;
   padding: 2rem;
@@ -86,41 +90,50 @@ body {
   text-align: center;
   z-index: 1001;
 }
-.diagnostico-completo p{
+
+/* Texto dentro del mensaje de diagnóstico */
+.diagnostico-completo p {
   font-weight: lighter;
 }
-.diagnostico-completo img{
+
+/* Imagen del mensaje */
+.diagnostico-completo img {
   margin-bottom: 10px;
 }
-.botones-diagnostico{
+
+/* Contenedor de los botones */
+.botones-diagnostico {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 50px;
   margin-top: 35px;
-
 }
-.resultados{
+
+/* Botón de Resultados */
+.resultados {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 48px;
   width: 140px;
   padding-left: 25px;
-  background-color: #39a900;
+  background-color: #39a900; /* Verde institucional */
   color: white;
   border: none;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
 }
-.icon-resultados{
-  font-size: 16px;
-  transform: translateX(-10px);
 
+/* Icono del botón de resultados */
+.icon-resultados {
+  font-size: 16px;
+  transform: translateX(-10px); /* Mueve icono a la izquierda */
 }
 
-.descargar{
+/* Botón de Descargar */
+.descargar {
   height: 48px;
   width: 140px;
   padding-left: 25px;
@@ -131,32 +144,40 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
-.icon-descargar{
+
+/* Icono del botón de descargar */
+.icon-descargar {
   font-size: 16px;
-  transform: translateX(-10px);
+  transform: translateX(-10px); /* Mueve icono a la izquierda */
 }
-@media(max-width: 480px) {
-    .popup-overlay{
-      position: absolute ;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 1001;
-      transform: translate(40px,-500px);
-    }
-    .popup{
-      position: absolute;
-      width: 320px;
-    }
-    .popup img{
-      width: 200px;
-      height: 200px;
-    }
-    .diagnostico-completo h2{
-      font-size: var(--h3);
-    }
-    .botones-diagnostico{
-      flex-direction: column;
-      gap: 15px;
-    }
- }
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 480px) {
+  .popup-overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    transform: translate(40px, -500px); /* Ajuste visual */
+  }
+
+  .popup {
+    position: absolute;
+    width: 320px; /* Ancho reducido */
+  }
+
+  .popup img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .diagnostico-completo h2 {
+    font-size: var(--h3); /* Título más pequeño */
+  }
+
+  .botones-diagnostico {
+    flex-direction: column; /* Cambia layout a columna */
+    gap: 15px;
+  }
+}
