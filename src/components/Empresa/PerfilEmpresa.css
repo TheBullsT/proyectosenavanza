@@ -1,5 +1,6 @@
+/* Variables Globales de Diseño */
 :root {
-  /* Colores Primarios */
+  /* Colores Primarios (verdes) con distintas tonalidades */
   --primary-1: #39A900;
   --primary-2: #36AE0F;
   --primary-3: #42B31E;
@@ -18,7 +19,7 @@
   --primary-16: #E6F5E1;
   --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
+  /* Grises y Neutros para textos y fondos */
   --black: #000000;
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
@@ -38,11 +39,11 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Tipografías principales */
   --font-primary: 'Work Sans', sans-serif;
   --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
+  /* Jerarquías tipográficas para títulos */
   --h1: 32px;
   --h2: 24px;
   --h3: 20px;
@@ -51,205 +52,252 @@
   --h6: 12px;
 }
 
+/* Reset básico y estilos base para body y html */
 body,
 html {
   font-family: var(--font-primary);
+  /* Tipografía principal */
   color: var(--black);
+  /* Color base texto */
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-
+  /* Evita scroll horizontal */
 }
 
+/* Contenedor principal del layout de perfil */
 .profile-layout {
   width: 1100px;
+  /* Ancho fijo para desktop */
   margin-top: 1%;
+  /* Margen superior pequeño */
   margin-left: 10%;
+  /* Margen izquierdo para centrar */
 }
 
+/* Título del perfil */
 .title-empresa {
   font-weight: 300;
-}
-.title-empresa h1{
-  margin-bottom: 0;
+  /* Fuente ligera */
 }
 
+.title-empresa h1 {
+  margin-bottom: 0;
+  /* Quitar margen inferior */
+}
+
+/* Breadcrumb de navegación */
 .breadcrumb {
   font-size: 14px;
+  /* Tamaño pequeño */
   margin-bottom: 1rem;
+  /* Separación inferior */
   color: #555;
+  /* Gris medio */
 }
 
+/* Sección principal que contiene CompanyCard y CompanyDetails */
 .main-section {
   display: flex;
+  /* Layout horizontal */
   gap: 2rem;
+  /* Espacio entre elementos */
   flex-wrap: wrap;
+  /* Permite que los hijos bajen en pantallas pequeñas */
 }
 
+/* Tarjeta general de la empresa (CompanyCard) */
 .company-card {
   flex: 1 1 300px;
+  /* Flex grow/shrink y ancho base */
   border: 1px solid #ddd;
+  /* Borde gris claro */
   border-radius: 8px;
+  /* Bordes redondeados */
   padding: 1.5rem;
+  /* Espaciado interno */
   text-align: center;
+  /* Centrar texto */
   background-color: #fff;
+  /* Fondo blanco */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  /* Sombra sutil */
 }
 
+/* Imagen circular de perfil */
 .company-image {
   background-size: cover;
-  background-image: url('./../../assets/img/Imagen_Profile_Empresa.png');
+  /* Ajusta la imagen para cubrir el área */
   background-position: center;
+  /* Centra la imagen */
+  background-image: url('./../../assets/img/Imagen_Profile_Empresa.png');
+  /* Imagen de perfil */
   height: 240px;
+  /* Alto fijo */
   width: 240px;
+  /* Ancho fijo */
   margin: 0 auto 1rem;
+  /* Centrar horizontal y margen inferior */
   border-radius: 50%;
+  /* Forma circular */
 }
 
+/* Nombre de la empresa */
 .company-name {
   margin: 0.5rem 0;
+  /* Margen arriba y abajo */
   font-size: 20px;
+  /* Tamaño de fuente */
   font-weight: bold;
+  /* Negrita */
 }
 
+/* Información adicional dentro de la tarjeta */
 .company-info {
   margin-top: 10%;
+  /* Margen superior relativo */
   margin-right: 40%;
+  /* Margen derecho para separación */
 }
 
 .company-info p {
-  margin: 4px 0;
-  margin-top: 2%;
+  margin: 2% 0 0 0;
+  /* Margen arriba pequeño */
   font-size: 14px;
+  /* Texto pequeño */
   color: #555;
+  /* Gris medio */
 }
 
+/* Detalles de la empresa (CompanyDetails) */
 .company-details {
   flex: 2 1 500px;
+  /* Flex más grande para mayor ancho */
   color: #2e9e21;
+  /* Verde para títulos o textos destacados */
   display: grid;
+  /* Grid para distribuir datos */
   grid-template-columns: 1fr 1fr;
+  /* Dos columnas iguales */
   gap: 1rem 2rem;
+  /* Espacio vertical y horizontal entre celdas */
   background-color: #fff;
+  /* Fondo blanco */
   padding: 1.5rem;
+  /* Espacio interno */
 }
 
+/* Color para los textos de respuesta o detalles */
 .answer-details {
   color: #777;
+  /* Gris medio */
 }
 
+/* Footer principal con botones y texto */
 .footer-section-1 {
   margin-top: 2rem;
+  /* Separación superior */
   display: flex;
+  /* Layout horizontal */
   justify-content: space-around;
+  /* Espacio entre elementos */
   align-items: center;
+  /* Centrado vertical */
   gap: 350px;
+  /* Espacio grande entre elementos */
   height: 58px;
-
-}
-.footer-section-2 {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
+  /* Altura fija */
 }
 
+/* Texto en el footer */
 .footer-section-1 p {
   font-size: 14px;
+  /* Tamaño pequeño */
   color: #777;
+  /* Gris medio */
   margin: 0.5rem 30rem 0 0;
-}
-.footer-section-2 p {
-  font-size: 14px;
-  color: #777;
-  margin: 0.5rem 0;
+  /* Margen para separar del botón */
 }
 
+/* Botón para editar perfil */
 .edit-button {
   background-color: #35b226;
+  /* Verde principal */
   color: white;
+  /* Texto blanco */
   border: none;
+  /* Sin borde */
   padding: 0.6rem 1.2rem;
+  /* Espaciado interno */
   font-size: 14px;
+  /* Tamaño texto */
   font-weight: bold;
+  /* Negrita */
   border-radius: 5px;
+  /* Bordes redondeados */
   cursor: pointer;
+  /* Cursor mano */
+  transition: background-color 0.3s ease;
+  /* Transición suave */
 }
 
+/* Hover para el botón editar */
 .edit-button:hover {
   background-color: #2e9e21;
+  /* Verde más oscuro */
 }
 
-.cancel-button {
-  border: 1px solid #9a9a9a;
-  border-radius: 4px;
-  padding: 0.6rem 1.2rem;
-  font-size: 14px;
-  font-weight: bold;
-  color: #777;
-  margin-left: 58%;
-  margin-right: 10px;
-}
-
-.cancel-button:hover {
-  background-color: #d4d4d4;
-  color: black;
-}
-
-.barra {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-
-.linea {
-  flex-grow: 1;
-  border-top: 2px solid #ebebeb;
-}
-
-.texto {
-  margin: 0 10px;
-  font-weight: bolder;
-  font-size: 14px;
-  color: #bebebe;
-}
-
-.text-info {
-  padding: 10px;
-  text-align: left;
-}
-
+/* Barras decorativas y líneas horizontales */
+.barra,
 .barra-empresa {
   display: flex;
+  /* Flex para centrar elementos */
   align-items: center;
+  /* Centrado vertical */
   text-align: center;
-  margin-top: 1px;
-  width: 30%;
+  /* Centrado texto */
 }
 
+/* Línea decorativa fina */
+.linea {
+  flex-grow: 1;
+  /* Ocupa espacio disponible */
+  border-top: 2px solid #ebebeb;
+  /* Línea gris claro */
+  border-radius: 6px;
+  /* Bordes redondeados */
+}
+
+/* Línea decorativa más gruesa y verde para sección empresa */
 .linea2 {
   flex-grow: 1;
+  /* Ocupa espacio disponible */
   border-top: 4px solid #39a900;
+  /* Línea verde */
   border-radius: 6px;
+  /* Bordes redondeados */
   margin-bottom: 10%;
+  /* Margen inferior para separación */
 }
 
+/*Estado bloqueado / no editable*/
 .blocked {
   color: #777;
+  /* Gris medio */
 }
 
-/* Responsive */
+/* Responsive para pantallas móviles y tablets */
 @media (max-width: 786px) {
+
+  /* Ajusta el contenedor principal para pantallas pequeñas */
   .profile-layout {
     width: 100%;
     max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
+  /* Cambia layout principal a columna */
   .main-section {
     flex-direction: column;
     justify-content: center;
@@ -257,28 +305,32 @@ html {
     width: 100%;
   }
 
+  /* Tarjeta empresa ocupa ancho completo */
   .company-card {
     width: 100%;
     max-width: 500px;
   }
 
+  /* Detalles en una sola columna */
   .company-details {
     width: 90%;
     grid-template-columns: 1fr;
   }
 
-  .footer-section {
-    width: 100%;
+  /* Ajustes en el footer para mejor visualización */
+  .footer-section-1 {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     gap: 1rem;
-  
-  }
-  .cancel-button {
-  margin-left: 0;
+    align-items: center;
   }
 
+  .footer-section-1 p {
+    margin: 0;
+    text-align: center;
+  }
 
+  .edit-button {
+    width: 100%;
+    max-width: 300px;
+  }
 }
