@@ -50,19 +50,21 @@
   --h5: 14px;
   --h6: 12px;
 }
-body {
-    font-family: var(--font-primary);
-    color: var(--black);
-    margin: 0;
-    padding: 0;
-  }
-   html {
-    margin: 0;
-    font-size: 62.5%;
-    box-sizing: border-box;
-  }
 
-.mainhomecontainer{
+body {
+  font-family: var(--font-primary);
+  color: var(--black);
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  margin: 0;
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+.mainhomecontainer {
   display: flex;
 
 }

@@ -1,58 +1,85 @@
 import React, { useState } from "react";
+// Importamos libreria Link para poder navegar entre paginas
 import { Link } from "react-router-dom";
+// Importamos los estilos
 import "./SidebarAdmin.css";
+// Importamos los iconos
 import { FaHome } from "react-icons/fa";
 import { MdHomeRepairService, MdSchool } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 
 function SidebarAdmin() {
+    // Estado que controla qué menú desplegable está activo (abierto)
+    // Se guarda el nombre del menú abierto o false/null si ninguno está abierto
     const [ActiveMenu, SetMenuOn] = useState(false);
 
+    // Función para alternar la visibilidad del submenú
+    // Si el menú que se quiere abrir ya está abierto, lo cierra; si no, lo abre
     const abrirMenu = (menuOn) => {
         SetMenuOn(ActiveMenu === menuOn ? null : menuOn);
     };
 
     return (
         <div className="sidebar-admin">
+            {/* Lista principal del sidebar */}
             <ul className="ulContainer">
                 <h4 className="menu">Menu</h4>
 
+                {/* Link a la página principal del admin */}
                 <Link to="/adminhome" className="no-estilo">
                     <li className="liContainer">
-                        <FaHome className="sidebaricon" />
+                        <FaHome className="sidebaricon" /> {/* Icono Home */}
                         <p className="itemNames">Home</p>
                     </li>
                 </Link>
 
+                {/* Menú Empresas con submenú desplegable */}
                 <li className="liContainer" onClick={() => abrirMenu("empresas")}>
-                    <MdHomeRepairService className="sidebaricon" />
+                    <MdHomeRepairService className="sidebaricon" /> {/* Icono Empresas */}
                     <p className="itemNames">Empresas</p>
                 </li>
                 {ActiveMenu === "empresas" && (
+                    // Submenú que solo se muestra si el menú "empresas" está activo
                     <ul className="subMenu">
-                        <Link to="/crear-empresa" className="no-estilo"><li>Crear Empresa</li></Link>
-                        <Link to="/modificar-empresa" className="no-estilo"><li>Modificar Empresa</li></Link>
-                        <Link to="/listar-empresa" className="no-estilo"><li>Listar Empresa</li></Link>
+                        <Link to="/crear-empresa" className="no-estilo">
+                            <li>Crear Empresa</li>
+                        </Link>
+                        <Link to="/modificar-empresa" className="no-estilo">
+                            <li>Modificar Empresa</li>
+                        </Link>
+                        <Link to="/listar-empresa" className="no-estilo">
+                            <li>Listar Empresa</li>
+                        </Link>
                     </ul>
                 )}
 
+                {/* Menú Programas con submenú desplegable */}
                 <li className="liContainer" onClick={() => abrirMenu("programas")}>
-                    <MdSchool className="sidebaricon" />
+                    <MdSchool className="sidebaricon" /> {/* Icono Programas */}
                     <p className="itemNames">Programas</p>
                 </li>
                 {ActiveMenu === "programas" && (
+                    // Submenú Programas visible solo si "programas" está activo
                     <ul className="subMenu">
-                        <Link to="/crear-programa" className="no-estilo"><li>Crear Programa de formación</li></Link>
-                        <Link to="/modificar-programa" className="no-estilo"><li>Modificar Programa de formación</li></Link>
-                        <Link to="/listar-programa" className="no-estilo"><li>Listar Programa de formación</li></Link>
+                        <Link to="/crear-programa" className="no-estilo">
+                            <li>Crear Programa de formación</li>
+                        </Link>
+                        <Link to="/modificar-programa" className="no-estilo">
+                            <li>Modificar Programa de formación</li>
+                        </Link>
+                        <Link to="/listar-programa" className="no-estilo">
+                            <li>Listar Programa de formación</li>
+                        </Link>
                     </ul>
                 )}
 
+                {/* Menú Usuarios con submenú desplegable */}
                 <li className="liContainer" onClick={() => abrirMenu("usuarios")}>
-                    <FaUsers className="sidebaricon" />
+                    <FaUsers className="sidebaricon" /> {/* Icono Usuarios */}
                     <p className="itemNames">Usuarios</p>
                 </li>
                 {ActiveMenu === "usuarios" && (
+                    // Submenú Usuarios visible solo si "usuarios" está activo
                     <ul className="subMenu">
                         <li>Crear Usuario</li>
                         <li>Modificar Usuarios</li>
@@ -62,6 +89,7 @@ function SidebarAdmin() {
                 )}
             </ul>
 
+            {/* Botón para cerrar sesión que redirige a la ruta '/inicio' */}
             <Link to='/inicio' className="no-estilo">
                 <div className="ButtonCerrarSesionAdmin">
                     Cerrar Sesión

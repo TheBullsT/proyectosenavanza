@@ -50,29 +50,31 @@
   --h5: 14px;
   --h6: 12px;
 }
-body {
-    font-family: var(--font-primary);
-    margin: 0;
-    padding: 0;
-  }
-   html {
-    margin: 0;
-    font-size: 62.5%;
-    box-sizing: border-box;
-  }
 
-.main-rightbar{
-    flex: 4;
-    background-color: rgb(228, 228, 228);
+body {
+  font-family: var(--font-primary);
+  margin: 0;
+  padding: 0;
 }
 
-.ItemContainer{
+html {
+  margin: 0;
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+.main-rightbar {
+  flex: 4;
+  background-color: rgb(228, 228, 228);
+}
+
+.ItemContainer {
   display: flex;
   margin: auto;
   justify-content: center;
 }
 
-.ItemContainer1{
+.ItemContainer1 {
   background-color: var(--white);
   width: 345px;
   height: 25vh;
@@ -83,7 +85,7 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.taskProgress{
+.taskProgress {
   text-align: start;
   margin-left: 10px;
   margin-top: 15px;
@@ -93,7 +95,7 @@ body {
 }
 
 
-.taskCounter1{
+.taskCounter1 {
   text-align: start;
   font-size: 24px;
   font-weight: bold;
@@ -101,7 +103,8 @@ body {
   margin-top: -15px;
   color: var(--primary-1);
 }
-.taskCounter2{
+
+.taskCounter2 {
   text-align: start;
   font-size: 24px;
   font-weight: bold;
@@ -109,7 +112,8 @@ body {
   margin-top: -15px;
   color: blue;
 }
-.taskCounter3{
+
+.taskCounter3 {
   text-align: start;
   font-size: 24px;
   font-weight: bold;
@@ -119,7 +123,7 @@ body {
 }
 
 
-.currentMonth1{
+.currentMonth1 {
   text-align: start;
   margin-left: 10px;
   margin-top: -25px;
@@ -128,19 +132,20 @@ body {
 }
 
 
-.barchartContainer{
+.barchartContainer {
   margin-left: 50px;
   margin-top: 40px;
 }
 
-.subItemContainer{
+.subItemContainer {
   margin-top: 35px;
 }
-.subItemContainer1{
+
+.subItemContainer1 {
   margin-top: 56px;
 }
 
-.MidleTaskChart{
+.MidleTaskChart {
   text-align: center;
   width: 96%;
   background-color: var(--white);
@@ -150,13 +155,13 @@ body {
   border-radius: 6px;
 }
 
-.TaskUsuariosvsEmpresas{
+.TaskUsuariosvsEmpresas {
   font-weight: bold;
   font-size: var(--h4);
   padding: 10px;
 }
 
-.TaskProgramasContainer{
+.TaskProgramasContainer {
   display: flex;
   width: 98%;
   justify-content: center;
@@ -164,7 +169,7 @@ body {
   margin-top: 10px;
 }
 
-.TaskProgramas{
+.TaskProgramas {
   flex: 1.5;
   display: flex;
   align-items: center;
@@ -176,7 +181,7 @@ body {
   border-radius: 6px;
 }
 
-.MonthlyProgramas{
+.MonthlyProgramas {
   flex: 2;
   margin: 10px;
   background-color: var(--white);
@@ -184,14 +189,14 @@ body {
   border-radius: 6px;
 }
 
-.taskContainerText{
+.taskContainerText {
   text-align: start;
   margin-left: 10px;
   font-weight: bold;
   font-size: var(--h5);
 }
 
-.TeamEmpresasText{
+.TeamEmpresasText {
   margin-top: -150px;
   text-align: center;
   width: 60%;
@@ -199,7 +204,7 @@ body {
   font-weight: bold;
 }
 
-.VerDetalles{
+.VerDetalles {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 6px;

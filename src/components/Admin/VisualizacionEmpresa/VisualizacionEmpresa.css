@@ -70,7 +70,7 @@ body {
 
 }
 
-.visualizacion-empresa-contenido{
+.visualizacion-empresa-contenido {
   padding: 40px;
 }
 
@@ -99,16 +99,16 @@ body {
   color: var(--primary-1);
 }
 
-.info-box-visualizacion-empresa{
+.info-box-visualizacion-empresa {
   display: flex;
   align-items: start;
   gap: 1.6rem;
   margin: 3rem 0;
   flex-direction: column;
-  
+
 }
 
-.icon-box{
+.icon-box {
   display: flex;
   align-items: start;
   background: #e8f5e9;
@@ -146,9 +146,12 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .campo-nombre-empresa {
-  width: 950px; /* O el tamaño que necesites */
+  width: 950px;
+  /* O el tamaño que necesites */
 }
+
 .input-empresa-nombre {
   width: 100%;
 }
@@ -158,9 +161,11 @@ body {
   font-size: var(--h5);
   color: var(--gray-4);
 }
-.empresa-camp{
+
+.empresa-camp {
   width: 500px;
 }
+
 .campo-form input {
   padding: 1rem 1.2rem;
   border-radius: 0.5rem;

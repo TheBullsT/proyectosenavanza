@@ -1,18 +1,26 @@
 import React from "react";
+// Importar los estilos
 import './crearprograma.css';
+// Importar el componente NavBar
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
+// Importar los iconos
 import { MdSchool } from "react-icons/md";
 
 const CrearProgramaFormacion = () => {
   return (
     <div className="main-right-bar">
-      <NavbarAdmin />
+      <NavbarAdmin /> {/* Barra de navegación superior */}
 
       <div className="formacion-container">
-        <p className="title">Crear Programa de Formación
-          <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Programas de Formación</strong></span>
+        {/* Título principal con ruta de navegación */}
+        <p className="title">
+          Crear Programa de Formación
+          <span className="breadcrumb">
+            You are here: <strong className="breadcrumb-active">Programas de Formación</strong>
+          </span>
         </p>
 
+        {/* Sección de información explicativa con ícono */}
         <div className="form-info">
           <div className="icon"><MdSchool /></div>
           <p>
@@ -21,19 +29,23 @@ const CrearProgramaFormacion = () => {
           </p>
         </div>
 
+        {/* Formulario para crear un nuevo programa */}
         <form className="form">
           <h2 className="form-title">Nuevo Programa de Formación</h2>
 
+          {/* Campo para el nombre del programa */}
           <div className="form-group">
             <label>Nombre de Programa de Formación</label>
             <input type="text" />
           </div>
 
+          {/* Campo para la descripción */}
           <div className="form-group">
             <label>Descripción de Programa de Formación</label>
             <textarea rows="3" />
           </div>
 
+          {/* Fila con dos selectores: Modalidad y Nivel Formativo */}
           <div className="form-row">
             <div className="form-group">
               <label>Modalidad</label>
@@ -55,6 +67,7 @@ const CrearProgramaFormacion = () => {
             </div>
           </div>
 
+          {/* Selector para la duración */}
           <div className="form-group">
             <label>Duración</label>
             <select>
@@ -65,6 +78,7 @@ const CrearProgramaFormacion = () => {
             </select>
           </div>
 
+          {/* Botones para crear o cancelar */}
           <div className="form-actions">
             <button className="btn-create" type="submit">Crear PF</button>
             <button type="button" className="btn-cancel">Cancelar</button>

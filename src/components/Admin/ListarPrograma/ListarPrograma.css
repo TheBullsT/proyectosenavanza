@@ -65,7 +65,8 @@ body {
   text-decoration: none;
 }
 
-*:before, *:after {
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -135,7 +136,8 @@ a {
 }
 
 
-.btn-agregar, .btn-reporte {
+.btn-agregar,
+.btn-reporte {
   background-color: var(--primary-1);
   color: white;
   font-weight: bold;
@@ -145,7 +147,8 @@ a {
   cursor: pointer;
 }
 
-.btn-agregar:hover, .btn-reporte:hover {
+.btn-agregar:hover,
+.btn-reporte:hover {
   background-color: #239000;
 }
 
@@ -164,7 +167,8 @@ a {
   margin-top: 10px;
 }
 
-.program-table th, .program-table td {
+.program-table th,
+.program-table td {
   text-align: left;
   padding: 14px;
   border-bottom: 1px solid #ccc;
@@ -198,6 +202,7 @@ a {
   margin-bottom: 30px;
   color: var(--primary-1);
 }
+
 .grupo-botones {
   display: flex;
   gap: 10px;
