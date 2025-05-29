@@ -1,138 +1,141 @@
 :root {
-    /* Colores Primarios */
-    --primary-1: #39A900;
-    --primary-2: #36AE0F;
-    --primary-3: #42B31E;
-    --primary-4: #4FB82D;
-    --primary-5: #5BBD3C;
-    --primary-6: #68C24B;
-    --primary-7: #75C75A;
-    --primary-8: #81CC69;
-    --primary-9: #8ED178;
-    --primary-10: #9AD787;
-    --primary-11: #A7DC96;
-    --primary-12: #B3E1A5;
-    --primary-13: #C0E6B4;
-    --primary-14: #CDEBC3;
-    --primary-15: #D9F0D2;
-    --primary-16: #E6F5E1;
-    --primary-17: #F2FAF0;
-  
-    /* Grises y Neutros */
-    --black: #000000;
-    --gray-1: #0F0F0F;
-    --gray-2: #1E1E1E;
-    --gray-3: #2D2D2D;
-    --gray-4: #3C3C3C;
-    --gray-5: #5A5A5A;
-    --gray-6: #696969;
-    --gray-7: #787878;
-    --gray-8: #878787;
-    --gray-9: #A5A5A5;
-    --gray-10: #969696;
-    --gray-11: #A5A5A5;
-    --gray-12: #B4B4B4;
-    --gray-13: #C3C3C3;
-    --gray-14: #D2D2D2;
-    --gray-15: #E1E1E1;
-    --gray-16: #F0F0F0;
-    --white: #FFFFFF;
-  
-    /* Tipografía */
-    --font-primary: 'Work Sans', sans-serif;
-    --font-secondary: 'Calibri', sans-serif;
-  
-    /* Jerarquías tipográficas */
-    --h1: 32px;
-    --h2: 24px;
-    --h3: 20px;
-    --h4: 16px;
-    --h5: 14px;
-    --h6: 12px;
-  }
-      html {
-    margin: 0;
-    font-size: 62.5%;
-    box-sizing: border-box;
-  }
-  :before,*:after{
+  /* Colores Primarios */
+  --primary-1: #39A900;
+  --primary-2: #36AE0F;
+  --primary-3: #42B31E;
+  --primary-4: #4FB82D;
+  --primary-5: #5BBD3C;
+  --primary-6: #68C24B;
+  --primary-7: #75C75A;
+  --primary-8: #81CC69;
+  --primary-9: #8ED178;
+  --primary-10: #9AD787;
+  --primary-11: #A7DC96;
+  --primary-12: #B3E1A5;
+  --primary-13: #C0E6B4;
+  --primary-14: #CDEBC3;
+  --primary-15: #D9F0D2;
+  --primary-16: #E6F5E1;
+  --primary-17: #F2FAF0;
+
+  /* Grises y Neutros */
+  --black: #000000;
+  --gray-1: #0F0F0F;
+  --gray-2: #1E1E1E;
+  --gray-3: #2D2D2D;
+  --gray-4: #3C3C3C;
+  --gray-5: #5A5A5A;
+  --gray-6: #696969;
+  --gray-7: #787878;
+  --gray-8: #878787;
+  --gray-9: #A5A5A5;
+  --gray-10: #969696;
+  --gray-11: #A5A5A5;
+  --gray-12: #B4B4B4;
+  --gray-13: #C3C3C3;
+  --gray-14: #D2D2D2;
+  --gray-15: #E1E1E1;
+  --gray-16: #F0F0F0;
+  --white: #FFFFFF;
+
+  /* Tipografía */
+  --font-primary: 'Work Sans', sans-serif;
+  --font-secondary: 'Calibri', sans-serif;
+
+  /* Jerarquías tipográficas */
+  --h1: 32px;
+  --h2: 24px;
+  --h3: 20px;
+  --h4: 16px;
+  --h5: 14px;
+  --h6: 12px;
+}
+
+/* Reset y configuración base */
+html {
+  margin: 0;
+  font-size: 62.5%; /* 1rem = 10px para facilitar cálculos */
+  box-sizing: border-box;
+}
+
+:before,
+*:after {
   box-sizing: inherit;
-  }
+}
 
-  body{
-    font-size: 16px;
-    font-family: var(--font-primary);
-  }
-  a {
-    text-decoration: none;
-  }
-  h1 {
-      font-size: 3.2rem;
-  }
-  h2 {
-      font-size: 2.4rem;
-  }
-  h3 {
-      font-size: 2.0rem;
-  }
-  h4 {
-      font-size: 1.6rem;
-  }
-  h5 {
-      font-size: 1.4rem;
-  }
+body {
+  font-size: 16px;
+  font-family: var(--font-primary);
+  margin: 0;
+}
 
+a {
+  text-decoration: none;
+}
+
+/* Contenedor principal del componente recomendaciones */
 .recomendaciones {
-    position: absolute;
-    top: 75%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    width: 760px; 
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--gray-16); /* #f4f4f4 */
+  padding: 20px;
+  border-radius: 10px;
+  width: 760px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
-.titulo-recomendacion{
-    color: #878787;
+
+/* Título de las recomendaciones */
+.titulo-recomendacion {
+  color: var(--gray-8);
+  font-size: var(--h2);
+  margin-bottom: 15px;
 }
-.conocer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-image: url(../../../assets/img/recomendaciones.png); */
-    /* background-repeat: no-repeat;
-    background-position: left 5px center; */
+
+/* Contenedor flex para icono, texto y botón */
+.conocer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.icono-recomendacion{
+
+/* Icono al lado del texto */
+.icono-recomendacion {
   margin-right: 8px;
   font-size: 24px;
   transform: translateX(-10px);
 }
-.conocer svg{
-    background-position: left 5px center;
-}
-.conocer p{
-    font-size: 18px;
-}
-.boton-recomendacion{
-    position: relative;
-    left: 50px;
-    font-family: 'Work Sans';
-    font-size: 18px;
-    border-radius: 6px;
-    font-weight: bold;
-    color: white;
-    background-color: #32a900;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-    height: 45px;
-    width: 180px;
+
+/* Párrafo junto al icono */
+.conocer p {
+  font-size: 18px;
+  margin: 0;
 }
 
-/* Responsive */
+/* Botón para pulsar */
+.boton-recomendacion {
+  position: relative;
+  left: 50px;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: var(--white);
+  background-color: var(--primary-3);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  height: 45px;
+  width: 180px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
 
+.boton-recomendacion:hover {
+  background-color: var(--primary-5);
+}
 
-/* Responsive PC grande */
+/* --- Media Queries para responsividad --- */
 @media (max-width: 1920px) {
     .recomendaciones {
         position: absolute;
