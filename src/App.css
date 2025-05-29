@@ -1,5 +1,6 @@
+/* Variables globales de diseño */
 :root {
-  /* Colores Primarios */
+  /* Paleta de colores primarios (verdes degradados de más oscuro a más claro) */
   --primary-1: #39A900;
   --primary-2: #36AE0F;
   --primary-3: #42B31E;
@@ -18,7 +19,7 @@
   --primary-16: #E6F5E1;
   --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
+  /* Colores neutros (grises y blancos) para fondos, bordes, texto, etc. */
   --black: #000000;
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
@@ -38,11 +39,13 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Fuentes utilizadas en el sistema */
   --font-primary: 'Work Sans', sans-serif;
+  /* Fuente principal para todo el sistema */
   --font-secondary: 'Calibri', sans-serif;
+  /* Fuente secundaria de apoyo */
 
-  /* Jerarquías tipográficas */
+  /* Jerarquía tipográfica (tamaños de fuente estándar para títulos y subtítulos) */
   --h1: 32px;
   --h2: 24px;
   --h3: 20px;
@@ -51,42 +54,34 @@
   --h6: 12px;
 }
 
+/* Reglas generales y reset */
+
+/* Configuración base del HTML */
 html {
   margin: 0;
+  /* Elimina el margen por defecto */
   font-size: 62.5%;
+  /* Define 1rem = 10px para facilitar los cálculos */
   box-sizing: border-box;
+  /* Define el modelo de caja para todos los elementos */
 }
 
+/* Aplica el modelo de caja heredado a pseudoelementos */
 :before,
 *:after {
   box-sizing: inherit;
 }
 
+/* Configuración base del body */
 body {
   font-size: 16px;
+  /* Establece el tamaño base del texto */
   font-family: 'Work Sans', sans-serif;
+  /* Fuente predeterminada */
 }
 
+/* Estilos generales para enlaces */
 a {
   text-decoration: none;
-}
-
-h1 {
-  font-size: 3.2rem;
-}
-
-h2 {
-  font-size: 2.4rem;
-}
-
-h3 {
-  font-size: 2.0rem;
-}
-
-h4 {
-  font-size: 1.6rem;
-}
-
-h5 {
-  font-size: 1.4rem;
+  /* Elimina el subrayado por defecto en enlaces */
 }
