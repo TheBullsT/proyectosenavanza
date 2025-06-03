@@ -1,7 +1,7 @@
  // Componente del formulario de login para administrador
 import LoginAdmin from "../components/Admin/LoginAdmin/LoginAdmin";
  // Fondo para la pantalla de login
-import LoginBackground from "../components/Login/Login-Background/login-background";
+import LoginBackground from "../components/Admin/LoginAdmin/Login-Background/login-background-admin";
 const LoginAdministrador = () => {
     return (
         <div>

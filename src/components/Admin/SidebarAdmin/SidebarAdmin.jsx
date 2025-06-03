@@ -13,8 +13,12 @@ import CerrarSesion from "../../Loading/cerrar-sesion-admin";
 
 function SidebarAdmin() {
     // Estado que controla qué menú desplegable está activo (abierto)
-    // Se guarda el nombre del menú abierto o false/null si ninguno está abierto
     const [ActiveMenu, SetMenuOn] = useState(false);
+    
+    // Se guarda el nombre del menú abierto o false/null si ninguno está abierto
+    const abrirMenu = (menu) => {
+        SetMenuOn((prevMenu) => (prevMenu === menu ? false : menu));
+    };
 
     const [cerrandoSesion, setCerrandoSesion] = useState(false);
     const navigate = useNavigate();
