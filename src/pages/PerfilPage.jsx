@@ -3,6 +3,8 @@ import NavFooter from '../layouts/Layout';
 import React from 'react';
 // Importa el componente principal para mostrar el perfil de la empresa
 import ProfileLayout from '../components/Empresa/PerfilEmpresa';
+import Gov from '../components/BarraGov/gov';
+
 
 // Datos ficticios de la empresa para pasar como props
 const dummyCompany = {
@@ -27,10 +29,14 @@ const dummyDetails = {
 // Componente funcional que renderiza el perfil de la empresa dentro del layout general
 const PerfilPage = () => {
   return (
-    <NavFooter>
+    <div>
+      <Gov />
+      <NavFooter>
       {/* Se pasa la información ficticia como props al componente del perfil */}
       <ProfileLayout company={dummyCompany} details={dummyDetails} />
     </NavFooter>
+    </div>
+    
   );
 };
 

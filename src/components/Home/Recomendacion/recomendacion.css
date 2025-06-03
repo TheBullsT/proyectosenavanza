@@ -78,7 +78,7 @@ a {
   position: absolute;
   top: 75%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -30%);
   background-color: var(--gray-16); /* #f4f4f4 */
   padding: 20px;
   border-radius: 10px;

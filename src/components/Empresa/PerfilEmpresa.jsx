@@ -1,10 +1,14 @@
-import React from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import CompanyCard from './CompanyCard';
 import CompanyDetails from './CompanyDetails';
+
 import './PerfilEmpresa.css';
 
+
+
 const ProfileLayout = ({ company, details }) => {
+
   const navigate = useNavigate();
 
   // Función para redirigir a la página de edición de perfil
@@ -41,6 +45,7 @@ const ProfileLayout = ({ company, details }) => {
           visualizando el perfil de la empresa.
         </p>
         <button className="edit-button" onClick={editar}>Editar</button>
+        
       </footer>
     </div>
   );
