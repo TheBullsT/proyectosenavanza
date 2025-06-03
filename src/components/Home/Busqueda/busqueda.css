@@ -195,6 +195,9 @@ button img {
 .dropdown-menu li a:hover {
   color: var(--primary-1);
 }
+.dropdown-menu li:hover {
+  color: var(--primary-1);
+}
 
 .dropdown-menu a:hover {
   background-color: #f0f0f0;

@@ -71,6 +71,7 @@ body {
     font-size: 16px;
     /* Tamaño de fuente estándar para lectura */
     font-family: var(--font-primary);
+    overflow: hidden;
 }
 
 /* Estilo base para enlaces */
@@ -110,6 +111,11 @@ h5 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
     /* Centra horizontalmente */
     justify-content: center;
     /* Centra verticalmente */

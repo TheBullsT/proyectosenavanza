@@ -71,6 +71,7 @@ body {
     font-size: 16px;
     /* Tamaño de fuente estándar para lectura */
     font-family: var(--font-primary);
+    overflow: hidden;
 }
 
 /* Estilo base para enlaces */
@@ -106,14 +107,22 @@ h5 {
 }
 
 /* Contenedor principal del componente de carga */
-.loading-container {
+.loading-container-cerrar-sesion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 9999;
     /* Centra horizontalmente */
     justify-content: center;
     /* Centra verticalmente */
-    height: 100vh;
+    height: 100%;
     /* Ocupa toda la altura de la pantalla */
     background: #ffffff;
     /* Fondo blanco */
@@ -123,8 +132,20 @@ h5 {
     /* Tamaño del texto */
 }
 
+.loading-container-cerrar-sesion {
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+
 /* Estilo del spinner circular */
-.spinner {
+.spinner-cerrar-sesion {
     width: 50px;
     height: 50px;
     border: 5px solid #ccc;
