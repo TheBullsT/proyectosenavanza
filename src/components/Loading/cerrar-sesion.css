@@ -71,7 +71,6 @@ body {
     font-size: 16px;
     /* Tamaño de fuente estándar para lectura */
     font-family: var(--font-primary);
-    overflow: hidden;
 }
 
 /* Estilo base para enlaces */
