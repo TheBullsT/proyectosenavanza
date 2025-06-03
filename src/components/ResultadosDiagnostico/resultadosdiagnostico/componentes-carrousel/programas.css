@@ -51,94 +51,81 @@
     --h6: 12px;
 }
 
-/* Estilos globales */
+/* Estilos globales para html y box-sizing */
 html {
     margin: 0;
     font-size: 62.5%;
-    /* Esto hace 1rem = 10px para facilitar cálculos */
-    box-sizing: border-box;
-    /* Padding y border incluidos en el tamaño */
+    box-sizing: border-box; /* Padding y border incluidos en ancho/alto */
 }
 
+/* Heredar box-sizing para pseudoelementos y todos los elementos */
 :before,
 *:after {
     box-sizing: inherit;
-    /* Heredan el box-sizing del html */
 }
 
+/* Estilo base para el body */
 body {
     font-size: 16px;
-    /* Tamaño base del texto */
     font-family: var(--font-primary);
 }
 
+/* Enlaces sin subrayado */
 a {
     text-decoration: none;
-    /* Quitar subrayado de enlaces */
 }
 
-/* Contenedor principal de los programas, usa grid para dos filas */
+/* Contenedor principal con grid: dos filas y una columna */
 .container-programas {
     display: grid;
-    grid-template-rows: auto auto;
-    /* Dos filas automáticas */
-    grid-template-columns: 1fr;
-    /* Una columna */
+    grid-template-rows: auto auto; /* Dos filas automáticas */
+    grid-template-columns: 1fr; /* Una columna */
     text-align: center;
 }
 
-/* Contenedor para el título, ubicado en la primera fila */
+/* Contenedor para el título, en la primera fila */
 .titulo-reporte {
     grid-column: 1;
     grid-row: 1;
 }
 
-/* Contenedor que agrupa los programas y la imagen de recomendados */
+/* Contenedor que agrupa programas y la imagen lateral */
 .programas-total {
     grid-column: 1;
     grid-row: 2;
     display: flex;
-    /* Layout flexible para alinear contenido horizontalmente */
-    justify-content: space-between;
-    /* Separar al máximo los hijos */
-    align-items: center;
-    /* Alinear verticalmente al centro */
-    margin-top: -20px;
-    /* Levantar un poco respecto al título */
+    justify-content: space-between; /* Separar máximo los hijos */
+    align-items: center; /* Alinear verticalmente al centro */
+    margin-top: -20px; /* Ajuste para acercar al título */
 }
 
-/* Imagen decorativa de "recomendados" */
+/* Imagen decorativa lateral */
 .imagen-recomendados {
     width: 500px;
     height: 500px;
 }
 
-/* Contenedor que agrupa las tarjetas de programas */
+/* Contenedor para las tarjetas de programas */
 .programas {
     display: flex;
     align-items: center;
-    flex-direction: column;
-    /* Apilar verticalmente */
-    gap: 50px;
-    /* Espacio entre tarjetas */
+    flex-direction: column; /* Apilar verticalmente */
+    gap: 50px; /* Espacio entre tarjetas */
     border-radius: 6px;
     font-size: var(--h3);
-    /* Tamaño de texto */
     font-weight: bold;
     width: 530px;
     height: 430px;
     margin-left: 10px;
 }
 
-/* Cada tarjeta individual de programa */
+/* Tarjeta individual de programa */
 .programas-formacion {
     display: flex;
-    flex-direction: row;
-    /* Imagen e info lado a lado */
+    flex-direction: row; /* Imagen e info lado a lado */
     width: 450px;
     height: 500px;
-    gap: 30px;
-    /* Espacio entre imagen y texto */
+    gap: 30px; /* Separación entre imagen y texto */
     justify-content: center;
     align-items: center;
     font-size: var(--h4);
@@ -153,49 +140,81 @@ a {
     height: 95px;
 }
 
-/* Media query para pantallas pequeñas (móviles/tablets) */
-@media (max-width: 786px) {
-    .programas-total {
-        justify-content: center;
-        /* Centrar los hijos */
-        margin-top: 5px;
-        /* Ajustar margen superior */
-        gap: 20px;
-        /* Reducir espacio entre elementos */
-    }
+/* --- Estilos para el pop-up --- */
 
-    /* Ajuste tamaño imagen recomendados */
-    .programas-total img {
-        width: 200px;
-        height: 200px;
-    }
+/* Capa superpuesta que cubre toda la pantalla */
+.popup-overlay {
+    position: fixed; /* Fijo para cubrir toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6); /* Fondo oscuro semitransparente */
+    display: flex;
+    justify-content: center; /* Centrar contenido horizontalmente */
+    align-items: center; /* Centrar contenido verticalmente */
+    z-index: 1000; /* En frente de todo */
+}
 
-    /* Ajuste ancho del contenedor de programas */
-    .programas {
-        width: 300px;
-    }
+/* Contenedor del contenido del popup */
+.popup-content {
+    background-color: white;
+    width: 80%;
+    max-width: 900px;
+    display: flex; /* Contenido en fila: imagen y texto */
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
 
-    /* Ajustar tarjeta individual para que ocupe todo el ancho disponible y menos alto */
-    .programas-formacion {
-        width: 100%;
-        height: 100px;
-    }
+/* Imagen del programa en popup */
+.popup-imagen img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
 
-    /* Reducir tamaño imagen en tarjetas */
-    .programas-formacion img {
-        width: 90px;
-        height: 90px;
-    }
+/* Parte de texto e información del popup */
+.popup-info {
+    padding: 40px;
+    width: 60%;;
+    font-family: var(--font-primary);
+}
 
-    /* Ajuste tamaño y margen del texto dentro de la tarjeta */
-    .informacion-ficha p {
-        font-size: var(--h5);
-        margin: 5px;
-    }
+/* Título en el popup */
+.popup-info h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px;
+    color: var(--primary-1);
+}
 
-    /* Ajustar tamaño y ancho del botón "Ver más" */
-    .boton-ver-mas {
-        width: 100px;
-        font-size: var(--h5);
-    }
+/* Párrafos del popup con espacios */
+.popup-info p {
+    margin-bottom: 15px;
+    font-size: var(--h4);
+    text-align: left;
+}
+
+/* Botón para cerrar el popup */
+.boton-cerrar {
+    margin-top: 20px;
+    background-color: var(--primary-1);
+    color: var(--white);
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Ajustes para textos e imagenes dentro del contenedor de info de la tarjeta */
+.informacion-ficha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
