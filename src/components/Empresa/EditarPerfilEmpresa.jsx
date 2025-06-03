@@ -3,8 +3,16 @@ import CompanyCard from './CompanyCard';        // Componente para mostrar resum
 import CompanyDetails from './EditCompanyDetails'; // Componente para mostrar detalles editables
 import './PerfilEmpresa.css';                     // Estilos CSS para este layout
 import { useNavigate } from 'react-router-dom';  // Hook para navegación programática
+import { useRef } from 'react';
+import Snackbar from '../ToastNotification/Snackbar';
 
+const SnackbarType = {
+  sucess: 'sucess',
+  fail: 'fail',
+}
 const ProfileLayout = ({ company, details }) => {
+  const snackbarRef = useRef(null)
+
   const navigate = useNavigate();
 
   // Función para navegar al perfil
@@ -47,7 +55,8 @@ const ProfileLayout = ({ company, details }) => {
         <button className="cancel-button" onClick={IraPerfil}>Cancelar</button>
 
         {/* Botón guardar que también vuelve al perfil (puedes cambiarlo para guardar cambios) */}
-        <button className="edit-button" onClick={IraPerfil}>Guardar</button>
+        <button className="edit-button"  onClick={() => {snackbarRef.current.show();}}>Guardar</button>
+        <Snackbar ref={snackbarRef} message='Action Completed!' type={SnackbarType.sucess} />
       </footer>
     </div>
   );
