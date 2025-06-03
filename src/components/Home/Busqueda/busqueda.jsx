@@ -1,18 +1,13 @@
 import React, { useState, useRef, useContext } from 'react';
-
 // Contexto de tema oscuro/claro
 import { ThemeContext } from '../../../layouts/Dark-Mode/temacontexto';
-
 // Estilos del componente
 import './busqueda.css';
-
 // Logo institucional
 import logo from '../../../assets/img/Logo_SENAVANZA.png';
-
 // Iconos
 import { FaMoon } from "react-icons/fa";
 import { FaCircle } from "react-icons/fa6";
-
 // Menú de perfil y utilidad para cerrar al hacer click fuera
 import MenuProfile from '../Menu-Profile/menu-profile';
 import ClickOutMenu from '../Menu-Profile/click-out-menu';
