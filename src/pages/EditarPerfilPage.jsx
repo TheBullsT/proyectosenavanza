@@ -2,6 +2,7 @@ import NavFooter from '../layouts/Layout'; // Layout principal con Navbar y Foot
 import React from 'react';
 // Componente para editar el perfil de la empresa
 import ProfileLayout from '../components/Empresa/EditarPerfilEmpresa';
+import Gov from '../components/BarraGov/gov';
 
 // Datos dummy o de prueba para la empresa
 const dummyCompany = {
@@ -26,11 +27,15 @@ const dummyDetails = {
 // Componente funcional que renderiza la página para editar perfil de la empresa
 const EditarPerfilPage = () => {
   return (
-    // Usamos el layout NavFooter que incluye navegación y pie de página
-    <NavFooter>
-      {/* Pasamos los datos dummy como props al componente ProfileLayout */}
-      <ProfileLayout company={dummyCompany} details={dummyDetails} />
-    </NavFooter>
+    <div>
+      <Gov />
+      {/*Usamos el layout NavFooter que incluye navegación y pie de página*/}
+      <NavFooter>
+        {/* Pasamos los datos dummy como props al componente ProfileLayout */}
+        <ProfileLayout company={dummyCompany} details={dummyDetails} />
+      </NavFooter>
+    </div>
+    
   );
 };
 

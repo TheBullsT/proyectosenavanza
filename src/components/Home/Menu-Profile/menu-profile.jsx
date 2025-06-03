@@ -33,7 +33,7 @@ const MenuProfile = forwardRef(function MenuProfileComponent(props, ref) {
             {/* Lista de enlaces relacionados a la empresa */}
             <ul className="menu-list">
                 <li><Link to="/diagnostico-empresarial">Diagnóstico Empresarial</Link></li>
-                <li><Link to="/resultadosdediagnostico">Resultados de Diagnóstico</Link></li>
+                <li><Link to="/resultado-diagnostico">Resultados de Diagnóstico</Link></li>
             </ul>
 
             {/* Línea separadora final */}

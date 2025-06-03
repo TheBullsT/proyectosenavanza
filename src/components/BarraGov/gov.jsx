@@ -1,6 +1,6 @@
 import react from 'react';
 import './gov.css';
-import gov from  '../../assets/img/logo_gov.co.png';
+import gov from  '../../assets/img/gov.png';
 
 const Gov = () => {
     return(
