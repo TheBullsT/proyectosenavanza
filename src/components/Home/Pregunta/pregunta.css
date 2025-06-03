@@ -83,7 +83,7 @@ body {
     line-height: 1.5;
     /* Mejor legibilidad */
     margin: 0;
-    padding: 0 1rem;
+    padding: 0;
     /* Evitar que contenido quede pegado a los bordes en móviles */
 }
 
@@ -145,7 +145,7 @@ a:focus {
 .realizar p {
     font-size: 1.8rem;
     /* Tamaño legible */
-    color: var(--gray-7);
+    color: var(--black);
     /* Gris medio para no competir con título */
     margin-bottom: 2rem;
     /* Separación antes del botón */
@@ -158,7 +158,7 @@ a:focus {
     border-radius: 6px;
     font-weight: 700;
     color: var(--white);
-    background-color: var(--primary-5);
+    background-color: var(--primary-1);
     height: 50px;
     width: 180px;
     cursor: pointer;
