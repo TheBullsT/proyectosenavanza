@@ -1,14 +1,30 @@
-import React from "react";
-// Importa la imagen de resultados desde la ruta especificada
+import React, { useState } from "react";
+// Imagen del componente principal
 import result from "../../../../assets/img/img-resultados-diagnostico/resultados.png";
-// Importa los estilos específicos para este componente
+// Imagen que se mostrará en el pop-up (puedes cambiarla por la que desees)
+import infoImg from "../../../../assets/img/Solutions.png";
+// Estilos del componente
 import "./resultado.css";
 
 function Resultados() {
+    const [mostrarPopup, setMostrarPopup] = useState(false);
+    const [animarPopup, setAnimarPopup] = useState(false);
+
+    const abrirPopup = () => {
+        setMostrarPopup(true);
+        // Activa animación después de montaje
+        setTimeout(() => setAnimarPopup(true), 10);
+    };
+
+    const cerrarPopup = () => {
+        // Desactiva animación
+        setAnimarPopup(false);
+        // Espera animación de salida antes de desmontar
+        setTimeout(() => setMostrarPopup(false), 300);
+    };
+
     return (
-        // Contenedor principal que envuelve todo el componente
         <div className="container-resultado">
-            {/* Contenedor del título del reporte */}
             <div className="titulo-reporte">
                 <h1>
                     Conoce el programa de formación <br />
@@ -16,12 +32,9 @@ function Resultados() {
                 </h1>
             </div>
 
-            {/* Contenedor que agrupa la imagen y la recomendación */}
             <div className="resultado-total">
-                {/* Imagen ilustrativa de los resultados */}
                 <img src={result} alt="Imagen de resultados" />
 
-                {/* Caja que muestra el programa de formación recomendado */}
                 <div className="programa-recomendado">
                     <h2>
                         Análisis y desarrollo <br />
@@ -31,11 +44,28 @@ function Resultados() {
                         Es uno de los programas de formación <br />
                         recomendados para tu empresa
                     </p>
-
-                    {/* Botón para ver más detalles del programa */}
-                    <button className="boton-ver-mas">Ver más</button>
+                    <button className="boton-ver-mas" onClick={abrirPopup}>
+                        Ver más
+                    </button>
                 </div>
             </div>
+
+            {mostrarPopup && (
+                <div className={`popup ${animarPopup ? "mostrar" : "ocultar"}`}>
+                    <div className="popup-contenido">
+                        <img src={infoImg} alt="Programa de formación" className="popup-imagen" />
+                        <div className="popup-info">
+                            <h1>Análisis y Desarrollo de Software</h1>
+                            <p><strong>Duración:</strong> 24 meses</p>
+                            <p><strong>Nivel Formativo:</strong> Tecnólogo</p>
+                            <p>
+                                <strong>Descripción:</strong> Este programa tiene como objetivo formar tecnólogos capaces de analizar, diseñar, desarrollar, implementar y mantener aplicaciones de software, promoviendo soluciones tecnológicas para diversos sectores productivos.
+                            </p>
+                            <button className="boton-cerrar" onClick={cerrarPopup}>Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
