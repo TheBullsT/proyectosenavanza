@@ -37,18 +37,26 @@ function Programas() {
   const [showPopup, setShowPopup] = useState(false);
   // Estado para almacenar el programa seleccionado cuya info se mostrará en el popup
   const [programaSeleccionado, setProgramaSeleccionado] = useState(null);
+  const [animarPopup, setAnimarPopup] = useState(false);
+
 
   // Función que abre el popup y asigna el programa seleccionado
   const abrirPopup = (programa) => {
     setProgramaSeleccionado(programa);
     setShowPopup(true);
+    setTimeout(() => setAnimarPopup(true), 10);
   };
 
   // Función para cerrar el popup y limpiar el programa seleccionado
-  const cerrarPopup = () => {
+const cerrarPopup = () => {
+  setAnimarPopup(false); // Quita la clase 'mostrar', activa 'ocultar'
+  
+  // Espera que termine la animación antes de desmontar
+  setTimeout(() => {
     setShowPopup(false);
     setProgramaSeleccionado(null);
-  };
+  }, 300); // Este tiempo debe coincidir con la duración de la animación en CSS
+};
 
   return (
     <div className="container-programas">
@@ -81,20 +89,22 @@ function Programas() {
 
       {/* Popup que aparece solo si showPopup es true y hay un programa seleccionado */}
       {showPopup && programaSeleccionado && (
-        <div className="popup-overlay-programas">
-          <div className="popup-content-programas">
-            {/* Parte izquierda: imagen del programa */}
-            <div className="popup-imagen-programas">
-              <img src={pregunta} alt={"Imagen de pregunta"} />
-            </div>
-            {/* Parte derecha: información detallada del programa */}
-            <div className="popup-info-programas">
-              <h1>{programaSeleccionado.nombre}</h1>
-              <p><strong>Duración:</strong> {programaSeleccionado.duracion}</p>
-              <p><strong>Nivel Formativo:</strong> {programaSeleccionado.nivel}</p>
-              <p><strong>Descripción:</strong> {programaSeleccionado.descripcion}</p>
-              {/* Botón para cerrar el popup */}
-              <button className="boton-cerrar-programas" onClick={cerrarPopup}>Cerrar</button>
+        <div className={`popup ${animarPopup ? "mostrar" : "ocultar"}`}>
+          <div className="popup-overlay-programas">
+            <div className="popup-content-programas">
+              {/* Parte izquierda: imagen del programa */}
+              <div className="popup-imagen-programas">
+                <img src={pregunta} alt={"Imagen de pregunta"} />
+              </div>
+              {/* Parte derecha: información detallada del programa */}
+              <div className="popup-info-programas">
+                <h1>{programaSeleccionado.nombre}</h1>
+                <p><strong>Duración:</strong> {programaSeleccionado.duracion}</p>
+                <p><strong>Nivel Formativo:</strong> {programaSeleccionado.nivel}</p>
+                <p><strong>Descripción:</strong> {programaSeleccionado.descripcion}</p>
+                {/* Botón para cerrar el popup */}
+                <button className="boton-cerrar-programas" onClick={cerrarPopup}>Cerrar</button>
+              </div>
             </div>
           </div>
         </div>
