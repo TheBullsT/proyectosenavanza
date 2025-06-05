@@ -1,67 +1,100 @@
 import React, { useState } from "react";
-// Imagen del componente principal
-import result from "../../../../assets/img/img-resultados-diagnostico/resultados.png";
-// Imagen que se mostrará en el pop-up
-import infoImg from "../../../../assets/img/Solutions.png";
-// Estilos del componente
-import "./resultado.css";
+import imagenprograma from '../../../../assets/img/img-resultados-diagnostico/imagen-programa.png';
+import recomendados from '../../../../assets/img/img-resultados-diagnostico/recomendados-programa.png';
+import './programas.css';
+import pregunta from '../../../../assets/img/dudas.png';
 
-function Resultados() {
-  const [mostrarPopup, setMostrarPopup] = useState(false);
-  const [animarPopup, setAnimarPopup] = useState(false);
+// Datos de los programas de formación (simulados)
+const programasData = [
+  {
+    id: 1,
+    nombre: "Programa A",
+    duracion: "6 meses",
+    nivel: "Intermedio",
+    descripcion: "Descripción del programa A.",
+    imagen: imagenprograma,
+  },
+  {
+    id: 2,
+    nombre: "Programa B",
+    duracion: "4 meses",
+    nivel: "Básico",
+    descripcion: "Descripción del programa B.",
+    imagen: imagenprograma,
+  },
+  {
+    id: 3,
+    nombre: "Programa C",
+    duracion: "8 meses",
+    nivel: "Avanzado",
+    descripcion: "Descripción del programa C.",
+    imagen: imagenprograma,
+  },
+];
 
-  const abrirPopup = () => {
-    setMostrarPopup(true);
-    // Activar animación después de montar
-    setTimeout(() => setAnimarPopup(true), 10);
+function Programas() {
+  // Estado para controlar si el popup está visible
+  const [showPopup, setShowPopup] = useState(false);
+  // Estado para almacenar el programa seleccionado cuya info se mostrará en el popup
+  const [programaSeleccionado, setProgramaSeleccionado] = useState(null);
+
+  // Función que abre el popup y asigna el programa seleccionado
+  const abrirPopup = (programa) => {
+    setProgramaSeleccionado(programa);
+    setShowPopup(true);
   };
 
+  // Función para cerrar el popup y limpiar el programa seleccionado
   const cerrarPopup = () => {
-    // Inicia la animación de salida
-    setAnimarPopup(false);
-    // Espera a que termine la animación para desmontar
-    setTimeout(() => setMostrarPopup(false), 300);
+    setShowPopup(false);
+    setProgramaSeleccionado(null);
   };
 
   return (
-    <div className="container-resultado">
-      <div className="titulo-reporte">
-        <h1>
-          Conoce el programa de formación <br />
-          más recomendado para ti
-        </h1>
+    <div className="container-programas">
+      {/* Título principal */}
+      <div className="titulo-reporte-programas">
+        <h1>Programa de Formación <br /> Recomendados</h1>
       </div>
 
-      <div className="resultado-total">
-        <img src={result} alt="Imagen de resultados" />
-
-        <div className="programa-recomendado">
-          <h2>
-            Análisis y desarrollo <br />
-            de software
-          </h2>
-          <p>
-            Es uno de los programas de formación <br />
-            recomendados para tu empresa
-          </p>
-          <button className="boton-ver-mas" onClick={abrirPopup}>
-            Ver más
-          </button>
+      {/* Contenedor de programas y la imagen lateral */}
+      <div className="programas-total">
+        <div className="programas">
+          {/* Mapeamos los programas para mostrarlos como tarjetas */}
+          {programasData.map((programa) => (
+            <div key={programa.id} className="programas-formacion">
+              {/* Imagen del programa */}
+              <img className="imagen-programa" src={programa.imagen} alt={`Imagen ${programa.nombre}`} />
+              <div className="informacion-ficha-programas">
+                {/* Nombre del programa */}
+                <p>{programa.nombre}</p>
+                {/* Botón para mostrar más información */}
+                <button className="boton-ver-mas-programas" onClick={() => abrirPopup(programa)}>Ver más</button>
+              </div>
+            </div>
+          ))}
         </div>
+
+        {/* Imagen decorativa lateral */}
+        <img className="imagen-recomendados-programas" src={recomendados} alt="Recomendados imagen" />
       </div>
 
-      {mostrarPopup && (
-        <div className={`popup ${animarPopup ? "mostrar" : "ocultar"}`}>
-          <div className="popup-contenido">
-            <img src={infoImg} alt="Programa de formación" className="popup-imagen" />
-            <div className="popup-info">
-              <h1>Análisis y Desarrollo de Software</h1>
-              <p><strong>Duración:</strong> 24 meses</p>
-              <p><strong>Nivel Formativo:</strong> Tecnólogo</p>
-              <p>
-                <strong>Descripción:</strong> Este programa tiene como objetivo formar tecnólogos capaces de analizar, diseñar, desarrollar, implementar y mantener aplicaciones de software, promoviendo soluciones tecnológicas para diversos sectores productivos.
-              </p>
-              <button className="boton-cerrar" onClick={cerrarPopup}>Cerrar</button>
+      {/* Popup que aparece solo si showPopup es true y hay un programa seleccionado */}
+      {showPopup && programaSeleccionado && (
+        <div className="popup-overlay-programas">
+          <div className="popup-content-programas">
+            {/* Parte izquierda: imagen del programa */}
+            <div className="popup-imagen-programas">
+              <img src={pregunta} alt={"Imagen de pregunta"} />
+            </div>
+            {/* Parte derecha: información detallada del programa */}
+            <div className="popup-info-programas">
+              <h1>{programaSeleccionado.nombre}</h1>
+              <p><strong>Duración:</strong> {programaSeleccionado.duracion}</p>
+              <p><strong>Nivel Formativo:</strong> {programaSeleccionado.nivel}</p>
+              <p><strong>Descripción:</strong> {programaSeleccionado.descripcion}</p>
+              {/* Botón para cerrar el popup */}
+              <button className="boton-cerrar-programas" onClick={cerrarPopup}>Cerrar</button>
             </div>
           </div>
         </div>
@@ -70,4 +103,4 @@ function Resultados() {
   );
 }
 
-export default Resultados;
+export default Programas;
