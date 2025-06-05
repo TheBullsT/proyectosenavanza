@@ -85,7 +85,9 @@ a {
     /* Una columna */
     text-align: center;
 }
-
+.titulo-reporte-programas h1{
+    margin: 0;
+}
 /* Contenedor para el título, en la primera fila */
 .titulo-reporte {
     grid-column: 1;
@@ -100,15 +102,14 @@ a {
     justify-content: space-between;
     /* Separar máximo los hijos */
     align-items: center;
-    /* Alinear verticalmente al centro */
-    margin-top: -20px;
     /* Ajuste para acercar al título */
+    height: 500px;
 }
 
 /* Imagen decorativa lateral */
 .imagen-recomendados {
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
 }
 
 /* Contenedor para las tarjetas de programas */
@@ -117,7 +118,7 @@ a {
     align-items: center;
     flex-direction: column;
     /* Apilar verticalmente */
-    gap: 50px;
+    gap: 40px;
     /* Espacio entre tarjetas */
     border-radius: 6px;
     font-size: var(--h3);
