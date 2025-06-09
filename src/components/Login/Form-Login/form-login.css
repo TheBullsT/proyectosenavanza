@@ -136,6 +136,7 @@ body {
 /* Inputs y Selects */
 .form-login input,
 .form-login select {
+  outline: none;
   width: 100%;
   height: 3rem;
   border-radius: 6px;

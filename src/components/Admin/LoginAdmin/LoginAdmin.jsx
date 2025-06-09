@@ -1,16 +1,19 @@
 // Importa React y useState para manejar estado local
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 // Importa la imagen del logo para mostrar en el login
-import logoLogin from '../../../assets/img/Logo_SENAVANZA.jpg'; 
+import logoLogin from '../../../assets/img/Logo_SENAVANZA.jpg';
 // Importa los estilos CSS específicos para este component
-import './LoginAdmin.css'; 
+import './LoginAdmin.css';
 // Importa useNavigate para navegación programática entre rutas
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
+// Importar los AXIOS
+import axios from "axios";
 
 // Componente funcional LoginAdmin
 function LoginAdmin() {
     // Estado local para manejar la opción seleccionada (aunque no se usa en el formulario actual)
-    const [selectedOption, setSelectedOption] = useState("default");
+    const [correo, setCorreo] = useState("");
+    const [contraseña, setContraseña] = useState("");
 
     // Hook para redireccionar a otras rutas
     const navigate = useNavigate();
@@ -19,6 +22,25 @@ function LoginAdmin() {
     const irInicio = () => {
         navigate('/inicio');
     }
+
+    //Verficicacion de datos
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Evita que se recargue la página
+        try {
+            const response = await axios.post("http://localhost:8000/api/login_admin/", {
+                username: correo,
+                password: contraseña
+            });
+
+            console.log(response.data);
+            alert("¡Login exitoso como administrador!");
+            navigate('/adminhome'); // Redirige al panel del admin (cambia si es otro)
+        } catch (error) {
+            console.error(error);
+            alert("Credenciales inválidas o error en el login.");
+        }
+    };
+
 
     return (
         // Contenedor principal del login
@@ -31,7 +53,7 @@ function LoginAdmin() {
             {/* Contenedor del formulario de login */}
             <div className="form-login">
                 {/* Formulario con método POST (aunque action no apunta a nada) */}
-                <form action="POST">
+                <form onSubmit={handleSubmit}>
                     {/* Título principal del formulario */}
                     <h1 className="titulo">Iniciar Sesión</h1>
                     {/* Subtítulo motivacional */}
@@ -42,13 +64,13 @@ function LoginAdmin() {
                         {/* Campo email con label accesible */}
                         <label className="emailType" htmlFor="emailType">
                             Email
-                            <input type="email" placeholder="Correo Electronico" />
+                            <input type="email" id="emailType" placeholder="Correo Electronico" value={correo} onChange={(e) => setCorreo(e.target.value)} required />
                         </label>
 
                         {/* Campo contraseña con label accesible */}
                         <label className="passwordType" htmlFor="passwordType">
                             Contraseña
-                            <input type="password" placeholder="Contraseña" required />
+                            <input type="password" id="passwordType" placeholder="Contraseña" value={contraseña} onChange={(e) => setContraseña(e.target.value)} required />
                         </label>
                     </div>
 
