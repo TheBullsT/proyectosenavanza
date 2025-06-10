@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Loading from './components/Loading/loading';
 // Contexto para manejo de temas oscuros (dark mode)
 import { ThemeProvider } from './layouts/Dark-Mode/temacontexto';
+// Importar estilos a las notificaciones tipo toast
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Lazy loading: importamos las páginas de forma diferida para mejorar rendimiento
 const Home = lazy(() => import('./pages/Home'));
@@ -50,7 +53,7 @@ function App() {
           <Routes>
             {/* Redirecciona la ruta raíz "/" a "/inicio" */}
             <Route path="/" element={<Navigate to="/inicio" />} />
-            
+
             {/* Rutas para login de usuario y admin */}
             <Route path="/login" element={<Login />} />
             <Route path="/login-admin" element={<LoginAdministrador />} />
@@ -59,7 +62,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/perfil" element={<PerfilPage />} />
             <Route path="/editarperfil" element={<EditarPerfilPage />} />
-            
+
             {/* Rutas para área de administración */}
             <Route path="/adminhome" element={<AdminHome />} />
             <Route path="/diagnostico-empresarial" element={<DiagnosticoEmpresarial />} />
@@ -76,6 +79,15 @@ function App() {
             <Route path="/visualizacion-programa" element={<VisualizacionPrograma />} />
           </Routes>
         </Suspense>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          pauseOnHover
+          draggable
+          theme="colored" />
       </Router>
     </ThemeProvider>
   );

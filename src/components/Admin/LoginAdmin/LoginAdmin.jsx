@@ -8,6 +8,8 @@ import './LoginAdmin.css';
 import { useNavigate } from "react-router-dom";
 // Importar los AXIOS
 import axios from "axios";
+// Importar Toast
+import { toast } from "react-toastify";
 
 // Componente funcional LoginAdmin
 function LoginAdmin() {
@@ -27,17 +29,17 @@ function LoginAdmin() {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Evita que se recargue la página
         try {
-            const response = await axios.post("http://localhost:8000/api/login_admin/", {
+            const response = await axios.post("http://localhost:8000/api/login/loginAdmin/", {
                 username: correo,
                 password: contraseña
             });
-
+ 
             console.log(response.data);
-            alert("¡Login exitoso como administrador!");
+            toast.success("Inició de Sesión exitoso");
             navigate('/adminhome'); // Redirige al panel del admin (cambia si es otro)
         } catch (error) {
             console.error(error);
-            alert("Credenciales inválidas o error en el login.");
+            toast.error("Credenciales inválidas");
         }
     };
 
@@ -53,7 +55,7 @@ function LoginAdmin() {
             {/* Contenedor del formulario de login */}
             <div className="form-login">
                 {/* Formulario con método POST (aunque action no apunta a nada) */}
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} method="POST">
                     {/* Título principal del formulario */}
                     <h1 className="titulo">Iniciar Sesión</h1>
                     {/* Subtítulo motivacional */}

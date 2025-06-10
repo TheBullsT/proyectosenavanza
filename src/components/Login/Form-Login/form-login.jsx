@@ -1,11 +1,40 @@
+// Importar React y useState
 import React, { useState } from "react";
+// Importar el logo
 import logoLogin from '../../../assets/img/Logo_SENAVANZA.jpg';
+// Importar el css
 import './form-login.css';
+// Importar el navigate para navegar entre rutas sin hacer una carga previa
 import { useNavigate } from "react-router-dom";
+// Axios para Validacion de backend
+import axios from "axios";
+// Importar las alertas
+import { toast } from "react-toastify";
 
 function FormLogin() {
     const [selectedOption, setSelectedOption] = useState("default");
+    const [correo, setCorreo] = useState("");
+    const [contraseña, setContraseña] = useState("");
     const navigate = useNavigate();
+
+
+    // Verificacion de datos
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        try{
+            const response = await axios.post("http://localhost:8000/api/login/loginEmpresa/", {
+                correo_empresa: correo,
+                contraseña: contraseña
+            }); 
+            
+            console.log(response.data);
+            toast.success("Inicio de sesión exitoso");
+            navigate("/home");
+        } catch (error) {
+            console.error(error);
+            toast.error("Datos invalidos");
+        }
+    }
 
     const irInicio = () => {
         navigate('/inicio');
@@ -19,7 +48,7 @@ function FormLogin() {
             </div>
 
             <div className="form-login">
-                <form method="POST">
+                <form onSubmit={handleSubmit} method="POST">
                     <h1 className="titulo">Iniciar Sesión</h1>
                     <h4 className="subtitulo">¡Vamos a Empezar!</h4>
 
@@ -52,6 +81,7 @@ function FormLogin() {
                             <input
                                 type="email"
                                 id="emailType"
+                                onChange={(e) => setCorreo(e.target.value)}
                                 placeholder="Correo electrónico"
                                 required
                             />
@@ -62,6 +92,7 @@ function FormLogin() {
                             <input
                                 type="password"
                                 id="passwordType"
+                                onChange={(e) => setContraseña(e.target.value)}
                                 placeholder="Contraseña"
                                 required
                             />
