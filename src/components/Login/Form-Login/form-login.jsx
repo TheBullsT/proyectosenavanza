@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // Importar las alertas
 import { toast } from "react-toastify";
+// Apis 
+import { login_empresa } from "../../../api/apis";
 
 function FormLogin() {
     const [selectedOption, setSelectedOption] = useState("default");
@@ -22,14 +24,17 @@ function FormLogin() {
     const handleSubmit = async(e) => {
         e.preventDefault();
         try{
-            const response = await axios.post("http://localhost:8000/api/login/loginEmpresa/", {
+            const response = await login_empresa({
                 correo_empresa: correo,
-                contraseña: contraseña
+                password: contraseña
             }); 
-            
-            console.log(response.data);
-            toast.success("Inicio de sesión exitoso");
-            navigate("/home");
+            if (response){
+                console.log(response.data);
+                toast.success("Inicio de sesión exitoso");
+                navigate("/home");
+            }else{
+                toast.error("Contraseña o Correo Electronico Incorrectos");
+            }
         } catch (error) {
             console.error(error);
             toast.error("Datos invalidos");

@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // Importar Toast
 import { toast } from "react-toastify";
+// Importar Apis
+import { login_admin } from "../../../api/apis";
 
 // Componente funcional LoginAdmin
 function LoginAdmin() {
@@ -29,17 +31,21 @@ function LoginAdmin() {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Evita que se recargue la página
         try {
-            const response = await axios.post("http://localhost:8000/api/login/loginAdmin/", {
+            const response = await login_admin({
                 username: correo,
                 password: contraseña
             });
- 
-            console.log(response.data);
-            toast.success("Inició de Sesión exitoso");
-            navigate('/adminhome'); // Redirige al panel del admin (cambia si es otro)
+
+            if (response) {
+                console.log(response.data);
+                toast.success("Inició de Sesión exitoso");
+                navigate('/adminhome'); // Redirige al panel del admin (cambia si es otro)
+            } else {
+                toast.error("Contraseña Incorrectas");
+            }
+
         } catch (error) {
             console.error(error);
-            toast.error("Credenciales inválidas");
         }
     };
 
