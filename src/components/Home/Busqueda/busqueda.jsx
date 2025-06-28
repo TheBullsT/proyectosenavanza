@@ -16,6 +16,7 @@ import ClickOutMenu from '../Menu-Profile/click-out-menu';
 import { useNavigate } from 'react-router-dom';
 
 function Busqueda() {
+
     // Estado para mostrar u ocultar el menú de perfil
     const [menuVisible, setMenuVisible] = useState(false);
 

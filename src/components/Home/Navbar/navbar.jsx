@@ -12,9 +12,15 @@ function NavBar() {
       <nav className="nav-links" aria-label="Main Navigation">
         <ul>
           {/* Lista de enlaces de navegación */}
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/diagnostico-empresarial">Diagnóstico Empresarial</Link></li>
-          <li><Link to="/resultado-diagnostico">Resultados de Diagnóstico</Link></li>
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          <li>
+            <Link to="/diagnostico-empresarial">Diagnóstico Empresarial</Link>
+          </li>
+          <li>
+            <Link to="/resultado-diagnostico">Resultados de Diagnóstico</Link>
+          </li>
         </ul>
       </nav>
     </div>

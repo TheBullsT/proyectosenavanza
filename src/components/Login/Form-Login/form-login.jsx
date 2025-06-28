@@ -51,7 +51,7 @@ function FormLogin() {
             // Se decodifica para obetener su Nombre de Usuario
             const decoded = jwtDecode(access);
             // Guardamos su usario en el localStorage
-            localStorage.setItem("Username", decoded.username || correo_empresa);
+            localStorage.setItem("Correo_empresa", decoded.username || correo_empresa);
 
             // Validamos ya obtenidos su JWT
             const res = await apiLogin.login_empresa("loginEmpresa",
