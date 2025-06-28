@@ -11,39 +11,69 @@ import axios from "axios";
 // Importar las alertas
 import { toast } from "react-toastify";
 // Apis 
-
+import { apiLogin } from "../../../api/apis" // Axios para la Login
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../api/constans"; // Claves para localStorage
+import { jwtDecode } from "jwt-decode"; // Para extraer info del token
+import { toast } from "react-toastify"; // Notificaciones tipo popup
 
 function FormLogin() {
+    // Hooks para capturar correo, contraseña
     const [selectedOption, setSelectedOption] = useState("default");
     const [correo, setCorreo] = useState("");
     const [contraseña, setContraseña] = useState("");
+
+    // Hook para redireccionar al usuario a otras rutas
     const navigate = useNavigate();
+
+    // Función que redirige a la página de inicio al hacer clic en el logo
+    const irInicio = () => {
+        navigate('/inicio');
+    };
 
 
     // Verificacion de datos
-    const handleSubmit = async(e) => {
-        e.preventDefault();
-        try{
-            const response = await login_empresa({
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Previene que se recargue la pagina
+        try {
+            // Obtenermos la JWT
+            const response = await apiLogin.login_empresa("token/", {
                 correo_empresa: correo,
                 password: contraseña
-            }); 
-            if (response){
-                console.log(response.data);
-                toast.success("Inicio de sesión exitoso");
+            });
+
+            // Extraemos el access y refresh token
+            const { access, refresh } = response.data;
+
+            // Guardamos los tokens en el almacenamiento local
+            localStorage.setItem(ACCESS_TOKEN, access);
+            localStorage.setItem(REFRESH_TOKEN, refresh);
+
+            // Se decodifica para obetener su Nombre de Usuario
+            const decoded = jwtDecode(access);
+            // Guardamos su usario en el localStorage
+            localStorage.setItem("Username", decoded.username || correo_empresa);
+
+            // Validamos ya obtenidos su JWT
+            const res = await apiLogin.login_empresa("loginEmpresa",
+                { correo_empresa: correo, password: contraseña },
+            );
+
+            // Verificamos con el status por su backend, si el estatus es 200, entra sin problema
+            if (res.status == 200) {
+                toast.success("Inición Sesión Exitoso");
                 navigate("/home");
-            }else{
-                toast.error("Contraseña o Correo Electronico Incorrectos");
+                // Si la verificacion no da, salta error y devuelta al login
+            } else {
+                toast.error("Usuario o contraseña incorrectas");
+                navigate("/login");
             }
+
         } catch (error) {
             console.error(error);
             toast.error("Datos invalidos");
         }
     }
 
-    const irInicio = () => {
-        navigate('/inicio');
-    };
 
 
     return (

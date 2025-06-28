@@ -37,7 +37,7 @@ function LoginAdmin() {
                 password: contraseña
             });
 
-            // Extraemos los tokens de la respuesta
+            // Extraemos el access y refresh token
             const { access, refresh } = response.data;
 
             // Guardamos los tokens en el almacenamiento local
