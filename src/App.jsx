@@ -28,6 +28,14 @@ const ModificarPrograma = lazy(() => import('./pages/ModificaraPrograma'));
 const ListarPrograma = lazy(() => import('./pages/ListarPrograma'));
 const VisualizacionEmpresa = lazy(() => import('./pages/VisualizacionEmpresa'));
 const VisualizacionPrograma = lazy(() => import('./pages/VisualizacionPrograma'));
+const ProtectRoute = lazy(() => import('./components/ProtectRoute'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+
+
+function Logout() {
+  localStorage.clear()
+  return <Navigate to="/login" />;
+}
 
 function App() {
   // Estado local para controlar si está en modo "loading" (cargando)
@@ -56,27 +64,35 @@ function App() {
 
             {/* Rutas para login de usuario y admin */}
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/login-admin" element={<LoginAdministrador />} />
 
             {/* Rutas principales para usuarios */}
-            <Route path="/home" element={<Home />} />
-            <Route path="/perfil" element={<PerfilPage />} />
-            <Route path="/editarperfil" element={<EditarPerfilPage />} />
+            <Route path="/home" element={<ProtectRoute role="empresa"><Home /></ProtectRoute>} />
+            <Route path="/perfil" element={<ProtectRoute role="empresa"><PerfilPage /></ProtectRoute>} />
+            <Route path="/editarperfil" element={<ProtectRoute role="empresa"><EditarPerfilPage /></ProtectRoute>} />
 
-            {/* Rutas para área de administración */}
-            <Route path="/adminhome" element={<AdminHome />} />
-            <Route path="/diagnostico-empresarial" element={<DiagnosticoEmpresarial />} />
-            <Route path="/resultado-diagnostico" element={<ResultadosDiagnostico />} />
+            {/* Rutas para área de administración usuario */}
+            <Route path="/diagnostico-empresarial" element={<ProtectRoute role="empresa"><DiagnosticoEmpresarial /></ProtectRoute>} />
+            <Route path="/resultado-diagnostico" element={<ProtectRoute role="empresa"><ResultadosDiagnostico /></ProtectRoute>} />
+
+            {/* Ruta de inicio */}
             <Route path="/inicio" element={<Inicio />} />
             <Route path="/informacion" element={<Informacion />} />
-            <Route path="/crear-empresa" element={<CrearEmpresa />} />
-            <Route path="/listar-empresa" element={<ListarEmpresa />} />
-            <Route path="/modificar-empresa" element={<ModificarEmpresa />} />
-            <Route path="/crear-programa" element={<CrearProgramaDeFormacion />} />
-            <Route path="/modificar-programa" element={<ModificarPrograma />} />
-            <Route path="/listar-programa" element={<ListarPrograma />} />
-            <Route path="/visualizacion-empresa" element={<VisualizacionEmpresa />} />
-            <Route path="/visualizacion-programa" element={<VisualizacionPrograma />} />
+
+            {/* Rutas para administración */}
+            <Route path="/adminhome" element={<ProtectRoute role="admin"><AdminHome /></ProtectRoute>} />
+            <Route path="/crear-empresa" element={<ProtectRoute role="admin"><CrearEmpresa /></ProtectRoute>} />
+            <Route path="/listar-empresa" element={<ProtectRoute role="admin"><ListarEmpresa /></ProtectRoute>} />
+            <Route path="/modificar-empresa" element={<ProtectRoute role="admin"><ModificarEmpresa /></ProtectRoute>} />
+            <Route path="/crear-programa" element={<ProtectRoute role="admin"><CrearProgramaDeFormacion /></ProtectRoute>} />
+            <Route path="/modificar-programa" element={<ProtectRoute role="admin"><ModificarPrograma /></ProtectRoute>} />
+            <Route path="/listar-programa" element={<ProtectRoute role="admin"><ListarPrograma /></ProtectRoute>} />
+            <Route path="/visualizacion-empresa" element={<ProtectRoute role="admin"><VisualizacionEmpresa /></ProtectRoute>} />
+            <Route path="/visualizacion-programa" element={<ProtectRoute role="admin"><VisualizacionPrograma /></ProtectRoute>} />
+
+            {/* Ruta para error no se encuentra la pagina */}
+            <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </Suspense>
         <ToastContainer

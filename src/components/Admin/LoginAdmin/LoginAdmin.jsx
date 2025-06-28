@@ -1,88 +1,122 @@
-// Importa React y useState para manejar estado local
+// Importa React y useState para manejar los campos del formulario
 import React, { useState } from "react";
-// Importa la imagen del logo para mostrar en el login
+// Importa el logo para mostrarlo en el login
 import logoLogin from '../../../assets/img/Logo_SENAVANZA.jpg';
-// Importa los estilos CSS específicos para este component
+// Importa los estilos CSS específicos para este componente
 import './LoginAdmin.css';
-// Importa useNavigate para navegación programática entre rutas
+// Hook para redireccionar a otras rutas
 import { useNavigate } from "react-router-dom";
-// Importar los AXIOS
-import axios from "axios";
-// Importar Toast
-import { toast } from "react-toastify";
-// Importar Apis
-import { login_admin } from "../../../api/apis";
 
-// Componente funcional LoginAdmin
+// Importaciones necesarias para conectar con el backend
+import {apiLogin} from "../../../api/apis" // Axios para la Login
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../api/constans"; // Claves para localStorage
+import { jwtDecode } from "jwt-decode"; // Para extraer info del token
+import { toast } from "react-toastify"; // Notificaciones tipo popup
+
+// Componente funcional de login para administradores
 function LoginAdmin() {
-    // Estado local para manejar la opción seleccionada (aunque no se usa en el formulario actual)
-    const [correo, setCorreo] = useState("");
+    // Hooks para capturar usuario y contraseña del formulario
+    const [user, setUser] = useState("");
     const [contraseña, setContraseña] = useState("");
 
-    // Hook para redireccionar a otras rutas
+    // Hook para redireccionar al usuario a otras rutas
     const navigate = useNavigate();
 
-    // Función que redirige a la página de inicio ('/inicio')
+    // Función que redirige a la página de inicio al hacer clic en el logo
     const irInicio = () => {
         navigate('/inicio');
-    }
+    };
 
-    //Verficicacion de datos
+    // Función que se ejecuta al enviar el formulario
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Evita que se recargue la página
+        e.preventDefault(); // Previene que se recargue la página
         try {
-            const response = await login_admin({
-                username: correo,
+            // Obtenemos el JWT de access y refresh
+            const response = await apiLogin.post("token/", {
+                username: user,
                 password: contraseña
             });
 
-            if (response) {
-                console.log(response.data);
-                toast.success("Inició de Sesión exitoso");
-                navigate('/adminhome'); // Redirige al panel del admin (cambia si es otro)
-            } else {
-                toast.error("Contraseña Incorrectas");
+            // Extraemos los tokens de la respuesta
+            const { access, refresh } = response.data;
+
+            // Guardamos los tokens en el almacenamiento local
+            localStorage.setItem(ACCESS_TOKEN, access);
+            localStorage.setItem(REFRESH_TOKEN, refresh);
+
+
+            // Decodificamos para obtener tambien su user
+            const decode = jwtDecode(access);
+            // Guardamos su usuario tambien
+            localStorage.setItem("Username", decode.username || user);
+
+
+            // Validamos si es admin ya obtenido su JWT
+            const res = await apiLogin.post("loginAdmin/",
+                {username: user, password: contraseña},
+            );
+
+            // Verificamos con el status por su backend, si el estatus es 200, entra sin problema
+            if (res.status == 200){
+                toast.success("Inición Sesión Exitoso");
+                navigate("/adminhome");
+            // Si la verificacion no da, salta error y devuelta al login
+            }else{
+                toast.error("No tienes permiso como administrador");
+                navigate("/login");
             }
 
         } catch (error) {
+            // Si ocurre un error en el login, mostramos notificación
+            toast.error("Usuario o contraseña incorrectos");
             console.error(error);
         }
     };
 
-
+    // Renderizado del componente
     return (
-        // Contenedor principal del login
         <div className="login">
-            {/* Logo que al hacer clic redirige a inicio */}
+            {/* Contenedor del logo */}
             <div onClick={irInicio} className="logoLogin">
                 <img onClick={irInicio} src={logoLogin} alt="Logo de SENAVANZA" />
             </div>
 
-            {/* Contenedor del formulario de login */}
+            {/* Contenedor del formulario de inicio de sesión */}
             <div className="form-login">
-                {/* Formulario con método POST (aunque action no apunta a nada) */}
+                {/* Formulario controlado con los estados de React */}
                 <form onSubmit={handleSubmit} method="POST">
-                    {/* Título principal del formulario */}
                     <h1 className="titulo">Iniciar Sesión</h1>
-                    {/* Subtítulo motivacional */}
                     <h4 className="subtitulo">¡Vamos a Empezar!</h4>
 
-                    {/* Contenido del formulario: campos email y contraseña */}
                     <div className="contenido">
-                        {/* Campo email con label accesible */}
-                        <label className="emailType" htmlFor="emailType">
-                            Email
-                            <input type="email" id="emailType" placeholder="Correo Electronico" value={correo} onChange={(e) => setCorreo(e.target.value)} required />
+                        {/* Campo de usuario */}
+                        <label className="textType" htmlFor="textType">
+                            Usuario
+                            <input
+                                type="text"
+                                id="textType"
+                                placeholder="Usuario"
+                                value={user}
+                                onChange={(e) => setUser(e.target.value)}
+                                required
+                            />
                         </label>
 
-                        {/* Campo contraseña con label accesible */}
+                        {/* Campo de contraseña */}
                         <label className="passwordType" htmlFor="passwordType">
                             Contraseña
-                            <input type="password" id="passwordType" placeholder="Contraseña" value={contraseña} onChange={(e) => setContraseña(e.target.value)} required />
+                            <input
+                                type="password"
+                                id="passwordType"
+                                placeholder="Contraseña"
+                                value={contraseña}
+                                onChange={(e) => setContraseña(e.target.value)}
+                                required
+                            />
                         </label>
                     </div>
 
-                    {/* Botón para enviar el formulario */}
+                    {/* Botón de envío del formulario */}
                     <button type="submit" className="iniciar-sesion">Iniciar Sesión</button>
                 </form>
             </div>
@@ -90,5 +124,5 @@ function LoginAdmin() {
     );
 }
 
-// Exporta el componente para usarlo en otras partes de la app
+// Exportamos el componente para poder usarlo en las rutas
 export default LoginAdmin;

@@ -10,6 +10,9 @@ import { FaCircle } from "react-icons/fa6";
 
 // Componente funcional NavbarAdmin
 function NavbarAdmin() {
+
+    const nombreAdmin = localStorage.getItem("Username") || "Admin";
+
     return (
         // Contenedor principal del navbar
         <div className="MainNavBarContainer">
@@ -33,7 +36,7 @@ function NavbarAdmin() {
                 {/* Sección que muestra el icono y el nombre del usuario/admin */}
                 <div className="logoAdmin">
                     <FaCircle className="navIcon" />
-                    <p className="profileName">@Admin</p>
+                    <p className="profileName">@{nombreAdmin}</p>
                 </div>
             </div>
         </div>
