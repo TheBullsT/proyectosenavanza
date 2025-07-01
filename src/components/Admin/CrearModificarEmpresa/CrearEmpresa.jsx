@@ -17,6 +17,9 @@ import { apiCreateEmpresa } from "../../../api/apis";
 const CrearEmpresa = () => {
 
     // Creando Estado local
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [rol, setRol] = useState("");
     const [tipoDocumento, setTipoDocumento] = useState("");
     const [numeroDocumento, setNumeroDocumento] = useState("");
     const [nickName, setNickName] = useState("");
@@ -29,8 +32,18 @@ const CrearEmpresa = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try{
+        try {
+
+            const access = localStorage.getItem("access");
+
+            const headers = {};
+            if (access) {
+                headers.Authorization = `Bearer ${access}`;
+            }
             const response = await apiCreateEmpresa.post("create/", {
+                user: username,
+                password: password,
+                rol: rol,
                 documento: tipoDocumento,
                 numero_documento: parseInt(numeroDocumento),
                 razon_social: nickName,
@@ -39,16 +52,24 @@ const CrearEmpresa = () => {
                 direccion: direccion,
                 actividad_economica: actividad
 
-            });
-            if(response){
-                toast.success("Empresa Creada Correctamente");
+            },
+            { headers}
+            );
+            if (response) {
                 console.log(response.data);
-            }else{
+                toast.success("Empresa Creada Correctamente");
+            } else {
                 toast.error("Error al crear la empresa");
             }
 
-        }catch (error){
-            console.error("Error al crear la empresa", error.response?.data || error.message);
+        } catch (error) {
+            console.error("Error al crear la empresa:", {
+                status: error.response?.status,
+                statusText: error.response?.statusText,
+                data: error.response?.data,
+                message: error.message
+            });
+            toast.error(`Error: ${error.response?.status} - ${error.response?.statusText}`);
         }
     };
 
@@ -105,6 +126,25 @@ const CrearEmpresa = () => {
                         </div>
                     </div>
 
+                    {/* Campo para el rol*/}
+                    <div className="form-group">
+                        <label>Rol</label>
+                        <select onChange={(e) => setRol(e.target.value)} value={rol} required>
+                            <option value="">Seleccione</option>
+                            <option value="ROLES">Empresa</option>
+                        </select>
+                    </div>
+                    {/* Nombre de usuario y contraseña */}
+                    <div className="form-group">
+                        <label>Nombre de usuario</label>
+                        <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} required />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} required />
+                    </div>
+
                     {/* Campo para alias o nombre corto de la empresa */}
                     <div className="form-group">
                         <label>Nickname de la empresa</label>
@@ -120,7 +160,7 @@ const CrearEmpresa = () => {
 
                         <div className="form-group">
                             <label>Correo electrónico</label>
-                            <input type="email" onChange={(e) => setCorreo(e.target.value)} value={correo} required/>
+                            <input type="email" onChange={(e) => setCorreo(e.target.value)} value={correo} required />
                         </div>
                     </div>
 
@@ -142,6 +182,8 @@ const CrearEmpresa = () => {
                         <button type="submit" className="btn-create">Crear Empresa</button>
                         <button type="button" className="btn-cancel">Cancelar</button>
                     </div>
+
+
                 </form>
             </div>
         </div>

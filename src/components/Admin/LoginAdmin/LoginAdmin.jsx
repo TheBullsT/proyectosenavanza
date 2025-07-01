@@ -8,7 +8,7 @@ import './LoginAdmin.css';
 import { useNavigate } from "react-router-dom";
 
 // Importaciones necesarias para conectar con el backend
-import {apiLogin} from "../../../api/apis" // Axios para la Login
+import { apiLogin } from "../../../api/apis" // Axios para la Login
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../api/constans"; // Claves para localStorage
 import { jwtDecode } from "jwt-decode"; // Para extraer info del token
 import { toast } from "react-toastify"; // Notificaciones tipo popup
@@ -32,10 +32,12 @@ function LoginAdmin() {
         e.preventDefault(); // Previene que se recargue la página
         try {
             // Obtenemos el JWT de access y refresh
-            const response = await apiLogin.post("token/", {
-                username: user,
-                password: contraseña
-            });
+            const response = await apiLogin.post("token/",
+                { username: user, password: contraseña },
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                }
+            );
 
             // Extraemos el access y refresh token
             const { access, refresh } = response.data;
@@ -44,27 +46,13 @@ function LoginAdmin() {
             localStorage.setItem(ACCESS_TOKEN, access);
             localStorage.setItem(REFRESH_TOKEN, refresh);
 
-
-            // Decodificamos para obtener tambien su user
+            // Decodificamos de su JWT su usuario
             const decode = jwtDecode(access);
-            // Guardamos su usuario tambien
-            localStorage.setItem("Username", decode.username || user);
+            localStorage.setItem("Username", decode.username || user );
 
-
-            // Validamos si es admin ya obtenido su JWT
-            const res = await apiLogin.post("loginAdmin/",
-                {username: user, password: contraseña},
-            );
-
-            // Verificamos con el status por su backend, si el estatus es 200, entra sin problema
-            if (res.status == 200){
-                toast.success("Inición Sesión Exitoso");
-                navigate("/adminhome");
-            // Si la verificacion no da, salta error y devuelta al login
-            }else{
-                toast.error("No tienes permiso como administrador");
-                navigate("/login");
-            }
+            console.log(response.data);
+            toast.success("Inicio de sesión exitoso");
+            navigate("/adminhome");
 
         } catch (error) {
             // Si ocurre un error en el login, mostramos notificación

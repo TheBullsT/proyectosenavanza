@@ -12,7 +12,6 @@ export const apiLogin = axios.create({
   baseURL: import.meta.env.VITE_API_URL_LOGIN,
 });
 
-
 // API crear empresa
 export const apiCreateEmpresa = axios.create( {
   baseURL: import.meta.env.VITE_API_URL_CREATE,

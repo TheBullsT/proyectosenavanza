@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom"; // Para redirigir si el usuario no está autorizado
 import { jwtDecode } from "jwt-decode"; // Para decodificar el token JWT
-import { apiLogin} from "../api/apis"; // Instancia personalizada de Axios para peticiones
+import { apiLogin } from "../api/apis"; // Instancia personalizada de Axios para peticiones
 import { REFRESH_TOKEN, ACCESS_TOKEN } from "../api/constans"; // Constantes para acceder a los tokens en localStorage
 import { useState, useEffect } from "react"; // Hooks de React
 import Loading from "./Loading/loading"; // Componente de carga mientras se verifica autorización
@@ -28,11 +28,17 @@ function ProtectRoute({ children, rol = null }) {
         const refreshToken = localStorage.getItem(REFRESH_TOKEN); // Obtenemos el refresh token del almacenamiento
 
         try {
-            const res = await apiLogin.post("/api/token/refresh/", { refresh: refreshToken });
+            const res = await apiLogin.post("token/refresh/", { refresh: refreshToken });
 
             if (res.status === 200) {
                 // Si el token se refresca exitosamente, lo guardamos en localStorage
                 localStorage.setItem(ACCESS_TOKEN, res.data.access);
+                const decoded = jwtDecode(res.data.access);
+                if (rol && decoded.role !== rol) { // Verificamos de nuevo su rol
+                    toast.warning("Acceso no autorizado.");
+                    setIsAuthorized(false);
+                    return;
+                }
                 setIsAuthorized(true); // Autorizamos el acceso
             } else {
                 setIsAuthorized(false); // Si no se puede refrescar, denegamos el acceso
@@ -51,7 +57,7 @@ function ProtectRoute({ children, rol = null }) {
         const token = localStorage.getItem(ACCESS_TOKEN); // Obtenemos el token de acceso
 
         if (!token) {
-            setIsAuthorized(false); // No hay token → no autorizado
+            setIsAuthorized(false);     // No hay token → no autorizado
             return;
         }
 
