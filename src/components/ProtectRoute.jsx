@@ -56,7 +56,7 @@ function ProtectRoute({ children, rol = null }) {
         }
 
         const decoded = jwtDecode(token); // Decodificamos el token JWT
-        const now = Date.now() / 1000;    // Hora actual en segundos (para comparar con `exp`)
+        const now = Date.now() / 25000;    // Hora actual en segundos (para comparar con `exp`)
 
         // Si el token ya expiró, intentamos renovarlo
         if (decoded.exp < now) {
