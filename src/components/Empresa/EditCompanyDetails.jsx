@@ -1,64 +1,105 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { apiCreateEmpresa } from '../../api/apis';
+import LoadingDatos from '../Loading/loading_datos';
 
-const CompanyDetails = ({ data }) => (
-  <div className="company-details">
-    {/* Cada bloque representa un campo con título y valor */}
-    {/* Tipo de documento */}
-    <div className='blocked'>
-      <strong>Tipo de Documento:</strong><br />
-      <div className='answer-details'>{data.documentType}</div>
-      <hr />
-    </div>
+const CompanyDetails = () => {
+    const [empresa, setEmpresa] = useState(null);
+    const [loadingDatos, setLoadingDatos] = useState(true);
 
-    {/* Número de documento */}
-    <div className='blocked'>
-      <strong>Número de Documento:</strong><br />
-      <div className='answer-details'>{data.documentNumber}</div>
-      <hr />
-    </div>
+    useEffect(() => {
+        const fetchEmpresa = async () => {
+            try {
+                const response = await apiCreateEmpresa.get("", {
+                    withCredentials: true,
+                });
+                setEmpresa(response.data.empresa);
+            } catch (error) {
+                console.log("Error al traer los datos de la empresa", error);
+            } finally {
+                setLoadingDatos(false);
+            }
+        };
+        fetchEmpresa();
+    }, []);
 
-    {/* Información de la empresa */}
-    <div className='blocked'>
-      <strong>Nombre de la empresa:</strong><br />
-      <div className='answer-details'>{data.name}</div>
-      <hr />
-    </div>
+    if (loadingDatos) return <LoadingDatos />;
+    if (!empresa) return <p>No hay datos para mostrar.</p>;
 
-    {/* Contacto */}
-    <div className='blocked'>
-      <strong>Teléfono Fijo:</strong><br />
-      <div className='answer-details'>{data.landline}</div>
-      <hr />
-    </div>
+    // Función para manejar cambios en campos editables
+    const handleChange = (e) => {
+        setEmpresa({
+            ...empresa,
+            [e.target.name]: e.target.value,
+        });
+    };
 
-    {/* Telefono */}
-    <div className='blocked'>
-      <strong>Teléfono Móvil:</strong><br />
-      <div className='answer-details'>{data.mobile}</div>
-      <hr />
-    </div>
+    // Función para guardar cambios
+    const handleSave = async () => {
+        try {
+            await apiGeneral.put("", userData, { withCredentials: true });
+            alert("Datos actualizados correctamente");
+        } catch (error) {
+            console.error("Error al guardar los cambios:", error);
+        }
+    };
 
-    {/* Correo Electrónico */}
-    <div className='blocked'>
-      <strong>Correo Electrónico:</strong><br />
-      <div className='answer-details'>{data.email}</div>
-      <hr />
-    </div>
+    return (
+        <div className="company-details">
+            <div className='blocked'>
+                <strong>Tipo de Documento:</strong><br />
+                <div className='answer-details'>{empresa.documento}</div>
+                <hr />
+            </div>
 
-    {/* Dirección Actual */}
-    <div className='blocked'>
-      <strong>Dirección Actual:</strong><br />
-      <div className='answer-details'>{data.currentAddress}</div>
-      <hr />
-    </div>
+            <div className='blocked'>
+                <strong>Número de Documento:</strong><br />
+                <div className='answer-details'>{empresa.numero_documento}</div>
+                <hr />
+            </div>
 
-    {/* Actividad Económica */}
-    <div className='blocked'>
-      <strong>Actividad Económica:</strong><br />
-      <div className='answer-details'>{data.economicActivity}</div>
-      <hr />
-    </div>
-  </div>
-);
+            {/* Editable: Razon Social */}
+            <div className='blocked'>
+                <strong>Nombre de la empresa:</strong><br />
+                <input
+                    type="text"
+                    name="razon_social"
+                    value={empresa.razon_social}
+                    onChange={handleChange}
+                />
+                <hr />
+            </div>
+
+            {/* Editable: Telefono */}
+            <div className='blocked'>
+                <strong>Teléfono:</strong><br />
+                <input
+                    type="text"
+                    name="telefono"
+                    value={empresa.telefono}
+                    onChange={handleChange}
+                />
+                <hr />
+            </div>
+
+            <div className='blocked'>
+                <strong>Correo Electrónico:</strong><br />
+                <div className='answer-details'>{empresa.correo_electronico}</div>
+                <hr />
+            </div>
+
+            <div className='blocked'>
+                <strong>Dirección Actual:</strong><br />
+                <div className='answer-details'>{empresa.direccion}</div>
+                <hr />
+            </div>
+
+            <div className='blocked'>
+                <strong>Actividad Económica:</strong><br />
+                <div className='answer-details'>{empresa.actividad_economica}</div>
+                <hr />
+            </div>
+        </div>
+    );
+};
 
 export default CompanyDetails;

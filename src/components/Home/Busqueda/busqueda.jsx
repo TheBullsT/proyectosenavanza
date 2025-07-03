@@ -49,15 +49,6 @@ function Busqueda() {
             </div>
 
             <div className='opciones'>
-                {/* Botón para cambiar el modo oscuro/claro */}
-                <button
-                    className='modo'
-                    onClick={() => setDarkMode(!darkMode)}
-                    aria-label="Cambiar tema oscuro/claro"
-                >
-                    <FaMoon className='luna-home' />
-                </button>
-
                 {/* Botón para mostrar/ocultar el menú de usuario */}
                 <button
                     className='avatar'

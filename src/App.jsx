@@ -68,28 +68,28 @@ function App() {
             <Route path="/login-admin" element={<LoginAdministrador />} />
 
             {/* Rutas principales para usuarios */}
-            <Route path="/home" element={<ProtectRoute role="empresa"><Home /></ProtectRoute>} />
-            <Route path="/perfil" element={<ProtectRoute role="empresa"><PerfilPage /></ProtectRoute>} />
-            <Route path="/editarperfil" element={<ProtectRoute role="empresa"><EditarPerfilPage /></ProtectRoute>} />
+            <Route path="/home" element={<ProtectRoute rol="empresa"><Home /></ProtectRoute>} />
+            <Route path="/perfil" element={<ProtectRoute rol="empresa"><PerfilPage /></ProtectRoute>} />
+            <Route path="/editarperfil" element={<ProtectRoute rol="empresa"><EditarPerfilPage /></ProtectRoute>} />
 
             {/* Rutas para área de administración usuario */}
-            <Route path="/diagnostico-empresarial" element={<ProtectRoute role="empresa"><DiagnosticoEmpresarial /></ProtectRoute>} />
-            <Route path="/resultado-diagnostico" element={<ProtectRoute role="empresa"><ResultadosDiagnostico /></ProtectRoute>} />
+            <Route path="/diagnostico-empresarial" element={<ProtectRoute rol="empresa"><DiagnosticoEmpresarial /></ProtectRoute>} />
+            <Route path="/resultado-diagnostico" element={<ProtectRoute rol="empresa"><ResultadosDiagnostico /></ProtectRoute>} />
 
             {/* Ruta de inicio */}
             <Route path="/inicio" element={<Inicio />} />
             <Route path="/informacion" element={<Informacion />} />
 
             {/* Rutas para administración */}
-            <Route path="/adminhome" element={<ProtectRoute role="admin"><AdminHome /></ProtectRoute>} />
-            <Route path="/crear-empresa" element={<ProtectRoute role="admin"><CrearEmpresa /></ProtectRoute>} />
-            <Route path="/listar-empresa" element={<ProtectRoute role="admin"><ListarEmpresa /></ProtectRoute>} />
-            <Route path="/modificar-empresa" element={<ProtectRoute role="admin"><ModificarEmpresa /></ProtectRoute>} />
-            <Route path="/crear-programa" element={<ProtectRoute role="admin"><CrearProgramaDeFormacion /></ProtectRoute>} />
-            <Route path="/modificar-programa" element={<ProtectRoute role="admin"><ModificarPrograma /></ProtectRoute>} />
-            <Route path="/listar-programa" element={<ProtectRoute role="admin"><ListarPrograma /></ProtectRoute>} />
-            <Route path="/visualizacion-empresa" element={<ProtectRoute role="admin"><VisualizacionEmpresa /></ProtectRoute>} />
-            <Route path="/visualizacion-programa" element={<ProtectRoute role="admin"><VisualizacionPrograma /></ProtectRoute>} />
+            <Route path="/adminhome" element={<ProtectRoute rol="admin"><AdminHome /></ProtectRoute>} />
+            <Route path="/crear-empresa" element={<ProtectRoute rol="admin"><CrearEmpresa /></ProtectRoute>} />
+            <Route path="/listar-empresa" element={<ProtectRoute rol="admin"><ListarEmpresa /></ProtectRoute>} />
+            <Route path="/modificar-empresa" element={<ProtectRoute rol="admin"><ModificarEmpresa /></ProtectRoute>} />
+            <Route path="/crear-programa" element={<ProtectRoute rol="admin"><CrearProgramaDeFormacion /></ProtectRoute>} />
+            <Route path="/modificar-programa" element={<ProtectRoute rol="admin"><ModificarPrograma /></ProtectRoute>} />
+            <Route path="/listar-programa" element={<ProtectRoute rol="admin"><ListarPrograma /></ProtectRoute>} />
+            <Route path="/visualizacion-empresa" element={<ProtectRoute rol="admin"><VisualizacionEmpresa /></ProtectRoute>} />
+            <Route path="/visualizacion-programa" element={<ProtectRoute rol="admin"><VisualizacionPrograma /></ProtectRoute>} />
 
             {/* Ruta para error no se encuentra la pagina */}
             <Route path="*" element={<NotFound />}></Route>

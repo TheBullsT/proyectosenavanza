@@ -1,31 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+// Importar APIS
+import { apiCreateEmpresa } from '../../api/apis';
+// Importar el loading
+import LoadingDatos from '../Loading/loading_datos';
 
 // Componente funcional que recibe props para mostrar información de una empresa
-const CompanyCard = ({ name, address, registrationDate, email }) => (
-  <div className="company-card">
-    {/* Aquí podrías poner una imagen o logo de la empresa */}
-    <div className="company-image" />
+const CompanyCard = () => {
+    const [empresa, setEmpresa] = useState(null);
+    const [loadinDatos, setLoadingDatos] = useState(true)
 
-    {/* Nombre de la empresa */}
-    <h2 className="company-name">{name}</h2>
+    useEffect(() => {
+        const fechtEmpresa = async () => {
+            setLoadingDatos(true);
+            try {
+                const response = await apiCreateEmpresa.get("",
+                    { withCredentials: true },
+                );
+                setEmpresa(response.data.empresa);
+            } catch (error) {
+                console.log("Error al traer los datos de la empresa", error);
+            }finally{
+                setLoadingDatos(false);
+            }
+        }
+        fechtEmpresa();
+    }, []);
 
-    {/* Contenedor con la información adicional */}
-    <div className="company-info">
-      {/* Barra decorativa con texto centrado */}
-      <div className="barra">
-        <span className="linea"></span>
-        <span className="texto">Info Perfil</span>
-        <span className="linea"></span>
-      </div>
+    if (loadinDatos) return <LoadingDatos />;
+    if (!empresa) return <p>No hay datos para mostrar.</p>;
 
-      {/* Información de dirección, fecha de registro y correo */}
-      <div className="text-info">
-        <p>{address}</p>
-        <p>{registrationDate}</p>
-        <p>{email}</p>
-      </div>
-    </div>
-  </div>
-);
+    return (
+        <div className="company-card">
+            {/* Aquí podrías poner una imagen o logo de la empresa */}
+            <div className="company-image" />
+
+            {/* Nombre de la empresa */}
+            <h2 className="company-name">{empresa.razon_social}</h2>
+
+            {/* Contenedor con la información adicional */}
+            <div className="company-info">
+                {/* Barra decorativa con texto centrado */}
+                <div className="barra">
+                    <span className="linea"></span>
+                    <span className="texto">Info Perfil</span>
+                    <span className="linea"></span>
+                </div>
+
+                {/* Información de dirección, fecha de registro y correo */}
+                <div className="text-info">
+                    <p>{empresa.direccion}</p>
+                    {/* <p>{registrationDate}</p> */}
+                    <p>{empresa.correo_electronico}</p>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default CompanyCard;

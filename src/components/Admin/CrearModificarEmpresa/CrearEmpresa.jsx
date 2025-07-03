@@ -34,42 +34,56 @@ const CrearEmpresa = () => {
         e.preventDefault();
         try {
 
-            const access = localStorage.getItem("access");
+            const response = await apiCreateEmpresa.post("create/",
+                {
+                    username: username,
+                    password: password,
+                    rol: rol,
+                    email: correo,
+                    empresa: {
+                        documento: tipoDocumento,
+                        numero_documento: parseInt(numeroDocumento),
+                        razon_social: nickName,
+                        telefono: telefono,
+                        correo_electronico: correo,
+                        direccion: direccion,
+                        actividad_economica: actividad
+                    }
+                },
 
-            const headers = {};
-            if (access) {
-                headers.Authorization = `Bearer ${access}`;
-            }
-            const response = await apiCreateEmpresa.post("create/", {
-                user: username,
-                password: password,
-                rol: rol,
-                documento: tipoDocumento,
-                numero_documento: parseInt(numeroDocumento),
-                razon_social: nickName,
-                telefono: telefono,
-                correo_electronico: correo,
-                direccion: direccion,
-                actividad_economica: actividad
-
-            },
-            { headers}
+                {
+                    withCredentials: true,
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                },
             );
-            if (response) {
-                console.log(response.data);
-                toast.success("Empresa Creada Correctamente");
-            } else {
-                toast.error("Error al crear la empresa");
-            }
 
+            console.log(response.data);
+            toast.success("Empresa creada correctamente");
+
+            // Se limpian los campos
+            setUsername("");
+            setPassword("");
+            setRol(""); 
+            setCorreo("");
+            setTipoDocumento("");
+            setNumeroDocumento("");
+            setNickName("");
+            setTelefono("");
+            setDireccion("");
+            setActividad("");
+            
         } catch (error) {
             console.error("Error al crear la empresa:", {
                 status: error.response?.status,
                 statusText: error.response?.statusText,
                 data: error.response?.data,
-                message: error.message
+                message: error.message,
             });
-            toast.error(`Error: ${error.response?.status} - ${error.response?.statusText}`);
+            toast.error(
+                `Error: ${error.response?.status} - ${error.response?.statusText}`
+            );
         }
     };
 
@@ -131,7 +145,7 @@ const CrearEmpresa = () => {
                         <label>Rol</label>
                         <select onChange={(e) => setRol(e.target.value)} value={rol} required>
                             <option value="">Seleccione</option>
-                            <option value="ROLES">Empresa</option>
+                            <option value="empresa">Empresa</option>
                         </select>
                     </div>
                     {/* Nombre de usuario y contraseña */}

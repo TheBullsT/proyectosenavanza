@@ -17,6 +17,8 @@ export const apiCreateEmpresa = axios.create( {
   baseURL: import.meta.env.VITE_API_URL_CREATE,
 });
 
+
+
 // Interceptor para añadir el token a ambas instancias
 const setAuthHeader = (api) => {
   api.interceptors.request.use(

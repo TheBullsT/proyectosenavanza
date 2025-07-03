@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 // Axios para Validacion de backend
 import axios from "axios";
 // Importar las alertas
-
+import { toast } from "react-toastify"; // Notificaciones tipo popup
 // Apis 
 import { apiLogin } from "../../../api/apis" // Axios para la Login
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../api/constans"; // Claves para localStorage
@@ -30,36 +30,38 @@ function FormLogin() {
     };
 
 
-    // Verificacion de datos
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Previene que se recargue la pagina
+        e.preventDefault();
         try {
-            // Obtenermos la JWT
-            const response = await apiLogin.post("token/",
-                { username: username, password: contraseña },
+            const response = await apiLogin.post(
+                "token/",
+                {
+                    username: username,
+                    password: contraseña
+                },
                 {
                     headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+
                 }
-                
             );
 
-            // Extraemos el access y refresh token
-            const { access, refresh } = response.data;
+            // const { access, refresh } = response.data;
 
-            // Guardamos los tokens en el almacenamiento local
-            localStorage.setItem(ACCESS_TOKEN, access);
-            localStorage.setItem(REFRESH_TOKEN, refresh);
+            // // Guardar tokens en localStorage
+            // localStorage.setItem(ACCESS_TOKEN, access);
+            // localStorage.setItem(REFRESH_TOKEN, refresh);
 
+            console.log("Tokens recibidos:", response.data);
 
-            console.log(response.data);
             toast.success("Inicio de sesión exitoso");
             navigate("/home");
 
         } catch (error) {
-            console.error(error);
-            toast.error("Datos invalidos");
+            console.error("Error en login:", error);
+            toast.error("Datos inválidos o credenciales incorrectas");
         }
-    }
+    };
 
 
 

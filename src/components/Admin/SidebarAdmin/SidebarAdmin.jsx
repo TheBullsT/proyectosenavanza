@@ -10,11 +10,14 @@ import { MdHomeRepairService, MdSchool } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 // Importamos cerrar sesión del loading
 import CerrarSesion from "../../Loading/cerrar-sesion-admin";
+// Importar API
+import { apiLogin } from '../../../api/apis'
+import { toast } from "react-toastify";
 
 function SidebarAdmin() {
     // Estado que controla qué menú desplegable está activo (abierto)
     const [ActiveMenu, SetMenuOn] = useState(false);
-    
+
     // Se guarda el nombre del menú abierto o false/null si ninguno está abierto
     const abrirMenu = (menu) => {
         SetMenuOn((prevMenu) => (prevMenu === menu ? false : menu));
@@ -25,11 +28,24 @@ function SidebarAdmin() {
 
     const handleCerrarSesion = async () => {
         setCerrandoSesion(true); // Mostrar pantalla de carga
+        try {
+            await apiLogin.post("logout/",
+                {},
+                { withCredentials: true }
+            );
 
-        // Simula el proceso de logout. Reemplázalo con tu lógica real (como Firebase signOut)
-        await new Promise(resolve => setTimeout(resolve, 2000));
+            localStorage.removeItem("access");
+            localStorage.removeItem("refresh");
 
-        navigate("/inicio");
+            toast.success("Sesión cerrada correctamente");
+            navigate("/inicio");
+
+        } catch (error) {
+            toast.error("Error al cerrar sesión");
+            console.error(error);
+        } finally {
+            setCerrandoSesion(false);
+        }
     };
 
     return (
@@ -107,9 +123,9 @@ function SidebarAdmin() {
                     </ul>
 
                     {/* Botón para cerrar sesión que redirige a la ruta '/inicio' */}
-                        <div onClick={handleCerrarSesion} className="ButtonCerrarSesionAdmin">
-                            Cerrar Sesión
-                        </div>
+                    <div onClick={handleCerrarSesion} className="ButtonCerrarSesionAdmin">
+                        Cerrar Sesión
+                    </div>
                 </div>
             )
             }
