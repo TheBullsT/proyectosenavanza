@@ -16,7 +16,7 @@ function Popup({ cerrar }) {
     // Capa semitransparente que cubre toda la pantalla
     <div className="popup-overlay">
       {/* Contenedor del popup central */}
-      <div className="popup">
+      <div className="popup1">
         {/* Sección con el mensaje de éxito del diagnóstico */}
         <div className='diagnostico-completo'>
           <h2>!Tu diagnostico <br />ha sido  completado con éxito¡</h2>
