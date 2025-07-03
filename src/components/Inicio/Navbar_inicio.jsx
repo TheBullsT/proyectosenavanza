@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Inicio.css';
-import logo from '../../assets/img/Logo_SENAVANZA.png';
+// import logo from '../../assets/img/Logo_SENAVANZA.png';
 import logo_blanco from '../../assets/img/Logo_SENAVANZA_Blanco.png';
 import { useNavigate } from 'react-router-dom';
 
