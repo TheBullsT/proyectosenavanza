@@ -80,14 +80,15 @@ a {
 /* ================= NAVBAR ================= */
 .header {
   position: fixed;
+  top: 30px; /* Queda justo debajo de GOV.CO */
   height: 70px;
   width: 100%;
-  top: 0;
   left: 0;
   z-index: 10;
   transition: .3s ease-in;
   overflow: hidden;
 }
+
 
 .header-bg {
   background-image: url(../../assets/img/inicio/Fondo-navbar.png);

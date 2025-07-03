@@ -11,15 +11,17 @@ import gov from '../../assets/img/gov.png';
  */
 const Gov = () => {
     return (
-        // Elemento de navegación con clases de estilo personalizadas y de Bootstrap
-        <nav class="navbar navbar-expand-lg barra-superior-govco" aria-label="Barra superior">
-            {/* Enlace al portal GOV.CO. Se abre en nueva pestaña y tiene etiqueta ARIA para accesibilidad */}
-            <a
-                href="https://www.gov.co/"
-                target="_blank"
-                aria-label="Portal del Estado Colombiano - GOV.CO"
-            ></a>
-        </nav>
+        <div className='gov'>
+        {/* // Elemento de navegación con clases de estilo personalizadas y de Bootstrap */}
+            <nav className="navbar navbar-expand-lg barra-superior-govco" aria-label="Barra superior">
+                {/* Enlace al portal GOV.CO. Se abre en nueva pestaña y tiene etiqueta ARIA para accesibilidad */}
+                <a
+                    href="https://www.gov.co/"
+                    target="_blank"
+                    aria-label="Portal del Estado Colombiano - GOV.CO"
+                ></a>
+            </nav>
+        </div>
     );
 };
 

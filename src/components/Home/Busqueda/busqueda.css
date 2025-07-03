@@ -72,11 +72,7 @@ a {
   text-decoration: none;
 }
 
-/* 🌑 Modo oscuro */
-.dark-mode {
-  background-color: var(--black);
-  color: var(--white);
-}
+
 
 /* 📦 Barra superior de búsqueda */
 .barra-busqueda {

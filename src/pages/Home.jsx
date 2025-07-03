@@ -7,15 +7,16 @@ import Gov from "../components/BarraGov/gov";
 
 const Home = () => {
   return (
+    <>
+    <div><Gov/></div>
     <div>
-    <Gov/>
     <NavFooter>
       <Presentacion />
       <Recomendacion />
       <Pregunta />
     </NavFooter>
     </div>
-    
+    </>
   );
 };
 

@@ -57,57 +57,55 @@ function App() {
 
   return (
     // Provee el contexto de tema oscuro/claro a toda la app
-    <ThemeProvider>
-      <Router>
-        {/* Suspense permite mostrar un fallback mientras se cargan los componentes de forma lazy */}
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            {/* Redirección desde / al inicio principal */}
-            <Route path="/" element={<Navigate to="/inicio" />} />
+    <Router>
+      {/* Suspense permite mostrar un fallback mientras se cargan los componentes de forma lazy */}
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          {/* Redirección desde / al inicio principal */}
+          <Route path="/" element={<Navigate to="/inicio" />} />
 
-            {/* Rutas públicas */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/login-admin" element={<LoginAdministrador />} />
-            <Route path="/inicio" element={<Inicio />} />
-            <Route path="/informacion" element={<Informacion />} />
+          {/* Rutas públicas */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/login-admin" element={<LoginAdministrador />} />
+          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/informacion" element={<Informacion />} />
 
-            {/* Rutas protegidas para usuario con rol 'empresa' */}
-            <Route path="/home" element={<ProtectRoute rol="empresa"><Home /></ProtectRoute>} />
-            <Route path="/perfil" element={<ProtectRoute rol="empresa"><PerfilPage /></ProtectRoute>} />
-            <Route path="/editarperfil" element={<ProtectRoute rol="empresa"><EditarPerfilPage /></ProtectRoute>} />
-            <Route path="/diagnostico-empresarial" element={<ProtectRoute rol="empresa"><DiagnosticoEmpresarial /></ProtectRoute>} />
-            <Route path="/resultado-diagnostico" element={<ProtectRoute rol="empresa"><ResultadosDiagnostico /></ProtectRoute>} />
+          {/* Rutas protegidas para usuario con rol 'empresa' */}
+          <Route path="/home" element={<ProtectRoute rol="empresa"><Home /></ProtectRoute>} />
+          <Route path="/perfil" element={<ProtectRoute rol="empresa"><PerfilPage /></ProtectRoute>} />
+          <Route path="/editarperfil" element={<ProtectRoute rol="empresa"><EditarPerfilPage /></ProtectRoute>} />
+          <Route path="/diagnostico-empresarial" element={<ProtectRoute rol="empresa"><DiagnosticoEmpresarial /></ProtectRoute>} />
+          <Route path="/resultado-diagnostico" element={<ProtectRoute rol="empresa"><ResultadosDiagnostico /></ProtectRoute>} />
 
-            {/* Rutas protegidas para usuario con rol 'admin' */}
-            <Route path="/adminhome" element={<ProtectRoute rol="admin"><AdminHome /></ProtectRoute>} />
-            <Route path="/crear-empresa" element={<ProtectRoute rol="admin"><CrearEmpresa /></ProtectRoute>} />
-            <Route path="/listar-empresa" element={<ProtectRoute rol="admin"><ListarEmpresa /></ProtectRoute>} />
-            <Route path="/modificar-empresa" element={<ProtectRoute rol="admin"><ModificarEmpresa /></ProtectRoute>} />
-            <Route path="/crear-programa" element={<ProtectRoute rol="admin"><CrearProgramaDeFormacion /></ProtectRoute>} />
-            <Route path="/modificar-programa" element={<ProtectRoute rol="admin"><ModificarPrograma /></ProtectRoute>} />
-            <Route path="/listar-programa" element={<ProtectRoute rol="admin"><ListarPrograma /></ProtectRoute>} />
-            <Route path="/visualizacion-empresa" element={<ProtectRoute rol="admin"><VisualizacionEmpresa /></ProtectRoute>} />
-            <Route path="/visualizacion-programa" element={<ProtectRoute rol="admin"><VisualizacionPrograma /></ProtectRoute>} />
+          {/* Rutas protegidas para usuario con rol 'admin' */}
+          <Route path="/adminhome" element={<ProtectRoute rol="admin"><AdminHome /></ProtectRoute>} />
+          <Route path="/crear-empresa" element={<ProtectRoute rol="admin"><CrearEmpresa /></ProtectRoute>} />
+          <Route path="/listar-empresa" element={<ProtectRoute rol="admin"><ListarEmpresa /></ProtectRoute>} />
+          <Route path="/modificar-empresa" element={<ProtectRoute rol="admin"><ModificarEmpresa /></ProtectRoute>} />
+          <Route path="/crear-programa" element={<ProtectRoute rol="admin"><CrearProgramaDeFormacion /></ProtectRoute>} />
+          <Route path="/modificar-programa" element={<ProtectRoute rol="admin"><ModificarPrograma /></ProtectRoute>} />
+          <Route path="/listar-programa" element={<ProtectRoute rol="admin"><ListarPrograma /></ProtectRoute>} />
+          <Route path="/visualizacion-empresa" element={<ProtectRoute rol="admin"><VisualizacionEmpresa /></ProtectRoute>} />
+          <Route path="/visualizacion-programa" element={<ProtectRoute rol="admin"><VisualizacionPrograma /></ProtectRoute>} />
 
-            {/* Ruta para error 404 */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+          {/* Ruta para error 404 */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
 
-        {/* Contenedor de notificaciones tipo toast */}
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          pauseOnHover
-          draggable
-          theme="colored"
-        />
-      </Router>
-    </ThemeProvider>
+      {/* Contenedor de notificaciones tipo toast */}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="colored"
+      />
+    </Router>
   );
 }
 
