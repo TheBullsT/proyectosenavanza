@@ -37,7 +37,8 @@ const NavBarInicio = () => {
   };
 
   return (
-    <div className={color ? 'header header-bg' : 'header'}>
+    <div className={color ? 'header header-bg' : 'header'}
+    >
       <nav className='nav-links'>
         <div className='inicio-nav'>
           <div className='marca-sena'>

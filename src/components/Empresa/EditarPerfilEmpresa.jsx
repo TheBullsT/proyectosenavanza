@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';  // Hook para navegación progra
 
 
 const ProfileLayout = ({ company, details }) => {
-  const snackbarRef = useRef(null)
 
   
   const navigate = useNavigate();

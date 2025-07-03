@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // Importar APIS
-import { apiCreateEmpresa } from '../../api/apis';
+import { apiPerfil } from '../../api/apis';
 //Importar Loading
 import LoadingDatos from '../Loading/loading_datos';
 import { useNavigate } from 'react-router-dom';
@@ -11,30 +11,33 @@ import './PerfilEmpresa.css';
 
 
 
-const ProfileLayout = ({company, details}) => {
+const ProfileLayout = ({ company, details }) => {
 
     const navigate = useNavigate();
     const [empresa, setEmpresa] = useState(null);
     const [loadinDatos, setLoadingDatos] = useState(true);
 
     useEffect(() => {
-        const fechtEmpresa = async () => {
+        const fetchEmpresa = async () => {
             setLoadingDatos(true);
             try {
-                const response = await apiCreateEmpresa.get("",
-                    { withCredentials: true },
-                );
-                setEmpresa(response.data.empresa);
+                const response = await apiPerfil.get("", {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                setEmpresa(response.data);
             } catch (error) {
                 console.log("Error al traer los datos de la empresa", error);
-            }finally{
+            } finally {
                 setLoadingDatos(false);
             }
-        }
-        fechtEmpresa();
+        };
+        fetchEmpresa();
     }, []);
 
-    if (loadinDatos) return < LoadingDatos/>;
+
+    if (loadinDatos) return < LoadingDatos />;
     if (!empresa) return <p>No hay datos para mostrar.</p>;
 
     // Función para redirigir a la página de edición de perfil

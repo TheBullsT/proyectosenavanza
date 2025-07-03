@@ -79,7 +79,7 @@ a {
 
 /* ================= NAVBAR ================= */
 .header {
-  position: fixed;
+  position: absolute;
   top: 30px; /* Queda justo debajo de GOV.CO */
   height: 70px;
   width: 100%;
@@ -235,6 +235,7 @@ a {
   width: 500px;
   height: 500px;
 }
+
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 786px) {

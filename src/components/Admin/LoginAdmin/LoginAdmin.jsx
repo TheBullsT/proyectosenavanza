@@ -35,7 +35,6 @@ function LoginAdmin() {
                 { username: user, password: contraseña },
                 {
                     headers: { 'Content-Type': 'application/json',},
-                    withCredentials: true,
                 }
             );
             // // Extraemos el access y refresh token

@@ -14,14 +14,22 @@ export const apiLogin = axios.create({
     withCredentials: true,
 });
 
-// API crear empresa
-export const apiCreateEmpresa = axios.create({
+// API crear usuario
+export const apiCreateUsuario = axios.create({
     baseURL: import.meta.env.VITE_API_URL_CREATE,
     withCredentials: true,
 });
 
-
-
+// Api Empresas
+export const apiEmpresa = axios.create({
+    baseURL: import.meta.env.VITE_API_URL_EMPRESA,
+    withCredentials: true,
+});
+// Api Perfil
+export const apiPerfil = axios.create({
+    baseURL: import.meta.env.VITE_API_URL_PERFIL,
+    withCredentials: true,
+});
 // Interceptor para añadir el token a ambas instancias
 const setAuthHeader = (api) => {
     api.interceptors.request.use(
@@ -65,7 +73,7 @@ const setAuthResponseInterceptor = (api) => {
     }
   );
 };
-[apiGeneral, apiLogin, apiCreateEmpresa].forEach(api => {
+[apiGeneral, apiLogin, apiCreateUsuario, apiEmpresa, apiPerfil].forEach(api => {
   setAuthHeader(api);
   setAuthResponseInterceptor(api);
 });

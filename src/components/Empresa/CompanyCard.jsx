@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // Importar APIS
-import { apiCreateEmpresa } from '../../api/apis';
+import { apiPerfil } from '../../api/apis';
 // Importar el loading
 import LoadingDatos from '../Loading/loading_datos';
 
@@ -13,10 +13,12 @@ const CompanyCard = () => {
         const fechtEmpresa = async () => {
             setLoadingDatos(true);
             try {
-                const response = await apiCreateEmpresa.get("",
-                    { withCredentials: true },
-                );
-                setEmpresa(response.data.empresa);
+                const response = await apiPerfil.get("", {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                setEmpresa(response.data);
             } catch (error) {
                 console.log("Error al traer los datos de la empresa", error);
             }finally{

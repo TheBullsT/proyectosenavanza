@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { apiCreateEmpresa } from '../../api/apis';
+import { apiPerfil } from '../../api/apis';
 import LoadingDatos from '../Loading/loading_datos';
 
 const CompanyDetails = () => {
@@ -9,10 +9,12 @@ const CompanyDetails = () => {
     useEffect(() => {
         const fetchEmpresa = async () => {
             try {
-                const response = await apiCreateEmpresa.get("", {
-                    withCredentials: true,
+                const response = await apiPerfil.get("", {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
                 });
-                setEmpresa(response.data.empresa);
+                setEmpresa(response.data);
             } catch (error) {
                 console.log("Error al traer los datos de la empresa", error);
             } finally {
