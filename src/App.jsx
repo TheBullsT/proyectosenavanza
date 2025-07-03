@@ -1,15 +1,21 @@
+// Hooks de React
 import React, { useState, useEffect, Suspense, lazy } from 'react';
-// Importamos las herramientas para enrutamiento en React Router v6
+
+// React Router DOM para enrutamiento
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-// Componente que muestra una animación o indicador mientras se carga contenido
+
+// Componente que muestra un spinner o animación mientras se carga algo
 import Loading from './components/Loading/loading';
-// Contexto para manejo de temas oscuros (dark mode)
+
+// Contexto para manejar el tema oscuro o claro (dark/light mode)
 import { ThemeProvider } from './layouts/Dark-Mode/temacontexto';
-// Importar estilos a las notificaciones tipo toast
+
+// Toast para mostrar mensajes emergentes (éxito, error, advertencia)
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// Lazy loading: importamos las páginas de forma diferida para mejorar rendimiento
+
+// CARGA PEREZOSA (Lazy loading) de páginas principales
 const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
 const LoginAdministrador = lazy(() => import('./pages/LoginAdmin'));
@@ -31,56 +37,52 @@ const VisualizacionPrograma = lazy(() => import('./pages/VisualizacionPrograma')
 const ProtectRoute = lazy(() => import('./components/ProtectRoute'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
-
+// Componente para cerrar sesión (limpia storage y redirige a login)
 function Logout() {
-  localStorage.clear()
-  return <Navigate to="/login" />;
+  localStorage.clear(); // Elimina tokens u otros datos de sesión
+  return <Navigate to="/login" />; // Redirecciona al login
 }
 
+// Componente principal de la App
 function App() {
-  // Estado local para controlar si está en modo "loading" (cargando)
+  // Estado para mostrar un loader inicial por 1 segundo
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect para simular una carga inicial de 1 segundo (1000 ms)
   useEffect(() => {
+    // Simula una carga inicial
     setTimeout(() => setIsLoading(false), 1000);
   }, []);
 
-  // Mientras está cargando, mostrar componente Loading
+  // Si está cargando, muestra spinner/animación
   if (isLoading) {
     return <Loading />;
   }
 
   return (
-    // Proveemos el contexto para tema oscuro en toda la app
+    // Provee el contexto de tema oscuro/claro a toda la app
     <ThemeProvider>
-      {/* Definimos el Router para navegación */}
       <Router>
-        {/* Suspense permite mostrar un fallback (Loading) mientras carga la página lazy */}
+        {/* Suspense permite mostrar un fallback mientras se cargan los componentes de forma lazy */}
         <Suspense fallback={<Loading />}>
           <Routes>
-            {/* Redirecciona la ruta raíz "/" a "/inicio" */}
+            {/* Redirección desde / al inicio principal */}
             <Route path="/" element={<Navigate to="/inicio" />} />
 
-            {/* Rutas para login de usuario y admin */}
+            {/* Rutas públicas */}
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/login-admin" element={<LoginAdministrador />} />
-
-            {/* Rutas principales para usuarios */}
-            <Route path="/home" element={<ProtectRoute rol="empresa"><Home /></ProtectRoute>} />
-            <Route path="/perfil" element={<ProtectRoute rol="empresa"><PerfilPage /></ProtectRoute>} />
-            <Route path="/editarperfil" element={<ProtectRoute rol="empresa"><EditarPerfilPage /></ProtectRoute>} />
-
-            {/* Rutas para área de administración usuario */}
-            <Route path="/diagnostico-empresarial" element={<ProtectRoute rol="empresa"><DiagnosticoEmpresarial /></ProtectRoute>} />
-            <Route path="/resultado-diagnostico" element={<ProtectRoute rol="empresa"><ResultadosDiagnostico /></ProtectRoute>} />
-
-            {/* Ruta de inicio */}
             <Route path="/inicio" element={<Inicio />} />
             <Route path="/informacion" element={<Informacion />} />
 
-            {/* Rutas para administración */}
+            {/* Rutas protegidas para usuario con rol 'empresa' */}
+            <Route path="/home" element={<ProtectRoute rol="empresa"><Home /></ProtectRoute>} />
+            <Route path="/perfil" element={<ProtectRoute rol="empresa"><PerfilPage /></ProtectRoute>} />
+            <Route path="/editarperfil" element={<ProtectRoute rol="empresa"><EditarPerfilPage /></ProtectRoute>} />
+            <Route path="/diagnostico-empresarial" element={<ProtectRoute rol="empresa"><DiagnosticoEmpresarial /></ProtectRoute>} />
+            <Route path="/resultado-diagnostico" element={<ProtectRoute rol="empresa"><ResultadosDiagnostico /></ProtectRoute>} />
+
+            {/* Rutas protegidas para usuario con rol 'admin' */}
             <Route path="/adminhome" element={<ProtectRoute rol="admin"><AdminHome /></ProtectRoute>} />
             <Route path="/crear-empresa" element={<ProtectRoute rol="admin"><CrearEmpresa /></ProtectRoute>} />
             <Route path="/listar-empresa" element={<ProtectRoute rol="admin"><ListarEmpresa /></ProtectRoute>} />
@@ -91,10 +93,12 @@ function App() {
             <Route path="/visualizacion-empresa" element={<ProtectRoute rol="admin"><VisualizacionEmpresa /></ProtectRoute>} />
             <Route path="/visualizacion-programa" element={<ProtectRoute rol="admin"><VisualizacionPrograma /></ProtectRoute>} />
 
-            {/* Ruta para error no se encuentra la pagina */}
-            <Route path="*" element={<NotFound />}></Route>
+            {/* Ruta para error 404 */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+
+        {/* Contenedor de notificaciones tipo toast */}
         <ToastContainer
           position="top-right"
           autoClose={3000}
@@ -103,7 +107,8 @@ function App() {
           closeOnClick
           pauseOnHover
           draggable
-          theme="colored" />
+          theme="colored"
+        />
       </Router>
     </ThemeProvider>
   );
