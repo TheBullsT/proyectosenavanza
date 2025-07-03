@@ -1,25 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <!-- Define el idioma del contenido -->
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /> <!-- Codificación de caracteres: UTF-8 (estándar web) -->
+
+  <!-- Icono que aparece en la pestaña del navegador -->
   <link rel="icon" href="/Logo_SENAVANZA.ico" />
+
+  <!-- Configuración para responsive design en móviles -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Color del navegador en móviles (Android, PWA) -->
   <meta name="theme-color" content="#000000" />
+
+  <!-- Descripción del sitio web (para SEO y accesibilidad) -->
   <meta name="description" content="Web site created using Vite" />
+
+  <!-- Fuente principal usada en la app: Work Sans (de Google Fonts) -->
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Icono cuando el sitio se guarda en la pantalla de inicio (PWA / iOS) -->
   <link rel="apple-touch-icon" href="/Logo_SENAVANZA.ico" />
+
+  <!-- Archivo de manifiesto para configuración de PWA -->
   <link rel="manifest" href="/manifest.json" />
+
+  <!-- Título que se muestra en la pestaña del navegador -->
   <title>SENAVANZA</title>
 </head>
 
 <body>
+  <!-- Mensaje para usuarios que tienen deshabilitado JavaScript -->
   <noscript>You need to enable JavaScript to run this app.</noscript>
+
+  <!-- Contenedor raíz donde React monta toda la aplicación -->
   <div id="root"></div>
+
+  <!-- Script principal que arranca la app (usado por Vite con módulo ES6) -->
   <script type="module" src="/src/index.jsx"></script>
 
-
-  <!-- Con Vite no es necesario poner el script manualmente aquí -->
+  <!-- Comentario: Vite gestiona automáticamente los scripts al hacer build -->
 </body>
 
 </html>
