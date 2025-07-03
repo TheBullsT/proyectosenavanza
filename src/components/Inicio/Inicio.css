@@ -114,6 +114,7 @@ a {
   font-size: 18px;
   cursor: pointer;
   color: var(--white);
+  gap: 10px;
 }
 
 .nav-links .marca-sena p {
