@@ -1,39 +1,44 @@
-/* Fuente iconografica */
+/* Fuente personalizada para iconografía GOV.CO*/
 @font-face {
-  font-family: "govco-font";
-  src: url("../assets/icons/fonts/govco-font-icons.ttf") format("truetype");
+  font-family: "govco-font"; /* Nombre de la fuente personalizada */
+  src: url("../assets/icons/fonts/govco-font-icons.ttf") format("truetype"); /* Ruta de la fuente */
   font-weight: normal;
   font-style: normal;
 }
 
+/* Configuración base de HTML*/
 html {
-  font-size: 100%; /* 100% = 16px */
+  font-size: 100%; /* Define 1rem = 16px por defecto */
 }
 
+/* Estilos de la barra superior GOV.CO*/
 .barra-superior-govco {
-  background-color: #3366cc;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  height: 64px;
-  padding-left: 4.375rem;
-  z-index: 1000;
+  background-color: #3366cc;      /* Azul institucional */
+  width: 100%;                    /* Ocupa todo el ancho */
+  display: flex;                  /* Flexbox para alinear contenido */
+  align-items: center;           /* Centrado vertical */
+  position: absolute;            /* Posicionamiento absoluto */
+  height: 64px;                  /* Altura fija */
+  padding-left: 4.375rem;        /* Espaciado izquierdo (70px) */
+  z-index: 1000;                 /* Se mantiene en la parte superior */
 }
 
+/* Logo del portal GOV.CO */
 .barra-superior-govco a {
-  content: url(https://cdn.www.gov.co/assets/images/logo.svg);
-  height: 1.875rem;
-  width: 8.5rem;
+  content: url(https://cdn.www.gov.co/assets/images/logo.svg); /* Inserta el logo desde CDN */
+  height: 1.875rem; /* 30px */
+  width: 8.5rem;    /* 136px */
 }
 
+/* Enfoque accesible para el logo */
 .barra-superior-govco a:focus-visible {
-  outline: max(0.125rem, 0.15em) solid #FFFFFF;
-  border-radius: 0.313rem;
+  outline: max(0.125rem, 0.15em) solid #FFFFFF; /* Contorno blanco */
+  border-radius: 0.313rem; /* Bordes redondeados (5px) */
 }
 
+/* Icono de idioma (opcional, si se incluye)*/
 .barra-superior-govco .idioma-icon-barra-superior-govco {
-  height: 1.5rem;
+  height: 1.5rem;      /* 24px */
   width: 1.5rem;
   border-radius: 0.313rem;
   background-color: #FFFFFF;
@@ -42,36 +47,41 @@ html {
   border: 0.125rem solid #FFFFFF;
   font-size: 10px;
   position: relative;
-  right: 5.375rem;
+  right: 5.375rem;     /* Posicionado hacia la izquierda */
 }
 
+/* Hover del icono de idioma */
 .barra-superior-govco .idioma-icon-barra-superior-govco:hover {
-  background-color: #004884;
+  background-color: #004884; /* Azul oscuro */
 }
 
+/* Enfoque accesible */
 .barra-superior-govco .idioma-icon-barra-superior-govco:focus {
   outline: max(0.125rem, 0.15em) solid #FFFFFF;
   outline-offset: max(0.188rem, 0.15em);
 }
 
+/* Icono unicode insertado con fuente personalizada */
 .barra-superior-govco .idioma-icon-barra-superior-govco::before {
-  font-family: "govco-font";
-  content: '\ec56';
-  color: #3366CC;
+  font-family: "govco-font"; /* Usa la fuente personalizada */
+  content: '\ec56';          /* Unicode del ícono */
+  color: #3366CC;            /* Azul */
   font-size: 14px;
 }
 
+/* Hover del icono cambia a blanco */
 .barra-superior-govco .idioma-icon-barra-superior-govco:hover::before {
   color: #FFFFFF;
 }
 
+/* Estilos responsivos para pantallas pequeñas*/
 @media (max-width: 991px) {
   .barra-superior-govco {
-    justify-content: center;
-    padding: 0;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    padding: 0;              /* Elimina el padding lateral */
   }
 
   .barra-superior-govco .idioma-icon-barra-superior-govco  {
-    right: 1rem;
+    right: 1rem; /* Reduce el desplazamiento lateral */
   }
 }
