@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Inicio.css';
 import logo from '../../assets/img/Logo_SENAVANZA.png';
+import logo_blanco from '../../assets/img/Logo_SENAVANZA_Blanco.png';
 import { useNavigate } from 'react-router-dom';
 
 const NavBarInicio = () => {
@@ -41,7 +42,7 @@ const NavBarInicio = () => {
       <nav className='nav-links'>
         <div className='inicio-nav'>
           <div className='marca-sena'>
-            <img onClick={irInicio} src={logo} alt="Logo SENA" className='imagen-navbar' />
+            <img onClick={irInicio} src={logo_blanco} alt="Logo SENA" className='imagen-navbar' />
             <p>SENAVANZA</p>
           </div>
           <div>
