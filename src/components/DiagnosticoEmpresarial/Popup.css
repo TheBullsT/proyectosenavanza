@@ -293,6 +293,23 @@ html {
   background-color: var(--primary-4);
 }
 
+.close-btn{
+  height: px;
+  width: 80%;
+  height: 40px;
+  margin-top: 5%;
+  background-color: var(--white);
+  color: var(--gray-10);
+  border: 1px var(--gray-10) solid;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 input::placeholder {
   font-size: var(--h5);
+}
+.icon-check{
+  font-size: 16px;
+  transform: translateX(-10px) translateY(2px); /* Mueve icono a la izquierda */
 }
