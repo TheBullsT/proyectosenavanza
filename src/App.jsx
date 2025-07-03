@@ -7,9 +7,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 // Componente que muestra un spinner o animación mientras se carga algo
 import Loading from './components/Loading/loading';
 
-// Contexto para manejar el tema oscuro o claro (dark/light mode)
-import { ThemeProvider } from './layouts/Dark-Mode/temacontexto';
-
 // Toast para mostrar mensajes emergentes (éxito, error, advertencia)
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
