@@ -3,7 +3,7 @@ import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
 import "./ListarEmpresa.css";
 import { Link } from 'react-router-dom';
 import { MdHomeRepairService } from "react-icons/md";
-import { FaEye, FaEdit, FaLock } from "react-icons/fa";
+import { FaEye, FaEdit, FaLock, FaLockOpen } from "react-icons/fa";
 import { apiEmpresa } from "../../../api/apis";
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
 
@@ -31,6 +31,25 @@ const Listar_Empresa = () => {
   useEffect(() => {
     obtenerEmpresas();
   }, []);
+
+  // Función para cambiar el estado de la empresa
+  const cambiarEstadoEmpresa = async (empresa) => {
+    const nuevoEstado = empresa.estado === 1 ? 2 : 1;
+
+    try {
+      await apiEmpresa.put(`update/${empresa.id}`, {
+        estado: nuevoEstado
+      }, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      obtenerEmpresas(); // Refrescar la lista
+    } catch (error) {
+      console.error("Error al cambiar el estado de la empresa:", error);
+    }
+  };
 
   if (loadingBaseDatos) return <LoadingBaseDatos />;
   if (!empresas || empresas.length === 0) return <p>No hay empresas registradas.</p>;
@@ -79,9 +98,27 @@ const Listar_Empresa = () => {
                 <td>{empresa.telefono}</td>
                 <td>{empresa.direccion}</td>
                 <td className="opciones">
-                  <Link to={`/visualizacion-empresa/${empresa.id}`}><FaEye className="icon-action" /></Link>
-                  <Link to={`/editar-empresa/${empresa.id}`}><FaEdit className="icon-action" /></Link>
-                  <FaLock className="icon-action" />
+                  <Link to={`/visualizacion-empresa/${empresa.id}`}>
+                    <FaEye className="icon-action" />
+                  </Link>
+                  <Link to={`/editar-empresa/${empresa.id}`}>
+                    <FaEdit className="icon-action" />
+                  </Link>
+                  {empresa.estado === 1 ? (
+                    <FaLock
+                      className="icon-action icon-lock"
+                      title="Desactivar empresa"
+                      onClick={() => cambiarEstadoEmpresa(empresa)}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  ) : (
+                    <FaLockOpen
+                      className="icon-action icon-lock"
+                      title="Activar empresa"
+                      onClick={() => cambiarEstadoEmpresa(empresa)}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  )}
                 </td>
               </tr>
             ))}
