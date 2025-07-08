@@ -85,11 +85,6 @@ const PerfilEmpresa = () => {
             <hr />
           </div>
           <div>
-            <strong>Teléfono Fijo:</strong><br />
-            <div className="answer-details">{empresa.telefono}</div>
-            <hr />
-          </div>
-          <div>
             <strong>Teléfono Móvil:</strong><br />
             <div className="answer-details">{empresa.telefono}</div>
             <hr />
