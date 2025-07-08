@@ -15,6 +15,7 @@ function Popup({ cerrar }) {
   return (
     // Capa semitransparente que cubre toda la pantalla
     <div className="popup-overlay">
+      <form action="" className='popup-overlay'>
       {/* Contenedor del popup central */}
       <div className="popup1">
         {/* Sección con el mensaje de éxito del diagnóstico */}
@@ -39,6 +40,7 @@ function Popup({ cerrar }) {
           </button>
         </div>
       </div>
+      </form>
     </div>
   );
 }
