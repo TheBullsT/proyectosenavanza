@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
 import { MdHomeRepairService } from "react-icons/md";
 import { apiEmpresa } from "../../../api/apis"; // Asegúrate que esté correctamente configurado
-import LoadingDatos from "../../Loading/loading_datos";
+import LoadingBaseDatos from "../../Loading/loading_base_datos";
 import "./VisualizacionEmpresa.css";
 
 const Visualizacion_Empresa = () => {
@@ -27,7 +27,7 @@ const Visualizacion_Empresa = () => {
         fetchEmpresa();
     }, [id]);
 
-    if (loading) return <LoadingDatos />;
+    if (loading) return <LoadingBaseDatos />;
     if (!empresa) return <p>No se encontró la empresa.</p>;
 
     return (

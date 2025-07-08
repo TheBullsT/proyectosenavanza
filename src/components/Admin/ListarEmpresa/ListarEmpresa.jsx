@@ -6,6 +6,8 @@ import { MdHomeRepairService } from "react-icons/md";
 import { FaEye, FaEdit, FaLock, FaLockOpen } from "react-icons/fa";
 import { apiEmpresa } from "../../../api/apis";
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
+import { FaClock } from "react-icons/fa6";
+import { toast } from "react-toastify";
 
 const Listar_Empresa = () => {
   const [empresas, setEmpresas] = useState([]);
@@ -37,7 +39,7 @@ const Listar_Empresa = () => {
     const nuevoEstado = empresa.estado === 1 ? 2 : 1;
 
     try {
-      await apiEmpresa.put(`update/${empresa.id}`, {
+      await apiEmpresa.put(`update/${empresa.id}/`, {
         estado: nuevoEstado
       }, {
         headers: {
@@ -46,8 +48,10 @@ const Listar_Empresa = () => {
       });
 
       obtenerEmpresas(); // Refrescar la lista
+      toast.success("Estado cambiado con extio");
     } catch (error) {
       console.error("Error al cambiar el estado de la empresa:", error);
+      toast.error("Error al cambiar el estado de la empresa:", error);
     }
   };
 
@@ -101,18 +105,18 @@ const Listar_Empresa = () => {
                   <Link to={`/visualizacion-empresa/${empresa.id}`}>
                     <FaEye className="icon-action" />
                   </Link>
-                  <Link to={`/editar-empresa/${empresa.id}`}>
+                  <Link to={`/modificar-empresa/${empresa.id}`}>
                     <FaEdit className="icon-action" />
                   </Link>
                   {empresa.estado === 1 ? (
-                    <FaLock
+                    <FaLockOpen
                       className="icon-action icon-lock"
                       title="Desactivar empresa"
                       onClick={() => cambiarEstadoEmpresa(empresa)}
                       style={{ cursor: 'pointer' }}
                     />
                   ) : (
-                    <FaLockOpen
+                    <FaLock
                       className="icon-action icon-lock"
                       title="Activar empresa"
                       onClick={() => cambiarEstadoEmpresa(empresa)}

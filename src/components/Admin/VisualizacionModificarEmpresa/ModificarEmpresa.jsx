@@ -5,6 +5,7 @@ import { MdHomeRepairService } from "react-icons/md";
 import { apiEmpresa } from "../../../api/apis";
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
 import '../CrearModificarEmpresa/CrearModificar.css';
+import { toast } from "react-toastify";
 
 const ModificarEmpresa = () => {
     const { id } = useParams();
@@ -43,11 +44,11 @@ const ModificarEmpresa = () => {
         e.preventDefault();
         try {
             await apiEmpresa.put(`/update/${id}/`, form);
-            alert("Empresa modificada con éxito");
-            navigate("/admin/listar-empresa");
+            toast.success("Empresa modificada con éxito");
+            navigate("/listar-empresa");
         } catch (error) {
             console.error("Error al modificar empresa:", error);
-            alert("Error al modificar la empresa");
+            toast.error("Error al modificar la empresa");
         }
     };
 

@@ -6,7 +6,7 @@ import Footer from '../components/Home/Footer/footer.jsx';
 // Importamos los estilos específicos para el contenedor principal en admin
 import '../components/Admin/mainhomecontainer.css'
 // Importamos el componente que muestra la visualización detallada de una empresa
-import Visualizacion_Empresa from '../components/Admin/VisualizacionEmpresa/VisualizacionEmpresa.jsx';
+import Visualizacion_Empresa from '../components/Admin/VisualizacionModificarEmpresa/VisualizacionEmpresa.jsx';
 
 const VisualizacionEmpresa = () => {
   return (
