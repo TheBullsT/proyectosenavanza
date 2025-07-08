@@ -1,56 +1,72 @@
-import React from "react";
-// Importar el componente NavBar
-import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
-// Importar los estilos
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+// Estilos
 import "./ListarEmpresa.css";
-// Para enlaces internos sin recargar la página
-import { Link } from 'react-router-dom';
-// Importar los iconos
+
+// Componentes e íconos
+import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
 import { MdHomeRepairService } from "react-icons/md";
 import { FaEye, FaEdit, FaLock } from "react-icons/fa";
 
+// Notificaciones
+import { toast } from "react-toastify";
+
+// API
+import { apiEmpresa } from "../../../api/apis";
+
 const Listar_Empresa = () => {
-  // Arreglo con 8 elementos idénticos que simulan empresas registradas
-  const empresas = Array(8).fill({
-    nombre: '<Nombre de la empresa>',
-    telefono: '+57 300 000 0000',
-    direccion: 'Cra#0 Trans #0 - 00',
-  });
+  const [empresas, setEmpresas] = useState([]);
+
+  // Cargar empresas desde la API
+  useEffect(() => {
+    const obtenerEmpresas = async () => {
+      try {
+        const response = await apiEmpresa.get("/");
+        setEmpresas(response.data);
+      } catch (error) {
+        console.error("Error al obtener las empresas:", error);
+        toast.error("Error al cargar las empresas.");
+      }
+    };
+
+    obtenerEmpresas();
+  }, []);
 
   return (
     <div className="empresa-container">
-      {/* Incluye el navbar admin */}
       <NavbarAdmin />
 
       <div className="visualizar-empresa-contenido">
-        {/* Título principal con breadcrumb */}
+        {/* Título con breadcrumb */}
         <p className="title">
           Listar Empresa
-          <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Empresas</strong></span>
+          <span className="breadcrumb">
+            You are here: <strong className="breadcrumb-active">Empresas</strong>
+          </span>
         </p>
 
-        {/* Información descriptiva con icono */}
+        {/* Introducción */}
         <div className="form-info">
           <div className="icon">
             <MdHomeRepairService />
           </div>
           <p>
-            En este espacio podras ver absolutamente todas las empresas<br />
-            que <strong>estan registradas en la BASE DE DATOS.</strong>
+            En este espacio podrás ver absolutamente todas las empresas<br />
+            que <strong>están registradas en la BASE DE DATOS.</strong>
           </p>
         </div>
 
-        {/* Barra de título secundario y botones */}
+        {/* Encabezado y botones */}
         <div className="header-bar">
           <h2 className="empresas-label">Empresas</h2>
           <div className="button-group">
-            {/* Botones para agregar empresa y generar reporte */}
-            <button className="add-button">Agregar Empresa</button>
+            <Link to="/crear-empresa" className="add-button">Agregar Empresa</Link>
             <button className="report-button">Generar Reporte</button>
           </div>
         </div>
 
-        {/* Tabla que lista las empresas */}
+        {/* Tabla de empresas */}
         <table className="empresa-table">
           <thead>
             <tr>
@@ -61,20 +77,28 @@ const Listar_Empresa = () => {
             </tr>
           </thead>
           <tbody>
-            {/* Mapeo del arreglo para mostrar cada empresa */}
-            {empresas.map((empresa, index) => (
-              <tr key={index} className={index % 2 === 0 ? 'odd' : ''}>
-                <td><strong>{empresa.nombre}</strong></td>
-                <td>{empresa.telefono}</td>
-                <td>{empresa.direccion}</td>
-                {/* Acciones para ver, editar y eliminar */}
-                <td className="opciones">
-                  <Link to='/visualizacion-empresa'><FaEye className="icon-action" /></Link>
-                  <FaEdit className="icon-action" />
-                  <FaLock className="icon-action" />
-                </td>
+            {empresas.length > 0 ? (
+              empresas.map((empresa, index) => (
+                <tr key={empresa.id} className={index % 2 === 0 ? "odd" : ""}>
+                  <td><strong>{empresa.razon_social}</strong></td>
+                  <td>{empresa.telefono}</td>
+                  <td>{empresa.direccion}</td>
+                  <td className="opciones">
+                    <Link to={`/visualizacion-empresa/${empresa.id}`}>
+                      <FaEye className="icon-action" title="Ver" />
+                    </Link>
+                    <Link to={`/editar-empresa/${empresa.id}`}>
+                      <FaEdit className="icon-action" title="Editar" />
+                    </Link>
+                    <FaLock className="icon-action" title="Desactivar" />
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4">No hay empresas registradas.</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
