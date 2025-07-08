@@ -28,10 +28,6 @@ function NavbarAdmin() {
                     <img src={logo} alt="Logo Senavanza" />
                 </div>
 
-                {/* Icono para modo oscuro */}
-                <div className="logoModoOscuro">
-                    <FaMoon className="navIcon" />
-                </div>
 
                 {/* Sección que muestra el icono y el nombre del usuario/admin */}
                 <div className="logoAdmin">

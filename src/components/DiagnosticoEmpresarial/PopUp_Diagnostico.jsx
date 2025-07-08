@@ -11,8 +11,6 @@ function Popup_Diagnostico({ cerrar, enviar }) {
                 <div className="popup2">
                     <h2 className="popup-title">Diagnostico Empresarial</h2>
                     <div className="underline" />
-
-
                     <div className="form-group">
                         <input type="text" placeholder="Área requerida" className="input-box" />
                     </div>
@@ -20,16 +18,14 @@ function Popup_Diagnostico({ cerrar, enviar }) {
                     <div className="form-group">
                         <input type="text" placeholder="Describa brevemente las ocupaciones para el aprendiz..." className="input-box2" />
                     </div>
-
-                    <button className="submit-btn" onClick={enviar}>
-                        <FaCheck className='icon-check' />Enviar diagnóstico
-                    </button>
-                    <div>
+                    <div className='botones-diagnostico-2'>
+                        <button className="submit-btn" onClick={enviar}>
+                            <FaCheck className='icon-check' />Enviar diagnóstico
+                        </button>
                         <button className="close-btn" onClick={cerrar}>
-                            <MdCancel /> Cerrar
+                            <MdCancel className='cerrar-diagnostico' /> Cerrar
                         </button>
                     </div>
-
                 </div>
             </form>
         </div>

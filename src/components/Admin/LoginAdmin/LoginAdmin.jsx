@@ -74,17 +74,17 @@ function LoginAdmin() {
             <div className="form-login">
                 {/* Formulario controlado con los estados de React */}
                 <form onSubmit={handleSubmit} method="POST">
-                    <h1 className="titulo">Iniciar Sesión</h1>
-                    <h4 className="subtitulo">¡Vamos a Empezar!</h4>
+                    <h1 className="titulo">ADMINISTRADOR</h1>
+                    <h4 className="subtitulo">LOGIN ADMINISTRADOR</h4>
 
                     <div className="contenido">
                         {/* Campo de usuario */}
                         <label className="textType" htmlFor="textType">
-                            Usuario
+                            Administrador
                             <input
                                 type="text"
                                 id="textType"
-                                placeholder="Usuario"
+                                placeholder="Administrador"
                                 value={user}
                                 onChange={(e) => setUser(e.target.value)}
                                 required

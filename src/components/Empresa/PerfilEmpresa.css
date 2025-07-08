@@ -65,8 +65,7 @@ html {
 /* Contenedor principal del perfil */
 .profile-layout {
   width: 1100px;
-  margin-top: 1%;
-  margin-left: 10%;
+  margin: 1% auto;
 }
 
 /* Estilo del título de empresa */
@@ -154,10 +153,9 @@ html {
 .footer-section-1 {
   margin-top: 2rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
-  gap: 350px;
-  height: 58px;
+  gap: 1rem;
 }
 
 /* Footer - Segunda sección */
@@ -170,9 +168,8 @@ html {
 
 /* Texto del footer */
 .footer-section-1 p {
-  font-size: 14px;
-  color: #777;
-  margin: 0.5rem 30rem 0 0;
+  flex: 1;
+  margin: 0;
 }
 
 .footer-section-2 p {
@@ -183,37 +180,40 @@ html {
 
 /* Botón de edición */
 .edit-button {
-  background-color: #35b226;
+  background-color: var(--primary-1);
   color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--primary-1);
+  padding: 0.6rem 1.4rem;
   font-size: 14px;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .edit-button:hover {
-  background-color: #2e9e21;
+  background-color: transparent;
+  color: var(--primary-1);
 }
 
 /* Botón de cancelar */
 .cancel-button {
-  border: 1px solid #9a9a9a;
-  border-radius: 4px;
-  padding: 0.6rem 1.2rem;
+  background-color: transparent;
+  border: 2px solid var(--primary-1);
+  border-radius: 5px;
+  padding: 0.6rem 1.4rem;
   font-size: 14px;
   font-weight: bold;
-  color: #777;
-  margin-left: 58%;
-  margin-right: 10px;
+  color: var(--primary-1);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .cancel-button:hover {
-  background-color: #d4d4d4;
-  color: black;
+  background-color: var(--primary-1);
+  color: white;
+  border-color: var(--primary-1);
 }
-
 /* Barras decorativas */
 .barra {
   display: flex;
@@ -257,9 +257,37 @@ html {
 }
 
 /* Estado bloqueado */
-.blocked {
+.blocked strong {
   color: #777;
 }
+
+/* Estilos al input */
+/* Inputs*/
+.company-details input{
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: var(--font-primary);
+  color: var(--gray-2);
+  border: 1px solid var(--gray-13);
+  border-radius: 4px;
+  background-color: var(--white);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover*/
+.company-details input:hover{
+  border-color: var(--primary-1);
+}
+
+/* Focus */
+.company-details input:focus {
+  border-color: var(--primary-1);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(57, 169, 0, 0.2);
+}
+
+
 
 /* Responsive - Mobile */
 @media (max-width: 786px) {

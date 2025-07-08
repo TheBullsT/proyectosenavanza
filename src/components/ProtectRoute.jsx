@@ -27,7 +27,9 @@ function ProtectRoute({ children, rol = null }) {
   const verifyAuth = async () => {
     try {
       // Llama al endpoint /verify/ para validar la sesión del usuario usando cookies
-      const res = await apiLogin.get("verify/", { withCredentials: true });
+      const res = await apiLogin.get("verify/", {
+        headers: { 'Content-Type': 'application/json', },
+      });
 
       // Si la verificación es exitosa
       if (res.status === 200) {
@@ -58,7 +60,11 @@ function ProtectRoute({ children, rol = null }) {
   const handleRefresh = async () => {
     try {
       // Llama al endpoint /token/refresh/ para obtener un nuevo token
-      const res = await apiLogin.post("token/refresh/", {}, { withCredentials: true });
+      const res = await apiLogin.post("token/refresh/",
+        {}, {
+        headers: { 'Content-Type': 'application/json', },
+      }
+      );
 
       // Si el refresh es exitoso, vuelve a verificar la autenticación
       if (res.status === 200) {

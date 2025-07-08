@@ -28,7 +28,7 @@ function Popup({ cerrar }) {
         </div>
 
         {/* Botones para ver resultados o descargar reporte */}
-        <div className='botones-diagnostico'>
+        <div className='botones-diagnostico-1'>
           {/* Botón que muestra los resultados y cierra el popup */}
           <button className='resultados' onClick={cerrar}>
             <FaRegFileArchive className='icon-resultados' /> Resultados
