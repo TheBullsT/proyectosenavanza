@@ -176,7 +176,7 @@ html {
 
 .report-button {
   background-color: var(--primary-1);
-  color: white;
+  color: var(--white);
   font-weight: bold;
   padding: 12px 20px;
   border: none;

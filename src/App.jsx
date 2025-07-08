@@ -86,8 +86,8 @@ function App() {
           <Route path="/crear-programa" element={<ProtectRoute rol="admin"><CrearProgramaDeFormacion /></ProtectRoute>} />
           <Route path="/modificar-programa" element={<ProtectRoute rol="admin"><ModificarPrograma /></ProtectRoute>} />
           <Route path="/listar-programa" element={<ProtectRoute rol="admin"><ListarPrograma /></ProtectRoute>} />
-          <Route path="/visualizacion-empresa" element={<ProtectRoute rol="admin"><VisualizacionEmpresa /></ProtectRoute>} />
-          <Route path="/visualizacion-programa" element={<ProtectRoute rol="admin"><VisualizacionPrograma /></ProtectRoute>} />
+          <Route path="/visualizacion-empresa/:id" element={<ProtectRoute rol="admin"><VisualizacionEmpresa /></ProtectRoute>} />
+          <Route path="/visualizacion-programa/:id" element={<ProtectRoute rol="admin"><VisualizacionPrograma /></ProtectRoute>} />
 
           {/* Ruta para error 404 */}
           <Route path="*" element={<NotFound />} />

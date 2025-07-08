@@ -77,9 +77,6 @@ function SidebarAdmin() {
                                 <Link to="/crear-empresa" className="no-estilo">
                                     <li>Crear Empresa</li>
                                 </Link>
-                                <Link to="/modificar-empresa" className="no-estilo">
-                                    <li>Modificar Empresa</li>
-                                </Link>
                                 <Link to="/listar-empresa" className="no-estilo">
                                     <li>Listar Empresa</li>
                                 </Link>
@@ -97,9 +94,6 @@ function SidebarAdmin() {
                                 <Link to="/crear-programa" className="no-estilo">
                                     <li>Crear Programa de formación</li>
                                 </Link>
-                                <Link to="/modificar-programa" className="no-estilo">
-                                    <li>Modificar Programa de formación</li>
-                                </Link>
                                 <Link to="/listar-programa" className="no-estilo">
                                     <li>Listar Programa de formación</li>
                                 </Link>
@@ -114,9 +108,6 @@ function SidebarAdmin() {
                         {ActiveMenu === "usuarios" && (
                             // Submenú Usuarios visible solo si "usuarios" está activo
                             <ul className="subMenu">
-                                <li>Crear Usuario</li>
-                                <li>Modificar Usuarios</li>
-                                <li>Visualizar Usuarios</li>
                                 <li>Listar Usuarios</li>
                             </ul>
                         )}

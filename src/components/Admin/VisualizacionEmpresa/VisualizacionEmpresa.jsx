@@ -1,89 +1,91 @@
-import React from "react";
-// Importamos los estilos
-import "./VisualizacionEmpresa.css";
-// Immportamos el comoponente de la Navbar
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
-// Importamos los iconos
 import { MdHomeRepairService } from "react-icons/md";
+import { apiEmpresa } from "../../../api/apis"; // Asegúrate que esté correctamente configurado
+import LoadingDatos from "../../Loading/loading_datos";
+import "./VisualizacionEmpresa.css";
 
 const Visualizacion_Empresa = () => {
+    const { id } = useParams(); // Capturamos el id de la URL
+    const [empresa, setEmpresa] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchEmpresa = async () => {
+            setLoading(true);
+            try {
+                const response = await apiEmpresa.get(`/${id}`);
+                setEmpresa(response.data);
+            } catch (error) {
+                console.error("Error al obtener los datos de la empresa:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchEmpresa();
+    }, [id]);
+
+    if (loading) return <LoadingDatos />;
+    if (!empresa) return <p>No se encontró la empresa.</p>;
+
     return (
         <div className="visualizacion-empresa-container">
-            {/* Contenedor principal que engloba toda la vista */}
-
             <NavbarAdmin />
-            {/* Componente de navegación para la administración */}
 
             <div className="visualizacion-empresa-contenido">
-                {/* Contenedor del contenido principal */}
-
                 <h1 className="titulo">
                     Visualización de Empresa
                     <span className="breadcrumb">
-                        {/* Breadcrumb simple para mostrar ubicación */}
                         You are here: <strong className="breadcrumb-actual">Empresas</strong>
                     </span>
                 </h1>
 
                 <div className="icon-box">
-                    {/* Caja con ícono y texto descriptivo */}
                     <div className="icon">
-                        {/* Ícono de edificio (aquí se usa un <i> que no es necesario envolver el componente MdHomeRepairService) */}
                         <i className="fas fa-building"><MdHomeRepairService /></i>
                     </div>
                     <p>
-                        {/* Texto explicativo para el usuario */}
-                        En este espacio se podrán visualizar los programas de formación que estén vinculados con nosotros.<br />
-                        <strong>Debe ser creada para aparecer en la BASE DE DATOS.</strong>
+                        Aquí puedes visualizar la información detallada de la empresa registrada.
                     </p>
                 </div>
 
                 <div className="info-box-visualizacion-empresa">
-                    {/* Caja que contiene el formulario de la empresa */}
-                    <h2 className="subtitulo">Nombre de Empresa</h2>
+                    <h2 className="subtitulo">{empresa.razon_social}</h2>
 
                     <form className="formulario-empresa">
-                        {/* Formulario con campos para modificar datos de la empresa */}
-
                         <div className="campo-form campo-nombre-empresa">
                             <label>Nombre de la Empresa</label>
-                            {/* Input de texto con valor por defecto */}
-                            <input className="input-empresa-nombre" type="text" defaultValue="Empresa de Ejemplo S.A.S" />
+                            <input className="input-empresa-nombre" type="text" value={empresa.razon_social} readOnly />
                         </div>
 
                         <div className="grid-doble">
-                            {/* Contenedor para organizar dos campos en grid (dos columnas) */}
                             <div className="campo-form">
                                 <label>Teléfono</label>
-                                <input type="text" defaultValue="+57 300 000 0000" />
+                                <input type="text" value={empresa.telefono} readOnly />
                             </div>
 
                             <div className="campo-form">
                                 <label>Correo Electrónico</label>
-                                <input type="email" defaultValue="contacto@empresa.com" />
+                                <input type="email" value={empresa.correo_electronico} readOnly />
                             </div>
                         </div>
 
                         <div className="campo-form">
                             <label>Dirección</label>
-                            <input type="text" defaultValue="Cra#0 Trans #0 - 00" />
+                            <input type="text" value={empresa.direccion} readOnly />
                         </div>
 
                         <div className="campo-form">
                             <label>Actividad Económica</label>
-                            {/* Parece que el defaultValue es igual al de la dirección, se podría revisar */}
-                            <input type="text" defaultValue="Cra#0 Trans #0 - 00" />
-                        </div>
-
-                        <div className="boton-contenedor">
-                            {/* Botón para modificar, no tiene tipo ni evento */}
-                            <button className="boton-modificar">Modificar</button>
+                            <input type="text" value={empresa.actividad_economica} readOnly />
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default Visualizacion_Empresa;
