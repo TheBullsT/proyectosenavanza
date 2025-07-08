@@ -114,18 +114,6 @@ const EditarPerfilEmpresa = () => {
             <div className="answer-details">{empresa.razon_social}</div>
             <hr />
           </div>
-
-          <div>
-            <strong>Teléfono Fijo:</strong><br />
-            <input
-              className="answer-details"
-              name="telefono"
-              value={empresa.telefono}
-              onChange={handleChange}
-            />
-            <hr />
-          </div>
-
           <div>
             <strong>Teléfono Móvil:</strong><br />
             <input

@@ -264,7 +264,7 @@ html {
 /* Estilos al input */
 /* Inputs*/
 .company-details input{
-  width: 100%;
+  width: 90%;
   padding: 8px 12px;
   font-size: 14px;
   font-family: var(--font-primary);
