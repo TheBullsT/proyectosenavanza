@@ -6,7 +6,11 @@ export const apiGeneral = axios.create({
   baseURL: import.meta.env.VITE_API_URL_GENERAL,
   withCredentials: true,
 });
-
+// API Crear Usuario
+export const apiCreateUser = axios.create({
+  baseURL: import.meta.env.VITE_API_URL_CREATE,
+  withCredentials: true,
+});
 // API login (/login/)
 export const apiLogin = axios.create({
   baseURL: import.meta.env.VITE_API_URL_LOGIN,
@@ -48,6 +52,6 @@ const setAuthResponseInterceptor = (api) => {
   );
 };
 
-[apiGeneral, apiLogin, apiEmpresa, apiPerfil].forEach(api => {
+[apiGeneral, apiLogin, apiEmpresa, apiPerfil, apiCreateUser].forEach(api => {
   setAuthResponseInterceptor(api);
 });

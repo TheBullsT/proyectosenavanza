@@ -5,7 +5,6 @@ import logo from '../../../assets/img/Logo_SENAVANZA.png';
 // Estilos específicos para NavbarAdmin
 import "./NavbarAdmin.css"; 
 // Importacion de los iconos
-import { FaMoon } from "react-icons/fa"; 
 import { FaCircle } from "react-icons/fa6"; 
 
 // Componente funcional NavbarAdmin
