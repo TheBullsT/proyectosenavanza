@@ -1,0 +1,185 @@
+:root {
+    /* Colores Primarios: tonos verdes para la paleta principal */
+    --primary-1: #39A900;
+    --primary-2: #36AE0F;
+    --primary-3: #42B31E;
+    --primary-4: #4FB82D;
+    --primary-5: #5BBD3C;
+    --primary-6: #68C24B;
+    --primary-7: #75C75A;
+    --primary-8: #81CC69;
+    --primary-9: #8ED178;
+    --primary-10: #9AD787;
+    --primary-11: #A7DC96;
+    --primary-12: #B3E1A5;
+    --primary-13: #C0E6B4;
+    --primary-14: #CDEBC3;
+    --primary-15: #D9F0D2;
+    --primary-16: #E6F5E1;
+    --primary-17: #F2FAF0;
+
+    /* Grises y neutros para textos, fondos y bordes */
+    --black: #000000;
+    --gray-1: #0F0F0F;
+    --gray-2: #1E1E1E;
+    --gray-3: #2D2D2D;
+    --gray-4: #3C3C3C;
+    --gray-5: #5A5A5A;
+    --gray-6: #696969;
+    --gray-7: #787878;
+    --gray-8: #878787;
+    --gray-9: #A5A5A5;
+    --gray-10: #969696;
+    --gray-11: #A5A5A5;
+    --gray-12: #B4B4B4;
+    --gray-13: #C3C3C3;
+    --gray-14: #D2D2D2;
+    --gray-15: #E1E1E1;
+    --gray-16: #F0F0F0;
+    --white: #FFFFFF;
+
+    /* Tipografía principal y secundaria */
+    --font-primary: 'Work Sans', sans-serif;
+    --font-secondary: 'Calibri', sans-serif;
+
+    /* Tamaños base para jerarquías tipográficas */
+    --h1: 32px;
+    --h2: 24px;
+    --h3: 20px;
+    --h4: 16px;
+    --h5: 14px;
+    --h6: 12px;
+}
+
+/* Reseteo y configuración base del html */
+html {
+    margin: 0;
+    font-size: 62.5%;
+    /* 1rem = 10px para facilitar cálculos */
+    box-sizing: border-box;
+    /* Incluye padding y border en el ancho total */
+}
+
+/* Asegura que todos los elementos y pseudoelementos usen box-sizing heredado */
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/* Estilo base para el body */
+body {
+    font-size: 16px;
+    /* Tamaño de fuente estándar para lectura */
+    font-family: var(--font-primary);
+}
+
+/* Estilo base para enlaces */
+a {
+    text-decoration: none;
+    /* Quita el subrayado */
+}
+
+/* Tamaños tipográficos con rem basados en variables definidas */
+h1 {
+    font-size: 3.2rem;
+    /* 32px */
+}
+
+h2 {
+    font-size: 2.4rem;
+    /* 24px */
+}
+
+h3 {
+    font-size: 2.0rem;
+    /* 20px */
+}
+
+h4 {
+    font-size: 1.6rem;
+    /* 16px */
+}
+
+h5 {
+    font-size: 1.4rem;
+    /* 14px */
+}
+
+/* Contenedor principal del componente de carga */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    /* Centra horizontalmente */
+    justify-content: center;
+    /* Centra verticalmente */
+    height: 100vh;
+    /* Ocupa toda la altura de la pantalla */
+    background: #ffffff;
+    /* Fondo blanco */
+    color: #333;
+    /* Color de texto gris oscuro */
+    font-size: 20px;
+    /* Tamaño del texto */
+}
+
+/* Estilo del spinner circular */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ccc;
+    /* Borde gris claro */
+    border-top: 5px solid #007bff;
+    /* Borde superior azul para animar */
+    border-radius: 50%;
+    /* Forma circular */
+    animation: spin 1s linear infinite;
+    /* Animación giratoria infinita */
+}
+
+/* Definición de la animación giratoria */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Estilo del texto de carga debajo del spinner */
+.loading-text {
+    margin-top: 15px;
+    /* Separación superior */
+    font-weight: bold;
+}
+.loading-container {
+    position: absolute;
+    top: 0;
+    left: 250px; /* Ajusta esto al ancho de tu SidebarAdmin */
+    width: calc(100% - 250px);
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--white);
+    color: var(--gray-3);
+    font-size: 20px;
+    z-index: 9999;
+}
+
+
+/* Opcional: estilo para un logo dentro del loading (si se usa) */
+.loading-logo {
+    width: 100px;
+    margin-bottom: 20px;
+}

@@ -1,52 +1,50 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
-// Estilos
-import "./ListarEmpresa.css";
-
-// Componentes e íconos
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
+import "./ListarEmpresa.css";
+import { Link } from 'react-router-dom';
 import { MdHomeRepairService } from "react-icons/md";
 import { FaEye, FaEdit, FaLock } from "react-icons/fa";
-
-// Notificaciones
-import { toast } from "react-toastify";
-
-// API
 import { apiEmpresa } from "../../../api/apis";
+import LoadingBaseDatos from "../../Loading/loading_base_datos";
 
 const Listar_Empresa = () => {
   const [empresas, setEmpresas] = useState([]);
+  const [loadingBaseDatos, setLoadingBaseDatos] = useState(true);
 
-  // Cargar empresas desde la API
+  // Obtener las empresas desde la API
+  const obtenerEmpresas = async () => {
+    setLoadingBaseDatos(true);
+    try {
+      const response = await apiEmpresa.get("", {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      setEmpresas(response.data);
+    } catch (error) {
+      console.error("Error al obtener las empresas:", error);
+    } finally {
+      setLoadingBaseDatos(false);
+    }
+  };
+
   useEffect(() => {
-    const obtenerEmpresas = async () => {
-      try {
-        const response = await apiEmpresa.get("/");
-        setEmpresas(response.data);
-      } catch (error) {
-        console.error("Error al obtener las empresas:", error);
-        toast.error("Error al cargar las empresas.");
-      }
-    };
-
     obtenerEmpresas();
   }, []);
+
+  if (loadingBaseDatos) return <LoadingBaseDatos />;
+  if (!empresas || empresas.length === 0) return <p>No hay empresas registradas.</p>;
 
   return (
     <div className="empresa-container">
       <NavbarAdmin />
 
       <div className="visualizar-empresa-contenido">
-        {/* Título con breadcrumb */}
         <p className="title">
           Listar Empresa
-          <span className="breadcrumb">
-            You are here: <strong className="breadcrumb-active">Empresas</strong>
-          </span>
+          <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Empresas</strong></span>
         </p>
 
-        {/* Introducción */}
         <div className="form-info">
           <div className="icon">
             <MdHomeRepairService />
@@ -57,16 +55,14 @@ const Listar_Empresa = () => {
           </p>
         </div>
 
-        {/* Encabezado y botones */}
         <div className="header-bar">
           <h2 className="empresas-label">Empresas</h2>
           <div className="button-group">
-            <Link to="/crear-empresa" className="add-button">Agregar Empresa</Link>
+            <button className="add-button">Agregar Empresa</button>
             <button className="report-button">Generar Reporte</button>
           </div>
         </div>
 
-        {/* Tabla de empresas */}
         <table className="empresa-table">
           <thead>
             <tr>
@@ -77,28 +73,18 @@ const Listar_Empresa = () => {
             </tr>
           </thead>
           <tbody>
-            {empresas.length > 0 ? (
-              empresas.map((empresa, index) => (
-                <tr key={empresa.id} className={index % 2 === 0 ? "odd" : ""}>
-                  <td><strong>{empresa.razon_social}</strong></td>
-                  <td>{empresa.telefono}</td>
-                  <td>{empresa.direccion}</td>
-                  <td className="opciones">
-                    <Link to={`/visualizacion-empresa/${empresa.id}`}>
-                      <FaEye className="icon-action" title="Ver" />
-                    </Link>
-                    <Link to={`/editar-empresa/${empresa.id}`}>
-                      <FaEdit className="icon-action" title="Editar" />
-                    </Link>
-                    <FaLock className="icon-action" title="Desactivar" />
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="4">No hay empresas registradas.</td>
+            {empresas.map((empresa, index) => (
+              <tr key={empresa.id} className={index % 2 === 0 ? 'odd' : ''}>
+                <td><strong>{empresa.razon_social}</strong></td>
+                <td>{empresa.telefono}</td>
+                <td>{empresa.direccion}</td>
+                <td className="opciones">
+                  <Link to={`/visualizacion-empresa/${empresa.id}`}><FaEye className="icon-action" /></Link>
+                  <Link to={`/editar-empresa/${empresa.id}`}><FaEdit className="icon-action" /></Link>
+                  <FaLock className="icon-action" />
+                </td>
               </tr>
-            )}
+            ))}
           </tbody>
         </table>
       </div>

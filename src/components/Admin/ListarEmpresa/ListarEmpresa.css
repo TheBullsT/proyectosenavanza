@@ -217,3 +217,9 @@ html {
   font-weight: bold;
   margin: 0;
 }
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
