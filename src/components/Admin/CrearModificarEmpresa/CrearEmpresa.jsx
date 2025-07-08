@@ -11,7 +11,7 @@ import axios from "axios";
 // Importar Toast
 import { toast } from "react-toastify";
 // Importar APIS
-import { apiCreateUsuario } from "../../../api/apis";
+import { apiCreateUser } from "../../../api/apis";
 
 // Componente funcional llamado CrearEmpresa
 const CrearEmpresa = () => {
@@ -34,7 +34,7 @@ const CrearEmpresa = () => {
         e.preventDefault();
         try {
 
-            const response = await apiCreateUsuario.post("create/",
+            const response = await apiCreateUser.post("create/",
                 {
                     username: username,
                     password: password,
