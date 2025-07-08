@@ -101,7 +101,6 @@ const Listar_Empresa = () => {
                   <Link to={`/visualizacion-empresa/${empresa.id}`}>
                     <FaEye className="icon-action" />
                   </Link>
-
                   <Link to={`/editar-empresa/${empresa.id}`}>
                     <FaEdit className="icon-action" />
                   </Link>

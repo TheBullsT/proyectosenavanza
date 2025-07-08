@@ -100,7 +100,7 @@ html {
 .form-info {
   display: flex;
   align-items: start;
-  background: #e8f5e9;
+  background: var(--white);
   gap: 16px;
   padding: 15px;
   margin-top: 20px;

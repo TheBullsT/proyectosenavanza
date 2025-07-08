@@ -82,7 +82,7 @@ function App() {
           <Route path="/adminhome" element={<ProtectRoute rol="admin"><AdminHome /></ProtectRoute>} />
           <Route path="/crear-empresa" element={<ProtectRoute rol="admin"><CrearEmpresa /></ProtectRoute>} />
           <Route path="/listar-empresa" element={<ProtectRoute rol="admin"><ListarEmpresa /></ProtectRoute>} />
-          <Route path="/modificar-empresa" element={<ProtectRoute rol="admin"><ModificarEmpresa /></ProtectRoute>} />
+          <Route path="/modificar-empresa/:id" element={<ProtectRoute rol="admin"><ModificarEmpresa /></ProtectRoute>} />
           <Route path="/crear-programa" element={<ProtectRoute rol="admin"><CrearProgramaDeFormacion /></ProtectRoute>} />
           <Route path="/modificar-programa" element={<ProtectRoute rol="admin"><ModificarPrograma /></ProtectRoute>} />
           <Route path="/listar-programa" element={<ProtectRoute rol="admin"><ListarPrograma /></ProtectRoute>} />
