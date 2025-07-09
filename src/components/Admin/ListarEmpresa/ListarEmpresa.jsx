@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 const Listar_Empresa = () => {
   const [empresas, setEmpresas] = useState([]);
   const [loadingBaseDatos, setLoadingBaseDatos] = useState(true);
+  const [search, setSearch] = useState(""); // Nuevo estado para la barra de búsqueda
 
   // Obtener las empresas desde la API
   const obtenerEmpresas = async () => {
@@ -48,12 +49,17 @@ const Listar_Empresa = () => {
       });
 
       obtenerEmpresas(); // Refrescar la lista
-      toast.success("Estado cambiado con extio");
+      toast.success("Estado cambiado con éxito");
     } catch (error) {
       console.error("Error al cambiar el estado de la empresa:", error);
       toast.error("Error al cambiar el estado de la empresa:", error);
     }
   };
+
+  // Filtrar empresas basado en el término de búsqueda
+  const filteredEmpresas = empresas.filter((empresa) =>
+    empresa.razon_social.toLowerCase().includes(search.toLowerCase())
+  );
 
   if (loadingBaseDatos) return <LoadingBaseDatos />;
   if (!empresas || empresas.length === 0) return <p>No hay empresas registradas.</p>;
@@ -86,6 +92,15 @@ const Listar_Empresa = () => {
           </div>
         </div>
 
+        {/* Barra de búsqueda */}
+        <input
+          type="text"
+          placeholder="Buscar por nombre de empresa"
+          className="input-busqueda"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
         <table className="empresa-table">
           <thead>
             <tr>
@@ -96,7 +111,7 @@ const Listar_Empresa = () => {
             </tr>
           </thead>
           <tbody>
-            {empresas.map((empresa, index) => (
+            {filteredEmpresas.map((empresa, index) => ( // Usar filteredEmpresas aquí
               <tr key={empresa.id} className={index % 2 === 0 ? 'odd' : ''}>
                 <td><strong>{empresa.razon_social}</strong></td>
                 <td>{empresa.telefono}</td>
@@ -119,7 +134,7 @@ const Listar_Empresa = () => {
                     <FaLock
                       className="icon-action icon-lock"
                       title="Activar empresa"
-                      onClick={() => cambiarEstadoEmpresa(empresa)}
+                      onClick={() => cambiarEstadoEstado(empresa)} // Corregido: cambiarEstadoEmpresa
                       style={{ cursor: 'pointer' }}
                     />
                   )}

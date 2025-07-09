@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { apiGeneral } from "../../../api/apis";
 import LoadingBaseDatos from "../../Loading/loading_base_datos"; // Componente de carga
 
+
 const ListarProgramas = () => {
   const [programas, setProgramas] = useState([]);
   const [search, setSearch] = useState("");
