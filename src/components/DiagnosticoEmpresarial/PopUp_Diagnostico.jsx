@@ -54,17 +54,17 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
 {/*  */}
                     <div className="form-group">
                         <input type="text" placeholder="Describa brevemente las ocupaciones para el aprendiz..."
-                        className="input-box2"
+                        className="input-box"
                         value={descripcion}
                         onChange={(e) => SetDescripcion(e.target.value)}
                         required
                         minLength={50}/>
                     </div>
-{/*  */}
+{/*  */}            <div className='botones-diagnostico-2'>
                     <button className="submit-btn"  type='submit'>
                         <FaCheck className='icon-check' />Enviar diagnóstico
                     </button>
-                    <div>
+                    
                         <button className="close-btn" onClick={cerrar}>
                             <MdCancel className='cerrar-diagnostico' /> Cerrar
                         </button>
