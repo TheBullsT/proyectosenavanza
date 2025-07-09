@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { apiPerfil } from '../../api/apis';
-import { apiEmpresa } from '../../api/apis';
 import LoadingDatos from '../Loading/loading_datos';
 import { useNavigate } from 'react-router-dom';
 // Importar las notificaciones
@@ -42,7 +41,7 @@ const EditarPerfilEmpresa = () => {
   const handleGuardar = async () => {
     try {
       console.log('Datos a guardar:', empresa);
-      const actu = await apiEmpresa.put(`update/`, empresa);
+      const actu = await apiPerfil.put(" ", empresa);
 
       console.log(actu.data);
       toast.success("Datos guardados correctamente")
