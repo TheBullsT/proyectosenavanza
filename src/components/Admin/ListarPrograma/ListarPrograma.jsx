@@ -1,95 +1,97 @@
-// Importa React y useState para manejar estado local
-import React, { useState } from "react"; 
-// Importa estilos específicos para este componente
-import './ListarPrograma.css'; 
-// Importa el componente NavbarAdmin para incluirlo en la vista
-import NavbarAdmin from "../NavbarAdmin/NavbarAdmin"; 
-// Importar los iconos
-import { FaEye, FaEdit, FaLock } from "react-icons/fa"; 
-import { MdSchool } from "react-icons/md"; 
-// Importa Link para navegación entre rutas sin recargar la página
-import { Link } from "react-router-dom"; 
-// Datos de ejemplo (mock) para los programas de formación
-const programasMock = [
-  { nombre: "<Nombre del PF>", codigo: "11111111111", nivel: "Tecnico" },
-  { nombre: "<Nombre del PF>", codigo: "22222222222", nivel: "Tecnologo" },
-  { nombre: "<Nombre del PF>", codigo: "33333333333", nivel: "Tecnico" },
-  { nombre: "<Nombre del PF>", codigo: "44444444444", nivel: "Tecnologo" },
-  { nombre: "<Nombre del PF>", codigo: "44444445555", nivel: "Tecnico" },
-  { nombre: "<Nombre del PF>", codigo: "122616092803", nivel: "Tecnologo" },
-  { nombre: "<Nombre del PF>", codigo: "00000000000", nivel: "Tecnologo" },
-  { nombre: "<Nombre del PF>", codigo: "3456789876543", nivel: "Tecnico" },
-];
+import React, { useEffect, useState } from "react";
+import './ListarPrograma.css';
+import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
+import { FaEye, FaEdit, FaLock } from "react-icons/fa";
+import { MdSchool } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
+import { apiGeneral } from "../../../api/apis";
+import LoadingBaseDatos from "../../Loading/loading_base_datos"; // Componente de carga
 
-// Componente funcional que lista los programas de formación
 const ListarProgramas = () => {
-  // Estado para almacenar el término de búsqueda ingresado por el usuario
+  const [programas, setProgramas] = useState([]);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-  // Filtra la lista de programas según el código o el nombre, según el texto de búsqueda
-  const filteredProgramas = programasMock.filter((pf) =>
-    pf.codigo.includes(search) || pf.nombre.toLowerCase().includes(search.toLowerCase())
+  useEffect(() => {
+    const fetchProgramas = async () => {
+      setLoading(true);
+      try {
+        const response = await apiGeneral.get("programas/");
+        setProgramas(response.data);
+      } catch (error) {
+        console.error("Error al obtener programas:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProgramas();
+  }, []);
+
+  const filteredProgramas = programas.filter((pf) =>
+    pf.id.includes(search) || pf.nombre.toLowerCase().includes(search.toLowerCase())
   );
+
+  if (loading) {
+    return <LoadingBaseDatos />;
+  }
 
   return (
     <div className="main-right-bar">
-      {/* Incluye la barra de navegación superior */}
       <NavbarAdmin />
 
       <div className="visualizar-container">
-        {/* Título y breadcrumb */}
         <p className="title">
           Listar Programa de formación
-          <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Empresas</strong></span>
+          <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Programas</strong></span>
         </p>
 
-        {/* Información descriptiva con icono */}
         <div className="form-info">
-          <div className="icon">
-            <MdSchool />
-          </div>
+          <div className="icon"><MdSchool /></div>
           <p>
             En este espacio se podrán listar los programas de formación que estén vinculados con nosotros.<br />
-            <strong>Debe ser creada para aparecer en la <span className="highlight">BASE DE DATOS</span>.</strong>
+            <strong>Debe estar creado en la <span className="highlight">BASE DE DATOS</span>.</strong>
           </p>
         </div>
 
-        {/* Barra de búsqueda y botones de acción */}
         <div className="search-bar">
-          <h2 className="empresas-label">Empresas</h2>
+          <h2 className="empresas-label">Programas</h2>
           <div className="grupo-botones">
-            {/* Botón para agregar un nuevo programa de formación */}
-            <button className="btn-agregar">Agregar PF</button>
-            {/* Botón para generar un reporte (funcionalidad no implementada aquí) */}
+            <button className="btn-agregar" onClick={() => navigate("/crear-programa")}>Agregar PF</button>
             <button className="btn-reporte">Generar Reporte</button>
           </div>
         </div>
 
-        {/* Tabla que muestra la lista de programas filtrados */}
+        <input
+          type="text"
+          placeholder="Buscar por nombre"
+          className="input-busqueda"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
         <table className="program-table">
           <thead>
             <tr>
               <th>Nombre del PF</th>
-              <th>Código de PF</th>
               <th>Nivel Formativo</th>
               <th>Opciones</th>
             </tr>
           </thead>
           <tbody>
-            {/* Recorre el arreglo filtrado y muestra cada programa */}
             {filteredProgramas.map((pf, index) => (
-              <tr key={index} className={index % 2 === 1 ? "odd" : ""}>
+              <tr key={pf.id} className={index % 2 === 1 ? "odd" : ""}>
                 <td>{pf.nombre}</td>
-                <td>{pf.codigo}</td>
-                <td>{pf.nivel}</td>
-                {/* Iconos para acciones disponibles */}
+                <td>{pf.nivel_programa}</td>
                 <td className="opciones">
-                  {/* Icono para ver detalles, enlace a otra ruta */}
-                  <Link to='/visualizacion-programa'><FaEye className="icon-action" title="Ver" /></Link>
-                  {/* Icono para editar programa */}
-                  <FaEdit className="icon-action" title="Editar" />
-                  {/* Icono para eliminar programa */}
-                  <FaLock className="icon-action" title="Eliminar" />
+                  <Link to={`/visualizacion-programa/${pf.id}`}>
+                    <FaEye className="icon-action" title="Ver" />
+                  </Link>
+                  <Link to={`/modificar-programa/${pf.id}`}>
+                    <FaEdit className="icon-action" title="Editar" />
+                  </Link>
+                  <FaLock className="icon-action" title="Eliminar (no disponible)" />
                 </td>
               </tr>
             ))}
@@ -100,5 +102,4 @@ const ListarProgramas = () => {
   );
 };
 
-// Exporta el componente para usarlo en otras partes de la aplicación
 export default ListarProgramas;

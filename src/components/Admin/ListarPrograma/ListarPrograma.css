@@ -107,10 +107,15 @@ a {
 /* INFO BOX */
 .form-info {
   display: flex;
-  align-items: flex-start;
+  align-items: start;
+  background: #e8f5e9;
   gap: 16px;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 6px;
   margin-bottom: 30px;
 }
+
 
 .form-info .icon {
   background: var(--primary-1);
@@ -206,4 +211,29 @@ a {
 .grupo-botones {
   display: flex;
   gap: 10px;
+}
+/* 
+/* Estilo personalizado para la barra de búsqueda */
+.input-busqueda {
+  width: 96%;
+  padding: 12px 18px;
+  border: 2px solid var(--primary-1);
+  border-radius: 30px;
+  font-size: 16px;
+  color: var(--black);
+  background-color: #f0fff2;
+  transition: all 0.3s ease;
+  margin-bottom: 25px;
+  outline: none;
+}
+
+.input-busqueda::placeholder {
+  color: var(--gray-dark);
+  font-style: italic;
+}
+
+.input-busqueda:focus {
+  background-color: var(--white);
+  border-color: #2f8700;
+  box-shadow: 0 0 5px rgba(57, 169, 0, 0.4);
 }
