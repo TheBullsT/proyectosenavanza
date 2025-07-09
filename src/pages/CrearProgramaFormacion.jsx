@@ -4,7 +4,7 @@ import SidebarAdmin from '../components/Admin/SidebarAdmin/SidebarAdmin';
 // Importamos el componente Footer para el pie de página
 import Footer from '../components/Home/Footer/footer.jsx';
 // Importamos el formulario para crear programas de formación
-import CrearProgramaFormacion from '../components/Admin/CrearProgramasDeFormacion/crearpromama.jsx';
+import CrearProgramaFormacion from '../components/Admin/CrearProgramasDeFormacion/crearprograma.jsx';
 // Importamos los estilos para el contenedor principal del admin
 import '../components/Admin/mainhomecontainer.css'
 
