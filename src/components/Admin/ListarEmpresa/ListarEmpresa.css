@@ -74,7 +74,7 @@ html {
   padding: 40px;
 }
 
-.titulo {
+.titulo-listar {
   font-size: 32px;
   font-weight: bold;
   color: var(--primary-1);
