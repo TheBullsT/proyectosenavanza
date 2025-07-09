@@ -108,7 +108,9 @@ function SidebarAdmin() {
                         {ActiveMenu === "usuarios" && (
                             // Submenú Usuarios visible solo si "usuarios" está activo
                             <ul className="subMenu">
-                                <li>Listar Usuarios</li>
+                                <Link to="/listar-usuarios" className="no-estilo">
+                                <li>Listar Usuarios</li> 
+                                </Link>
                             </ul>
                         )}
                     </ul>

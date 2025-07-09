@@ -28,8 +28,11 @@ const ListarEmpresa = lazy(() => import('./pages/ListarEmpresa'));
 const ModificarEmpresa = lazy(() => import('./pages/AdminModificarEmpresa'));
 const CrearProgramaDeFormacion = lazy(() => import('./pages/CrearProgramaFormacion'));
 const ModificarPrograma = lazy(() => import('./pages/ModificaraPrograma'));
+const ModificarUsuarios = lazy(() => import('./pages/ModificarUsuarios'));
 const ListarPrograma = lazy(() => import('./pages/ListarPrograma'));
+const ListarUsuarios = lazy(() => import('./pages/ListarUsuariosTotal'));
 const VisualizacionEmpresa = lazy(() => import('./pages/VisualizacionEmpresa'));
+const VisualizacionUsuarios = lazy(() => import('./pages/VisualizacionUsuarios'));
 const VisualizacionPrograma = lazy(() => import('./pages/VisualizacionPrograma'));
 const ProtectRoute = lazy(() => import('./components/ProtectRoute'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -82,12 +85,15 @@ function App() {
           <Route path="/adminhome" element={<ProtectRoute rol="admin"><AdminHome /></ProtectRoute>} />
           <Route path="/crear-empresa" element={<ProtectRoute rol="admin"><CrearEmpresa /></ProtectRoute>} />
           <Route path="/listar-empresa" element={<ProtectRoute rol="admin"><ListarEmpresa /></ProtectRoute>} />
+          <Route path="/listar-usuarios" element={<ProtectRoute rol="admin"><ListarUsuarios /></ProtectRoute>} />
+          <Route path="/modificar-usuarios/:id" element={<ProtectRoute rol="admin"><ModificarUsuarios /></ProtectRoute>} />
           <Route path="/modificar-empresa/:id" element={<ProtectRoute rol="admin"><ModificarEmpresa /></ProtectRoute>} />
           <Route path="/crear-programa" element={<ProtectRoute rol="admin"><CrearProgramaDeFormacion /></ProtectRoute>} />
           <Route path="/modificar-programa" element={<ProtectRoute rol="admin"><ModificarPrograma /></ProtectRoute>} />
           <Route path="/listar-programa" element={<ProtectRoute rol="admin"><ListarPrograma /></ProtectRoute>} />
           <Route path="/visualizacion-empresa/:id" element={<ProtectRoute rol="admin"><VisualizacionEmpresa /></ProtectRoute>} />
           <Route path="/visualizacion-programa/:id" element={<ProtectRoute rol="admin"><VisualizacionPrograma /></ProtectRoute>} />
+          <Route path="/visualizacion-usuarios/:id" element={<ProtectRoute rol="admin"><VisualizacionUsuarios /></ProtectRoute>} />
 
           {/* Ruta para error 404 */}
           <Route path="*" element={<NotFound />} />
