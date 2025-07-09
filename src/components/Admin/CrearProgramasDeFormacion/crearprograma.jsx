@@ -92,13 +92,15 @@ const CrearProgramaFormacion = () => {
           </div>
 
           <div className="form-group">
-            <label>Duración (en horas)</label>
-            <select value={duracion} onChange={(e) => setDuracion(e.target.value)} required>
-              <option value="">Seleccione</option>
-              <option value="40">40 horas</option>
-              <option value="160">160 horas</option>
-              <option value="480">480 horas</option>
-            </select>
+            <label>Duración <strong>(EN HORAS)</strong></label>
+            <input
+              type="number"
+              min="1"
+              value={duracion}
+              onChange={(e) => setDuracion(e.target.value)}
+              required
+              placeholder="Ej: 40"
+            />
           </div>
 
           <div className="form-actions">

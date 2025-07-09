@@ -1,73 +1,103 @@
-import React from "react";
-import "./VisualizacionPrograma.css"; // Estilos específicos para este componente
-import NavbarAdmin from "../NavbarAdmin/NavbarAdmin"; // Barra de navegación del admin
-import { MdHomeRepairService } from "react-icons/md"; // Icono importado desde react-icons
+import React, { useEffect, useState } from "react";
+import "./VisualizacionPrograma.css";
+import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
+import { MdHomeRepairService } from "react-icons/md";
+import { useParams } from "react-router-dom";
+import { apiGeneral } from "../../../api/apis";
+import LoadingBaseDatos from "../../Loading/loading_base_datos";
 
 const Visualizacion_Programa = () => {
-    return (
-        <div className="visualizacion-programa-container">
-            {/* Navbar para administración */}
-            <NavbarAdmin />
+  const { id } = useParams();
+  const [programa, setPrograma] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-            <div className="visualizacion-programa-contenido">
-                {/* Título y breadcrumb */}
-                <h1 className="titulo-programa">
-                    Visualización de Programa de Formación
-                    <span className="breadcrumb-programa">
-                        You are here: <strong className="breadcrumb-actual-programa">Programa de Formacion</strong>
-                    </span>
-                </h1>
+  const obtenerPrograma = async () => {
+    try {
+      const response = await apiGeneral.get(`programa/${id}/`);
+      setPrograma(response.data);
+    } catch (error) {
+      console.error("Error al obtener programa:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-                {/* Sección informativa con icono */}
-                <div className="icon-box-programa">
-                    <div className="icon-programa">
-                        {/* Nota: Aquí el <i> no es necesario si usas react-icons */}
-                        <MdHomeRepairService />
-                    </div>
-                    <p>
-                        En este espacio se podrán visualizar los programas de formación que estén vinculados con nosotros.<br />
-                        <strong>Debe ser creada para aparecer en la BASE DE DATOS.</strong>
-                    </p>
-                </div>
+  useEffect(() => {
+    obtenerPrograma();
+  }, [id]);
 
-                {/* Formulario con campos para el programa */}
-                <div className="info-box-visualizacion-programa">
-                    <h2 className="subtitulo-programa">Nombre de Programa</h2>
-                    <form className="formulario-programa">
-                        {/* Campo de descripción */}
-                        <div className="campo-form-programa campo-nombre-programa">
-                            <label>Descripción</label>
-                            <input
-                                className="input-programa-nombre"
-                                type="text"
-                                defaultValue="Descripcion lorem ns holi"
-                            />
-                        </div>
+  if (loading) return <LoadingBaseDatos />;
+  if (!programa) return <p>No se encontró información del programa.</p>;
 
-                        {/* Grid con dos campos lado a lado */}
-                        <div className="grid-doble-programa">
-                            <div className="campo-form-programa">
-                                <label>Modalidad</label>
-                                <input type="text" defaultValue="Presencial" />
-                            </div>
+  return (
+    <div className="visualizacion-programa-container">
+      <NavbarAdmin />
 
-                            <div className="campo-form-programa">
-                                <label>Nivel Formativo</label>
-                                {/* Aquí el type="email" parece un error, debería ser type="text" */}
-                                <input type="text" defaultValue="Nivel de ejemplo" />
-                            </div>
-                        </div>
+      <div className="visualizacion-programa-contenido">
+        <h1 className="titulo-programa">
+          Visualización de Programa de Formación
+          <span className="breadcrumb-programa">
+            You are here: <strong className="breadcrumb-actual-programa">Programa de Formación</strong>
+          </span>
+        </h1>
 
-                        {/* Campo duración */}
-                        <div className="campo-form-programa">
-                            <label>Duración</label>
-                            <input type="text" defaultValue="El tiempo que es" />
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <div className="icon-box-programa">
+          <div className="icon-programa">
+            <MdHomeRepairService />
+          </div>
+          <p>
+            En este espacio se podrán visualizar los programas de formación que estén vinculados con nosotros.<br />
+            <strong>Debe estar creado para aparecer en la BASE DE DATOS.</strong>
+          </p>
         </div>
-    );
+
+        <div className="info-box-visualizacion-programa">
+          <h2 className="subtitulo-programa">{programa.nombre}</h2>
+
+          <form className="formulario-programa">
+            <div className="campo-form-programa campo-nombre-programa">
+              <label>Descripción</label>
+              <textarea
+                className="descripcion-programa"
+                value={programa.descripcion || ""}
+                readOnly
+                rows={5}
+              />
+            </div>
+
+            <div className="grid-doble-programa">
+              <div className="campo-form-programa">
+                <label>Modalidad</label>
+                <input
+                  type="text"
+                  value={programa.modalidad || ""}
+                  readOnly
+                />
+              </div>
+
+              <div className="campo-form-programa">
+                <label>Nivel Formativo</label>
+                <input
+                  type="text"
+                  value={programa.nivel_programa || ""}
+                  readOnly
+                />
+              </div>
+            </div>
+
+            <div className="campo-form-programa">
+              <label>Duración</label>
+              <input
+                type="text"
+                value={programa.duracion || ""}
+                readOnly
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Visualizacion_Programa;
