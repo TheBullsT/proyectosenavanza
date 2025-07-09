@@ -5,7 +5,6 @@ import logo from '../../../assets/img/Logo_SENAVANZA.png';
 // Estilos específicos para NavbarAdmin
 import "./NavbarAdmin.css"; 
 // Importacion de los iconos
-import { FaMoon } from "react-icons/fa"; 
 import { FaCircle } from "react-icons/fa6"; 
 
 // Componente funcional NavbarAdmin
@@ -28,10 +27,6 @@ function NavbarAdmin() {
                     <img src={logo} alt="Logo Senavanza" />
                 </div>
 
-                {/* Icono para modo oscuro */}
-                <div className="logoModoOscuro">
-                    <FaMoon className="navIcon" />
-                </div>
 
                 {/* Sección que muestra el icono y el nombre del usuario/admin */}
                 <div className="logoAdmin">

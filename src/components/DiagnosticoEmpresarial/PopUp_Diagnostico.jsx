@@ -66,7 +66,7 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                     </button>
                     <div>
                         <button className="close-btn" onClick={cerrar}>
-                            <MdCancel /> Cerrar
+                            <MdCancel className='cerrar-diagnostico' /> Cerrar
                         </button>
                     </div>
                 </div>

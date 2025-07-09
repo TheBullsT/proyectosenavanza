@@ -1,56 +1,106 @@
-import React from "react";
-// Importar el componente NavBar
+import React, { useEffect, useState } from "react";
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
-// Importar los estilos
 import "./ListarEmpresa.css";
-// Para enlaces internos sin recargar la página
 import { Link } from 'react-router-dom';
-// Importar los iconos
 import { MdHomeRepairService } from "react-icons/md";
-import { FaEye, FaEdit, FaLock } from "react-icons/fa";
+import { FaEye, FaEdit, FaLock, FaLockOpen } from "react-icons/fa";
+import { apiEmpresa } from "../../../api/apis";
+import LoadingBaseDatos from "../../Loading/loading_base_datos";
+import { FaClock } from "react-icons/fa6";
+import { toast } from "react-toastify";
 
 const Listar_Empresa = () => {
-  // Arreglo con 8 elementos idénticos que simulan empresas registradas
-  const empresas = Array(8).fill({
-    nombre: '<Nombre de la empresa>',
-    telefono: '+57 300 000 0000',
-    direccion: 'Cra#0 Trans #0 - 00',
-  });
+  const [empresas, setEmpresas] = useState([]);
+  const [loadingBaseDatos, setLoadingBaseDatos] = useState(true);
+  const [search, setSearch] = useState(""); // Nuevo estado para la barra de búsqueda
+
+  // Obtener las empresas desde la API
+  const obtenerEmpresas = async () => {
+    setLoadingBaseDatos(true);
+    try {
+      const response = await apiEmpresa.get("", {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      setEmpresas(response.data);
+    } catch (error) {
+      console.error("Error al obtener las empresas:", error);
+    } finally {
+      setLoadingBaseDatos(false);
+    }
+  };
+
+  useEffect(() => {
+    obtenerEmpresas();
+  }, []);
+
+  // Función para cambiar el estado de la empresa
+  const cambiarEstadoEmpresa = async (empresa) => {
+    const nuevoEstado = empresa.estado === 1 ? 2 : 1;
+
+    try {
+      await apiEmpresa.put(`update/${empresa.id}/`, {
+        estado: nuevoEstado
+      }, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      obtenerEmpresas(); // Refrescar la lista
+      toast.success("Estado cambiado con éxito");
+    } catch (error) {
+      console.error("Error al cambiar el estado de la empresa:", error);
+      toast.error("Error al cambiar el estado de la empresa:", error);
+    }
+  };
+
+  // Filtrar empresas basado en el término de búsqueda
+  const filteredEmpresas = empresas.filter((empresa) =>
+    empresa.razon_social.toLowerCase().includes(search.toLowerCase())
+  );
+
+  if (loadingBaseDatos) return <LoadingBaseDatos />;
+  if (!empresas || empresas.length === 0) return <p>No hay empresas registradas.</p>;
 
   return (
     <div className="empresa-container">
-      {/* Incluye el navbar admin */}
       <NavbarAdmin />
 
       <div className="visualizar-empresa-contenido">
-        {/* Título principal con breadcrumb */}
         <p className="title">
           Listar Empresa
           <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Empresas</strong></span>
         </p>
 
-        {/* Información descriptiva con icono */}
         <div className="form-info">
           <div className="icon">
             <MdHomeRepairService />
           </div>
           <p>
-            En este espacio podras ver absolutamente todas las empresas<br />
-            que <strong>estan registradas en la BASE DE DATOS.</strong>
+            En este espacio podrás ver absolutamente todas las empresas<br />
+            que <strong>están registradas en la BASE DE DATOS.</strong>
           </p>
         </div>
 
-        {/* Barra de título secundario y botones */}
         <div className="header-bar">
           <h2 className="empresas-label">Empresas</h2>
           <div className="button-group">
-            {/* Botones para agregar empresa y generar reporte */}
             <button className="add-button">Agregar Empresa</button>
             <button className="report-button">Generar Reporte</button>
           </div>
         </div>
 
-        {/* Tabla que lista las empresas */}
+        {/* Barra de búsqueda */}
+        <input
+          type="text"
+          placeholder="Buscar por nombre de empresa"
+          className="input-busqueda"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
         <table className="empresa-table">
           <thead>
             <tr>
@@ -61,17 +111,33 @@ const Listar_Empresa = () => {
             </tr>
           </thead>
           <tbody>
-            {/* Mapeo del arreglo para mostrar cada empresa */}
-            {empresas.map((empresa, index) => (
-              <tr key={index} className={index % 2 === 0 ? 'odd' : ''}>
-                <td><strong>{empresa.nombre}</strong></td>
+            {filteredEmpresas.map((empresa, index) => ( // Usar filteredEmpresas aquí
+              <tr key={empresa.id} className={index % 2 === 0 ? 'odd' : ''}>
+                <td><strong>{empresa.razon_social}</strong></td>
                 <td>{empresa.telefono}</td>
                 <td>{empresa.direccion}</td>
-                {/* Acciones para ver, editar y eliminar */}
                 <td className="opciones">
-                  <Link to='/visualizacion-empresa'><FaEye className="icon-action" /></Link>
-                  <FaEdit className="icon-action" />
-                  <FaLock className="icon-action" />
+                  <Link to={`/visualizacion-empresa/${empresa.id}`}>
+                    <FaEye className="icon-action" />
+                  </Link>
+                  <Link to={`/modificar-empresa/${empresa.id}`}>
+                    <FaEdit className="icon-action" />
+                  </Link>
+                  {empresa.estado === 1 ? (
+                    <FaLockOpen
+                      className="icon-action icon-lock"
+                      title="Desactivar empresa"
+                      onClick={() => cambiarEstadoEmpresa(empresa)}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  ) : (
+                    <FaLock
+                      className="icon-action icon-lock"
+                      title="Activar empresa"
+                      onClick={() => cambiarEstadoEstado(empresa)} // Corregido: cambiarEstadoEmpresa
+                      style={{ cursor: 'pointer' }}
+                    />
+                  )}
                 </td>
               </tr>
             ))}

@@ -212,12 +212,29 @@ a {
     height: 500px;
     object-fit: cover;
 }
-
 /* Parte de texto e información del popup */
 .popup-info-programas {
     padding: 40px;
     width: 60%;
     font-family: var(--font-primary);
+    max-height: 400px;       /* Limita el alto del contenedor */
+    overflow-y: auto;        /* Scroll vertical si el contenido excede */
+    white-space: pre-wrap;   /* Mantiene saltos de línea y espacios */
+    scrollbar-width: thin;   /* Scroll delgado en Firefox */
+}
+
+/* Scroll personalizado para WebKit (Chrome, Edge, Safari) */
+.popup-info-programas::-webkit-scrollbar {
+    width: 8px;
+}
+
+.popup-info-programas::-webkit-scrollbar-thumb {
+    background-color: var(--primary-1);
+    border-radius: 4px;
+}
+
+.popup-info-programas::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
 }
 
 /* Título en el popup */
@@ -234,6 +251,7 @@ a {
     font-size: var(--h4);
     text-align: left;
 }
+
 
 /* Botón para cerrar el popup */
 .boton-cerrar-programas {

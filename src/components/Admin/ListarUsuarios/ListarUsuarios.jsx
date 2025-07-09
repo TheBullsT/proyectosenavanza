@@ -1,37 +1,38 @@
 import React, { useEffect, useState } from "react";
-import './ListarPrograma.css';
+import './ListarUsuarios.css'; // Puedes reutilizar el mismo CSS o copiarlo como ListarUsuarios.css
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
 import { FaEye, FaEdit, FaLock } from "react-icons/fa";
-import { MdSchool } from "react-icons/md";
+import { MdPeople } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { apiGeneral } from "../../../api/apis";
-import LoadingBaseDatos from "../../Loading/loading_base_datos"; // Componente de carga
+import LoadingBaseDatos from "../../Loading/loading_base_datos";
 
-
-const ListarProgramas = () => {
-  const [programas, setProgramas] = useState([]);
+const ListarUsuarios = () => {
+  const [usuarios, setUsuarios] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchProgramas = async () => {
+    const fetchUsuarios = async () => {
       setLoading(true);
       try {
-        const response = await apiGeneral.get("programas/");
-        setProgramas(response.data);
+        const response = await apiGeneral.get("users/");
+        setUsuarios(response.data);
       } catch (error) {
-        console.error("Error al obtener programas:", error);
+        console.error("Error al obtener usuarios:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchProgramas();
+    fetchUsuarios();
   }, []);
 
-  const filteredProgramas = programas.filter((pf) =>
-    pf.id.includes(search) || pf.nombre.toLowerCase().includes(search.toLowerCase())
+  const filteredUsuarios = usuarios.filter(
+    (user) =>
+      user.username.toLowerCase().includes(search.toLowerCase()) ||
+      user.email.toLowerCase().includes(search.toLowerCase())
   );
 
   if (loading) {
@@ -44,29 +45,28 @@ const ListarProgramas = () => {
 
       <div className="visualizar-container">
         <p className="title">
-          Listar Programa de formación
-          <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Programas</strong></span>
+          Listar Usuarios
+          <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Usuarios</strong></span>
         </p>
 
         <div className="form-info">
-          <div className="icon"><MdSchool /></div>
+          <div className="icon"><MdPeople /></div>
           <p>
-            En este espacio se podrán listar los programas de formación que estén vinculados con nosotros.<br />
-            <strong>Debe estar creado en la <span className="highlight">BASE DE DATOS</span>.</strong>
+            En este espacio podrás listar todos los usuarios registrados en el sistema.<br />
+            <strong>Recuerda que están en la <span className="highlight">BASE DE DATOS</span>.</strong>
           </p>
         </div>
 
         <div className="search-bar">
-          <h2 className="empresas-label">Programas</h2>
+          <h2 className="empresas-label">Usuarios</h2>
           <div className="grupo-botones">
-            <button className="btn-agregar" onClick={() => navigate("/crear-programa")}>Agregar PF</button>
             <button className="btn-reporte">Generar Reporte</button>
           </div>
         </div>
 
         <input
           type="text"
-          placeholder="Buscar por nombre"
+          placeholder="Buscar por nombre o correo"
           className="input-busqueda"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -75,21 +75,21 @@ const ListarProgramas = () => {
         <table className="program-table">
           <thead>
             <tr>
-              <th>Nombre del PF</th>
-              <th>Nivel Formativo</th>
+              <th>Username</th>
+              <th>Correo</th>
               <th>Opciones</th>
             </tr>
           </thead>
           <tbody>
-            {filteredProgramas.map((pf, index) => (
-              <tr key={pf.id} className={index % 2 === 1 ? "odd" : ""}>
-                <td>{pf.nombre}</td>
-                <td>{pf.nivel_programa}</td>
+            {filteredUsuarios.map((user, index) => (
+              <tr key={user.id} className={index % 2 === 1 ? "odd" : ""}>
+                <td>{user.username}</td>
+                <td>{user.email}</td>
                 <td className="opciones">
-                  <Link to={`/visualizacion-programa/${pf.id}`}>
+                  <Link to={`/visualizacion-usuarios/${user.id}`}>
                     <FaEye className="icon-action" title="Ver" />
                   </Link>
-                  <Link to={`/modificar-programa/${pf.id}`}>
+                  <Link to={`/modificar-usuarios/${user.id}`}>
                     <FaEdit className="icon-action" title="Editar" />
                   </Link>
                   <FaLock className="icon-action" title="Eliminar (no disponible)" />
@@ -103,4 +103,4 @@ const ListarProgramas = () => {
   );
 };
 
-export default ListarProgramas;
+export default ListarUsuarios;

@@ -34,7 +34,7 @@ function Popup({ cerrar , datos}) {
         </div>
 
         {/* Botones para ver resultados o descargar reporte */}
-        <div className='botones-diagnostico'>
+        <div className='botones-diagnostico-1'>
           {/* Botón que muestra los resultados y cierra el popup */}
           <button className='resultados' onClick={irAResultados} type='button'>
             <FaRegFileArchive className='icon-resultados' /> 

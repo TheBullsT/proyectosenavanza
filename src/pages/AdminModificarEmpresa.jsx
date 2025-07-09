@@ -6,7 +6,7 @@ import Footer from '../components/Home/Footer/footer.jsx';
 // Importamos los estilos específicos para el contenedor principal del admin
 import '../components/Admin/mainhomecontainer.css'
 // Importamos el componente ModificarEmpresa para la funcionalidad de modificar empresas
-import ModificarEmpresa from '../components/Admin/CrearModificarEmpresa/ModificarEmpresa.jsx';
+import ModificarEmpresa from '../components/Admin/VisualizacionModificarEmpresa/ModificarEmpresa.jsx';
 
 // Componente funcional que representa la página para modificar empresa en el panel administrativo
 const AdminModificarEmpresa = () => {
