@@ -16,7 +16,7 @@ function Popup_Diagnostico({ cerrar, enviar }) {
                     </div>
 
                     <div className="form-group">
-                        <input type="text" placeholder="Describa brevemente las ocupaciones para el aprendiz..." className="input-box2" />
+                        <input type="text" placeholder="Describa brevemente las ocupaciones para el aprendiz..." className="input-box" />
                     </div>
                     <div className='botones-diagnostico-2'>
                         <button className="submit-btn" onClick={enviar}>

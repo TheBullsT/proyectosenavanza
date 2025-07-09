@@ -239,7 +239,26 @@ a {
   padding: 40px;
   width: 60%;
   font-family: var(--font-primary);
+  max-height: 400px;         /* Limita el alto para evitar desbordamiento */
+  overflow-y: auto;          /* Habilita scroll vertical */
+  white-space: pre-wrap;     /* Mantiene saltos de línea si los hay */
+  scrollbar-width: thin;     /* Estilo de scroll en Firefox */
 }
+
+/* Opcional: scroll bonito en navegadores WebKit (Chrome, Edge, Safari) */
+.popup-info::-webkit-scrollbar {
+  width: 8px;
+}
+
+.popup-info::-webkit-scrollbar-thumb {
+  background-color: var(--primary-1);
+  border-radius: 4px;
+}
+
+.popup-info::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
 
 /* Botón para cerrar el pop-up */
 .boton-cerrar {
