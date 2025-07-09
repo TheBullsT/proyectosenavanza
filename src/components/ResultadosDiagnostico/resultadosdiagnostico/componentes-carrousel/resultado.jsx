@@ -59,7 +59,12 @@ function Resultados() {
                             <p><strong>Duración:</strong> 24 meses</p>
                             <p><strong>Nivel Formativo:</strong> Tecnólogo</p>
                             <p>
-                                <strong>Descripción:</strong> Este programa tiene como objetivo formar tecnólogos capaces de analizar, diseñar, desarrollar, implementar y mantener aplicaciones de software, promoviendo soluciones tecnológicas para diversos sectores productivos.
+                                <strong>Descripción:</strong> Este programa tiene como objetivo formar tecnólogos capaces de analizar, diseñar, desarrollar, implementar y mantener aplicaciones de software, promoviendo soluciones tecnológicas para diversos sectores productivos. 
+                                Este programa tiene como objetivo formar tecnólogos capaces de analizar, diseñar, desarrollar, implementar y mantener aplicaciones de software, promoviendo soluciones tecnológicas para diversos sectores productivos.
+                                Este programa tiene como objetivo formar tecnólogos capaces de analizar, diseñar, desarrollar, implementar y mantener aplicaciones de software, promoviendo soluciones tecnológicas para diversos sectores productivos.
+                                Este programa tiene como objetivo formar tecnólogos capaces de analizar, diseñar, desarrollar, implementar y mantener aplicaciones de software, promoviendo soluciones tecnológicas para diversos sectores productivos.
+                                Este programa tiene como objetivo formar tecnólogos capaces de analizar, diseñar, desarrollar, implementar y mantener aplicaciones de software, promoviendo soluciones tecnológicas para diversos sectores productivos. 
+                                Este programa tiene como objetivo formar tecnólogos capaces de analizar, diseñar, desarrollar, implementar y mantener aplicaciones de software, promoviendo soluciones tecnológicas para diversos sectores productivos.
                             </p>
                             <button className="boton-cerrar" onClick={cerrarPopup}>Cerrar</button>
                         </div>
