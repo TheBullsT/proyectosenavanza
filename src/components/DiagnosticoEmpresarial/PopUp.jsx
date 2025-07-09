@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom'
 
 // Importa imagen de éxito desde la carpeta de assets
 import exito from '../../assets/img/img-resultados-diagnostico/exito.png'
@@ -11,7 +12,12 @@ import { FaRegFileArchive } from "react-icons/fa";
 import "./Popup.css";
 
 // Componente funcional que recibe una función 'cerrar' como prop
-function Popup({ cerrar }) {
+function Popup({ cerrar , datos}) {
+  const navigate = useNavigate();
+  const irAResultados = () => {
+    cerrar();
+    navigate('/resultado-diagnostico',{ state: {datos}});
+  }
   return (
     // Capa semitransparente que cubre toda la pantalla
     <div className="popup-overlay">
@@ -30,12 +36,13 @@ function Popup({ cerrar }) {
         {/* Botones para ver resultados o descargar reporte */}
         <div className='botones-diagnostico'>
           {/* Botón que muestra los resultados y cierra el popup */}
-          <button className='resultados' onClick={cerrar}>
-            <FaRegFileArchive className='icon-resultados' /> Resultados
+          <button className='resultados' onClick={irAResultados} type='button'>
+            <FaRegFileArchive className='icon-resultados' /> 
+            Resultados
           </button>
 
           {/* Botón para descargar el reporte y cierra el popup */}
-          <button className='descargar' onClick={cerrar}>
+          <button className='descargar' onClick={cerrar} type='button'>
             <FaDownload className='icon-descargar' /> Descargar
           </button>
         </div>

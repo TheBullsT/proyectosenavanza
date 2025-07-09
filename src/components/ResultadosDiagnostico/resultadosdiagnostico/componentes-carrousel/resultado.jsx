@@ -5,8 +5,11 @@ import result from "../../../../assets/img/img-resultados-diagnostico/resultados
 import infoImg from "../../../../assets/img/Solutions.png";
 // Estilos del componente
 import "./resultado.css";
+import { useLocation } from "react-router-dom";
 
 function Resultados() {
+    const location = useLocation();
+    const datos = location.state?.datos;
     const [mostrarPopup, setMostrarPopup] = useState(false);
     const [animarPopup, setAnimarPopup] = useState(false);
 
@@ -37,8 +40,7 @@ function Resultados() {
 
                 <div className="programa-recomendado">
                     <h2>
-                        Análisis y desarrollo <br />
-                        de software
+                        {datos?.programa_recomendado?.nombre}
                     </h2>
                     <p>
                         Es uno de los programas de formación <br />
@@ -55,11 +57,12 @@ function Resultados() {
                     <div className="popup-contenido">
                         <img src={infoImg} alt="Programa de formación" className="popup-imagen" />
                         <div className="popup-info">
-                            <h1>Análisis y Desarrollo de Software</h1>
+                            <h1>{datos?.programa_recomendado?.nombre}</h1>
                             <p><strong>Duración:</strong> 24 meses</p>
-                            <p><strong>Nivel Formativo:</strong> Tecnólogo</p>
+                            <p><strong>Nivel Formativo:</strong>{datos?.programa_recomendado?.nivel_programa}</p>
                             <p>
-                                <strong>Descripción:</strong> Este programa tiene como objetivo formar tecnólogos capaces de analizar, diseñar, desarrollar, implementar y mantener aplicaciones de software, promoviendo soluciones tecnológicas para diversos sectores productivos.
+                                <strong>Descripción:</strong> 
+                                {datos?.programa_recomendado?.descripcion}
                             </p>
                             <button className="boton-cerrar" onClick={cerrarPopup}>Cerrar</button>
                         </div>
