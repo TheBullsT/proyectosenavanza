@@ -161,7 +161,7 @@ const CrearEmpresa = () => {
 
                     {/* Campo para alias o nombre corto de la empresa */}
                     <div className="form-group">
-                        <label>Nickname de la empresa</label>
+                        <label>Razón Social</label>
                         <input type="text" onChange={(e) => setNickName(e.target.value)} value={nickName} required />
                     </div>
 

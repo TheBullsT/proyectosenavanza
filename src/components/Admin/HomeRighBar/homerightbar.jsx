@@ -1,5 +1,7 @@
-// Importar REACT
-import React from "react";
+// ✅ Importar React y hooks
+import React, { useState, useEffect } from "react";
+
+// ✅ Importar componentes de Recharts
 import {
     BarChart,
     ComposedChart,
@@ -11,207 +13,221 @@ import {
     CartesianGrid,
     Tooltip,
     Legend,
-    PieChart,
-    Pie,
-    Cell,
 } from "recharts";
-// Importar los estilos
+
+// ✅ Importar estilos CSS
 import "./homerightbar.css";
-// Importar el componentes de la NavBar
+
+// ✅ Importar Navbar Admin
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
 
+// ✅ Importar tu API personalizada
+import { apiGeneral } from "../../../api/apis";
+
 function HomeRightBar() {
-    // Datos para los tres gráficos de barras
-    const data1 = [
-        { name: "Page A", uv: 100, fill: "#68C24B" },
-        { name: "Page B", uv: 500, fill: "#68C24B" },
-        { name: "Page C", uv: 700, fill: "#68C24B" },
-        { name: "Page D", uv: 1000, fill: "#68C24B" },
-        { name: "Page E", uv: 900, fill: "#68C24B" },
-        { name: "Page F", uv: 1500, fill: "#39a900" },
-        { name: "Page G", uv: 1250, fill: "#68C24B" },
+    // ✅ Estados para almacenar datos reales
+    const [usuarios, setUsuarios] = useState([]);
+    const [empresas, setEmpresas] = useState([]);
+    const [programas, setProgramas] = useState([]);
+
+    // ✅ Llamada a APIs cuando se monta el componente
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // GET usuarios
+                const resUsuarios = await apiGeneral.get("users/");
+                setUsuarios(resUsuarios.data);
+
+                // GET empresas
+                const resEmpresas = await apiGeneral.get("empresa/");
+                setEmpresas(resEmpresas.data);
+
+                // GET programas
+                const resProgramas = await apiGeneral.get("programas/");
+                setProgramas(resProgramas.data);
+            } catch (error) {
+                console.error("Error al obtener datos:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    // ✅ Totales calculados dinámicamente
+    const totalUsuarios = usuarios.length;
+    const totalEmpresas = empresas.length;
+    const totalProgramas = programas.length;
+
+    // ✅ Datasets para cada barra
+    const dataEmpresas = [{ name: "Empresas", cantidad: totalEmpresas }];
+    const dataProgramas = [{ name: "Programas", cantidad: totalProgramas }];
+    const dataUsuarios = [{ name: "Usuarios", cantidad: totalUsuarios }];
+
+    // ✅ Datos de ejemplo para líneas y compuesto
+    const dataLineas = [
+        { name: "Enero", usuarios: 5, empresas: 2 },
+        { name: "Febrero", usuarios: 8, empresas: 4 },
+        { name: "Marzo", usuarios: 12, empresas: 6 },
+        { name: "Abril", usuarios: 15, empresas: 8 },
+        { name: "Mayo", usuarios: 18, empresas: 10 },
     ];
 
-    const data2 = [
-        { name: "Page A", uv: 500, fill: "#68C24B" },
-        { name: "Page B", uv: 200, fill: "#68C24B" },
-        { name: "Page C", uv: 700, fill: "#68C24B" },
-        { name: "Page D", uv: 1250, fill: "#68C24B" },
-        { name: "Page E", uv: 900, fill: "#68C24B" },
-        { name: "Page F", uv: 1200, fill: "#68C24B" },
-        { name: "Page G", uv: 1500, fill: "#0000ff" },
+    const dataCompuesto = [
+        { name: "Enero", programas: 2 },
+        { name: "Febrero", programas: 3 },
+        { name: "Marzo", programas: 4 },
+        { name: "Abril", programas: 6 },
+        { name: "Mayo", programas: 8 },
     ];
-
-    const data3 = [
-        { name: "Page A", uv: 200, fill: "#68C24B" },
-        { name: "Page B", uv: 600, fill: "#68C24B" },
-        { name: "Page C", uv: 700, fill: "#68C24B" },
-        { name: "Page D", uv: 1000, fill: "#68C24B" },
-        { name: "Page E", uv: 1300, fill: "#68C24B" },
-        { name: "Page F", uv: 1500, fill: "#68C24B" },
-        { name: "Page G", uv: 1600, fill: "#ffa600" },
-    ];
-
-    // Datos para el gráfico de líneas
-    const data4 = [
-        { name: "Page A", Task_Usuarios: 1500, Task_Empresas: 2400, amt: 2400 },
-        { name: "Page B", Task_Usuarios: 900, Task_Empresas: 1398, amt: 2210 },
-        { name: "Page C", Task_Usuarios: 2000, Task_Empresas: 2500, amt: 2290 },
-        { name: "Page D", Task_Usuarios: 2780, Task_Empresas: 3908, amt: 2000 },
-        { name: "Page E", Task_Usuarios: 1890, Task_Empresas: 4800, amt: 2181 },
-        { name: "Page F", Task_Usuarios: 2390, Task_Empresas: 3800, amt: 2500 },
-        { name: "Page G", Task_Usuarios: 3490, Task_Empresas: 4300, amt: 2100 },
-    ];
-
-    // Datos para el gráfico compuesto (barras y línea)
-    const data5 = [
-        { name: "Diciembre", uv: 590, amt: 1400, fill: "#68C24B" },
-        { name: "Enero", uv: 868, amt: 1506, fill: "#68C24B" },
-        { name: "Febrero", uv: 900, amt: 989, fill: "#68C24B" },
-        { name: "Marzo", uv: 1100, amt: 1228, fill: "#68C24B" },
-        { name: "Abril", uv: 1200, amt: 1100, fill: "#68C24B" },
-        { name: "Mayo", uv: 1400, amt: 1700, fill: "#39a900" },
-    ];
-
-    // Datos para el gráfico de pastel
-    const data6 = [
-        { name: "Group A", value: 400 },
-        { name: "Group B", value: 300 },
-        { name: "Group C", value: 200 },
-        { name: "Group D", value: 100 },
-    ];
-
-    // Colores para el gráfico de pastel
-    const COLORS = ["#0088fe", "#00c49f", "#ffbb28", "ff8042"];
 
     return (
         <div className="main-rightbar">
+            {/* ✅ Navbar Admin */}
             <NavbarAdmin />
 
             <div>
+                {/* ✅ Contenedor principal de KPIs */}
                 <div className="ItemContainer">
-                    {/* Primer gráfico de barras */}
+                    {/* ✅ Barra: Empresas */}
                     <div className="ItemContainer1">
                         <div className="subItemContainer">
                             <p className="taskProgress">Empresas Registradas</p>
-                            <p className="taskCounter1">110</p>
-                            <p className="currentMonth1">Current Month</p>
+                            <p className="taskCounter1">{totalEmpresas}</p>
+                            <p className="currentMonth1">Actual</p>
                         </div>
                         <div className="barchartContainer">
-                            <BarChart width={150} height={100} data={data1}>
+                            <BarChart
+                                width={150}
+                                height={100}
+                                data={dataEmpresas}
+                            >
                                 <CartesianGrid strokeDasharray="3 3" />
+                                <YAxis
+                                    domain={[0, Math.max(totalEmpresas + 1, 5)]}
+                                />
                                 <Tooltip />
-                                <Bar dataKey="uv" fill="fill" />
+                                <Bar
+                                    dataKey="cantidad"
+                                    fill="#68C24B"
+                                    barSize={30}
+                                />
                             </BarChart>
                         </div>
                     </div>
 
-                    {/* Segundo gráfico de barras */}
+                    {/* ✅ Barra: Programas */}
                     <div className="ItemContainer1">
                         <div className="subItemContainer">
-                            <p className="taskProgress">Usuarios Registrados</p>
-                            <p className="taskCounter2">50</p>
-                            <p className="currentMonth1">Current Month</p>
+                            <p className="taskProgress">Programas Registrados</p>
+                            <p className="taskCounter2">{totalProgramas}</p>
+                            <p className="currentMonth1">Actual</p>
                         </div>
                         <div className="barchartContainer">
-                            <BarChart width={150} height={100} data={data2}>
+                            <BarChart
+                                width={150}
+                                height={100}
+                                data={dataProgramas}
+                            >
                                 <CartesianGrid strokeDasharray="3 3" />
+                                <YAxis
+                                    domain={[0, Math.max(totalProgramas + 1, 5)]}
+                                />
                                 <Tooltip />
-                                <Bar dataKey="uv" fill="fill" />
+                                <Bar
+                                    dataKey="cantidad"
+                                    fill="#39A900"
+                                    barSize={30}
+                                />
                             </BarChart>
                         </div>
                     </div>
 
-                    {/* Tercer gráfico de barras */}
+                    {/* ✅ Barra: Usuarios */}
                     <div className="ItemContainer1">
                         <div className="subItemContainer1">
-                            <p className="taskProgress">Total de Usuarios</p>
-                            <p className="taskCounter3">160</p>
-                            <p className="currentMonth1">Current Month</p>
+                            <p className="taskProgress">Usuarios Registrados</p>
+                            <p className="taskCounter3">{totalUsuarios}</p>
+                            <p className="currentMonth1">Actual</p>
                         </div>
                         <div className="barchartContainer">
-                            <BarChart width={150} height={100} data={data3}>
+                            <BarChart
+                                width={150}
+                                height={100}
+                                data={dataUsuarios}
+                            >
                                 <CartesianGrid strokeDasharray="3 3" />
+                                <YAxis
+                                    domain={[0, Math.max(totalUsuarios + 1, 5)]}
+                                />
                                 <Tooltip />
-                                <Bar dataKey="uv" fill="fill" />
+                                <Bar
+                                    dataKey="cantidad"
+                                    fill="#0066FF"
+                                    barSize={30}
+                                />
                             </BarChart>
                         </div>
                     </div>
                 </div>
 
-                {/* Gráfico de líneas comparando usuarios vs empresas */}
+                {/* ✅ Gráfico de líneas (usuarios vs empresas) */}
                 <div className="MidleTaskChart">
                     <p className="TaskUsuariosvsEmpresas">
-                        Usuarios Creados vs Empresas Creadas
+                        Evolución: Usuarios vs Empresas
                     </p>
                     <LineChart
-                        width={1030}
+                        width={920}
                         height={250}
-                        data={data4}
+                        data={dataLineas}
                         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                     >
                         <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Line type="monotone" dataKey="Task_Usuarios" stroke="#8884d8" />
-                        <Line type="monotone" dataKey="Task_Empresas" stroke="#82ca9d" />
+                        <Line
+                            type="monotone"
+                            dataKey="usuarios"
+                            stroke="#8884d8"
+                            strokeWidth={2}
+                        />
+                        <Line
+                            type="monotone"
+                            dataKey="empresas"
+                            stroke="#82ca9d"
+                            strokeWidth={2}
+                        />
                     </LineChart>
                 </div>
 
-                {/* Gráfico de pastel y gráfico combinado */}
-                <div className="TaskProgramasContainer">
-                    {/* Gráfico de pastel */}
-                    <div className="TaskProgramas">
-                        <p className="taskContainerText">
-                            Interés Empresarial en Patrocinar Programas
-                        </p>
-                        <PieChart width={300} height={300}>
-                            <Pie
-                                data={data6}
-                                cx={150}
-                                cy={110}
-                                startAngle={180}
-                                endAngle={0}
-                                innerRadius={50}
-                                outerRadius={80}
-                                fill="#8884d8"
-                                paddingAngle={0}
-                                dataKey="value"
-                            >
-                                {data6.map((entry, index) => (
-                                    <Cell
-                                        key={`cell-${index}`}
-                                        fill={COLORS[index % COLORS.length]}
-                                    />
-                                ))}
-                            </Pie>
-                        </PieChart>
-                        <p className="TeamEmpresasText">
-                            "El interés de las empresas en apoyar la formación ha aumentado un
-                            12% respecto al mes anterior."
-                        </p>
-                        <button className="VerDetalles">Ver Detalles</button>
-                    </div>
-
-                    {/* Gráfico compuesto: barras + línea */}
-                    <div className="MonthlyProgramas">
-                        <p className="taskContainerText">Programas Registrados</p>
-                        <ComposedChart
-                            width={600}
-                            height={300}
-                            data={data5}
-                            margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-                        >
-                            <CartesianGrid stroke="#f5f5f5" />
-                            <XAxis dataKey="name" scale="band" />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <Bar dataKey="uv" barSize={20} fill="#413ea0" />
-                            <Line type="monotone" dataKey="uv" stroke="#ff7300" />
-                        </ComposedChart>
-                    </div>
+                {/* ✅ Gráfico compuesto: barras + línea */}
+                <div className="MonthlyProgramas">
+                    <p className="taskContainerText">
+                        Evolución de Programas
+                    </p>
+                    <ComposedChart
+                        width={600}
+                        height={300}
+                        data={dataCompuesto}
+                        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+                    >
+                        <CartesianGrid stroke="#f5f5f5" />
+                        <XAxis dataKey="name" scale="band" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar
+                            dataKey="programas"
+                            barSize={20}
+                            fill="#413ea0"
+                        />
+                        <Line
+                            type="monotone"
+                            dataKey="programas"
+                            stroke="#ff7300"
+                        />
+                    </ComposedChart>
                 </div>
             </div>
         </div>

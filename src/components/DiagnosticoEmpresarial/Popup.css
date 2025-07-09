@@ -267,7 +267,7 @@ html {
 }
 
 
-.input-box:focus, .input-box2:focus{
+.input-box:focus{
   border-color: var(--primary-1);
 }
 
