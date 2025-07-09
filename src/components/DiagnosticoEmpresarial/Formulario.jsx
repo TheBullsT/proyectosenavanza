@@ -4,15 +4,18 @@ import BannerHelp from './BannerHelp';
 
 import arrow from '../../assets/img/arrow-green.png';
 import person from '../../assets/img/person-form.png';
-
+import Popup_Diagnostico from '../DiagnosticoEmpresarial/PopUp_Diagnostico'; // <-- Este es el primero
 import Popup from './PopUp'; // <-- Este es el segundo popup (éxito)
-import Popup_Diagnostico from './Popup_diagnostico'; // <-- Este es el primero
+
+import Resultados from '../ResultadosDiagnostico/resultadosdiagnostico/componentes-carrousel/resultado';
 
 import { BsListTask } from "react-icons/bs";
 
 function FormsLayout() {
     const [mostrarDiagnostico, setMostrarDiagnostico] = useState(false);
     const [mostrarExito, setMostrarExito] = useState(false);
+    const [ResultadoDiagnostico, setResultadoDiagnostico] = useState(null)
+    const [verResultado, setVerResultado] = useState(false)
 
     const abrirDiagnostico = () => {
         setMostrarDiagnostico(true);
@@ -74,12 +77,25 @@ function FormsLayout() {
                     {mostrarDiagnostico && (
                         <Popup_Diagnostico
                             cerrar={cerrarDiagnostico}
-                            enviar={mostrarPopupExito} // <-- pasamos función que abre segundo popup
+                            onResultado = {(data) => { 
+                            setResultadoDiagnostico(data);
+                            setMostrarDiagnostico(false);
+                            setMostrarExito(true)
+                        }}
                         />
                     )}
 
                     {mostrarExito && (
-                        <Popup cerrar={cerrarPopupExito} />
+                        <Popup 
+                        datos = {ResultadoDiagnostico} 
+                        cerrar={cerrarPopupExito} 
+                        irAResultados={() => {
+                            setMostrarExito(false);
+                            setVerResultado(true)
+                        }}/>
+                    )}
+                    {verResultado && (
+                        < Resultados datos={ResultadoDiagnostico}/>
                     )}
                 </div>
 

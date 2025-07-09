@@ -6,15 +6,14 @@ import { MdHomeRepairService } from "react-icons/md";
 import { FaEye, FaEdit, FaLock, FaLockOpen } from "react-icons/fa";
 import { apiEmpresa } from "../../../api/apis";
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
-import { FaClock } from "react-icons/fa6";
 import { toast } from "react-toastify";
 
 const Listar_Empresa = () => {
   const [empresas, setEmpresas] = useState([]);
   const [loadingBaseDatos, setLoadingBaseDatos] = useState(true);
-  const [search, setSearch] = useState(""); // Nuevo estado para la barra de búsqueda
+  const [search, setSearch] = useState(""); // Barra de búsqueda
 
-  // Obtener las empresas desde la API
+  // Obtener empresas desde la API
   const obtenerEmpresas = async () => {
     setLoadingBaseDatos(true);
     try {
@@ -35,7 +34,7 @@ const Listar_Empresa = () => {
     obtenerEmpresas();
   }, []);
 
-  // Función para cambiar el estado de la empresa
+  // Cambiar estado de la empresa
   const cambiarEstadoEmpresa = async (empresa) => {
     const nuevoEstado = empresa.estado === 1 ? 2 : 1;
 
@@ -48,15 +47,15 @@ const Listar_Empresa = () => {
         }
       });
 
-      obtenerEmpresas(); // Refrescar la lista
+      obtenerEmpresas(); // Refrescar lista
       toast.success("Estado cambiado con éxito");
     } catch (error) {
       console.error("Error al cambiar el estado de la empresa:", error);
-      toast.error("Error al cambiar el estado de la empresa:", error);
+      toast.error("Error al cambiar el estado de la empresa");
     }
   };
 
-  // Filtrar empresas basado en el término de búsqueda
+  // Filtrar empresas por búsqueda
   const filteredEmpresas = empresas.filter((empresa) =>
     empresa.razon_social.toLowerCase().includes(search.toLowerCase())
   );
@@ -111,7 +110,7 @@ const Listar_Empresa = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredEmpresas.map((empresa, index) => ( // Usar filteredEmpresas aquí
+            {filteredEmpresas.map((empresa, index) => (
               <tr key={empresa.id} className={index % 2 === 0 ? 'odd' : ''}>
                 <td><strong>{empresa.razon_social}</strong></td>
                 <td>{empresa.telefono}</td>
@@ -134,7 +133,7 @@ const Listar_Empresa = () => {
                     <FaLock
                       className="icon-action icon-lock"
                       title="Activar empresa"
-                      onClick={() => cambiarEstadoEstado(empresa)} // Corregido: cambiarEstadoEmpresa
+                      onClick={() => cambiarEstadoEmpresa(empresa)} // ✅ Corregido aquí
                       style={{ cursor: 'pointer' }}
                     />
                   )}
