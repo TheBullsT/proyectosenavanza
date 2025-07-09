@@ -63,11 +63,6 @@ const Visualizacion_Programa = () => {
                             <label>Duración</label>
                             <input type="text" defaultValue="El tiempo que es" />
                         </div>
-
-                        {/* Botón para modificar */}
-                        <div className="boton-contenedor-programa">
-                            <button className="boton-modificar-programa" type="submit">Modificar</button>
-                        </div>
                     </form>
                 </div>
             </div>
