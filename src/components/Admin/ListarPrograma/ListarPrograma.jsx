@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import './ListarPrograma.css';
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
-import { FaEye, FaEdit, FaLock } from "react-icons/fa";
+import { FaEye, FaEdit, FaLock, FaLockOpen, FaTrash } from "react-icons/fa";
 import { MdSchool } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { apiGeneral } from "../../../api/apis";
-import LoadingBaseDatos from "../../Loading/loading_base_datos"; // Componente de carga
-
+import LoadingBaseDatos from "../../Loading/loading_base_datos";
+import { toast } from "react-toastify";
 
 const ListarProgramas = () => {
   const [programas, setProgramas] = useState([]);
@@ -14,29 +14,63 @@ const ListarProgramas = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchProgramas = async () => {
-      setLoading(true);
-      try {
-        const response = await apiGeneral.get("programas/");
-        setProgramas(response.data);
-      } catch (error) {
-        console.error("Error al obtener programas:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // Obtener programas
+  const fetchProgramas = async () => {
+    setLoading(true);
+    try {
+      const response = await apiGeneral.get("programas/");
+      setProgramas(response.data);
+    } catch (error) {
+      console.error("Error al obtener programas:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchProgramas();
   }, []);
 
+  // Cambiar estado del programa
+  const cambiarEstadoPrograma = async (programa) => {
+    const nuevoEstado = programa.estado === 1 ? 2 : 1;
+    try {
+      await apiGeneral.put(`programa/${programa.id}/`, {
+        estado: nuevoEstado,
+      }, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      toast.success(`Estado cambiado correctamente`);
+      fetchProgramas();
+    } catch (error) {
+      console.error("Error al cambiar estado:", error);
+      toast.error("Error al cambiar estado");
+    }
+  };
+
+  // Eliminar programa
+  const eliminarPrograma = async (programaId) => {
+    if (window.confirm("¿Estás seguro de que deseas eliminar este programa?")) {
+      try {
+        await apiGeneral.delete(`programa/${programaId}/`);
+        toast.success("Programa eliminado");
+        fetchProgramas();
+      } catch (error) {
+        console.error("Error al eliminar:", error);
+        toast.error("Error al eliminar el programa");
+      }
+    }
+  };
+
+
   const filteredProgramas = programas.filter((pf) =>
-    pf.id.includes(search) || pf.nombre.toLowerCase().includes(search.toLowerCase())
+    pf.id.toString().includes(search) ||
+    pf.nombre.toLowerCase().includes(search.toLowerCase())
   );
 
-  if (loading) {
-    return <LoadingBaseDatos />;
-  }
+  if (loading) return <LoadingBaseDatos />;
 
   return (
     <div className="main-right-bar">
@@ -51,7 +85,7 @@ const ListarProgramas = () => {
         <div className="form-info">
           <div className="icon"><MdSchool /></div>
           <p>
-            En este espacio se podrán listar los programas de formación que estén vinculados con nosotros.<br />
+            En este espacio se podrán listar los programas de formación que estén vinculados.<br />
             <strong>Debe estar creado en la <span className="highlight">BASE DE DATOS</span>.</strong>
           </p>
         </div>
@@ -92,7 +126,27 @@ const ListarProgramas = () => {
                   <Link to={`/modificar-programa/${pf.id}`}>
                     <FaEdit className="icon-action" title="Editar" />
                   </Link>
-                  <FaLock className="icon-action" title="Eliminar (no disponible)" />
+                  {pf.estado === 1 ? (
+                    <FaLockOpen
+                      className="icon-action icon-lock"
+                      title="Desactivar"
+                      onClick={() => cambiarEstadoPrograma(pf)}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  ) : (
+                    <FaLock
+                      className="icon-action icon-lock"
+                      title="Activar"
+                      onClick={() => cambiarEstadoPrograma(pf)}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  )}
+                  <FaTrash
+                    className="icon-action icon-delete"
+                    title="Eliminar"
+                    onClick={() => eliminarPrograma(pf.id)}
+                    style={{ cursor: 'pointer', marginLeft: '10px' }}
+                  />
                 </td>
               </tr>
             ))}
