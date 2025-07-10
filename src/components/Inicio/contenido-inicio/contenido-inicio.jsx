@@ -22,20 +22,20 @@ function ContenidoInicio() {
 
     const programas = [
         {
-            nombre: "<Programa de Formación>",
-            descripcion: "<Descripción corta del programa de Formación>",
+            nombre: "Analisis y desarrollo de osftware",
+            descripcion: "Programa de formación en desarrollo de software, enfocado en las últimas tecnologías y metodologías ágiles.",
         },
         {
-            nombre: "<Programa de Formación>",
-            descripcion: "<Descripción corta del programa de Formación>",
+            nombre: "Programación de software",
+            descripcion: "Programa de formación en programación de software, abarcando desde los fundamentos hasta técnicas avanzadas.",
         },
         {
-            nombre: "<Programa de Formación>",
-            descripcion: "<Descripción corta del programa de Formación>",
+            nombre: "Creación medios audiovisuales digitales",
+            descripcion: "Programa de formación en creación de medios audiovisuales digitales, incluyendo edición de video y producción multimedia.",
         },
         {
-            nombre: "<Programa de Formación>",
-            descripcion: "<Descripción corta del programa de Formación>",
+            nombre: "Gestión de redes de datos",
+            descripcion: "Programa de formación en gestión de redes de datos, cubriendo desde la configuración básica hasta la seguridad avanzada.",
         },
         // Agrega más si es necesariox
     ];
