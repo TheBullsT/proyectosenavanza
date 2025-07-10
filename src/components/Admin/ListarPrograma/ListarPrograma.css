@@ -184,10 +184,9 @@ a {
 }
 
 /* OPCIONES */
-.opciones {
+td.opciones {
   display: flex;
   gap: 12px;
-  align-items: center;
 }
 
 .icon-action {

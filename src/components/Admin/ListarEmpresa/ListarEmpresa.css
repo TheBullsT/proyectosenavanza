@@ -188,11 +188,11 @@ html {
   background-color: #239000;
 }
 
-.opciones {
+td.opciones {
   display: flex;
   gap: 12px;
-  align-items: center;
 }
+
 
 .icon-action {
   cursor: pointer;

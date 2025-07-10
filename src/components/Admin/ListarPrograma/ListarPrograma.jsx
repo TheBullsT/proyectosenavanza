@@ -178,7 +178,7 @@ const ListarProgramas = () => {
                                         className="icon-action icon-delete"
                                         title="Eliminar"
                                         onClick={() => eliminarPrograma(pf.id)}
-                                        style={{ cursor: 'pointer', marginLeft: '10px' }}
+                                        style={{ cursor: 'pointer' }}
                                     />
                                 </td>
                             </tr>
