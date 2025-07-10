@@ -71,9 +71,10 @@ a {
 
 /* Título principal */
 .titulo-caprendizaje {
+
   color: var(--black);
   text-align: center;
-  padding-top: 3rem;
+  padding-top: 5rem;
   font-size: var(--h1);
 }
 
