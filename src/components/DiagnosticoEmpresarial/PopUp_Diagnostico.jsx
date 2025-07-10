@@ -47,7 +47,7 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
 
     return (
         <div className="overlay">
-            <form className='overlay' method='POST' onSubmit={enviar_diagnostico}>
+            <form method='POST' className='overlay' onSubmit={enviar_diagnostico}>
                 <div className="popup2">
                     <h2 className="popup-title">Diagnostico Empresarial</h2>
                     <div className="underline" />
@@ -79,18 +79,18 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                     <div className="form-group">
                         <input type="text" placeholder="¿cuales son las herramientas que el aprendiz debe de utilizar?"
                             className="input-box"
-                            value={descripcion}
+                            value={herramientas}
                             onChange={(e) => SetHerramientas(e.target.value)}
                             required
-                            minLength={50} />
+                            minLength={20} />
                     </div>
                     <div className="form-group">
                         <input type="text" placeholder="¿cuales serian las habilidades tecnicas que el aprendiz debe de tener previamente?"
                             className="input-box"
-                            value={descripcion}
+                            value={habilidades}
                             onChange={(e) => SetHabilidades(e.target.value)}
                             required
-                            minLength={50} />
+                            minLength={20} />
                     </div>
                     <div className='botones-diagnostico-2'>
                         <button className="submit-btn" type='submit'>
