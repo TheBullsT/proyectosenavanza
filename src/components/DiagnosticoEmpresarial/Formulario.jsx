@@ -71,7 +71,7 @@ function FormsLayout() {
                         aria-expanded={mostrarDiagnostico}
                     >
                         <BsListTask className='icon-diagnostico' />
-                        Diagnostico
+                        Diagnóstico
                     </button>
 
                     {mostrarDiagnostico && (

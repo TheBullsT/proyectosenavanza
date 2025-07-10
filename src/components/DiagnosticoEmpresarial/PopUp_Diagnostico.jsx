@@ -69,7 +69,7 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                     </div>
                     {/*  */}
                     <div className="form-group">
-                        <input type="text" placeholder="¿cuales serian las tareas que le va a delegar al aprendiz en su empresa?"
+                        <input type="text" placeholder="¿Cuáles serian las tareas que le va a delegar al aprendiz en su empresa?"
                             className="input-box"
                             value={descripcion}
                             onChange={(e) => SetDescripcion(e.target.value)}
@@ -77,7 +77,7 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                             minLength={50} />
                     </div>
                     <div className="form-group">
-                        <input type="text" placeholder="¿cuales son las herramientas que el aprendiz debe de utilizar?"
+                        <input type="text" placeholder="¿Cuáles son las herramientas que el aprendiz debe de utilizar?"
                             className="input-box"
                             value={herramientas}
                             onChange={(e) => SetHerramientas(e.target.value)}
@@ -85,7 +85,7 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                             minLength={20} />
                     </div>
                     <div className="form-group">
-                        <input type="text" placeholder="¿cuales serian las habilidades tecnicas que el aprendiz debe de tener previamente?"
+                        <input type="text" placeholder="¿Cuáles serian las habilidades tecnicas que el aprendiz debe de tener previamente?"
                             className="input-box"
                             value={habilidades}
                             onChange={(e) => SetHabilidades(e.target.value)}
