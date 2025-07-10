@@ -9,10 +9,20 @@ import { useLocation } from "react-router-dom";
 
 function Resultados() {
     const location = useLocation();
-    const datos = location.state?.datos;
+    const [datos, setDatos] = useState(location.state?.datos);
     const [mostrarPopup, setMostrarPopup] = useState(false);
     const [animarPopup, setAnimarPopup] = useState(false);
 
+
+// Si no hay datos del estado, los intenta recuperar del localStorage
+    React.useEffect(() => {
+        if (!location.state?.datos) {
+            const datosGuardados = localStorage.getItem("resultadoDiagnostico");
+            if (datosGuardados) {
+                setDatos(JSON.parse(datosGuardados));
+            }
+        }
+    }, [location.state]);
     const abrirPopup = () => {
         setMostrarPopup(true);
         // Activa animación después de montaje
@@ -61,7 +71,7 @@ function Resultados() {
                             <p><strong>Duración:</strong> 24 meses</p>
                             <p><strong>Nivel Formativo:</strong>{datos?.programa_recomendado?.nivel_programa}</p>
                             <p>
-                                <strong>Descripción:</strong> 
+                                <strong>Descripción:</strong>
                                 {datos?.programa_recomendado?.descripcion}
                             </p>
                             <button className="boton-cerrar" onClick={cerrarPopup}>Cerrar</button>

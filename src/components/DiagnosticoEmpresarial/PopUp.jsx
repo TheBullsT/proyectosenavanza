@@ -16,6 +16,7 @@ function Popup({ cerrar , datos}) {
   const navigate = useNavigate();
   const irAResultados = () => {
     cerrar();
+    localStorage.setItem("resultadoDiagnostico", JSON.stringify(datos));
     navigate('/resultado-diagnostico',{ state: {datos}});
   }
   return (

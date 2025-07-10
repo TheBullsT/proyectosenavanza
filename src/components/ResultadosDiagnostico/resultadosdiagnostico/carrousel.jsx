@@ -8,7 +8,7 @@ import Caprendizaje from './componentes-carrousel/caprendizaje';
 
 const componentes = [
     <Resultados key={0} />,
-    <Programas key={1} />,
+    // <Programas key={1} />,
     <GenerarReporte key={2} />,
     <Caprendizaje key={3} />
 ];
