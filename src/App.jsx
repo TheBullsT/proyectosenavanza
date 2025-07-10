@@ -89,7 +89,7 @@ function App() {
           <Route path="/modificar-usuarios/:id" element={<ProtectRoute rol="admin"><ModificarUsuarios /></ProtectRoute>} />
           <Route path="/modificar-empresa/:id" element={<ProtectRoute rol="admin"><ModificarEmpresa /></ProtectRoute>} />
           <Route path="/crear-programa" element={<ProtectRoute rol="admin"><CrearProgramaDeFormacion /></ProtectRoute>} />
-          <Route path="/modificar-programa" element={<ProtectRoute rol="admin"><ModificarPrograma /></ProtectRoute>} />
+          <Route path="/modificar-programa/:id" element={<ProtectRoute rol="admin"><ModificarPrograma /></ProtectRoute>} />
           <Route path="/listar-programa" element={<ProtectRoute rol="admin"><ListarPrograma /></ProtectRoute>} />
           <Route path="/visualizacion-empresa/:id" element={<ProtectRoute rol="admin"><VisualizacionEmpresa /></ProtectRoute>} />
           <Route path="/visualizacion-programa/:id" element={<ProtectRoute rol="admin"><VisualizacionPrograma /></ProtectRoute>} />

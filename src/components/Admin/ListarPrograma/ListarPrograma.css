@@ -237,3 +237,22 @@ a {
   border-color: #2f8700;
   box-shadow: 0 0 5px rgba(57, 169, 0, 0.4);
 }
+
+/* Cambia tamaño del botón de confirmar */
+.swal2-confirm {
+  font-size: 1.5rem;
+  padding: 10px 20px;
+}
+
+/* Cambia tamaño del botón de cancelar */
+.swal2-cancel {
+  font-size: 1.5rem;
+  padding: 10px 20px;
+}
+
+/* Cambia la fuente si quieres */
+.swal2-confirm,
+.swal2-cancel {
+  font-family: var(--font-primary);
+  font-weight: bold;
+}

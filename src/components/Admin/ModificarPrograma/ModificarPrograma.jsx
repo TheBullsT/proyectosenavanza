@@ -1,102 +1,176 @@
-import React from "react";
-// Importa los estilos CSS específicos para este componente
-import './ModificarPrograma.css'; 
-// Importa el componente NavbarAdmin para usar en esta vista
-import NavbarAdmin from "../NavbarAdmin/NavbarAdmin"; 
-// Importar los iconos
-import { MdSchool } from "react-icons/md"; 
+import React, { useEffect, useState } from "react";
+import './ModificarPrograma.css';
+import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
+import { MdSchool } from "react-icons/md";
+import { useParams, useNavigate } from "react-router-dom";
+import { apiGeneral } from "../../../api/apis";
+import { toast } from "react-toastify";
+import LoadingBaseDatos from "../../Loading/loading_base_datos";
 
-// Componente funcional ModificarProgramaFormacion
 const ModificarProgramaFormacion = () => {
-  return (
-    // Contenedor principal del contenido del lado derecho
-    <div className="main-right-bar">
-      {/* Barra de navegación del administrador */}
-      <NavbarAdmin />
+    const { id } = useParams(); // Obtiene el ID de la URL
+    const navigate = useNavigate();
 
-      {/* Contenedor principal del formulario y contenido */}
-      <div className="formacion-container">
+    const [loading, setLoading] = useState(true);
+    const [programa, setPrograma] = useState({
+        nombre: "",
+        descripcion: "",
+        modalidad: "",
+        nivel_programa: "",
+        duracion: ""
+    });
 
-        {/* Título y breadcrumb que indica la ubicación dentro de la app */}
-        <p className="title">
-          Modificar Programa de Formacion
-          <span className="breadcrumb">
-            You are here: <strong className="breadcrumb-active">Programas de Formacion</strong>
-          </span>
-        </p>
+    // Traer datos del programa por ID
+    const fetchPrograma = async () => {
+        try {
+            const response = await apiGeneral.get(`programa/${id}/`);
+            setPrograma({
+                nombre: response.data.nombre || "",
+                descripcion: response.data.descripcion || "",
+                modalidad: response.data.modalidad || "",
+                nivel_programa: response.data.nivel_programa || "",
+                duracion: response.data.duracion || ""
+            });
+        } catch (error) {
+            console.error("Error al obtener programa:", error);
+            toast.error("Error al cargar datos del programa");
+        } finally {
+            setLoading(false);
+        }
+    };
 
-        {/* Sección informativa con ícono y explicación */}
-        <div className="form-info">
-          <div className="icon">
-            <MdSchool /> {/* Ícono de escuela */}
-          </div>
-          <p>
-            En este espacio se podran modificar los programas de formacion que esten vinculados con nosotros.<br />
-            <strong>Debe ser creada para aparecer en la <span className="highlight">BASE DE DATOS</span>.</strong>
-          </p>
+    useEffect(() => {
+        fetchPrograma();
+    }, []);
+
+    // Manejar cambios en campos
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setPrograma((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    // Guardar cambios
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await apiGeneral.put(`programa/${id}/`, programa, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            toast.success("Programa modificado correctamente");
+            navigate("/listar-programa");
+        } catch (error) {
+            console.error("Error al modificar:", error);
+            toast.error("Error al modificar programa");
+        }
+    };
+
+    if (loading) return <LoadingBaseDatos />;
+
+    return (
+        <div className="main-right-bar">
+            <NavbarAdmin />
+
+            <div className="formacion-container">
+                <p className="title">
+                    Modificar Programa de Formación
+                    <span className="breadcrumb">
+                        You are here: <strong className="breadcrumb-active">Programas de Formación</strong>
+                    </span>
+                </p>
+
+                <div className="form-info">
+                    <div className="icon">
+                        <MdSchool />
+                    </div>
+                    <p>
+                        Aquí puedes modificar los datos de este programa de formación.<br />
+                        <strong>Debe estar registrado en la <span className="highlight">BASE DE DATOS</span>.</strong>
+                    </p>
+                </div>
+
+                <p className="program-name">{programa.nombre}</p>
+
+                <form className="form" onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label>Nombre de Programa de Formación</label>
+                        <input
+                            type="text"
+                            name="nombre"
+                            value={programa.nombre}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Descripción de Programa de Formación</label>
+                        <textarea
+                            rows="3"
+                            name="descripcion"
+                            value={programa.descripcion}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label>Modalidad</label>
+                            <select
+                                name="modalidad"
+                                value={programa.modalidad}
+                                onChange={handleChange}
+                                required
+                            >
+                                <option value="">Seleccione</option>
+                                <option value="Presencial">Presencial</option>
+                                <option value="Virtual">Virtual</option>
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label>Nivel Formativo</label>
+                            <select
+                                name="nivel_programa"
+                                value={programa.nivel_programa}
+                                onChange={handleChange}
+                                required
+                            >
+                                <option value="">Seleccione</option>
+                                <option value="tecnico">Técnico</option>
+                                <option value="tecnologo">Tecnológico</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div className="form-group">
+                        <label>Duración (Horas)</label>
+                        <input
+                            type="number"
+                            name="duracion"
+                            value={programa.duracion}
+                            onChange={handleChange}
+                            min="1"
+                            placeholder="Ej: 120"
+                            required
+                        />
+                    </div>
+
+
+                    <div className="form-actions">
+                        <button className="btn-modify" type="submit">Guardar Cambios</button>
+                        <button type="button" className="btn-cancel" onClick={() => navigate(-1)}>Cancelar</button>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        {/* Nombre del programa a modificar, aquí representado como texto placeholder */}
-        <p className="program-name">&lt;Nombre del Programa de Formacion&gt;</p>
-
-        {/* Formulario para modificar el programa de formación */}
-        <form className="form">
-          {/* Campo para el nombre del programa */}
-          <div className="form-group">
-            <label>Nombre de Programa de Formacion</label>
-            <input type="text" />
-          </div>
-
-          {/* Campo para la descripción del programa */}
-          <div className="form-group">
-            <label>Descripcion de Programa de Formacion</label>
-            <textarea rows="3" />
-          </div>
-
-          {/* Fila con dos campos select para modalidad y nivel formativo */}
-          <div className="form-row">
-            {/* Modalidad del programa */}
-            <div className="form-group">
-              <label>Modalidad</label>
-              <select>
-                <option>Seleccione</option>
-                <option>Presencial</option>
-                <option>Virtual</option>
-              </select>
-            </div>
-
-            {/* Nivel formativo del programa */}
-            <div className="form-group">
-              <label>Nivel Formativo</label>
-              <select>
-                <option>Seleccione</option>
-                <option>Técnico</option>
-                <option>Tecnológico</option>
-                <option>Operario</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Campo select para duración del programa */}
-          <div className="form-group">
-            <label>Duracion</label>
-            <select>
-              <option>Seleccione</option>
-              <option>1 mes</option>
-              <option>3 meses</option>
-              <option>6 meses</option>
-            </select>
-          </div>
-
-          {/* Botones para modificar o cancelar */}
-          <div className="form-actions">
-            <button className="btn-modify" type="submit">Modificar PF</button>
-            <button type="button" className="btn-cancel">Cancelar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default ModificarProgramaFormacion;
