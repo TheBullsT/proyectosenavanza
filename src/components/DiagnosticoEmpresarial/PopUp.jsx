@@ -8,6 +8,8 @@ import exito from '../../assets/img/img-resultados-diagnostico/exito.png'
 import { FaDownload } from "react-icons/fa";
 import { FaRegFileArchive } from "react-icons/fa";
 
+import { jsPDF } from "jspdf";
+
 // Importa los estilos CSS para este componente
 import "./Popup.css";
 
@@ -19,6 +21,30 @@ function Popup({ cerrar , datos}) {
     localStorage.setItem("resultadoDiagnostico", JSON.stringify(datos));
     navigate('/resultado-diagnostico',{ state: {datos}});
   }
+  
+
+  const handleDescargarPDF = () => {
+  const doc = new jsPDF();
+
+  doc.setFontSize(18);
+  doc.text("Programa Recomendado", 20, 20);
+
+  doc.setFontSize(14);
+
+  // Mostramos solo el programa recomendado
+  const nombre = datos?.programa_recomendado?.nombre || "No disponible";
+  const descripcion = datos?.programa_recomendado?.descripcion || "";
+
+
+  doc.text(`Recomendación: ${nombre}`, 20, 40);
+  doc.text("Descripción:", 20, 50);
+  doc.text(doc.splitTextToSize(descripcion, 170), 20, 60);
+
+
+  doc.save("programa_recomendado.pdf");
+  cerrar();
+  };
+
   return (
     // Capa semitransparente que cubre toda la pantalla
     <div className="popup-overlay">
@@ -43,7 +69,7 @@ function Popup({ cerrar , datos}) {
           </button>
 
           {/* Botón para descargar el reporte y cierra el popup */}
-          <button className='descargar' onClick={cerrar} type='button'>
+          <button className='descargar' onClick={handleDescargarPDF} type='button'>
             <FaDownload className='icon-descargar' /> Descargar
           </button>
         </div>
