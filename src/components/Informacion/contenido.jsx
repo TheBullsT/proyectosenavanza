@@ -25,9 +25,9 @@ const Contenido = () => {
                         <br />DE FORMACIÓN?
                     </h2>
                     <p>
-                        Descripción corta
-                        <br />de qué es un programa
-                        <br />de formación
+                        Un programa de formación del SENA es un curso técnico,
+                        <br />tecnológico o de formación complementaria que capacita a los colombianos para el trabajo,
+                        <br />combinando teoría y práctica de forma gratuita.
                     </p>
                 </div>
 
@@ -41,9 +41,9 @@ const Contenido = () => {
                             <br />DE FORMACIÓN?
                         </h2>
                         <p>
-                            En este espacio se
-                            <br />responderá la pregunta
-                            <br />planteada
+                            Los programas de formación del SENA ofrecen capacitación
+                            <br />gratuita y práctica en diversas áreas, mejorando la empleabilidad.
+                            <br />Brindan certificación reconocida, están disponibles en todo el <br />país, se articulan con el sector empresarial y permiten estudiar <br />de forma flexible.
                         </p>
                     </div>
 
@@ -54,9 +54,9 @@ const Contenido = () => {
                             <br />PROGRAMA DE FORMACIÓN?
                         </h2>
                         <p>
-                            En este espacio se
-                            <br />responderá la pregunta
-                            <br />planteada
+                            Participar en un programa de formación permite adquirir conocimientos y <br />habilidades prácticas que aumentan las oportunidades laborales.
+                            <br />Además, brinda certificación oficial, 
+                            <br />es gratuito en el SENA, y facilita el acceso al mercado laboral o <br />el emprendimiento, fortaleciendo el perfil profesional.
                         </p>
                     </div>
 
@@ -78,17 +78,18 @@ const Contenido = () => {
                         <br />a un aprendiz:
                     </p>
 
-                    {/* Lista de beneficios enumerados (pueden ser reemplazados por contenido real) */}
+                    {/* Lista de beneficios enumerados*/}
                     <br />
-                    <p>Beneficio {"(1)"}</p>
+                    <p className="Beneficio">{"(1)"} Talento en formación: Se adapta fácilmente 
+                    <br />a la cultura y procesos de la empresa.</p>
                     <br />
-                    <p>Beneficio {"(2)"}</p>
+                    <p className="Beneficio">{"(2)"} Actualización constante: Trae conocimientos <br />actualizados desde su formación.</p>
                     <br />
-                    <p>Beneficio {"(3)"}</p>
+                    <p className="Beneficio">{"(3)"} Apoyo en tareas clave: Refuerza áreas <br />operativas o técnicas sin altos costos.</p>
                     <br />
-                    <p>Beneficio {"(4)"}</p>
+                    <p className="Beneficio">{"(4)"} Proyección futura: Posible incorporación como <br />empleado ya capacitado.</p>
                     <br />
-                    <p>Beneficio {"(5)"}</p>
+                    <p className="Beneficio">{"(5)"} Cumplimiento legal: Ayuda a cumplir con la <br />cuota obligatoria de aprendices (Ley 789 de 2002).</p>
                 </div>
 
                 {/* Imagen decorativa secundaria al lado del texto */}
