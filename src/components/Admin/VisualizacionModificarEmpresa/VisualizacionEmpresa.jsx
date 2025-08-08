@@ -38,7 +38,7 @@ const Visualizacion_Empresa = () => {
                 <h1 className="titulo">
                     Visualización de Empresa
                     <span className="breadcrumb">
-                        You are here: <strong className="breadcrumb-actual">Empresas</strong>
+                        Usted se encuentra en: <strong className="breadcrumb-actual">Empresas</strong>
                     </span>
                 </h1>
 

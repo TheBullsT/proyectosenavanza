@@ -37,7 +37,7 @@ const Visualizacion_Programa = () => {
         <h1 className="titulo-programa">
           Visualización de Programa de Formación
           <span className="breadcrumb-programa">
-            You are here: <strong className="breadcrumb-actual-programa">Programa de Formación</strong>
+            Usted se encuentra en: <strong className="breadcrumb-actual-programa">Programa de Formación</strong>
           </span>
         </h1>
 

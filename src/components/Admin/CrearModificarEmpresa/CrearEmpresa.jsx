@@ -102,7 +102,7 @@ const CrearEmpresa = () => {
                 <p className="title">
                     Crear Empresa
                     <span className="breadcrumb">
-                        You are here: <strong className="breadcrumb-active">Empresas</strong>
+                        Usted se encuentra en: <strong className="breadcrumb-active">Empresas</strong>
                     </span>
                 </p>
 

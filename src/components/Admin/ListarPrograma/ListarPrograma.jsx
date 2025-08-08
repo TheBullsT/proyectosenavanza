@@ -14,7 +14,7 @@ import LoadingBaseDatos from "../../Loading/loading_base_datos";
 // Importar Las notificaciones toast
 import { toast } from "react-toastify";
 
-// ✅ SweetAlert2 + React wrapper
+// SweetAlert2 + React wrapper
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
@@ -81,7 +81,7 @@ const ListarProgramas = () => {
                 // Si el usuario confirma (presiona "Sí, eliminar")
                 if (result.isConfirmed) {
                     try {
-                        // 🗑️ Hacer petición DELETE a la API para eliminar el programa
+                        //  Hacer petición DELETE a la API para eliminar el programa
                         await apiGeneral.delete(`programa/${programaId}/`);
                         // Mostrar notificación de éxito
                         toast.success("Programa eliminado");
@@ -112,7 +112,7 @@ const ListarProgramas = () => {
             <div className="visualizar-container">
                 <p className="title">
                     Listar Programa de formación
-                    <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Programas</strong></span>
+                    <span className="breadcrumb"> Usted se encuentra en: <strong className="breadcrumb-active">Programas</strong></span>
                 </p>
 
                 <div className="form-info">

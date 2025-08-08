@@ -46,7 +46,7 @@ const ListarUsuarios = () => {
       <div className="visualizar-container">
         <p className="title">
           Listar Usuarios
-          <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Usuarios</strong></span>
+          <span className="breadcrumb"> Usted se encuentra en: <strong className="breadcrumb-active">Usuarios</strong></span>
         </p>
 
         <div className="form-info">

@@ -46,7 +46,7 @@ const CrearProgramaFormacion = () => {
         <p className="title">
           Crear Programa de Formación
           <span className="breadcrumb">
-            You are here: <strong className="breadcrumb-active">Programas de Formación</strong>
+            Usted se encuentra en: <strong className="breadcrumb-active">Programas de Formación</strong>
           </span>
         </p>
 

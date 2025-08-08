@@ -38,7 +38,7 @@ const VisualizacionUsuario = () => {
                     <h1 className="titulo-usuario">
                         Visualización de Usuario
                         <span className="breadcrumb-usuario">
-                            You are here: <strong className="breadcrumb-actual-usuario">Usuarios</strong>
+                            Usted se encuentra en: <strong className="breadcrumb-actual-usuario">Usuarios</strong>
                         </span>
                     </h1>
 

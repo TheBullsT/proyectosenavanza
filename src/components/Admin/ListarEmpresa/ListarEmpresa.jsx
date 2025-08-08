@@ -70,7 +70,7 @@ const Listar_Empresa = () => {
       <div className="visualizar-empresa-contenido">
         <p className="title">
           Listar Empresa
-          <span className="breadcrumb"> You are here: <strong className="breadcrumb-active">Empresas</strong></span>
+          <span className="breadcrumb"> Usted se encuentra en: <strong className="breadcrumb-active">Empresas</strong></span>
         </p>
 
         <div className="form-info">

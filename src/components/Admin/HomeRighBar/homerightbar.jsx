@@ -1,7 +1,7 @@
-// ✅ Importar React y hooks
+// Importar React y hooks
 import React, { useState, useEffect } from "react";
 
-// ✅ Importar componentes de Recharts
+// Importar componentes de Recharts
 import {
     BarChart,
     ComposedChart,
@@ -15,22 +15,22 @@ import {
     Legend,
 } from "recharts";
 
-// ✅ Importar estilos CSS
+// Importar estilos CSS
 import "./homerightbar.css";
 
-// ✅ Importar Navbar Admin
+//  Importar Navbar Admin
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
 
-// ✅ Importar tu API personalizada
+//  Importar tu API personalizada
 import { apiGeneral } from "../../../api/apis";
 
 function HomeRightBar() {
-    // ✅ Estados para almacenar datos reales
+    // Estados para almacenar datos reales
     const [usuarios, setUsuarios] = useState([]);
     const [empresas, setEmpresas] = useState([]);
     const [programas, setProgramas] = useState([]);
 
-    // ✅ Llamada a APIs cuando se monta el componente
+    //  Llamada a APIs cuando se monta el componente
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -53,17 +53,17 @@ function HomeRightBar() {
         fetchData();
     }, []);
 
-    // ✅ Totales calculados dinámicamente
+    //  Totales calculados dinámicamente
     const totalUsuarios = usuarios.length;
     const totalEmpresas = empresas.length;
     const totalProgramas = programas.length;
 
-    // ✅ Datasets para cada barra
+    //  Datasets para cada barra
     const dataEmpresas = [{ name: "Empresas", cantidad: totalEmpresas }];
     const dataProgramas = [{ name: "Programas", cantidad: totalProgramas }];
     const dataUsuarios = [{ name: "Usuarios", cantidad: totalUsuarios }];
 
-    // ✅ Datos de ejemplo para líneas y compuesto
+    //  Datos de ejemplo para líneas y compuesto
     const dataLineas = [
         { name: "Enero", usuarios: 5, empresas: 2 },
         { name: "Febrero", usuarios: 8, empresas: 4 },
@@ -82,13 +82,13 @@ function HomeRightBar() {
 
     return (
         <div className="main-rightbar">
-            {/* ✅ Navbar Admin */}
+            {/*  Navbar Admin */}
             <NavbarAdmin />
 
             <div>
-                {/* ✅ Contenedor principal de KPIs */}
+                {/*  Contenedor principal de KPIs */}
                 <div className="ItemContainer">
-                    {/* ✅ Barra: Empresas */}
+                    {/* Barra: Empresas */}
                     <div className="ItemContainer1">
                         <div className="subItemContainer">
                             <p className="taskProgress">Empresas Registradas</p>
@@ -115,7 +115,7 @@ function HomeRightBar() {
                         </div>
                     </div>
 
-                    {/* ✅ Barra: Programas */}
+                    {/*  Barra: Programas */}
                     <div className="ItemContainer1">
                         <div className="subItemContainer">
                             <p className="taskProgress">Programas Registrados</p>
@@ -142,7 +142,7 @@ function HomeRightBar() {
                         </div>
                     </div>
 
-                    {/* ✅ Barra: Usuarios */}
+                    {/* Barra: Usuarios */}
                     <div className="ItemContainer1">
                         <div className="subItemContainer1">
                             <p className="taskProgress">Usuarios Registrados</p>
@@ -170,7 +170,7 @@ function HomeRightBar() {
                     </div>
                 </div>
 
-                {/* ✅ Gráfico de líneas (usuarios vs empresas) */}
+                {/*  Gráfico de líneas (usuarios vs empresas) */}
                 <div className="MidleTaskChart">
                     <p className="TaskUsuariosvsEmpresas">
                         Evolución: Usuarios vs Empresas
@@ -201,7 +201,7 @@ function HomeRightBar() {
                     </LineChart>
                 </div>
 
-                {/* ✅ Gráfico compuesto: barras + línea */}
+                {/*  Gráfico compuesto: barras + línea */}
                 <div className="MonthlyProgramas">
                     <p className="taskContainerText">
                         Evolución de Programas
