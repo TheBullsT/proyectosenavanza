@@ -236,13 +236,17 @@ a {
 
 /* Información del programa en el pop-up */
 .popup-info {
-  padding: 40px;
-  width: 60%;
-  font-family: var(--font-primary);
-  max-height: 400px;         /* Limita el alto para evitar desbordamiento */
-  overflow-y: auto;          /* Habilita scroll vertical */
-  white-space: pre-wrap;     /* Mantiene saltos de línea si los hay */
-  scrollbar-width: thin;     /* Estilo de scroll en Firefox */
+    padding: 40px;
+    width: 60%;
+    font-family: var(--font-primary);
+    max-height: 400px;         /* Limita el alto para evitar desbordamiento */
+    overflow-y: auto;          /* Habilita scroll vertical */
+    white-space: pre-wrap;     /* Mantiene saltos de línea si los hay */
+    line-height: 1.5;          /* Espaciado entre líneas */
+    scrollbar-width: thin;     /* Estilo de scroll en Firefox */
+    
+    text-align: justify;       /* Alinea el texto uniformemente en el contenedor */
+    word-wrap: break-word;     /* Rompe palabras largas para evitar desbordamiento */
 }
 
 /* Opcional: scroll bonito en navegadores WebKit (Chrome, Edge, Safari) */
@@ -267,6 +271,7 @@ a {
   color: var(--white);
   border: none;
   padding: 12px 25px;
+  margin-left: 35%;
   cursor: pointer;
   font-weight: bold;
   border-radius: 4px;

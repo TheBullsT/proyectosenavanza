@@ -4,17 +4,17 @@ import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
 import { MdSchool } from "react-icons/md";
 import { toast } from "react-toastify";
 import { apiGeneral } from "../../../api/apis";
-
+import LoadingBaseDatos from "../../Loading/loading_base_datos";
 const CrearProgramaFormacion = () => {
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [modalidad, setModalidad] = useState("");
   const [nivel_programa, setNivelPrograma] = useState("");
   const [duracion, setDuracion] = useState("");
-
+  const [loading, setLoading] = useState(false); // estado de loading
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const response = await apiGeneral.post("programa/create/", {
         nombre: nombre,
@@ -35,9 +35,14 @@ const CrearProgramaFormacion = () => {
     } catch (error) {
       console.error("Error al crear el programa:", error.response?.data || error.message);
       toast.error("Error al crear el programa");
-    }
+    } finally {
+            setLoading(false); // desactiva loading
+        }
   };
-
+   // si está cargando, muestra pantalla de carga
+    if (loading) {
+        return <LoadingBaseDatos mensaje="Creando programa de formación, por favor espere..." />;
+    }
   return (
     <div className="main-right-bar">
       <NavbarAdmin />

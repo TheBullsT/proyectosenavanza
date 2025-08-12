@@ -30,7 +30,6 @@ function NavbarAdmin() {
 
                 {/* Sección que muestra el icono y el nombre del usuario/admin */}
                 <div className="logoAdmin">
-                    <FaCircle className="navIcon" />
                     {/*Aqui colocamos su nombre */}
                     <p className="profileName">@{nombreAdmin}</p>
                 </div>

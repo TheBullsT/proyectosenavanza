@@ -69,9 +69,9 @@ function Resultados() {
                         <div className="popup-info">
                             <h1>{datos?.programa_recomendado?.nombre}</h1>
                             <p><strong>Duración:</strong> 24 meses</p>
-                            <p><strong>Nivel Formativo:</strong>{datos?.programa_recomendado?.nivel_programa}</p>
-                            <p>
-                                <strong>Descripción:</strong>
+                            <p><strong>Nivel Formativo:</strong> {datos?.programa_recomendado?.nivel_programa}</p>
+                            <p> 
+                                <strong>Descripción:</strong> 
                                 {datos?.programa_recomendado?.descripcion}
                             </p>
                             <button className="boton-cerrar" onClick={cerrarPopup}>Cerrar</button>

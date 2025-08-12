@@ -13,6 +13,8 @@ import { toast } from "react-toastify";
 // Importar APIS
 import { apiCreateUser } from "../../../api/apis";
 
+import LoadingBaseDatos from "../../Loading/loading_base_datos";
+
 // Componente funcional llamado CrearEmpresa
 const CrearEmpresa = () => {
 
@@ -30,8 +32,12 @@ const CrearEmpresa = () => {
 
     // Conectar a la base de datos para crear usuario
 
+    
+    const [loading, setLoading] = useState(false); // estado de loading
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
 
             const response = await apiCreateUser.post("create/",
@@ -84,8 +90,16 @@ const CrearEmpresa = () => {
             toast.error(
                 `Error: ${error.response?.status} - ${error.response?.statusText}`
             );
+        } finally {
+            setLoading(false); // desactiva loading
         }
     };
+
+    // si está cargando, muestra pantalla de carga
+    if (loading) {
+        return <LoadingBaseDatos mensaje="Creando empresa, por favor espere..." />;
+    }
+
 
 
     return (

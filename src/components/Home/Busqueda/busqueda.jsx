@@ -4,7 +4,8 @@ import './busqueda.css';
 // Logo institucional
 import logo from '../../../assets/img/Logo_SENAVANZA.png';
 // Iconos
-import { FaCircle } from "react-icons/fa6";
+import { TiThMenu } from "react-icons/ti";
+
 // Menú de perfil y utilidad para cerrar al hacer click fuera
 import MenuProfile from '../Menu-Profile/menu-profile';
 import ClickOutMenu from '../Menu-Profile/click-out-menu';
@@ -50,7 +51,7 @@ function Busqueda() {
                     onClick={() => setMenuVisible(!menuVisible)}
                     aria-label="Abrir menú de perfil"
                 >
-                    <FaCircle className='icon-perfil' />
+                    <TiThMenu className='icon-perfil' />
                 </button>
             </div>
 

@@ -13,6 +13,9 @@ import { apiLogin } from "../../../api/apis"
 // Imporar TOAST
 import { toast } from "react-toastify";
 
+import '../Busqueda/busqueda.css';
+
+
 // Define el componente con forwardRef para recibir la referencia externa del DOM
 const MenuProfile = forwardRef(function MenuProfileComponent(props, ref) {
 
