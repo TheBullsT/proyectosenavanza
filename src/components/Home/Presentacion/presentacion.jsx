@@ -1,20 +1,19 @@
-import React from "react";
-import './presentacion.css';
-import { useNavigate } from "react-router-dom";
-import { BsListTask } from "react-icons/bs";
+import React from "react"; // Importación de React para crear el componente
+import './presentacion.css'; // Importa estilos específicos del componente
+import { useNavigate } from "react-router-dom"; // Hook para navegación programática
+import { BsListTask } from "react-icons/bs"; // Icono de lista de tareas
 
 function Presentacion() {
-    // useNavigate devuelve una función para cambiar de ruta
-    const navigate = useNavigate(); // Corregí el nombre de la variable (antes "navegate")
+    const navigate = useNavigate(); // Hook que devuelve función para cambiar de ruta
 
-    // Función que redirige a la página de diagnóstico empresarial
+    // Redirige al usuario a la página de diagnóstico empresarial
     const diagnostico = () => {
-        navigate('/diagnostico-empresarial'); // Usar la función correcta para navegar
+        navigate('/diagnostico-empresarial'); // Cambia la ruta a la indicada
     }
 
     return (
         <div className="presentacion">
-            {/* Sección con texto introductorio */}
+            {/* Bloque de presentación con texto de bienvenida */}
             <div className="presentacion-senavanza">
                 <p className="texto-presentacion">¡Te presentamos SENAVANZA!</p>
                 <p className="texto-ayuda">
@@ -23,10 +22,10 @@ function Presentacion() {
                 </p>
             </div>
 
-            {/* Sección para invitar al usuario a responder el diagnóstico */}
+            {/* Sección que invita a responder el diagnóstico */}
             <div className="responde-diagnostico">
                 <p className="texto-diagnostico">¡Responde a nuestro diagnóstico empresarial!</p>
-                {/* Botón que dispara la navegación al diagnóstico */}
+                {/* Botón con icono que, al hacer clic, ejecuta la navegación */}
                 <button className="diagnostico" onClick={diagnostico}>
                     <BsListTask className="icon-diagnostico" /> Diagnóstico
                 </button>

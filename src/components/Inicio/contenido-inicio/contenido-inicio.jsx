@@ -20,6 +20,7 @@ function ContenidoInicio() {
         navigate('/informacion');
     }
 
+    // Lista de programas ofrecidos, con nombre y descripción
     const programas = [
         {
             nombre: "Analisis y desarrollo de osftware",
@@ -41,16 +42,17 @@ function ContenidoInicio() {
     ];
 
     return (
-        //Contenido General
+        // Contenedor principal de la sección de contenido
         <div className="contenido-inicio">
-            {/*Titulo del contenido */}
+            {/* Título principal con ícono */}
             <h2 className="titulo-inicio">
                 <FaPeopleGroup className="icon-inicio-contenido" />
                 <span>¿Interesado en <br /> nuestros programas de <br /> formación?</span>
             </h2>
-            {/*Cajas para los programas */}
+            {/* Sección que muestra las tarjetas de cada programa */}
             <div className="programas-inicio">
                 {programas.map((programa, index) => (
+                    // Cada programa se muestra en una tarjeta
                     <div key={index} className="programa-inicio">
                         <div className="imagen-programa">
                             <RiComputerFill className="icon-computador" />
@@ -59,6 +61,7 @@ function ContenidoInicio() {
                         <div className="descripcion-programa">{programa.descripcion}</div>
                         <div className="botones-inicio">
                             <img src={flechita} alt="Flecha" />
+                            {/* Botón que redirige a más información */}
                             <button onClick={irInformacion} className="boton-inicio">¡PRESIONA AQUÍ!</button>
                         </div>
                     </div>

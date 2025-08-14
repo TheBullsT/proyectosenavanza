@@ -1,24 +1,24 @@
-// Importación de React
-import React from "react";
-// Importación del archivo CSS para estilos específicos de este componente
+// Importación de React para crear el componente
+import React from "react"; 
+// Importación del archivo CSS que contiene los estilos específicos para este componente
 import './contenido.css';
-// Importación de imágenes utilizadas en el contenido
+// Importación de imágenes utilizadas en la sección
 import Cultivo from "../../assets/img/inicio/Cultivo_grande.png";
 import Cultivo2 from "../../assets/img/inicio/Cultivo_pequeño.png";
 
-// Definición del componente funcional Contenido
+// Componente funcional que representa el contenido principal de la página
 const Contenido = () => {
     return (
-        // Contenedor principal que envuelve todo el contenido
+        // Contenedor principal que agrupa todo el contenido
         <div className="contenedor-principal">
 
-            {/* Imagen decorativa principal del contenido */}
+            {/* Imagen decorativa principal */}
             <img className="imagen_ayuda" src={Cultivo} alt="Cultivo de arroz grande" />
 
-            {/* Contenedor del texto explicativo del programa */}
+            {/* Bloque que contiene el texto explicativo */}
             <div className="contenedor-texto">
 
-                {/* Primer bloque de texto: definición del programa de formación */}
+                {/* Sección de definición del programa */}
                 <div className="texto1">
                     <h2>
                         ¿Que es un PROGRAMA
@@ -31,10 +31,10 @@ const Contenido = () => {
                     </p>
                 </div>
 
-                {/* Segundo bloque de texto: ventajas y razones para participar */}
+                {/* Sección que explica ventajas y razones para participar */}
                 <div className="textos2">
 
-                    {/* Ventajas del programa */}
+                    {/* Sub-bloque de ventajas */}
                     <div className="ventajas">
                         <h2>
                             ¿Ventajas de un PROGRAMA
@@ -47,7 +47,7 @@ const Contenido = () => {
                         </p>
                     </div>
 
-                    {/* Justificación para participar en el programa */}
+                    {/* Sub-bloque de motivos para participar */}
                     <div className="Porque">
                         <h2>
                             ¿Por qué participar en un
@@ -55,7 +55,7 @@ const Contenido = () => {
                         </h2>
                         <p>
                             Participar en un programa de formación permite adquirir conocimientos y <br />habilidades prácticas que aumentan las oportunidades laborales.
-                            <br />Además, brinda certificación oficial, 
+                            <br />Además, brinda certificación oficial,
                             <br />es gratuito en el SENA, y facilita el acceso al mercado laboral o <br />el emprendimiento, fortaleciendo el perfil profesional.
                         </p>
                     </div>
@@ -63,10 +63,10 @@ const Contenido = () => {
                 </div>
             </div>
 
-            {/* Segundo contenedor con más texto e imagen */}
+            {/* Segundo contenedor con beneficios y una imagen */}
             <div className="contenedor2">
 
-                {/* Información sobre los beneficios de contratar aprendices */}
+                {/* Lista de beneficios al contratar aprendices */}
                 <div className="contratar">
                     <h2>
                         ¿Por qué contratar a un
@@ -78,10 +78,10 @@ const Contenido = () => {
                         <br />a un aprendiz:
                     </p>
 
-                    {/* Lista de beneficios enumerados*/}
+                    {/* Beneficios enumerados */}
                     <br />
-                    <p className="Beneficio">{"(1)"} Talento en formación: Se adapta fácilmente 
-                    <br />a la cultura y procesos de la empresa.</p>
+                    <p className="Beneficio">{"(1)"} Talento en formación: Se adapta fácilmente
+                        <br />a la cultura y procesos de la empresa.</p>
                     <br />
                     <p className="Beneficio">{"(2)"} Actualización constante: Trae conocimientos <br />actualizados desde su formación.</p>
                     <br />
@@ -92,12 +92,12 @@ const Contenido = () => {
                     <p className="Beneficio">{"(5)"} Cumplimiento legal: Ayuda a cumplir con la <br />cuota obligatoria de aprendices (Ley 789 de 2002).</p>
                 </div>
 
-                {/* Imagen decorativa secundaria al lado del texto */}
+                {/* Imagen decorativa secundaria */}
                 <img className="cultivo" src={Cultivo2} alt="Cultivo pequeño de arroz" />
             </div>
         </div>
     );
 }
 
-// Exportación del componente para que pueda ser utilizado en otros archivos
+// Exportación del componente para su uso en otras partes del proyecto
 export default Contenido;

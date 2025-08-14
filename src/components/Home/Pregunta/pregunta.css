@@ -1,5 +1,5 @@
 :root {
-    /* Paleta de colores primarios: tonos de verde para mantener la identidad */
+    /* Paleta de colores verdes principal */
     --primary-1: #39A900;
     --primary-2: #36AE0F;
     --primary-3: #42B31E;
@@ -18,17 +18,15 @@
     --primary-16: #E6F5E1;
     --primary-17: #F2FAF0;
 
-    /* Colores neutros y grises para textos y fondos */
+    /* Colores neutros */
     --black: #000000;
     --gray-1: #0F0F0F;
-    /* Texto principal - oscuro */
     --gray-2: #1E1E1E;
     --gray-3: #2D2D2D;
     --gray-4: #3C3C3C;
     --gray-5: #5A5A5A;
     --gray-6: #696969;
     --gray-7: #787878;
-    /* Texto secundario - gris medio */
     --gray-8: #878787;
     --gray-9: #A5A5A5;
     --gray-10: #969696;
@@ -38,15 +36,13 @@
     --gray-14: #D2D2D2;
     --gray-15: #E1E1E1;
     --gray-16: #F0F0F0;
-    /* Fondo claro */
     --white: #FFFFFF;
-    /* Fondo blanco */
 
-    /* Tipografía principal y secundaria */
+    /* Tipografía */
     --font-primary: 'Work Sans', sans-serif;
     --font-secondary: 'Calibri', sans-serif;
 
-    /* Jerarquía tipográfica: tamaños base para encabezados */
+    /* Tamaños de encabezado */
     --h1: 32px;
     --h2: 24px;
     --h3: 20px;
@@ -55,103 +51,73 @@
     --h6: 12px;
 }
 
-/* Reset y base para el html */
 html {
-    margin: 0;
     font-size: 62.5%;
-    /* Hace que 1rem = 10px para facilitar cálculos */
+    /* 1rem = 10px */
     box-sizing: border-box;
-    /* Para incluir padding y border en ancho total */
     scroll-behavior: smooth;
-    /* Desplazamiento suave al usar anclas o navegación */
 }
 
-/* Aplicamos box-sizing: inherit a todos los elementos y pseudoelementos */
 :before,
 *:after {
     box-sizing: inherit;
 }
 
-/* Estilos base para body */
 body {
     font-size: 16px;
     font-family: var(--font-primary);
     color: var(--gray-1);
-    /* Color texto principal oscuro para buen contraste */
     background-color: var(--white);
-    /* Fondo blanco */
     line-height: 1.5;
-    /* Mejor legibilidad */
     margin: 0;
     padding: 0;
-    /* Evitar que contenido quede pegado a los bordes en móviles */
 }
 
-/* Estilos base para enlaces */
 a {
     text-decoration: none;
-    /* Sin subrayado por defecto */
     color: var(--primary-5);
-    /* Verde medio */
     transition: color 0.3s ease;
-    /* Transición suave para hover */
 }
 
-/* Efecto visual al pasar mouse o foco en enlaces para accesibilidad */
 a:hover,
 a:focus {
     color: var(--primary-8);
-    /* Verde más claro */
     outline: none;
-    /* Quita el outline por defecto (usar con cuidado) */
 }
 
-/* Contenedor principal de la sección pregunta */
+/* Sección principal de pregunta con imagen y texto */
 .pregunta {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    /* Imagen y texto lado a lado */
     margin-top: 130px;
     font-family: var(--font-primary);
     gap: 4rem;
-    /* Separación cómoda entre imagen y texto */
     padding: 0 1rem;
-    /* Padding lateral para no tocar bordes */
 }
 
-/* Imagen dentro del contenedor pregunta */
 .pregunta .imagen img {
     max-width: 100%;
-    /* Responsiva para evitar overflow */
     height: auto;
-    /* Mantiene proporción */
 }
 
-/* Contenedor de la parte textual y botón */
 .realizar {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* Columnas para título, texto y botón */
     text-align: center;
     max-width: 400px;
-    /* Limita ancho para mejor legibilidad */
 }
 
-/* Párrafo dentro de realizar */
 .realizar p {
     font-size: 1.8rem;
-    /* Tamaño legible */
     color: var(--black);
-    /* Gris medio para no competir con título */
     margin-bottom: 2rem;
-    /* Separación antes del botón */
 }
 
-/* Estilos del botón */
+/* Botón principal */
 .solucion {
     font-family: var(--font-primary);
     font-size: 1.8rem;
@@ -164,27 +130,18 @@ a:focus {
     cursor: pointer;
     border: none;
     box-shadow: 0 4px 8px rgba(50, 169, 0, 0.4);
-    /* Sombra suave verde */
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    /* Transiciones suaves para hover */
     animation: pulso 2.5s infinite;
-    /* Animación de pulso para llamar atención */
 }
 
-/* Efecto hover y foco en el botón */
 .solucion:hover,
 .solucion:focus {
     background-color: var(--primary-7);
-    /* Verde un poco más intenso */
     box-shadow: 0 6px 12px rgba(50, 169, 0, 0.6);
-    /* Sombra más marcada */
     transform: scale(1.05);
-    /* Ligera ampliación */
     outline: none;
-    /* Sin outline (usar con accesibilidad) */
 }
 
-/* Animación de pulso suave para el botón */
 @keyframes pulso {
     0% {
         transform: scale(1);
@@ -192,7 +149,6 @@ a:focus {
 
     50% {
         transform: scale(1.1);
-        /* Escala al 110% */
     }
 
     100% {
@@ -200,59 +156,44 @@ a:focus {
     }
 }
 
-/* Estilos para pantallas medianas (tablets y similares) */
+/* Adaptación para tablets */
 @media (max-width: 768px) {
     .pregunta {
         flex-direction: column;
-        /* Apila verticalmente */
         text-align: center;
         margin-top: 50px;
-        /* Reduce margen superior */
         gap: 2rem;
-        /* Menor separación */
         padding: 0 1rem;
     }
 
     .realizar {
         gap: 15px;
-        /* Separación vertical interna */
         margin-bottom: 50px;
-        /* Espacio debajo del contenido */
         max-width: 100%;
-        /* Ocupa todo el ancho posible */
     }
 
     .solucion {
         width: 100%;
-        /* Botón ocupa todo el ancho del contenedor */
         max-width: 250px;
-        /* Pero no más de 250px */
         font-size: 1.6rem;
-        /* Texto un poco más pequeño */
         height: 45px;
-        /* Altura un poco menor */
     }
 }
 
-/* Estilos para pantallas pequeñas (móviles) */
+/* Adaptación para móviles */
 @media (max-width: 480px) {
     .pregunta {
         margin-top: 30px;
-        /* Más compacto verticalmente */
         gap: 1.5rem;
-        /* Menos espacio entre elementos */
     }
 
     .realizar p {
         font-size: 1.6rem;
-        /* Texto más pequeño y cómodo para móvil */
     }
 
     .solucion {
         font-size: 1.4rem;
         height: 40px;
-        /* Botón más pequeño */
         max-width: 100%;
-        /* Ocupa ancho completo */
     }
 }

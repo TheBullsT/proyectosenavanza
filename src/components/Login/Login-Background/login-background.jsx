@@ -1,23 +1,29 @@
-//Importar react
+// Importar React
 import React from "react";
-// Importar imagen para el background
+// Importar imagen que se mostrará en el background
 import mobile from '../../../assets/img/img-login/mobile.png';
+// Importar estilos CSS del componente
 import './login-background.css';
-// Importar la libreria para la navegacion
+// Importar Link para navegación interna sin recargar la página
 import { Link } from 'react-router-dom';
 
-// Componente principal
+// Componente principal que muestra el fondo del login
 function LoginBackground() {
     return (
-        //Caja del background
+        // Contenedor principal del background
         <div className="background">
-            {/*Link para ir al administrador */}
+            {/* Link para redirigir al login del administrador */}
             <Link to="/login-admin" className="hidden-link">
-                {/*Imagen para la imagen del lado */}
-                <img className="imgage" src={mobile} alt="Imagen del login" />
+                {/* Imagen que se posiciona en el lado derecho del fondo */}
+                <img
+                    className="imgage"
+                    src={mobile}
+                    alt="Imagen del login"
+                />
             </Link>
         </div>
     );
 }
 
+// Exporta el componente para usarlo en otras partes de la aplicación
 export default LoginBackground;

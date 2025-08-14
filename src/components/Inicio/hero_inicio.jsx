@@ -15,9 +15,9 @@ const Hero = () => {
     // Hook para redireccionar a otras rutas
     const navigate = useNavigate();
 
-    // Función que redirige al usuario a la página de login
+    // Función para ir a la página de login cuando se presiona el botón
     const irLogin = () => {
-        navigate('/login');
+        navigate('/login'); // Cambia la ruta actual a /login
     }
 
     // Retorno del componente JSX
@@ -26,32 +26,32 @@ const Hero = () => {
             {/* Contenedor principal del contenido del hero */}
             <div className='hero-content'>
 
-                {/* Columna izquierda: Textos */}
+                {/* Columna izquierda con textos de presentación */}
                 <div className='hero-text'>
-                    {/* Texto introductorio */}
+                    {/* Texto breve que introduce la sección */}
                     <p className='texto-ayuda'>¿Necesitas personal?</p>
 
-                    {/* Título principal en mayúsculas con salto de línea */}
+                    {/* Título principal del hero */}
                     <p className='titulo-principal'>
                         CONSEGUIMOS LOS APRENDICES<br />PARA TU EMPRESA
                     </p>
 
-                    {/* Subtítulo llamando a la acción */}
+                    {/* Subtítulo que invita a iniciar sesión */}
                     <p className='texto-ayuda2'>¡INICIA SESIÓN!</p>
 
-                    {/* Contenedor de la flecha y el botón */}
+                    {/* Sección que agrupa flecha e botón */}
                     <div className='apuntar-boton'>
-                        {/* Imagen de flecha */}
+                        {/* Flecha decorativa al lado del botón */}
                         <img src={arrow} alt="flecha" />
 
-                        {/* Botón que redirige al login */}
+                        {/* Botón con evento para redirigir al login */}
                         <button className='button-init2' onClick={irLogin}>
                             Inicia sesión
                         </button>
                     </div>
                 </div>
 
-                {/* Columna derecha: Imagen ilustrativa */}
+                {/* Columna derecha que contiene la imagen ilustrativa */}
                 <div className='image-person'>
                     <img src={person} alt="imagen-inicio" />
                 </div>
@@ -60,5 +60,5 @@ const Hero = () => {
     );
 }
 
-// Exportación del componente para que pueda ser usado en otras partes de la app
+// Exportación del componente
 export default Hero;

@@ -53,13 +53,12 @@
 
 /* Estilos globales para html y box-sizing */
 html {
-    margin: 0;
-    font-size: 62.5%;
-    box-sizing: border-box;
-    /* Padding y border incluidos en ancho/alto */
+    margin: 0; /* Eliminar margen predeterminado */
+    font-size: 62.5%; /* 1rem = 10px */
+    box-sizing: border-box; /* Incluir padding y border en width/height */
 }
 
-/* Heredar box-sizing para pseudoelementos y todos los elementos */
+/* Heredar box-sizing a pseudoelementos */
 :before,
 *:after {
     box-sizing: inherit;
@@ -67,8 +66,8 @@ html {
 
 /* Estilo base para el body */
 body {
-    font-size: 16px;
-    font-family: var(--font-primary);
+    font-size: 16px; /* Tamaño de fuente base */
+    font-family: var(--font-primary); /* Tipografía principal */
 }
 
 /* Enlaces sin subrayado */
@@ -76,34 +75,33 @@ a {
     text-decoration: none;
 }
 
-/* Contenedor principal con grid: dos filas y una columna */
+/* Contenedor principal: grid con dos filas y una columna */
 .container-programas {
     display: grid;
-    grid-template-rows: auto auto;
-    /* Dos filas automáticas */
-    grid-template-columns: 1fr;
-    /* Una columna */
-    text-align: center;
-}
-.titulo-reporte-programas h1{
-    margin: 0;
-}
-/* Contenedor para el título, en la primera fila */
-.titulo-reporte {
-    grid-column: 1;
-    grid-row: 1;
+    grid-template-rows: auto auto; /* Dos filas automáticas */
+    grid-template-columns: 1fr; /* Una columna */
+    text-align: center; /* Centrar texto */
 }
 
-/* Contenedor que agrupa programas y la imagen lateral */
+/* Ajuste de márgenes en títulos */
+.titulo-reporte-programas h1 {
+    margin: 0; /* Eliminar margen superior/inferior */
+}
+
+/* Contenedor para el título */
+.titulo-reporte {
+    grid-column: 1; /* Ocupa primera columna */
+    grid-row: 1; /* Ocupa primera fila */
+}
+
+/* Contenedor principal de programas y imagen lateral */
 .programas-total {
     grid-column: 1;
-    grid-row: 2;
-    display: flex;
-    justify-content: space-between;
-    /* Separar máximo los hijos */
-    align-items: center;
-    /* Ajuste para acercar al título */
-    height: 500px;
+    grid-row: 2; /* Segunda fila */
+    display: flex; /* Flexbox para alinear hijos horizontalmente */
+    justify-content: space-between; /* Separar al máximo los hijos */
+    align-items: center; /* Centrar verticalmente */
+    height: 500px; /* Altura del contenedor */
 }
 
 /* Imagen decorativa lateral */
@@ -112,14 +110,12 @@ a {
     height: 400px;
 }
 
-/* Contenedor para las tarjetas de programas */
+/* Contenedor de tarjetas de programas */
 .programas {
     display: flex;
     align-items: center;
-    flex-direction: column;
-    /* Apilar verticalmente */
-    gap: 40px;
-    /* Espacio entre tarjetas */
+    flex-direction: column; /* Apilar tarjetas verticalmente */
+    gap: 40px; /* Espacio entre tarjetas */
     border-radius: 6px;
     font-size: var(--h3);
     font-weight: bold;
@@ -131,18 +127,16 @@ a {
 /* Tarjeta individual de programa */
 .programas-formacion {
     display: flex;
-    flex-direction: row;
-    /* Imagen e info lado a lado */
+    flex-direction: row; /* Imagen e info lado a lado */
     width: 450px;
     height: 500px;
-    gap: 30px;
-    /* Separación entre imagen y texto */
+    gap: 30px; /* Espacio entre imagen y texto */
     justify-content: center;
     align-items: center;
     font-size: var(--h4);
     border-radius: 6px;
     border: 1px solid var(--gray-12);
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
 }
 
 /* Imagen dentro de la tarjeta */
@@ -153,52 +147,46 @@ a {
 
 /* --- Estilos para el pop-up --- */
 .popup {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: all 0.3s ease;
-  pointer-events: none;
+    opacity: 0; /* Inicialmente invisible */
+    transform: scale(0.95); /* Reducido ligeramente */
+    transition: all 0.3s ease; /* Animación suave */
+    pointer-events: none; /* No interactuable */
 }
 
-/* Cuando se activa el pop-up */
+/* Pop-up visible */
 .popup.mostrar {
-  opacity: 1;
-  transform: scale(1);
-  pointer-events: auto;
+    opacity: 1;
+    transform: scale(1); /* Tamaño normal */
+    pointer-events: auto; /* Interactuable */
 }
 
-/* Cuando se inicia la salida (antes de desmontar) */
+/* Pop-up oculto (animación de salida) */
 .popup.ocultar {
-  opacity: 0;
-  transform: scale(0.95);
-  pointer-events: none;
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
 }
 
-/* Capa superpuesta que cubre toda la pantalla */
+/* Overlay oscuro detrás del pop-up */
 .popup-overlay-programas {
-    position: fixed;
-    /* Fijo para cubrir toda la pantalla */
+    position: fixed; /* Fijo en la pantalla */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    /* Fondo oscuro semitransparente */
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
     display: flex;
-    justify-content: center;
-    /* Centrar contenido horizontalmente */
-    align-items: center;
-    /* Centrar contenido verticalmente */
-    z-index: 1000;
-    /* En frente de todo */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    z-index: 1000; /* En frente de todo */
 }
 
-/* Contenedor del contenido del popup */
+/* Contenedor interno del pop-up */
 .popup-content-programas {
     background-color: white;
     width: 80%;
     max-width: 900px;
-    display: flex;
-    /* Contenido en fila: imagen y texto */
+    display: flex; /* Imagen y texto lado a lado */
     justify-content: center;
     align-items: center;
     border-radius: 8px;
@@ -206,38 +194,37 @@ a {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Imagen del programa en popup */
+/* Imagen dentro del pop-up */
 .popup-imagen-programas img {
     width: 500px;
     height: 500px;
-    object-fit: cover;
+    object-fit: cover; /* Ajuste de imagen */
 }
-/* Parte de texto e información del popup */
+
+/* Contenedor de texto del pop-up */
 .popup-info-programas {
     padding: 40px;
     width: 60%;
     font-family: var(--font-primary);
-    max-height: 400px;       /* Limita el alto del contenedor */
-    overflow-y: auto;        /* Scroll vertical si el contenido excede */
-    white-space: pre-wrap;   /* Mantiene saltos de línea y espacios */
-    scrollbar-width: thin;   /* Scroll delgado en Firefox */
+    max-height: 400px; /* Limita altura */
+    overflow-y: auto; /* Scroll vertical si es necesario */
+    white-space: pre-wrap; /* Mantener saltos de línea */
+    scrollbar-width: thin; /* Scroll delgado en Firefox */
 }
 
-/* Scroll personalizado para WebKit (Chrome, Edge, Safari) */
+/* Scroll personalizado WebKit */
 .popup-info-programas::-webkit-scrollbar {
     width: 8px;
 }
-
 .popup-info-programas::-webkit-scrollbar-thumb {
     background-color: var(--primary-1);
     border-radius: 4px;
 }
-
 .popup-info-programas::-webkit-scrollbar-track {
     background-color: #f0f0f0;
 }
 
-/* Título en el popup */
+/* Título en el pop-up */
 .popup-info-programas h1 {
     margin-bottom: 20px;
     text-align: center;
@@ -245,15 +232,14 @@ a {
     color: var(--primary-1);
 }
 
-/* Párrafos del popup con espacios */
+/* Párrafos dentro del pop-up */
 .popup-info-programas p {
     margin-bottom: 15px;
     font-size: var(--h4);
     text-align: left;
 }
 
-
-/* Botón para cerrar el popup */
+/* Botón para cerrar el pop-up */
 .boton-cerrar-programas {
     margin-top: 20px;
     background-color: var(--primary-1);
@@ -266,7 +252,7 @@ a {
     text-align: center;
 }
 
-/* Ajustes para textos e imagenes dentro del contenedor de info de la tarjeta */
+/* Contenedor de texto dentro de la tarjeta */
 .informacion-ficha-programas {
     display: flex;
     flex-direction: column;

@@ -1,229 +1,236 @@
 :root {
-  /* Colores Primarios */
-  --primary-1: #39A900;
-  --primary-2: #36AE0F;
-  --primary-3: #42B31E;
-  --primary-4: #4FB82D;
-  --primary-5: #5BBD3C;
-  --primary-6: #68C24B;
-  --primary-7: #75C75A;
-  --primary-8: #81CC69;
-  --primary-9: #8ED178;
-  --primary-10: #9AD787;
-  --primary-11: #A7DC96;
-  --primary-12: #B3E1A5;
-  --primary-13: #C0E6B4;
-  --primary-14: #CDEBC3;
-  --primary-15: #D9F0D2;
-  --primary-16: #E6F5E1;
-  --primary-17: #F2FAF0;
+    /* Variables globales de colores, tipografía y tamaños de fuente */
+    --primary-1: #39A900;
+    --primary-2: #36AE0F;
+    --primary-3: #42B31E;
+    --primary-4: #4FB82D;
+    --primary-5: #5BBD3C;
+    --primary-6: #68C24B;
+    --primary-7: #75C75A;
+    --primary-8: #81CC69;
+    --primary-9: #8ED178;
+    --primary-10: #9AD787;
+    --primary-11: #A7DC96;
+    --primary-12: #B3E1A5;
+    --primary-13: #C0E6B4;
+    --primary-14: #CDEBC3;
+    --primary-15: #D9F0D2;
+    --primary-16: #E6F5E1;
+    --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
-  --black: #000000;
-  --gray-1: #0F0F0F;
-  --gray-2: #1E1E1E;
-  --gray-3: #2D2D2D;
-  --gray-4: #3C3C3C;
-  --gray-5: #5A5A5A;
-  --gray-6: #696969;
-  --gray-7: #787878;
-  --gray-8: #878787;
-  --gray-9: #A5A5A5;
-  --gray-10: #969696;
-  --gray-11: #A5A5A5;
-  --gray-12: #B4B4B4;
-  --gray-13: #C3C3C3;
-  --gray-14: #D2D2D2;
-  --gray-15: #E1E1E1;
-  --gray-16: #F0F0F0;
-  --white: #FFFFFF;
+    /* Escala de grises utilizada para fondos, bordes y textos */
+    --black: #000000;
+    --gray-1: #0F0F0F;
+    --gray-2: #1E1E1E;
+    --gray-3: #2D2D2D;
+    --gray-4: #3C3C3C;
+    --gray-5: #5A5A5A;
+    --gray-6: #696969;
+    --gray-7: #787878;
+    --gray-8: #878787;
+    --gray-9: #A5A5A5;
+    --gray-10: #969696;
+    --gray-11: #A5A5A5;
+    --gray-12: #B4B4B4;
+    --gray-13: #C3C3C3;
+    --gray-14: #D2D2D2;
+    --gray-15: #E1E1E1;
+    --gray-16: #F0F0F0;
+    --white: #FFFFFF;
 
-  /* Tipografía */
-  --font-primary: 'Work Sans', sans-serif;
-  --font-secondary: 'Calibri', sans-serif;
+    /* Tipografía base para toda la interfaz */
+    --font-primary: 'Work Sans', sans-serif;
+    --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
-  --h1: 32px;
-  --h2: 24px;
-  --h3: 20px;
-  --h4: 16px;
-  --h5: 14px;
-  --h6: 12px;
+    /* Tamaños predefinidos para encabezados */
+    --h1: 32px;
+    --h2: 24px;
+    --h3: 20px;
+    --h4: 16px;
+    --h5: 14px;
+    --h6: 12px;
 }
 
 html {
-  margin: 0;
-  font-size: 62.5%;
-  /* Facilita usar rem: 1rem = 10px */
-  box-sizing: border-box;
-  overflow-x: hidden;
+    margin: 0;
+    font-size: 62.5%;
+    /* Facilita usar rem: 1rem = 10px */
+    box-sizing: border-box;
+    overflow-x: hidden;
+    /* Evita desplazamiento horizontal innecesario */
 }
 
 *:before,
 *:after {
-  box-sizing: inherit;
+    box-sizing: inherit;
+    /* Mantiene coherencia en el cálculo de tamaños */
 }
 
 body {
-  font-size: 1.6rem;
-  /* Equivale a 16px */
-  font-family: var(--font-primary);
+    font-size: 1.6rem;
+    /* Equivale a 16px */
+    font-family: var(--font-primary);
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 h1 {
-  font-size: var(--h1);
+    font-size: var(--h1);
 }
 
 h2 {
-  font-size: var(--h2);
+    font-size: var(--h2);
 }
 
 h3 {
-  font-size: var(--h3);
+    font-size: var(--h3);
 }
 
 h4 {
-  font-size: var(--h4);
+    font-size: var(--h4);
 }
 
 h5 {
-  font-size: var(--h5);
+    font-size: var(--h5);
 }
 
 .contenido-inicio {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 50px;
+    display: flex;
+    /* Centra contenido usando flexbox */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
 }
 
 .icon-inicio-contenido {
-  font-size: 150px;
+    font-size: 150px;
+    /* Iconos grandes en la pantalla de inicio */
 }
 
 .icon-computador {
-  font-size: 34px;
+    font-size: 34px;
 }
 
 .titulo-inicio {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--primary-1);
-  font-size: 3.6rem;
-  font-weight: bold;
-  flex-direction: row;
-  gap: 10px;
-  text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--primary-1);
+    font-size: 3.6rem;
+    font-weight: bold;
+    flex-direction: row;
+    gap: 10px;
+    text-transform: uppercase;
 }
 
 .programas-inicio {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 50px;
-  margin-bottom: 50px;
+    display: grid;
+    /* Distribuye en dos columnas iguales */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    margin-bottom: 50px;
 }
 
 .programa-inicio {
-  display: flex;
-  flex-direction: column;
-  border-radius: 6px;
-  padding: 30px;
-  width: 100%;
-  max-width: 400px;
-  border: 1px solid rgba(0, 0, 0, 0.20);
-  box-shadow: 0px 2px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    box-shadow: 0px 2px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    /* Suaviza cambios al pasar el cursor */
 }
 
 .programa-inicio:hover {
-  background-color: var(--primary-5);
-  color: var(--white);
+    background-color: var(--primary-5);
+    color: var(--white);
 }
 
 .programa-inicio:hover img {
-  filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+    /* Invierte colores de imagen en hover */
 }
 
 .programa-inicio:hover button {
-  background-color: var(--black);
+    background-color: var(--black);
 }
 
 .nombre-programa {
-  font-weight: bold;
-  margin: 6px 0;
+    font-weight: bold;
+    margin: 6px 0;
 }
 
 .descripcion-programa {
-  color: black;
-  font-weight: lighter;
-  margin: 6px 0;
-  text-align: center;
+    color: black;
+    font-weight: lighter;
+    margin: 6px 0;
+    text-align: center;
 }
 
-/* No es necesario hover aquí si no cambia nada */
+/* Mantiene color fijo en hover */
 .descripcion-programa:hover {
-  color: black;
+    color: black;
 }
 
 .botones-inicio {
-  display: flex;
-  gap: 5px;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 10px;
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .boton-inicio {
-  height: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 150px;
-  border-radius: 6px;
-  background-color: var(--primary-1);
-  color: var(--white);
-  border: none;
-  transition: background-color 0.3s;
+    height: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 150px;
+    border-radius: 6px;
+    background-color: var(--primary-1);
+    color: var(--white);
+    border: none;
+    transition: background-color 0.3s;
 }
 
 /* RESPONSIVE DESIGN */
 
-/* Para tablets y móviles medianos */
+/* Ajuste para pantallas medianas como tablets */
 @media (max-width: 786px) {
-  .programas-inicio {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    .programas-inicio {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-/* Para móviles pequeños */
+/* Ajuste para móviles pequeños */
 @media (max-width: 520px) {
-  .programa-inicio {
-    width: 90%;
-  }
+    .programa-inicio {
+        width: 90%;
+    }
 
-  .titulo-inicio {
-    font-size: 2rem;
-    flex-direction: column;
-  }
+    .titulo-inicio {
+        font-size: 2rem;
+        flex-direction: column;
+    }
 }
 
-/* Para dispositivos muy pequeños */
+/* Ajuste para dispositivos muy pequeños */
 @media (max-width: 360px) {
-  .programa-inicio {
-    width: 85%;
-  }
+    .programa-inicio {
+        width: 85%;
+    }
 
-  .titulo-inicio {
-    width: 90%;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-  }
+    .titulo-inicio {
+        width: 90%;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
 }

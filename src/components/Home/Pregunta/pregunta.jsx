@@ -1,28 +1,28 @@
+// Importación de React para crear el componente
 import React from "react";
-// Importa la imagen que se mostrará en el componente
+// Importa la imagen que se usará en la sección
 import question from '../../../assets/img/Questions-pana 1.png';
-// Importa los estilos CSS específicos para este componente
+// Importa estilos específicos para el componente
 import './pregunta.css';
-// Hook para navegar programáticamente en React Router
+// Hook de React Router para redireccionar de forma programática
 import { useNavigate } from "react-router-dom";
 
 function Pregunta() {
-    // Corrección: El hook se llama useNavigate, así que la variable la renombramos correctamente
+    // Hook que permite navegar a otra ruta desde código
     const navigate = useNavigate();
 
-    // Función que redirige a la ruta '/diagnostico-empresarial'
+    // Función que redirige al usuario a la página del diagnóstico
     const diagnosticoEmpresarial = () => {
         navigate('/diagnostico-empresarial');
     };
 
     return (
         <div className="pregunta">
-            {/* Contenedor de la imagen */}
+            {/* Sección de la imagen principal */}
             <div className="imagen">
-                {/* Imagen con texto alternativo para accesibilidad */}
                 <img src={question} alt="Imagen de pregunta" />
             </div>
-            {/* Contenedor para el texto y botón */}
+            {/* Contenido textual y botón de acción */}
             <div className="realizar">
                 <h1 className="Titulo">
                     ¿Ya realizaste tu <br /> diagnóstico empresarial?
@@ -32,7 +32,7 @@ function Pregunta() {
                     interesa saber tus resultados <br />
                     <strong>¡Tenemos la solución!</strong>
                 </p>
-                {/* Botón que al hacer clic ejecuta la función de navegación */}
+                {/* Botón que ejecuta la navegación */}
                 <button onClick={diagnosticoEmpresarial} className="solucion">
                     ¡PULSA AQUÍ!
                 </button>

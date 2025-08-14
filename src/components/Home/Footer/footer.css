@@ -1,118 +1,126 @@
 :root {
-  /* 🎨 Colores Primarios */
-  --primary-1: #39A900;
-  --primary-2: #36AE0F;
-  --primary-3: #42B31E;
-  --primary-4: #4FB82D;
-  --primary-5: #5BBD3C;
-  --primary-6: #68C24B;
-  --primary-7: #75C75A;
-  --primary-8: #81CC69;
-  --primary-9: #8ED178;
-  --primary-10: #9AD787;
-  --primary-11: #A7DC96;
-  --primary-12: #B3E1A5;
-  --primary-13: #C0E6B4;
-  --primary-14: #CDEBC3;
-  --primary-15: #D9F0D2;
-  --primary-16: #E6F5E1;
-  --primary-17: #F2FAF0;
+    /* Colores principales de la paleta corporativa */
+    --primary-1: #39A900;
+    --primary-2: #36AE0F;
+    --primary-3: #42B31E;
+    --primary-4: #4FB82D;
+    --primary-5: #5BBD3C;
+    --primary-6: #68C24B;
+    --primary-7: #75C75A;
+    --primary-8: #81CC69;
+    --primary-9: #8ED178;
+    --primary-10: #9AD787;
+    --primary-11: #A7DC96;
+    --primary-12: #B3E1A5;
+    --primary-13: #C0E6B4;
+    --primary-14: #CDEBC3;
+    --primary-15: #D9F0D2;
+    --primary-16: #E6F5E1;
+    --primary-17: #F2FAF0;
 
-  /* 🎨 Grises y Neutros */
-  --black: #000000;
-  --gray-1: #0F0F0F;
-  --gray-2: #1E1E1E;
-  --gray-3: #2D2D2D;
-  --gray-4: #3C3C3C;
-  --gray-5: #5A5A5A;
-  --gray-6: #696969;
-  --gray-7: #787878;
-  --gray-8: #878787;
-  --gray-9: #A5A5A5;
-  --gray-10: #969696;
-  --gray-11: #A5A5A5;
-  --gray-12: #B4B4B4;
-  --gray-13: #C3C3C3;
-  --gray-14: #D2D2D2;
-  --gray-15: #E1E1E1;
-  --gray-16: #F0F0F0;
-  --white: #FFFFFF;
+    /* Tonos de grises y neutros usados para textos y fondos */
+    --black: #000000;
+    --gray-1: #0F0F0F;
+    --gray-2: #1E1E1E;
+    --gray-3: #2D2D2D;
+    --gray-4: #3C3C3C;
+    --gray-5: #5A5A5A;
+    --gray-6: #696969;
+    --gray-7: #787878;
+    --gray-8: #878787;
+    --gray-9: #A5A5A5;
+    --gray-10: #969696;
+    --gray-11: #A5A5A5;
+    --gray-12: #B4B4B4;
+    --gray-13: #C3C3C3;
+    --gray-14: #D2D2D2;
+    --gray-15: #E1E1E1;
+    --gray-16: #F0F0F0;
+    --white: #FFFFFF;
 
-  /* ✍️ Tipografía */
-  --font-primary: 'Work Sans', sans-serif;
-  --font-secondary: 'Calibri', sans-serif;
+    /* Tipografía base de la aplicación */
+    --font-primary: 'Work Sans', sans-serif;
+    --font-secondary: 'Calibri', sans-serif;
 
-  /* 📐 Jerarquías tipográficas */
-  --h1: 32px;
-  --h2: 24px;
-  --h3: 20px;
-  --h4: 16px;
-  --h5: 14px;
-  --h6: 12px;
+    /* Tamaños de texto predefinidos para encabezados */
+    --h1: 32px;
+    --h2: 24px;
+    --h3: 20px;
+    --h4: 16px;
+    --h5: 14px;
+    --h6: 12px;
 }
 
-/* 📐 Reset base del documento */
+/* Reset de estilos base y escalado para rem */
 html {
-  margin: 0;
-  font-size: 62.5%; /* Facilita el uso de rem (1rem = 10px) */
-  box-sizing: border-box;
+    margin: 0;
+    font-size: 62.5%;
+    /* 1rem = 10px para facilitar cálculos */
+    box-sizing: border-box;
 }
 
-/* 🔧 Aplicar box-sizing heredado */
-:before, *:after {
-  box-sizing: inherit;
+/* Heredar box-sizing para todos los elementos */
+:before,
+*:after {
+    box-sizing: inherit;
 }
 
-/* ✍️ Fuente y tamaño base */
+/* Fuente y tamaño base del documento */
 body {
-  font-size: 16px;
-  font-family: var(--font-primary);
+    font-size: 16px;
+    font-family: var(--font-primary);
 }
 
-/* 🔗 Enlaces sin subrayado */
+/* Eliminar subrayado de enlaces */
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
-/* 🦶 Estilos del footer principal */
+/* Estilos generales del pie de página */
 .footer {
-  display: grid; /* Usa grid pero con una sola columna */
-  grid-template-columns: 1fr;
-  gap: 20px; /* Espacio entre elementos internos */
-  background-color: var(--white); /* Fondo blanco */
-  color: var(--black); /* Texto negro */
-  padding: 10px 20px; /* Espaciado interno */
-  text-align: center; /* Centra el texto */
-  font-weight: bold; /* Texto en negrita */
+    display: grid;
+    /* Distribución tipo grid */
+    grid-template-columns: 1fr;
+    gap: 20px;
+    /* Separación entre elementos */
+    background-color: var(--white);
+    color: var(--black);
+    padding: 10px 20px;
+    text-align: center;
+    /* Centrar contenido */
+    font-weight: bold;
 }
 
-/* 🖼️ Estilos del logo dentro del footer */
+/* Ajuste del tamaño del logo del footer */
 .logo-sena img {
-  max-width: 150px; /* Ancho máximo del logo */
-  height: auto; /* Mantiene la proporción */
+    max-width: 150px;
+    height: auto;
 }
 
-/* 📄 Estilo del párrafo del footer */
+/* Texto del párrafo del footer */
 .footer p {
-  margin: 0; /* Elimina espacio por defecto */
-  font-size: 14px; /* Tamaño de fuente pequeño */
-  color: var(--black);
+    margin: 0;
+    font-size: 14px;
+    color: var(--black);
 }
 
-/* 📏 Línea separadora superior del footer */
+/* Línea divisoria superior en el footer */
 .linea-footer {
-  display: flex;
-  flex-grow: 1;
-  height: 1px;
-  width: 80%;
-  background-color: var(--gray-10); /* Color gris medio */
-  margin: 0 auto; /* Centrado horizontal */
+    display: flex;
+    flex-grow: 1;
+    height: 1px;
+    width: 80%;
+    background-color: var(--gray-10);
+    margin: 0 auto;
+    /* Centrado horizontal */
 }
 
-/* 📦 Contenedor del contenido del footer */
+/* Contenedor que agrupa logo y texto del footer */
 .footer-total {
-  display: flex;
-  flex-direction: row; /* Logo y texto en una fila */
-  align-items: center; /* Alineación vertical centrada */
-  justify-content: center; /* Centrado horizontal */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* Centrado vertical */
+    justify-content: center;
+    /* Centrado horizontal */
 }
