@@ -5,7 +5,7 @@ import logoLogin from '../../../assets/img/Logo_SENAVANZA.jpg';
 // Importar el css
 import './form-login.css';
 // Importar el navigate para navegar entre rutas sin hacer una carga previa
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // Axios para Validacion de backend
 import axios from "axios";
 // Importar las alertas
@@ -96,6 +96,7 @@ function FormLogin() {
                             />
                         </label>
                     </div>
+                    <Link to="/forget-password" className="subtitle-password-forget">¿Olvidó su contraseña?</Link> 
 
                     <button type="submit" className="iniciar-sesion">
                         Iniciar Sesión

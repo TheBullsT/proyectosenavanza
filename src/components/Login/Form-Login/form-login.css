@@ -198,6 +198,11 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: var(--primary-4);
 }
 
+.subtitle-password-forget{
+  margin-left: 35%;
+  color: var(--primary-1);
+}
+
 
 
 @media(max-width: 786px) {
