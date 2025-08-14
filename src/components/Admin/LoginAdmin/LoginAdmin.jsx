@@ -1,84 +1,69 @@
-// Importa React y useState para manejar los campos del formulario
+// Importa React y useState para manejar el estado del formulario
 import React, { useState } from "react";
-// Importa el logo para mostrarlo en el login
+// Logo que se muestra en la interfaz de login
 import logoLogin from '../../../assets/img/Logo_SENAVANZA.jpg';
-// Importa los estilos CSS específicos para este componente
+// Estilos específicos para este componente
 import './LoginAdmin.css';
-// Hook para redireccionar a otras rutas
+// Hook para navegación interna
 import { useNavigate } from "react-router-dom";
-// Importaciones necesarias para conectar con el backend
-import { apiLogin } from "../../../api/apis" // Axios para la Login
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../api/constans"; // Claves para localStorage
-import { jwtDecode } from "jwt-decode"; // Para extraer info del token
-import { toast } from "react-toastify"; // Notificaciones tipo popup
+// Función de API para login y constantes de tokens
+import { apiLogin } from "../../../api/apis";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../api/constans";
+// Librerías auxiliares
+import { jwtDecode } from "jwt-decode";
+import { toast } from "react-toastify";
 
-// Componente funcional de login para administradores
 function LoginAdmin() {
-    // Hooks para capturar usuario y contraseña del formulario
+    // Estados para usuario y contraseña
     const [user, setUser] = useState("");
     const [contraseña, setContraseña] = useState("");
-
-    // Hook para redireccionar al usuario a otras rutas
     const navigate = useNavigate();
 
-    // Función que redirige a la página de inicio al hacer clic en el logo
+    // Redirige a la página inicial al hacer clic en el logo
     const irInicio = () => {
         navigate('/inicio');
     };
 
-    // Función que se ejecuta al enviar el formulario
+    // Maneja el envío del formulario de login
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Previene que se recargue la página
+        e.preventDefault();
         try {
-            // Obtenemos el JWT de access y refresh
-            const response = await apiLogin.post("token/",
+            const response = await apiLogin.post(
+                "token/",
                 { username: user, password: contraseña },
-                {
-                    headers: { 'Content-Type': 'application/json',},
-                }
+                { headers: { 'Content-Type': 'application/json' } }
             );
-            // // Extraemos el access y refresh token
-            // const { access, refresh } = response.data;
 
-            // Guardamos los tokens en el almacenamiento local
+            // Aquí se guardan los tokens y se decodifica el usuario (comentado por ahora)
+            // const { access, refresh } = response.data;
             // localStorage.setItem(ACCESS_TOKEN, access);
             // localStorage.setItem(REFRESH_TOKEN, refresh);
-
+            // const decode = jwtDecode(access);
+            // localStorage.setItem("Username", decode.username || user);
 
             navigate("/adminhome");
-
-            // Decodificamos de su JWT su usuario
-            // const decode = jwtDecode(access);
-            // localStorage.setItem("Username", decode.username || user );
-
-            console.log(response.data);
             toast.success("Inicio de sesión exitoso");
 
-
+            console.log(response.data);
         } catch (error) {
-            // Si ocurre un error en el login, mostramos notificación
             toast.error("Usuario o contraseña incorrectos");
             console.error(error);
         }
     };
 
-    // Renderizado del componente
+    // Estructura visual del componente
     return (
         <div className="login">
-            {/* Contenedor del logo */}
             <div onClick={irInicio} className="logoLogin">
                 <img onClick={irInicio} src={logoLogin} alt="Logo de SENAVANZA" />
             </div>
 
-            {/* Contenedor del formulario de inicio de sesión */}
             <div className="form-login">
-                {/* Formulario controlado con los estados de React */}
                 <form onSubmit={handleSubmit} method="POST">
                     <h1 className="titulo">ADMINISTRADOR</h1>
                     <h4 className="subtitulo">LOGIN ADMINISTRADOR</h4>
 
                     <div className="contenido">
-                        {/* Campo de usuario */}
                         <label className="textType" htmlFor="textType">
                             Administrador
                             <input
@@ -91,7 +76,6 @@ function LoginAdmin() {
                             />
                         </label>
 
-                        {/* Campo de contraseña */}
                         <label className="passwordType" htmlFor="passwordType">
                             Contraseña
                             <input
@@ -105,7 +89,6 @@ function LoginAdmin() {
                         </label>
                     </div>
 
-                    {/* Botón de envío del formulario */}
                     <button type="submit" className="iniciar-sesion">Iniciar Sesión</button>
                 </form>
             </div>
@@ -113,5 +96,4 @@ function LoginAdmin() {
     );
 }
 
-// Exportamos el componente para poder usarlo en las rutas
 export default LoginAdmin;

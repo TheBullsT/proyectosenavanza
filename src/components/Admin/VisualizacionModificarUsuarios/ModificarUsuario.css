@@ -1,6 +1,7 @@
 :root {
   /* Colores Primarios */
   --primary-1: #39A900;
+  /* Verde principal */
   --primary-2: #36AE0F;
   --primary-3: #42B31E;
   --primary-4: #4FB82D;
@@ -20,6 +21,7 @@
 
   /* Grises y Neutros */
   --black: #000000;
+  /* Negro absoluto */
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
   --gray-3: #2D2D2D;
@@ -37,10 +39,13 @@
   --gray-15: #E1E1E1;
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
+  /* Blanco puro */
 
   /* Tipografía */
   --font-primary: 'Work Sans', sans-serif;
+  /* Fuente principal */
   --font-secondary: 'Calibri', sans-serif;
+  /* Fuente secundaria */
 
   /* Jerarquías tipográficas */
   --h1: 32px;
@@ -54,9 +59,9 @@
 html {
   margin: 0;
   font-size: 62.5%;
+  /* 1rem = 10px */
   box-sizing: border-box;
   text-decoration: none;
-
 }
 
 body {
@@ -75,11 +80,10 @@ a {
   text-decoration: none;
 }
 
-
-
 .main-right-bar {
   flex: 4;
   background-color: rgb(228, 228, 228);
+  /* Fondo gris claro */
 }
 
 .modificar-usuario-contenido {

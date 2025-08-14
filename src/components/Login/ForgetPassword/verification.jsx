@@ -79,7 +79,6 @@ export default function Verification() {
                     Ingresa el código de 4 dígitos que enviamos a tu correo <br />
                     ***************@gmail.com
                 </p>
-
                 {/* Contenedor de los inputs */}
                 <div className="code-inputs">
                     {/* Renderiza los 4 inputs según el estado 'code' */}

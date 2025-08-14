@@ -1,5 +1,5 @@
 :root {
-  /* Colores Primarios */
+  /* Colores primarios definidos como variables para mantener consistencia en el diseño */
   --primary-1: #39A900;
   --primary-2: #36AE0F;
   --primary-3: #42B31E;
@@ -18,7 +18,7 @@
   --primary-16: #E6F5E1;
   --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
+  /* Escala de grises y neutros para fondos, bordes y tipografía */
   --black: #000000;
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Familias tipográficas principal y secundaria */
   --font-primary: 'Work Sans', sans-serif;
   --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
+  /* Jerarquías tipográficas expresadas en píxeles */
   --h1: 32px;
   --h2: 24px;
   --h3: 20px;
@@ -53,7 +53,9 @@
 
 body {
   font-family: var(--font-primary);
+  /* Fuente principal del proyecto */
   color: var(--black);
+  /* Color de texto por defecto */
   margin: 0;
   padding: 0;
 }
@@ -61,10 +63,12 @@ body {
 html {
   margin: 0;
   font-size: 62.5%;
+  /* Facilita trabajar con rem (1rem = 10px) */
   box-sizing: border-box;
+  /* Incluye padding y borde en el cálculo total */
 }
 
 .mainhomecontainer {
   display: flex;
-
+  /* Disposición en línea de los elementos hijos */
 }

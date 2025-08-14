@@ -1,17 +1,25 @@
+// Importaciones necesarias para React y hooks
 import React, { useEffect, useState } from "react";
+// Importación de hooks de enrutamiento
 import { useParams, useNavigate } from "react-router-dom";
+// Navbar para la vista de administrador
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
+// Icono para la sección de usuario
 import { MdPeopleAlt } from "react-icons/md";
+// Cliente API para solicitudes HTTP
 import { apiGeneral } from "../../../api/apis";
+// Componente de carga para la base de datos
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
+// Estilos CSS para la vista
 import './ModificarUsuario.css';
+// Notificaciones de éxito/error
 import { toast } from "react-toastify";
 
 const ModificarUsuario = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [usuario, setUsuario] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { id } = useParams(); // Obtener ID del usuario desde la URL
+  const navigate = useNavigate(); // Hook para navegación
+  const [usuario, setUsuario] = useState(null); // Estado para almacenar datos del usuario
+  const [loading, setLoading] = useState(true); // Estado para mostrar carga
   const [form, setForm] = useState({
     username: "",
     email: "",
@@ -19,6 +27,7 @@ const ModificarUsuario = () => {
     last_name: ""
   });
 
+  // Cargar datos del usuario al montar el componente
   useEffect(() => {
     const fetchUsuario = async () => {
       try {
@@ -34,10 +43,12 @@ const ModificarUsuario = () => {
     fetchUsuario();
   }, [id]);
 
+  // Maneja cambios en los campos del formulario
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // Envía los datos modificados al servidor
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -57,8 +68,10 @@ const ModificarUsuario = () => {
     <div className="main-right-bar">
       <NavbarAdmin />
 
+      {/* Contenedor principal */}
       <div className="modificar-usuario-contenido">
         <div className="modificar-usuario-container">
+          {/* Título de la vista */}
           <h1 className="titulo-usuario">
             Modificar Usuario
             <span className="breadcrumb-usuario">
@@ -66,6 +79,7 @@ const ModificarUsuario = () => {
             </span>
           </h1>
 
+          {/* Caja de información con icono */}
           <div className="icon-box-usuario">
             <div className="icon-usuario">
               <MdPeopleAlt />
@@ -76,9 +90,11 @@ const ModificarUsuario = () => {
             </p>
           </div>
 
+          {/* Formulario de modificación */}
           <form className="formulario-usuario" onSubmit={handleSubmit}>
             <h2 className="subtitulo-usuario">{form.username}</h2>
 
+            {/* Campo usuario */}
             <div className="campo-form-usuario campo-nombre-usuario">
               <label>Nombre de Usuario</label>
               <input
@@ -89,6 +105,7 @@ const ModificarUsuario = () => {
               />
             </div>
 
+            {/* Campos nombre y apellido */}
             <div className="grid-doble-usuario">
               <div className="campo-form-usuario">
                 <label>Nombre</label>
@@ -110,6 +127,7 @@ const ModificarUsuario = () => {
               </div>
             </div>
 
+            {/* Campo email */}
             <div className="campo-form-usuario">
               <label>Correo Electrónico</label>
               <input
@@ -120,6 +138,7 @@ const ModificarUsuario = () => {
               />
             </div>
 
+            {/* Botones de acción */}
             <div className="boton-contenedor-usuario">
               <button type="submit" className="boton-modificar-usuario">
                 Modificar Usuario
