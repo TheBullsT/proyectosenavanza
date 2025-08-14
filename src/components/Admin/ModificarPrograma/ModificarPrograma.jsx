@@ -8,10 +8,10 @@ import { toast } from "react-toastify";
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
 
 const ModificarProgramaFormacion = () => {
-    const { id } = useParams(); // Obtiene el ID de la URL
+    const { id } = useParams(); // ID del programa tomado desde la URL
     const navigate = useNavigate();
 
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true); // Controla estado de carga
     const [programa, setPrograma] = useState({
         nombre: "",
         descripcion: "",
@@ -20,7 +20,7 @@ const ModificarProgramaFormacion = () => {
         duracion: ""
     });
 
-    // Traer datos del programa por ID
+    // Obtiene datos del programa desde la API usando su ID
     const fetchPrograma = async () => {
         try {
             const response = await apiGeneral.get(`programa/${id}/`);
@@ -40,10 +40,10 @@ const ModificarProgramaFormacion = () => {
     };
 
     useEffect(() => {
-        fetchPrograma();
+        fetchPrograma(); // Se ejecuta al montar el componente
     }, []);
 
-    // Manejar cambios en campos
+    // Actualiza el estado cuando el usuario modifica un campo del formulario
     const handleChange = (e) => {
         const { name, value } = e.target;
         setPrograma((prev) => ({
@@ -52,14 +52,12 @@ const ModificarProgramaFormacion = () => {
         }));
     };
 
-    // Guardar cambios
+    // Envía los cambios a la API para actualizar el programa
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             await apiGeneral.put(`programa/${id}/`, programa, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
             });
             toast.success("Programa modificado correctamente");
             navigate("/listar-programa");
@@ -69,7 +67,7 @@ const ModificarProgramaFormacion = () => {
         }
     };
 
-    if (loading) return <LoadingBaseDatos />;
+    if (loading) return <LoadingBaseDatos />; // Muestra animación mientras carga
 
     return (
         <div className="main-right-bar">
@@ -83,6 +81,7 @@ const ModificarProgramaFormacion = () => {
                     </span>
                 </p>
 
+                {/* Información introductoria */}
                 <div className="form-info">
                     <div className="icon">
                         <MdSchool />
@@ -93,8 +92,10 @@ const ModificarProgramaFormacion = () => {
                     </p>
                 </div>
 
+                {/* Nombre actual del programa */}
                 <p className="program-name">{programa.nombre}</p>
 
+                {/* Formulario para editar */}
                 <form className="form" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Nombre de Programa de Formación</label>
@@ -146,7 +147,6 @@ const ModificarProgramaFormacion = () => {
                                 <option value="tecnologo">Tecnológico</option>
                             </select>
                         </div>
-
                     </div>
 
                     <div className="form-group">
@@ -162,7 +162,7 @@ const ModificarProgramaFormacion = () => {
                         />
                     </div>
 
-
+                    {/* Botones de acción */}
                     <div className="form-actions">
                         <button className="btn-modify" type="submit">Guardar Cambios</button>
                         <button type="button" className="btn-cancel" onClick={() => navigate(-1)}>Cancelar</button>

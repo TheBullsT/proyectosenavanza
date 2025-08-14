@@ -1,104 +1,74 @@
-import React, { useEffect, useState } from "react";
-import './ListarUsuarios.css'; // Puedes reutilizar el mismo CSS o copiarlo como ListarUsuarios.css
-import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
-import { FaEye, FaEdit, FaLock } from "react-icons/fa";
-import { MdPeople } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
-import { apiGeneral } from "../../../api/apis";
-import LoadingBaseDatos from "../../Loading/loading_base_datos";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axiosInstance from '../../api/axiosInstance'; // Importa configuración de Axios
+import { FaEdit, FaLock } from 'react-icons/fa';
+import '../../styles/ListarUsuarios.css';
 
 const ListarUsuarios = () => {
-  const [usuarios, setUsuarios] = useState([]);
-  const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const [usuarios, setUsuarios] = useState([]); // Estado para almacenar lista de usuarios
+  const [filtro, setFiltro] = useState(''); // Estado para controlar el filtro de búsqueda
 
+  // useEffect para cargar los usuarios al montar el componente
   useEffect(() => {
     const fetchUsuarios = async () => {
-      setLoading(true);
       try {
-        const response = await apiGeneral.get("users/");
-        setUsuarios(response.data);
+        const response = await axiosInstance.get('/usuarios/'); // Llamada GET a la API
+        setUsuarios(response.data); // Guarda los usuarios en el estado
       } catch (error) {
-        console.error("Error al obtener usuarios:", error);
-      } finally {
-        setLoading(false);
+        console.error('Error al obtener los usuarios:', error); // Manejo de error
       }
     };
 
-    fetchUsuarios();
+    fetchUsuarios(); // Se ejecuta la función para traer los datos
   }, []);
 
-  const filteredUsuarios = usuarios.filter(
-    (user) =>
-      user.username.toLowerCase().includes(search.toLowerCase()) ||
-      user.email.toLowerCase().includes(search.toLowerCase())
+  // Filtra usuarios según el texto ingresado en el input
+  const usuariosFiltrados = usuarios.filter((usuario) =>
+    usuario.username.toLowerCase().includes(filtro.toLowerCase())
   );
 
-  if (loading) {
-    return <LoadingBaseDatos />;
-  }
-
   return (
-    <div className="main-right-bar">
-      <NavbarAdmin />
+    <div className="listar-usuarios">
+      <h2>Lista de Usuarios</h2>
 
-      <div className="visualizar-container">
-        <p className="title">
-          Listar Usuarios
-          <span className="breadcrumb"> Usted se encuentra en: <strong className="breadcrumb-active">Usuarios</strong></span>
-        </p>
+      {/* Input para filtrar usuarios por nombre */}
+      <input
+        type="text"
+        placeholder="Buscar usuario..."
+        value={filtro}
+        onChange={(e) => setFiltro(e.target.value)}
+        className="filtro-usuarios"
+      />
 
-        <div className="form-info">
-          <div className="icon"><MdPeople /></div>
-          <p>
-            En este espacio podrás listar todos los usuarios registrados en el sistema.<br />
-            <strong>Recuerda que están en la <span className="highlight">BASE DE DATOS</span>.</strong>
-          </p>
-        </div>
+      {/* Tabla que lista los usuarios */}
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre de usuario</th>
+            <th>Email</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {usuariosFiltrados.map((usuario) => (
+            <tr key={usuario.id}>
+              <td>{usuario.username}</td>
+              <td>{usuario.email}</td>
+              <td>
+                {/* Botón para editar usuario */}
+                <Link to={`/usuarios/editar/${usuario.id}`} className="btn-editar">
+                  <FaEdit />
+                </Link>
 
-        <div className="search-bar">
-          <h2 className="empresas-label">Usuarios</h2>
-          <div className="grupo-botones">
-            <button className="btn-reporte">Generar Reporte</button>
-          </div>
-        </div>
-
-        <input
-          type="text"
-          placeholder="Buscar por nombre o correo"
-          className="input-busqueda"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-
-        <table className="program-table">
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Correo</th>
-              <th>Opciones</th>
+                {/* Icono de candado (bloqueo) sin funcionalidad implementada aún */}
+                <button className="btn-bloquear">
+                  <FaLock />
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {filteredUsuarios.map((user, index) => (
-              <tr key={user.id} className={index % 2 === 1 ? "odd" : ""}>
-                <td>{user.username}</td>
-                <td>{user.email}</td>
-                <td className="opciones">
-                  <Link to={`/visualizacion-usuarios/${user.id}`}>
-                    <FaEye className="icon-action" title="Ver" />
-                  </Link>
-                  <Link to={`/modificar-usuarios/${user.id}`}>
-                    <FaEdit className="icon-action" title="Editar" />
-                  </Link>
-                  <FaLock className="icon-action" title="Eliminar (no disponible)" />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

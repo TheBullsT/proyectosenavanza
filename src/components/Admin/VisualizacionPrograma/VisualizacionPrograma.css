@@ -1,5 +1,5 @@
 :root {
-  /* Colores Primarios */
+  /* Colores Primarios definidos como variables CSS para fácil reutilización */
   --primary-1: #39A900;
   --primary-2: #36AE0F;
   --primary-3: #42B31E;
@@ -18,7 +18,7 @@
   --primary-16: #E6F5E1;
   --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
+  /* Escala de grises y colores neutros */
   --black: #000000;
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Tipografía principal y secundaria */
   --font-primary: 'Work Sans', sans-serif;
   --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
+  /* Jerarquías tipográficas para títulos */
   --h1: 3.2rem;
   --h2: 2.4rem;
   --h3: 2rem;
@@ -53,7 +53,9 @@
 
 html {
   font-size: 62.5%;
+  /* Facilita trabajar con rem (1rem = 10px) */
   box-sizing: border-box;
+  /* Incluye padding y borde en el cálculo del tamaño */
 }
 
 body {
@@ -67,10 +69,12 @@ body {
   flex: 4;
   background-color: rgb(228, 228, 228);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Sombra ligera para relieve */
 }
 
 .visualizacion-programa-contenido {
   padding: 40px;
+  /* Espaciado interno general */
 }
 
 .programa-visual-container {
@@ -122,6 +126,7 @@ body {
   color: var(--white);
   padding: 1.6rem;
   border-radius: 50%;
+  /* Hace el icono circular */
   font-size: 2.4rem;
   width: 25px;
   height: 25px;
@@ -138,6 +143,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  /* Espacio entre campos del formulario */
 }
 
 .campo-form-programa {
@@ -176,7 +182,9 @@ body {
 .grid-doble-programa {
   display: flex;
   gap: 100px;
+  /* Espacio horizontal entre los campos */
   flex-wrap: wrap;
+  /* Permite que los elementos bajen de línea en pantallas pequeñas */
 }
 
 .grid-doble-programa .campo-form-programa {
@@ -200,6 +208,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  /* Suaviza el cambio de color en hover */
 }
 
 .boton-modificar-programa:hover {
@@ -219,4 +228,3 @@ body {
   box-sizing: border-box;
   line-height: 1.5;
 }
-

@@ -52,11 +52,13 @@
 }
 
 html {
+  /* Tamaño base de fuente y box-sizing global */
   font-size: 62.5%;
   box-sizing: border-box;
 }
 
 body {
+  /* Fuente por defecto y fondo gris claro */
   font-family: var(--font-primary);
   margin: 0;
   padding: 0;
@@ -64,6 +66,7 @@ body {
 }
 
 .visualizacion-usuario-container {
+  /* Contenedor principal con sombra y fondo gris */
   flex: 4;
   background-color: rgb(228, 228, 228);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -107,6 +110,7 @@ body {
 }
 
 .icon-box-usuario {
+  /* Caja de icono con fondo verde claro */
   display: flex;
   align-items: start;
   background: #e8f5e9;
@@ -174,6 +178,7 @@ body {
 }
 
 .grid-doble-usuario {
+  /* Distribución doble con espacio entre campos */
   display: flex;
   gap: 100px;
   flex-wrap: wrap;

@@ -1,5 +1,5 @@
 :root {
-  /* Colores Primarios */
+  /* Paleta principal de verdes */
   --primary-1: #39A900;
   --primary-2: #36AE0F;
   --primary-3: #42B31E;
@@ -18,7 +18,7 @@
   --primary-16: #E6F5E1;
   --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
+  /* Colores neutros y grises */
   --black: #000000;
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Tipografía base del proyecto */
   --font-primary: 'Work Sans', sans-serif;
   --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
+  /* Jerarquía de tamaños tipográficos */
   --h1: 32px;
   --h2: 24px;
   --h3: 20px;
@@ -54,12 +54,14 @@
 html {
   margin: 0;
   font-size: 62.5%;
+  /* Facilita el uso de rem para medidas */
   box-sizing: border-box;
   text-decoration: none;
 }
 
 body {
   font-family: var(--font-primary);
+  /* Fuente principal definida arriba */
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -68,13 +70,15 @@ body {
 *:before,
 *:after {
   box-sizing: inherit;
+  /* Mantiene el modelo de caja consistente */
 }
 
 a {
   text-decoration: none;
+  /* Elimina subrayados de enlaces */
 }
 
-/* Contenedor Principal */
+/* Contenedor principal de la vista */
 .main-right-bar {
   flex: 4;
   background-color: rgb(228, 228, 228);
@@ -83,9 +87,10 @@ a {
 
 .visualizar-container {
   padding: 40px;
+  /* Espaciado interno general */
 }
 
-/* TITULOS */
+/* Encabezados principales */
 .title {
   font-size: 32px;
   font-weight: bold;
@@ -104,7 +109,7 @@ a {
   color: var(--primary-1);
 }
 
-/* INFO BOX */
+/* Caja de información introductoria */
 .form-info {
   display: flex;
   align-items: start;
@@ -115,7 +120,6 @@ a {
   border-radius: 6px;
   margin-bottom: 30px;
 }
-
 
 .form-info .icon {
   background: var(--primary-1);
@@ -130,16 +134,15 @@ a {
 
 .highlight {
   color: #000;
+  /* Destaca el texto importante */
 }
 
-/* SEARCH + BUTTON */
+/* Barra de búsqueda y botones de acción */
 .search-bar {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   margin-bottom: 30px;
 }
-
 
 .btn-agregar,
 .btn-reporte {
@@ -155,9 +158,10 @@ a {
 .btn-agregar:hover,
 .btn-reporte:hover {
   background-color: #239000;
+  /* Cambio de color al pasar el ratón */
 }
 
-/* SUBTÍTULO */
+/* Subtítulo de secciones */
 .sub-title {
   font-size: 20px;
   color: var(--primary-1);
@@ -165,7 +169,7 @@ a {
   font-weight: bold;
 }
 
-/* TABLA */
+/* Tabla de programas */
 .program-table {
   width: 100%;
   border-collapse: collapse;
@@ -181,9 +185,10 @@ a {
 
 .program-table tbody tr:nth-child(odd) {
   background-color: #f0f0f0;
+  /* Color alterno en filas impares */
 }
 
-/* OPCIONES */
+/* Opciones de acciones en tabla */
 td.opciones {
   display: flex;
   gap: 12px;
@@ -211,8 +216,8 @@ td.opciones {
   display: flex;
   gap: 10px;
 }
-/* 
-/* Estilo personalizado para la barra de búsqueda */
+
+/* Estilo de la barra de búsqueda */
 .input-busqueda {
   width: 96%;
   padding: 12px 18px;
@@ -237,19 +242,17 @@ td.opciones {
   box-shadow: 0 0 5px rgba(57, 169, 0, 0.4);
 }
 
-/* Cambia tamaño del botón de confirmar */
+/* Botones de confirmación y cancelación en SweetAlert2 */
 .swal2-confirm {
   font-size: 1.5rem;
   padding: 10px 20px;
 }
 
-/* Cambia tamaño del botón de cancelar */
 .swal2-cancel {
   font-size: 1.5rem;
   padding: 10px 20px;
 }
 
-/* Cambia la fuente si quieres */
 .swal2-confirm,
 .swal2-cancel {
   font-family: var(--font-primary);

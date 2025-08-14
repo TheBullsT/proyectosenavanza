@@ -1,7 +1,7 @@
 // Importar React y hooks
 import React, { useState, useEffect } from "react";
 
-// Importar componentes de Recharts
+// Importar componentes de Recharts para gráficas
 import {
     BarChart,
     ComposedChart,
@@ -15,34 +15,34 @@ import {
     Legend,
 } from "recharts";
 
-// Importar estilos CSS
+// Importar estilos CSS específicos de este componente
 import "./homerightbar.css";
 
-//  Importar Navbar Admin
+// Importar componente Navbar para la parte administrativa
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
 
-//  Importar tu API personalizada
+// Importar función para llamadas a la API
 import { apiGeneral } from "../../../api/apis";
 
 function HomeRightBar() {
-    // Estados para almacenar datos reales
+    // Estados para almacenar los datos obtenidos de la API
     const [usuarios, setUsuarios] = useState([]);
     const [empresas, setEmpresas] = useState([]);
     const [programas, setProgramas] = useState([]);
 
-    //  Llamada a APIs cuando se monta el componente
+    // Efecto para obtener los datos una sola vez al montar el componente
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // GET usuarios
+                // Llamada API para usuarios
                 const resUsuarios = await apiGeneral.get("users/");
                 setUsuarios(resUsuarios.data);
 
-                // GET empresas
+                // Llamada API para empresas
                 const resEmpresas = await apiGeneral.get("empresa/");
                 setEmpresas(resEmpresas.data);
 
-                // GET programas
+                // Llamada API para programas
                 const resProgramas = await apiGeneral.get("programas/");
                 setProgramas(resProgramas.data);
             } catch (error) {
@@ -53,17 +53,17 @@ function HomeRightBar() {
         fetchData();
     }, []);
 
-    //  Totales calculados dinámicamente
+    // Cálculo de totales dinámicos
     const totalUsuarios = usuarios.length;
     const totalEmpresas = empresas.length;
     const totalProgramas = programas.length;
 
-    //  Datasets para cada barra
+    // Datos para las gráficas de barras individuales
     const dataEmpresas = [{ name: "Empresas", cantidad: totalEmpresas }];
     const dataProgramas = [{ name: "Programas", cantidad: totalProgramas }];
     const dataUsuarios = [{ name: "Usuarios", cantidad: totalUsuarios }];
 
-    //  Datos de ejemplo para líneas y compuesto
+    // Datos de ejemplo para la gráfica de líneas
     const dataLineas = [
         { name: "Enero", usuarios: 5, empresas: 2 },
         { name: "Febrero", usuarios: 8, empresas: 4 },
@@ -72,6 +72,7 @@ function HomeRightBar() {
         { name: "Mayo", usuarios: 18, empresas: 10 },
     ];
 
+    // Datos para la gráfica compuesta (barras + línea)
     const dataCompuesto = [
         { name: "Enero", programas: 2 },
         { name: "Febrero", programas: 3 },
@@ -82,13 +83,13 @@ function HomeRightBar() {
 
     return (
         <div className="main-rightbar">
-            {/*  Navbar Admin */}
+            {/* Barra de navegación superior */}
             <NavbarAdmin />
 
             <div>
-                {/*  Contenedor principal de KPIs */}
+                {/* Contenedor principal con indicadores y gráficas pequeñas */}
                 <div className="ItemContainer">
-                    {/* Barra: Empresas */}
+                    {/* Indicador: Empresas */}
                     <div className="ItemContainer1">
                         <div className="subItemContainer">
                             <p className="taskProgress">Empresas Registradas</p>
@@ -99,23 +100,17 @@ function HomeRightBar() {
                             <BarChart
                                 width={150}
                                 height={100}
-                                data={dataEmpresas}
+                                data={dataEmpresas} // Datos dinámicos
                             >
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <YAxis
-                                    domain={[0, Math.max(totalEmpresas + 1, 5)]}
-                                />
+                                <YAxis domain={[0, Math.max(totalEmpresas + 1, 5)]} />
                                 <Tooltip />
-                                <Bar
-                                    dataKey="cantidad"
-                                    fill="#68C24B"
-                                    barSize={30}
-                                />
+                                <Bar dataKey="cantidad" fill="#68C24B" barSize={30} />
                             </BarChart>
                         </div>
                     </div>
 
-                    {/*  Barra: Programas */}
+                    {/* Indicador: Programas */}
                     <div className="ItemContainer1">
                         <div className="subItemContainer">
                             <p className="taskProgress">Programas Registrados</p>
@@ -129,20 +124,14 @@ function HomeRightBar() {
                                 data={dataProgramas}
                             >
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <YAxis
-                                    domain={[0, Math.max(totalProgramas + 1, 5)]}
-                                />
+                                <YAxis domain={[0, Math.max(totalProgramas + 1, 5)]} />
                                 <Tooltip />
-                                <Bar
-                                    dataKey="cantidad"
-                                    fill="#39A900"
-                                    barSize={30}
-                                />
+                                <Bar dataKey="cantidad" fill="#39A900" barSize={30} />
                             </BarChart>
                         </div>
                     </div>
 
-                    {/* Barra: Usuarios */}
+                    {/* Indicador: Usuarios */}
                     <div className="ItemContainer1">
                         <div className="subItemContainer1">
                             <p className="taskProgress">Usuarios Registrados</p>
@@ -156,21 +145,15 @@ function HomeRightBar() {
                                 data={dataUsuarios}
                             >
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <YAxis
-                                    domain={[0, Math.max(totalUsuarios + 1, 5)]}
-                                />
+                                <YAxis domain={[0, Math.max(totalUsuarios + 1, 5)]} />
                                 <Tooltip />
-                                <Bar
-                                    dataKey="cantidad"
-                                    fill="#0066FF"
-                                    barSize={30}
-                                />
+                                <Bar dataKey="cantidad" fill="#0066FF" barSize={30} />
                             </BarChart>
                         </div>
                     </div>
                 </div>
 
-                {/*  Gráfico de líneas (usuarios vs empresas) */}
+                {/* Gráfico comparativo de líneas */}
                 <div className="MidleTaskChart">
                     <p className="TaskUsuariosvsEmpresas">
                         Evolución: Usuarios vs Empresas
@@ -186,22 +169,12 @@ function HomeRightBar() {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Line
-                            type="monotone"
-                            dataKey="usuarios"
-                            stroke="#8884d8"
-                            strokeWidth={2}
-                        />
-                        <Line
-                            type="monotone"
-                            dataKey="empresas"
-                            stroke="#82ca9d"
-                            strokeWidth={2}
-                        />
+                        <Line type="monotone" dataKey="usuarios" stroke="#8884d8" strokeWidth={2} />
+                        <Line type="monotone" dataKey="empresas" stroke="#82ca9d" strokeWidth={2} />
                     </LineChart>
                 </div>
 
-                {/*  Gráfico compuesto: barras + línea */}
+                {/* Gráfico compuesto: barras + línea */}
                 <div className="MonthlyProgramas">
                     <p className="taskContainerText">
                         Evolución de Programas
@@ -217,16 +190,8 @@ function HomeRightBar() {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Bar
-                            dataKey="programas"
-                            barSize={20}
-                            fill="#413ea0"
-                        />
-                        <Line
-                            type="monotone"
-                            dataKey="programas"
-                            stroke="#ff7300"
-                        />
+                        <Bar dataKey="programas" barSize={20} fill="#413ea0" />
+                        <Line type="monotone" dataKey="programas" stroke="#ff7300" />
                     </ComposedChart>
                 </div>
             </div>
