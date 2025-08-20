@@ -1,27 +1,29 @@
 import React, { useState } from 'react';
-// Importar iconos
+// Importa íconos de confirmación y cancelación
 import { FaCheck } from "react-icons/fa6";
 import { MdCancel } from "react-icons/md";
-// Asumiendo que tienes estilos separados
+// Importa estilos CSS específicos para el popup
 import './Popup.css';
-// Importar AXIOS
+// Importa Axios para peticiones HTTP
 import axios from 'axios'
-// Importar API
+// Importa la API configurada para diagnóstico
 import { apiDiagnostico } from '../../api/apis';
-// Toast notificacion
+// Importa notificaciones tipo Toast
 import { toast } from 'react-toastify';
 
-
-
+// Componente funcional Popup_Diagnostico
 function Popup_Diagnostico({ cerrar, onResultado }) {
+    // Estados para manejar los valores del formulario
     const [area, SetArea] = useState('');
     const [descripcion, SetDescripcion] = useState('');
     const [herramientas, SetHerramientas] = useState('');
     const [habilidades, SetHabilidades] = useState('')
 
+    // Función asincrónica para enviar el formulario de diagnóstico
     const enviar_diagnostico = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Previene el comportamiento por defecto del formulario
         try {
+            // Enviar datos al endpoint del diagnóstico
             const response = await apiDiagnostico.post('diagnostico/', {
                 RequirementEmpresa: descripcion,
                 nivel_programa: area,
@@ -33,26 +35,31 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                 }
             );
 
+            // Si la petición es exitosa
             console.log('requerimientos enviados:', response.data);
-            onResultado(response.data);
-            toast.success("Requerimientos enviados con éxito");
-            cerrar();
+            onResultado(response.data); // Devuelve los datos al componente padre
+            toast.success("Requerimientos enviados con éxito"); // Notificación de éxito
+            cerrar(); // Cierra el popup
         }
 
         catch (error) {
+            // Manejo de errores en caso de que falle la petición
             console.error('error al enviar requerimientos', error);
-            toast.error("Error al enviar requerimientos");
+            toast.error("Error al enviar requerimientos"); // Notificación de error
         };
     };
 
     return (
+        // Capa de fondo del popup
         <div className="overlay">
+            {/* Formulario para enviar diagnóstico */}
             <form method='POST' className='overlay' onSubmit={enviar_diagnostico}>
                 <div className="popup2">
+                    {/* Título */}
                     <h2 className="popup-title">Diagnóstico Empresarial</h2>
                     <div className="underline" />
 
-                    {/*  */}
+                    {/* Selección de nivel del programa */}
                     <div className="form-group">
                         <select
                             className="input-box"
@@ -67,7 +74,8 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                             <option value="tecnologo">Tecnólogo</option>
                         </select>
                     </div>
-                    {/*  */}
+
+                    {/* Campo para descripción de tareas */}
                     <div className="form-group">
                         <input type="text" placeholder="¿Cuáles serían las tareas que le va a delegar al aprendiz en su empresa?"
                             className="input-box"
@@ -76,6 +84,8 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                             required
                             minLength={50} />
                     </div>
+
+                    {/* Campo para herramientas necesarias */}
                     <div className="form-group">
                         <input type="text" placeholder="¿Cuáles son las herramientas que el aprendiz debe utilizar?"
                             className="input-box"
@@ -84,6 +94,8 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                             required
                             minLength={20} />
                     </div>
+
+                    {/* Campo para habilidades técnicas requeridas */}
                     <div className="form-group">
                         <input type="text" placeholder="¿Cuáles serían las habilidades técnicas que el aprendiz debe tener previamente?"
                             className="input-box"
@@ -92,6 +104,8 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                             required
                             minLength={20} />
                     </div>
+
+                    {/* Botones de acción: enviar o cerrar */}
                     <div className='botones-diagnostico-2'>
                         <button className="submit-btn" type='submit'>
                             <FaCheck className='icon-check' />Enviar diagnóstico
