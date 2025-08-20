@@ -36,7 +36,7 @@ const PerfilEmpresa = () => {
 
     // Funciones de navegación
     const editar = () => navigate('/editarperfil');
-    const iraPerfil = () => navigate('/perfil');
+    const irAPerfil = () => navigate('/perfil');
 
     return (
         <div className="profile-layout">
@@ -51,7 +51,7 @@ const PerfilEmpresa = () => {
             </div>
 
             {/* Ruta de navegación */}
-            <nav className="breadcrumb">Home / Perfil</nav>
+            <nav className="breadcrumb">Inicio / Perfil</nav>
 
             {/* Sección principal con tarjeta y detalles */}
             <div className="main-section">
@@ -62,7 +62,7 @@ const PerfilEmpresa = () => {
                     <div className="company-info">
                         <div className="barra">
                             <span className="linea"></span>
-                            <span className="texto">Info Perfil</span>
+                            <span className="texto">Información del Perfil</span>
                             <span className="linea"></span>
                         </div>
                         <div className="text-info">
@@ -85,7 +85,7 @@ const PerfilEmpresa = () => {
                         <hr />
                     </div>
                     <div>
-                        <strong>Nombre de la empresa:</strong><br />
+                        <strong>Nombre de la Empresa:</strong><br />
                         <div className="answer-details">{empresa.razon_social}</div>
                         <hr />
                     </div>
@@ -115,8 +115,8 @@ const PerfilEmpresa = () => {
             {/* Pie de página con botón de edición */}
             <footer className="footer-section-1">
                 <p>
-                    Estas revisando el perfil de <br />
-                    <strong> {empresa.razon_social}</strong>
+                    Estás revisando el perfil de <br />
+                    <strong>{empresa.razon_social}</strong>
                 </p>
                 <button className="edit-button" onClick={editar}>Editar</button>
             </footer>

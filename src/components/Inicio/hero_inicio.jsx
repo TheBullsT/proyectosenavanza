@@ -1,12 +1,12 @@
 // Importación de React
 import React from 'react';
-// Importación de imagen de persona (lado derecho del hero)
+// Importación de imagen de persona (lado derecho del héroe)
 import person from '../../assets/img/inicio/Biblioteca.png';
 // Importación de imagen de flecha (ícono al lado del botón)
 import arrow from '../../assets/img/inicio/typcn_arrow-back.png';
 // Importación del archivo de estilos específicos del componente
 import './Inicio.css';
-// Importación de hook para navegación de React Router
+// Importación del hook para navegación de React Router
 import { useNavigate } from 'react-router-dom';
 
 // Componente funcional Hero
@@ -15,7 +15,7 @@ const Hero = () => {
     // Hook para redireccionar a otras rutas
     const navigate = useNavigate();
 
-    // Función para ir a la página de login cuando se presiona el botón
+    // Función para ir a la página de inicio de sesión cuando se presiona el botón
     const irLogin = () => {
         navigate('/login'); // Cambia la ruta actual a /login
     }
@@ -23,7 +23,7 @@ const Hero = () => {
     // Retorno del componente JSX
     return (
         <div className='hero'>
-            {/* Contenedor principal del contenido del hero */}
+            {/* Contenedor principal del contenido del héroe */}
             <div className='hero-content'>
 
                 {/* Columna izquierda con textos de presentación */}
@@ -31,7 +31,7 @@ const Hero = () => {
                     {/* Texto breve que introduce la sección */}
                     <p className='texto-ayuda'>¿Necesitas personal?</p>
 
-                    {/* Título principal del hero */}
+                    {/* Título principal del héroe */}
                     <p className='titulo-principal'>
                         CONSEGUIMOS LOS APRENDICES<br />PARA TU EMPRESA
                     </p>
@@ -39,12 +39,12 @@ const Hero = () => {
                     {/* Subtítulo que invita a iniciar sesión */}
                     <p className='texto-ayuda2'>¡INICIA SESIÓN!</p>
 
-                    {/* Sección que agrupa flecha e botón */}
+                    {/* Sección que agrupa flecha y botón */}
                     <div className='apuntar-boton'>
                         {/* Flecha decorativa al lado del botón */}
                         <img src={arrow} alt="flecha" />
 
-                        {/* Botón con evento para redirigir al login */}
+                        {/* Botón con evento para redirigir al inicio de sesión */}
                         <button className='button-init2' onClick={irLogin}>
                             Inicia sesión
                         </button>
@@ -53,7 +53,7 @@ const Hero = () => {
 
                 {/* Columna derecha que contiene la imagen ilustrativa */}
                 <div className='image-person'>
-                    <img src={person} alt="imagen-inicio" />
+                    <img src={person} alt="imagen de inicio" />
                 </div>
             </div>
         </div>

@@ -56,7 +56,7 @@ const EditarPerfilEmpresa = () => {
     };
 
     // Redirige a la vista del perfil sin guardar cambios
-    const iraPerfil = () => navigate('/perfil');
+    const irAPerfil = () => navigate('/perfil');
 
     return (
         <div className="profile-layout">
@@ -71,7 +71,7 @@ const EditarPerfilEmpresa = () => {
             </div>
 
             {/* Ruta de navegación */}
-            <nav className="breadcrumb">Home / Editar Perfil</nav>
+            <nav className="breadcrumb">Inicio / Editar Perfil</nav>
 
             {/* Contenedor principal con información y formulario */}
             <div className="main-section">
@@ -82,7 +82,7 @@ const EditarPerfilEmpresa = () => {
                     <div className="company-info">
                         <div className="barra">
                             <span className="linea"></span>
-                            <span className="texto">Info Perfil</span>
+                            <span className="texto">Información del Perfil</span>
                             <span className="linea"></span>
                         </div>
                         <div className="text-info">
@@ -112,7 +112,7 @@ const EditarPerfilEmpresa = () => {
 
                     <div>
                         <div className="blocked">
-                            <strong>Nombre de la empresa:</strong><br />
+                            <strong>Nombre de la Empresa:</strong><br />
                         </div>
                         <div className="answer-details">{empresa.razon_social}</div>
                         <hr />
@@ -163,10 +163,10 @@ const EditarPerfilEmpresa = () => {
             {/* Controles para guardar o cancelar cambios */}
             <footer className="footer-section-1">
                 <p>
-                    Estas editando el perfil de <br />
+                    Estás editando el perfil de <br />
                     <strong>{empresa.razon_social}</strong>
                 </p>
-                <button className="cancel-button" onClick={iraPerfil}>Cancelar</button>
+                <button className="cancel-button" onClick={irAPerfil}>Cancelar</button>
                 <button className="edit-button" onClick={handleGuardar}>Guardar</button>
             </footer>
         </div>

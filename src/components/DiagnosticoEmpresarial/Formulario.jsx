@@ -55,7 +55,7 @@ function FormsLayout() {
 
             <div className='main-section'>
                 <span className='information'>
-                    ¡Presiona este botón <br />para conocer qué <br /> programas de <br /> formación son <br /> perfectos para usted!
+                    ¡Presione este botón <br />para conocer qué <br /> programas de <br /> formación son <br /> perfectos para usted!
                 </span>
             </div>
 
@@ -77,29 +77,29 @@ function FormsLayout() {
                     {mostrarDiagnostico && (
                         <Popup_Diagnostico
                             cerrar={cerrarDiagnostico}
-                            onResultado = {(data) => { 
-                            setResultadoDiagnostico(data);
-                            setMostrarDiagnostico(false);
-                            setMostrarExito(true)
-                        }}
+                            onResultado={(data) => {
+                                setResultadoDiagnostico(data);
+                                setMostrarDiagnostico(false);
+                                setMostrarExito(true)
+                            }}
                         />
                     )}
 
                     {mostrarExito && (
-                        <Popup 
-                        datos = {ResultadoDiagnostico} 
-                        cerrar={cerrarPopupExito} 
-                        irAResultados={() => {
-                            setMostrarExito(false);
-                            setVerResultado(true)
-                        }}/>
+                        <Popup
+                            datos={ResultadoDiagnostico}
+                            cerrar={cerrarPopupExito}
+                            irAResultados={() => {
+                                setMostrarExito(false);
+                                setVerResultado(true)
+                            }} />
                     )}
                     {verResultado && (
-                        < Resultados datos={ResultadoDiagnostico}/>
+                        < Resultados datos={ResultadoDiagnostico} />
                     )}
                 </div>
 
-                <img className='person-image' src={person} alt="Persona formulario" />
+                <img className='person-image' src={person} alt="Persona en formulario" />
             </div>
         </div>
     );

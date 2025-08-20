@@ -29,12 +29,12 @@ function Pregunta() {
                 </h1>
                 <p>
                     Si ya realizaste tu diagnóstico <br /> empresarial y te <br />
-                    interesa saber tus resultados <br />
+                    interesa conocer tus resultados <br />
                     <strong>¡Tenemos la solución!</strong>
                 </p>
                 {/* Botón que ejecuta la navegación */}
                 <button onClick={diagnosticoEmpresarial} className="solucion">
-                    ¡PULSA AQUÍ!
+                    ¡Pulsa aquí!
                 </button>
             </div>
         </div>

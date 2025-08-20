@@ -10,7 +10,7 @@ function Footer() {
             <div className="footer-total">
                 <div className="logo-sena">
                     {/* Imagen del logo con texto alternativo */}
-                    <img src={logo} alt="Logo senavanza" />
+                    <img src={logo} alt="Logo SENAVANZA" />
                 </div>
                 <p>Copyright SENAVANZA - SENA - 2025</p>
             </div>

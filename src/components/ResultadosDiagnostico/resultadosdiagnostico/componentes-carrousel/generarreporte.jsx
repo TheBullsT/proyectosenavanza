@@ -17,12 +17,12 @@ function GenerarReporte() {
         // Crear un nuevo documento PDF
         const doc = new jsPDF();
 
-        // Establecer tamaño de fuente para el título
+        // Establecer el tamaño de fuente para el título
         doc.setFontSize(18);
         // Agregar texto principal al PDF
-        doc.text("Programa Recomendado", 20, 20);
+        doc.text("Programa recomendado", 20, 20);
 
-        // Cambiar tamaño de fuente para el contenido
+        // Cambiar el tamaño de fuente para el contenido
         doc.setFontSize(14);
 
         // Obtener el nombre y la descripción del programa recomendado desde los datos
@@ -62,23 +62,23 @@ function GenerarReporte() {
                         <br />
                         resultado del diagnóstico
                         <br />
-                        para que puedas verlos
+                        para que puedas verlo
                         <br />
                         con más calma
                     </p>
 
                     {/* Botón que ejecuta la función para generar el PDF */}
                     <button onClick={handleDescargarPDF} className="boton-generar-reporte" type="button">
-                        Generar Reporte
+                        Generar reporte
                     </button>
                 </div>
 
                 {/* Imagen de apoyo al lado del contenido */}
-                <img src={reporte} alt="Imagen reporte" />
+                <img src={reporte} alt="Imagen del reporte" />
             </div>
         </div>
     );
 }
 
-// Exportar el componente para usarlo en otras partes de la app
+// Exportar el componente para usarlo en otras partes de la aplicación
 export default GenerarReporte;

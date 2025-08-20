@@ -1,6 +1,6 @@
 // Importación de React para crear el componente
 import React from "react";
-// Componente para navegacion interna
+// Componente para navegación interna
 import { Link } from "react-router-dom";
 import "./navbar.css";
 
@@ -13,13 +13,13 @@ function NavBar() {
                 <ul>
                     {/* Cada <li> contiene un enlace de navegación interno usando Link de react-router-dom */}
                     <li>
-                        <Link to="/home">Home</Link> {/* Enlace a la página principal */}
+                        <Link to="/home">Inicio</Link> {/* Enlace a la página principal */}
                     </li>
                     <li>
-                        <Link to="/diagnostico-empresarial">Diagnóstico Empresarial</Link>
+                        <Link to="/diagnostico-empresarial">Diagnóstico empresarial</Link>
                     </li>
                     <li>
-                        <Link to="/resultado-diagnostico">Resultados de Diagnóstico</Link>
+                        <Link to="/resultado-diagnostico">Resultados del diagnóstico</Link>
                     </li>
                 </ul>
             </nav>

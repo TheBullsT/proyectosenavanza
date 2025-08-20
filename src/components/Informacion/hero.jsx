@@ -18,7 +18,7 @@ const HeroInfo = () => {
 
             {/* Breadcrumb que indica la ubicación actual en la navegación */}
             <div className='page-select'>
-                <p>Home {">"} <strong>Programas</strong></p>
+                <p>Inicio {">"} <strong>Programas</strong></p>
             </div>
 
         </div>

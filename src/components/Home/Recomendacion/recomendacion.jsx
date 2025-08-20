@@ -1,26 +1,26 @@
 // Importación de React para crear el componente
 import React from "react";
-import './recomendacion.css'; // Importamos los estilos específicos para este componente
+import './recomendacion.css'; // Importamos los estilos específicos de este componente
 import { IoPeopleSharp } from "react-icons/io5"; // Importamos el ícono de personas
 
+// Componente funcional Recomendacion
 function Recomendacion() {
     return (
         <div className="recomendaciones">
-            {/* Encabezado de la sección que indica que se mostrarán recomendaciones */}
+            {/* Encabezado de la sección que indica el contenido de recomendaciones */}
             <h2 className="titulo-recomendacion">Recomendaciones</h2>
 
             <div className="conocer">
-                {/* Icono visual para reforzar el tema de la recomendación */}
+                {/* Ícono que refuerza visualmente la temática */}
                 <IoPeopleSharp className="icono-recomendacion" />
 
-                {/* Pregunta breve para invitar al usuario a interactuar */}
+                {/* Pregunta que invita al usuario a explorar más */}
                 <p>¿Quieres conocer nuestros programas de formación?</p>
 
-                {/* Botón que abre un enlace externo en otra pestaña del navegador */}
+                {/* Botón que redirige a un enlace externo en una nueva pestaña */}
                 <button
                     className="boton-recomendacion"
                     onClick={() => window.open("https://oferta.senasofiaplus.edu.co/sofia-oferta/", "_blank")}
-                /* "_blank" asegura que el enlace se abra en una nueva pestaña */
                 >
                     ¡PULSA AQUÍ!
                 </button>
@@ -29,4 +29,5 @@ function Recomendacion() {
     );
 }
 
+// Exportación del componente para su uso en otras partes del proyecto
 export default Recomendacion;

@@ -1,5 +1,5 @@
 // Importación de React para crear el componente
-import React from "react"; 
+import React from "react";
 // Importación del archivo CSS que contiene los estilos específicos para este componente
 import './contenido.css';
 // Importación de imágenes utilizadas en la sección
@@ -21,7 +21,7 @@ const Contenido = () => {
                 {/* Sección de definición del programa */}
                 <div className="texto1">
                     <h2>
-                        ¿Que es un PROGRAMA
+                        ¿Qué es un PROGRAMA
                         <br />DE FORMACIÓN?
                     </h2>
                     <p>
@@ -56,7 +56,7 @@ const Contenido = () => {
                         <p>
                             Participar en un programa de formación permite adquirir conocimientos y <br />habilidades prácticas que aumentan las oportunidades laborales.
                             <br />Además, brinda certificación oficial,
-                            <br />es gratuito en el SENA, y facilita el acceso al mercado laboral o <br />el emprendimiento, fortaleciendo el perfil profesional.
+                            <br />es gratuito en el SENA, y facilita el acceso al mercado laboral o <br />al emprendimiento, fortaleciendo el perfil profesional.
                         </p>
                     </div>
 

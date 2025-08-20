@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FaCheck } from "react-icons/fa6";
 import { MdCancel } from "react-icons/md";
 // Asumiendo que tienes estilos separados
-import './Popup.css'; 
+import './Popup.css';
 // Importar AXIOS
 import axios from 'axios'
 // Importar API
@@ -29,13 +29,13 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                 hards_kills: habilidades,
             },
                 {
-                    headers: { 'Content-Type': 'application/json',},
+                    headers: { 'Content-Type': 'application/json', },
                 }
             );
 
-            console.log('requemientos enviados:', response.data);
+            console.log('requerimientos enviados:', response.data);
             onResultado(response.data);
-            toast.success("Requerimientos enviados con exito");
+            toast.success("Requerimientos enviados con éxito");
             cerrar();
         }
 
@@ -49,27 +49,27 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
         <div className="overlay">
             <form method='POST' className='overlay' onSubmit={enviar_diagnostico}>
                 <div className="popup2">
-                    <h2 className="popup-title">Diagnostico Empresarial</h2>
+                    <h2 className="popup-title">Diagnóstico Empresarial</h2>
                     <div className="underline" />
 
                     {/*  */}
                     <div className="form-group">
-                    <select
-                        className="input-box"
-                        value={area}
-                        onChange={(e) => SetArea(e.target.value)}
-                        required
-                    >
-                        <option value="" disabled hidden>
-                        Seleccione el nivel
-                        </option>
-                        <option value="tecnico">Técnico</option>
-                        <option value="tecnologo">Tecnólogo</option>
-                    </select>
+                        <select
+                            className="input-box"
+                            value={area}
+                            onChange={(e) => SetArea(e.target.value)}
+                            required
+                        >
+                            <option value="" disabled hidden>
+                                Seleccione el nivel
+                            </option>
+                            <option value="tecnico">Técnico</option>
+                            <option value="tecnologo">Tecnólogo</option>
+                        </select>
                     </div>
                     {/*  */}
                     <div className="form-group">
-                        <input type="text" placeholder="¿Cuáles serian las tareas que le va a delegar al aprendiz en su empresa?"
+                        <input type="text" placeholder="¿Cuáles serían las tareas que le va a delegar al aprendiz en su empresa?"
                             className="input-box"
                             value={descripcion}
                             onChange={(e) => SetDescripcion(e.target.value)}
@@ -77,7 +77,7 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                             minLength={50} />
                     </div>
                     <div className="form-group">
-                        <input type="text" placeholder="¿Cuáles son las herramientas que el aprendiz debe de utilizar?"
+                        <input type="text" placeholder="¿Cuáles son las herramientas que el aprendiz debe utilizar?"
                             className="input-box"
                             value={herramientas}
                             onChange={(e) => SetHerramientas(e.target.value)}
@@ -85,7 +85,7 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                             minLength={20} />
                     </div>
                     <div className="form-group">
-                        <input type="text" placeholder="¿Cuáles serian las habilidades tecnicas que el aprendiz debe de tener previamente?"
+                        <input type="text" placeholder="¿Cuáles serían las habilidades técnicas que el aprendiz debe tener previamente?"
                             className="input-box"
                             value={habilidades}
                             onChange={(e) => SetHabilidades(e.target.value)}

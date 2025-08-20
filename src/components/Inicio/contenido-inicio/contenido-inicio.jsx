@@ -23,7 +23,7 @@ function ContenidoInicio() {
     // Lista de programas ofrecidos, con nombre y descripción
     const programas = [
         {
-            nombre: "Analisis y desarrollo de osftware",
+            nombre: "Análisis y desarrollo de software", // corregido
             descripcion: "Programa de formación en desarrollo de software, enfocado en las últimas tecnologías y metodologías ágiles.",
         },
         {
@@ -31,14 +31,14 @@ function ContenidoInicio() {
             descripcion: "Programa de formación en programación de software, abarcando desde los fundamentos hasta técnicas avanzadas.",
         },
         {
-            nombre: "Creación medios audiovisuales digitales",
+            nombre: "Creación de medios audiovisuales digitales", // corregido
             descripcion: "Programa de formación en creación de medios audiovisuales digitales, incluyendo edición de video y producción multimedia.",
         },
         {
             nombre: "Gestión de redes de datos",
             descripcion: "Programa de formación en gestión de redes de datos, cubriendo desde la configuración básica hasta la seguridad avanzada.",
         },
-        // Agrega más si es necesariox
+        // Agrega más si es necesario
     ];
 
     return (

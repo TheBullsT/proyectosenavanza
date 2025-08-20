@@ -12,9 +12,9 @@ function Resultados() {
     const location = useLocation(); // Obtiene información de la ruta actual
     // Estado para almacenar los datos del programa recomendado
     const [datos, setDatos] = useState(location.state?.datos);
-    // Estado para controlar visibilidad del pop-up
+    // Estado para controlar la visibilidad del pop-up
     const [mostrarPopup, setMostrarPopup] = useState(false);
-    // Estado para animación de entrada/salida del pop-up
+    // Estado para la animación de entrada/salida del pop-up
     const [animarPopup, setAnimarPopup] = useState(false);
 
     // Efecto que verifica si no hay datos en la ubicación, entonces los recupera del localStorage
@@ -29,15 +29,15 @@ function Resultados() {
 
     // Función para abrir el pop-up
     const abrirPopup = () => {
-        setMostrarPopup(true); // Mostrar el pop-up
-        // Activar animación después de un breve retardo
+        setMostrarPopup(true); // Muestra el pop-up
+        // Activa la animación después de un breve retardo
         setTimeout(() => setAnimarPopup(true), 10);
     };
 
     // Función para cerrar el pop-up
     const cerrarPopup = () => {
         setAnimarPopup(false); // Desactiva la animación
-        // Espera a que termine la animación antes de ocultar completamente
+        // Espera a que termine la animación antes de ocultarlo completamente
         setTimeout(() => setMostrarPopup(false), 300);
     };
 
@@ -51,7 +51,7 @@ function Resultados() {
                 </h1>
             </div>
 
-            {/* Contenedor principal de imagen y programa recomendado */}
+            {/* Contenedor principal de la imagen y el programa recomendado */}
             <div className="resultado-total">
                 {/* Imagen decorativa de resultados */}
                 <img src={result} alt="Imagen de resultados" />
@@ -82,9 +82,9 @@ function Resultados() {
                         <div className="popup-info">
                             <h1>{datos?.programa_recomendado?.nombre}</h1>
                             <p><strong>Duración:</strong> 24 meses</p>
-                            <p><strong>Nivel Formativo:</strong> {datos?.programa_recomendado?.nivel_programa}</p>
-                            <p> 
-                                <strong>Descripción:</strong> 
+                            <p><strong>Nivel formativo:</strong> {datos?.programa_recomendado?.nivel_programa}</p>
+                            <p>
+                                <strong>Descripción:</strong>
                                 {datos?.programa_recomendado?.descripcion}
                             </p>
                             {/* Botón para cerrar el pop-up */}

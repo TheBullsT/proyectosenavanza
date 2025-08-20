@@ -11,7 +11,7 @@ function Caprendizaje() {
         // Contenedor principal del componente, funciona como caja del carrusel
         <div className="container-caprendizaje">
 
-            {/* Título principal con salto de línea para separar texto */}
+            {/* Título principal con salto de línea para separar el texto */}
             <div className="titulo-caprendizaje">
                 <h1>
                     ¿Quieres buscar los
@@ -28,7 +28,7 @@ function Caprendizaje() {
                     <p>
                         ¡Pulsa aquí para ir a <strong>Caprendizaje</strong>
                         <br />
-                        y encontrarás los
+                        y encontrar los
                         <br />
                         programas de formación!
                     </p>
@@ -45,15 +45,15 @@ function Caprendizaje() {
                             <img className="flecha" src={Flecha} alt="Flecha" />
                         </div>
 
-                        {/* Contenedor de logo y botón de acción */}
+                        {/* Contenedor del logo y botón de acción */}
                         <div className="direccion">
-                            <img className="logo-capre" src={CaprendizajeLogo} alt="Logo Caprendizaje" />
+                            <img className="logo-capre" src={CaprendizajeLogo} alt="Logo de Caprendizaje" />
                             <button className="boton-ir-a-buscar">Ir a buscar</button>
                         </div>
                     </div>
 
-                    {/* Imagen de apoyo visual para reforzar contenido */}
-                    <img className="imagen-apoyo" src={ImagenCaprendizaje} alt="Apoyo visual Caprendizaje" />
+                    {/* Imagen de apoyo visual para reforzar el contenido */}
+                    <img className="imagen-apoyo" src={ImagenCaprendizaje} alt="Apoyo visual de Caprendizaje" />
                 </div>
             </div>
         </div>
