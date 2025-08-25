@@ -1,7 +1,7 @@
 import React from "react"; // Importación de React para crear el componente
 import './presentacion.css'; // Importa estilos específicos del componente
 import { useNavigate } from "react-router-dom"; // Hook para navegación programática
-import { BsListTask } from "react-icons/bs"; // Icono de lista de tareas
+import { BsListTask } from "react-icons/bs"; // Ícono de lista de tareas
 
 function Presentacion() {
     const navigate = useNavigate(); // Hook que devuelve función para cambiar de ruta
@@ -18,14 +18,14 @@ function Presentacion() {
                 <p className="texto-presentacion">¡Te presentamos SENAVANZA!</p>
                 <p className="texto-ayuda">
                     Te ayudaremos a escoger <br />
-                    el mejor aprendiz para tu empresa
+                    el mejor aprendiz para tu empresa.
                 </p>
             </div>
 
             {/* Sección que invita a responder el diagnóstico */}
             <div className="responde-diagnostico">
-                <p className="texto-diagnostico">¡Responde a nuestro diagnóstico empresarial!</p>
-                {/* Botón con icono que, al hacer clic, ejecuta la navegación */}
+                <p className="texto-diagnostico">¡Responde nuestro diagnóstico empresarial!</p>
+                {/* Botón con ícono que, al hacer clic, ejecuta la navegación */}
                 <button className="diagnostico" onClick={diagnostico}>
                     <BsListTask className="icon-diagnostico" /> Diagnóstico
                 </button>

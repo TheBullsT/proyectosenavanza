@@ -1,4 +1,4 @@
-// Importar React y useState para manejar estado en componentes funcionales
+// Importar React y useState para manejar el estado en componentes funcionales
 import React, { useState } from "react";
 
 // Importar el logo de la aplicación
@@ -7,17 +7,17 @@ import logoLogin from '../../../assets/img/Logo_SENAVANZA.jpg';
 // Importar el CSS del formulario de login
 import './form-login.css';
 
-// Importar Link y useNavigate para navegación entre rutas sin recargar la página
+// Importar Link y useNavigate para la navegación entre rutas sin recargar la página
 import { Link, useNavigate } from "react-router-dom";
 
 // Axios para hacer peticiones HTTP al backend
 import axios from "axios";
 
-// Importar las alertas tipo popup
+// Importar las alertas tipo pop-up
 import { toast } from "react-toastify";
 
 // Importar las APIs y constantes de tokens
-import { apiLogin } from "../../../api/apis"; // Instancia Axios para login
+import { apiLogin } from "../../../api/apis"; // Instancia de Axios para login
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../api/constans"; // Claves para localStorage
 
 function FormLogin() {
@@ -25,7 +25,7 @@ function FormLogin() {
     const [username, setUsername] = useState("");
     const [contraseña, setContraseña] = useState("");
 
-    // Hook para redireccionar a otras rutas
+    // Hook para redirigir a otras rutas
     const navigate = useNavigate();
 
     // Función para ir a la página de inicio al hacer clic en el logo
@@ -38,7 +38,7 @@ function FormLogin() {
         e.preventDefault(); // Evita que la página se recargue al enviar el formulario automáticamente
 
         try {
-            // Se realiza una petición POST a la API para obtener el token JWT
+            // Petición POST a la API para obtener tokens
             const response = await apiLogin.post(
                 "token/", // Endpoint de autenticación
                 {
@@ -50,37 +50,19 @@ function FormLogin() {
                 }
             );
 
-            // Si la autenticación es exitosa, se muestran los tokens recibidos en consola
+            // Muestra los tokens en consola (puedes guardarlos en localStorage si lo deseas)
             console.log("Tokens recibidos:", response.data);
 
             // Se muestra una notificación indicando que el login fue exitoso
             toast.success("Inicio de sesión exitoso");
 
-            // Se redirige al usuario a la página principal
+            // Redirige al usuario a la página principal después del login
             navigate("/home");
 
         } catch (error) {
-            // Si ocurre un error en la petición, se muestra en la consola
+            // En caso de error, se muestra en consola y se notifica al usuario
             console.error("Error en login:", error);
-
-            // Se valida la respuesta del servidor para mostrar mensajes específicos
-            if (error.response) {
-                // Si el servidor responde con 403 → el usuario está desactivado
-                if (error.response.status === 403) {
-                    toast.error("El usuario está desactivado");
-
-                    // Si responde con 401 → credenciales incorrectas
-                } else if (error.response.status === 401) {
-                    toast.error("Credenciales incorrectas");
-
-                    // Para otros errores desconocidos del backend
-                } else {
-                    toast.error("Error inesperado en el login");
-                }
-            } else {
-                // Si no hubo respuesta del servidor (por ejemplo, servidor caído o sin conexión)
-                toast.error("No se pudo conectar con el servidor");
-            }
+            toast.error("Datos inválidos o credenciales incorrectas");
         }
     };
 
@@ -88,7 +70,7 @@ function FormLogin() {
 
     return (
         <div className="login">
-            {/* Logo clickable que redirige al inicio */}
+            {/* Logo clickeable que redirige al inicio */}
             <div onClick={irInicio} className="logoLogin">
                 <img src={logoLogin} alt="Logo de SENAVANZA" />
             </div>
@@ -96,8 +78,8 @@ function FormLogin() {
             {/* Contenedor del formulario de login */}
             <div className="form-login">
                 <form onSubmit={handleSubmit} method="POST">
-                    <h1 className="titulo">Iniciar Sesión</h1>
-                    <h4 className="subtitulo">¡Vamos a Empezar!</h4>
+                    <h1 className="titulo">Iniciar sesión</h1>
+                    <h4 className="subtitulo">¡Vamos a empezar!</h4>
 
                     {/* Contenedor de inputs */}
                     <div className="contenido">
@@ -107,7 +89,7 @@ function FormLogin() {
                             <input
                                 type="username"
                                 onChange={(e) => setUsername(e.target.value)}
-                                placeholder="Nombre de Usuario"
+                                placeholder="Nombre de usuario"
                                 required
                             />
                         </label>
@@ -132,7 +114,7 @@ function FormLogin() {
 
                     {/* Botón de inicio de sesión */}
                     <button type="submit" className="iniciar-sesion">
-                        Iniciar Sesión
+                        Iniciar sesión
                     </button>
                 </form>
             </div>

@@ -1,7 +1,7 @@
 // Importa React y los hooks useState y useRef desde la librería React
 import React, { useState, useRef } from "react";
 
-// Importa Link y useNavigate desde react-router-dom para navegación entre rutas
+// Importa Link y useNavigate desde react-router-dom para la navegación entre rutas
 import { Link, useNavigate } from "react-router-dom";
 
 // Importa la imagen del logo desde la carpeta de assets
@@ -56,7 +56,7 @@ export default function Verification() {
 
     // Función que simula el reenvío del código de verificación
     const handleResend = () => {
-        alert("Código reenviado al correo."); // Mensaje emergente
+        alert("Código reenviado al correo electrónico."); // Mensaje emergente
     };
 
     // Renderizado del componente
@@ -73,7 +73,7 @@ export default function Verification() {
             {/* Caja del formulario de verificación */}
             <div className="verification-box">
                 {/* Subtítulo */}
-                <h3>Código de Verificación</h3>
+                <h3>Código de verificación</h3>
                 {/* Texto de instrucciones */}
                 <p>
                     Ingresa el código de 4 dígitos que enviamos a tu correo <br />
@@ -99,7 +99,7 @@ export default function Verification() {
                 <p className="resend-text">
                     ¿No recibiste el código?{" "}
                     <span onClick={handleResend} className="resend-link">
-                        Resend
+                        Reenviar
                     </span>
                 </p>
             </div>

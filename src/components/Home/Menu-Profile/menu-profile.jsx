@@ -40,7 +40,7 @@ const MenuProfile = forwardRef(function MenuProfileComponent(props, ref) {
             ) : (
                 <div ref={ref} className="dropdown-menu">
                     <div className="section-header">
-                        <div className="subtitulo">Información de perfil</div>
+                        <div className="subtitulo">Información del perfil</div>
                         <div className="linea"></div>
                     </div>
 
@@ -54,23 +54,23 @@ const MenuProfile = forwardRef(function MenuProfileComponent(props, ref) {
                     </ul>
 
                     <div className="section-header">
-                        <div className="subtitulo">Opciones de empresa</div>
+                        <div className="subtitulo">Opciones de la empresa</div>
                         <div className="linea"></div>
                     </div>
 
                     <ul className="menu-list">
                         <li>
-                            <Link to="/diagnostico-empresarial">Diagnóstico Empresarial</Link>
+                            <Link to="/diagnostico-empresarial">Diagnóstico empresarial</Link>
                         </li>
                         <li>
-                            <Link to="/resultado-diagnostico">Resultados de Diagnóstico</Link>
+                            <Link to="/resultado-diagnostico">Resultados del diagnóstico</Link>
                         </li>
                     </ul>
 
                     <div className="linea"></div>
 
                     <ul className="menu-list">
-                        <li onClick={handleCerrarSesion}>Cerrar Sesión</li>
+                        <li onClick={handleCerrarSesion}>Cerrar sesión</li>
                     </ul>
                 </div>
             )}

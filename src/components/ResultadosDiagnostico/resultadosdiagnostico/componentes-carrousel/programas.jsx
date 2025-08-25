@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // Importa React y useState para manejar estados dentro del componente
 
 import imagenprograma from '../../../../assets/img/img-resultados-diagnostico/imagen-programa.png';
-// Imagen genérica para los programas
+// Imagen genérica de los programas
 
 import recomendados from '../../../../assets/img/img-resultados-diagnostico/recomendados-programa.png';
 // Imagen lateral decorativa para la sección de programas
@@ -11,7 +11,7 @@ import './programas.css';
 // Archivo CSS con estilos del componente
 
 import pregunta from '../../../../assets/img/dudas.png';
-// Imagen usada en el popup
+// Imagen usada en el pop-up
 
 // Datos simulados de programas de formación
 const programasData = [
@@ -20,7 +20,7 @@ const programasData = [
         nombre: "Programa A",
         duracion: "6 meses",
         nivel: "Intermedio",
-        descripcion: "Descripción del programa A.",
+        descripcion: "Descripción del Programa A.",
         imagen: imagenprograma, // Imagen asociada al programa
     },
     {
@@ -28,7 +28,7 @@ const programasData = [
         nombre: "Programa B",
         duracion: "4 meses",
         nivel: "Básico",
-        descripcion: "Descripción del programa B.",
+        descripcion: "Descripción del Programa B.",
         imagen: imagenprograma,
     },
     {
@@ -36,46 +36,46 @@ const programasData = [
         nombre: "Programa C",
         duracion: "8 meses",
         nivel: "Avanzado",
-        descripcion: "Descripción del programa C.",
+        descripcion: "Descripción del Programa C.",
         imagen: imagenprograma,
     },
 ];
 
 function Programas() {
-    // Estado para controlar visibilidad del popup
+    // Estado para controlar la visibilidad del pop-up
     const [showPopup, setShowPopup] = useState(false);
 
     // Estado para guardar el programa seleccionado
     const [programaSeleccionado, setProgramaSeleccionado] = useState(null);
 
-    // Estado para controlar animación de aparición del popup
+    // Estado para controlar la animación de aparición del pop-up
     const [animarPopup, setAnimarPopup] = useState(false);
 
-    // Función para abrir el popup y asignar el programa seleccionado
+    // Función para abrir el pop-up y asignar el programa seleccionado
     const abrirPopup = (programa) => {
-        setProgramaSeleccionado(programa); // Guardar el programa seleccionado
-        setShowPopup(true); // Mostrar popup
+        setProgramaSeleccionado(programa); // Guarda el programa seleccionado
+        setShowPopup(true); // Muestra el pop-up
         setTimeout(() => setAnimarPopup(true), 10);
-        // Pequeño delay para activar la animación CSS
+        // Pequeño retardo para activar la animación CSS
     };
 
-    // Función para cerrar el popup
+    // Función para cerrar el pop-up
     const cerrarPopup = () => {
-        setAnimarPopup(false); // Inicia animación de salida
+        setAnimarPopup(false); // Inicia la animación de salida
         setTimeout(() => {
-            setShowPopup(false); // Ocultar popup
-            setProgramaSeleccionado(null); // Limpiar selección
-        }, 300); // Tiempo debe coincidir con duración de animación CSS
+            setShowPopup(false); // Oculta el pop-up
+            setProgramaSeleccionado(null); // Limpia la selección
+        }, 300); // El tiempo debe coincidir con la duración de la animación CSS
     };
 
     return (
         <div className="container-programas">
             {/* Título principal de la sección */}
             <div className="titulo-reporte-programas">
-                <h1>Programa de Formación <br /> Recomendados</h1>
+                <h1>Programas de Formación <br /> Recomendados</h1>
             </div>
 
-            {/* Contenedor de programas y la imagen lateral */}
+            {/* Contenedor de los programas y la imagen lateral */}
             <div className="programas-total">
                 <div className="programas">
                     {/* Mapeo de programas para generar tarjetas */}
@@ -90,7 +90,7 @@ function Programas() {
                             <div className="informacion-ficha-programas">
                                 {/* Nombre del programa */}
                                 <p>{programa.nombre}</p>
-                                {/* Botón para abrir popup con más info */}
+                                {/* Botón para abrir el pop-up con más información */}
                                 <button
                                     className="boton-ver-mas-programas"
                                     onClick={() => abrirPopup(programa)}
@@ -106,27 +106,27 @@ function Programas() {
                 <img
                     className="imagen-recomendados-programas"
                     src={recomendados}
-                    alt="Recomendados imagen"
+                    alt="Imagen de programas recomendados"
                 />
             </div>
 
-            {/* Popup visible solo si hay programa seleccionado */}
+            {/* Pop-up visible solo si hay un programa seleccionado */}
             {showPopup && programaSeleccionado && (
                 <div className={`popup ${animarPopup ? "mostrar" : "ocultar"}`}>
                     <div className="popup-overlay-programas">
                         <div className="popup-content-programas">
-                            {/* Imagen del programa o icono de duda */}
+                            {/* Imagen del programa o ícono de duda */}
                             <div className="popup-imagen-programas">
-                                <img src={pregunta} alt="Imagen de pregunta" />
+                                <img src={pregunta} alt="Imagen de ayuda" />
                             </div>
 
                             {/* Información detallada del programa */}
                             <div className="popup-info-programas">
                                 <h1>{programaSeleccionado.nombre}</h1>
                                 <p><strong>Duración:</strong> {programaSeleccionado.duracion}</p>
-                                <p><strong>Nivel Formativo:</strong> {programaSeleccionado.nivel}</p>
+                                <p><strong>Nivel formativo:</strong> {programaSeleccionado.nivel}</p>
                                 <p><strong>Descripción:</strong> {programaSeleccionado.descripcion}</p>
-                                {/* Botón para cerrar popup */}
+                                {/* Botón para cerrar el pop-up */}
                                 <button
                                     className="boton-cerrar-programas"
                                     onClick={cerrarPopup}

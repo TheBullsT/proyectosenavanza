@@ -1,11 +1,11 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useRef } from 'react';
 // Estilos del componente
 import './busqueda.css';
 // Logo institucional
 import logo from '../../../assets/img/Logo_SENAVANZA.png';
 // Iconos
 import { TiThMenu } from "react-icons/ti";
-// Menú de perfil y utilidad para cerrar al hacer click fuera
+// Menú de perfil y utilidad para cerrar al hacer clic fuera
 import MenuProfile from '../Menu-Profile/menu-profile';
 import ClickOutMenu from '../Menu-Profile/click-out-menu';
 
@@ -38,9 +38,9 @@ function Busqueda() {
                 <img
                     className='logo'
                     src={logo}
-                    alt="Logo de SENAVANZA"
+                    alt="Logo de Senavanza"
                 />
-                <h1>SENAVANZA</h1>
+                <h1>Senavanza</h1>
             </div>
 
             <div className='opciones'>
@@ -48,7 +48,7 @@ function Busqueda() {
                 <button
                     className='avatar'
                     onClick={() => setMenuVisible(!menuVisible)}
-                    aria-label="Abrir menú de perfil"
+                    aria-label="Abrir menú de usuario"
                 >
                     <TiThMenu className='icon-perfil' />
                 </button>

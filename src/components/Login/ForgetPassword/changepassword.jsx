@@ -40,7 +40,7 @@ export default function ChangePassword() {
         // Si coinciden, muestra mensaje de éxito
         alert("Contraseña cambiada con éxito.");
 
-        // Redirige al usuario a la página de login
+        // Redirige al usuario a la página de inicio de sesión
         navigate("/login");
     };
 
@@ -65,19 +65,19 @@ export default function ChangePassword() {
                     <label>Nueva contraseña</label>
                     <input
                         type="password" // Campo oculto
-                        placeholder="Nueva contraseña" // Texto placeholder
+                        placeholder="Nueva contraseña" // Texto de ayuda
                         value={password} // Valor controlado por estado
-                        onChange={(e) => setPassword(e.target.value)} // Actualiza estado
+                        onChange={(e) => setPassword(e.target.value)} // Actualiza el estado
                         required // Campo obligatorio
                     />
 
-                    {/* Campo para confirmar contraseña */}
+                    {/* Campo para confirmar la contraseña */}
                     <label>Confirmar contraseña</label>
                     <input
                         type="password" // Campo oculto
-                        placeholder="Confirmar contraseña" // Texto placeholder
+                        placeholder="Confirmar contraseña" // Texto de ayuda
                         value={confirmPassword} // Valor controlado por estado
-                        onChange={(e) => setConfirmPassword(e.target.value)} // Actualiza estado
+                        onChange={(e) => setConfirmPassword(e.target.value)} // Actualiza el estado
                         required // Campo obligatorio
                     />
 
