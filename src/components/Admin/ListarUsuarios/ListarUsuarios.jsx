@@ -1,76 +1,133 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axiosInstance from '../../api/axiosInstance'; // Importa configuración de Axios
-import { FaEdit, FaLock } from 'react-icons/fa';
-import '../../styles/ListarUsuarios.css';
+import React, { useEffect, useState } from "react";
+import './ListarUsuarios.css'; // Estilos propios del componente
+import NavbarAdmin from "../NavbarAdmin/NavbarAdmin"; // Navbar del admin
+import { FaEye, FaEdit, FaLock } from "react-icons/fa"; // Íconos de acciones
+import { MdPeople } from "react-icons/md"; // Ícono para la sección
+import { Link, useNavigate } from "react-router-dom"; // Navegación entre páginas
+import { apiGeneral } from "../../../api/apis"; // Configuración de Axios (llamadas a la API)
+import LoadingBaseDatos from "../../Loading/loading_base_datos"; // Componente de carga
+
 
 const ListarUsuarios = () => {
-  const [usuarios, setUsuarios] = useState([]); // Estado para almacenar lista de usuarios
-  const [filtro, setFiltro] = useState(''); // Estado para controlar el filtro de búsqueda
+    // Estado que guarda la lista de usuarios
+    const [usuarios, setUsuarios] = useState([]);
 
-  // useEffect para cargar los usuarios al montar el componente
-  useEffect(() => {
-    const fetchUsuarios = async () => {
-      try {
-        const response = await axiosInstance.get('/usuarios/'); // Llamada GET a la API
-        setUsuarios(response.data); // Guarda los usuarios en el estado
-      } catch (error) {
-        console.error('Error al obtener los usuarios:', error); // Manejo de error
-      }
-    };
+    // Estado para manejar el texto de búsqueda
+    const [search, setSearch] = useState("");
 
-    fetchUsuarios(); // Se ejecuta la función para traer los datos
-  }, []);
+    // Estado para mostrar pantalla de carga
+    const [loading, setLoading] = useState(true);
 
-  // Filtra usuarios según el texto ingresado en el input
-  const usuariosFiltrados = usuarios.filter((usuario) =>
-    usuario.username.toLowerCase().includes(filtro.toLowerCase())
-  );
+    // Hook de navegación
+    const navigate = useNavigate();
 
-  return (
-    <div className="listar-usuarios">
-      <h2>Lista de Usuarios</h2>
 
-      {/* Input para filtrar usuarios por nombre */}
-      <input
-        type="text"
-        placeholder="Buscar usuario..."
-        value={filtro}
-        onChange={(e) => setFiltro(e.target.value)}
-        className="filtro-usuarios"
-      />
+    // useEffect: carga los usuarios cuando se monta el componente
+    useEffect(() => {
+        const fetchUsuarios = async () => {
+            setLoading(true); // Activa el loader
+            try {
+                const response = await apiGeneral.get("users/"); // Llamada GET a la API
+                setUsuarios(response.data); // Guarda los usuarios en el estado
+            } catch (error) {
+                console.error("Error al obtener usuarios:", error);
+            } finally {
+                setLoading(false); // Quita el loader
+            }
+        };
 
-      {/* Tabla que lista los usuarios */}
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre de usuario</th>
-            <th>Email</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {usuariosFiltrados.map((usuario) => (
-            <tr key={usuario.id}>
-              <td>{usuario.username}</td>
-              <td>{usuario.email}</td>
-              <td>
-                {/* Botón para editar usuario */}
-                <Link to={`/usuarios/editar/${usuario.id}`} className="btn-editar">
-                  <FaEdit />
-                </Link>
+        fetchUsuarios(); // Ejecuta la función
+    }, []);
 
-                {/* Icono de candado (bloqueo) sin funcionalidad implementada aún */}
-                <button className="btn-bloquear">
-                  <FaLock />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+
+    // Filtra los usuarios según el texto buscado (por username o correo)
+    const filteredUsuarios = usuarios.filter(
+        (user) =>
+            user.username.toLowerCase().includes(search.toLowerCase()) ||
+            user.email.toLowerCase().includes(search.toLowerCase())
+    );
+
+
+    // Si está cargando, muestra el componente Loading
+    if (loading) {
+        return <LoadingBaseDatos />;
+    }
+
+    return (
+        <div className="main-right-bar">
+            {/* Navbar del administrador */}
+            <NavbarAdmin />
+
+            {/* Encabezado con título y breadcrumb */}
+            <div className="visualizar-container">
+                <p className="title">
+                    Listar Usuarios
+                    <span className="breadcrumb"> Usted se encuentra en: <strong className="breadcrumb-active">Usuarios</strong></span>
+                </p>
+
+                {/* Info introductoria */}
+                <div className="form-info">
+                    <div className="icon"><MdPeople /></div>
+                    <p>
+                        En este espacio podrás listar todos los usuarios registrados en el sistema.<br />
+                        <strong>Recuerda que están en la <span className="highlight">BASE DE DATOS</span>.</strong>
+                    </p>
+                </div>
+
+                {/* Barra superior con título y botón de reporte */}
+                <div className="search-bar">
+                    <h2 className="empresas-label">Usuarios</h2>
+                    <div className="grupo-botones">
+                        <button className="btn-reporte">Generar Reporte</button>
+                    </div>
+                </div>
+
+                {/* Input para filtrar usuarios */}
+                <input
+                    type="text"
+                    placeholder="Buscar por nombre o correo"
+                    className="input-busqueda"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+
+                {/* Tabla que lista los usuarios */}
+                <table className="program-table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Correo</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredUsuarios.map((user, index) => (
+                            <tr key={user.id} className={index % 2 === 1 ? "odd" : ""}>
+                                <td>{user.username}</td>
+                                <td>{user.email}</td>
+                                <td className="opciones">
+                                    {/* Ver detalle de usuario */}
+                                    <Link to={`/visualizacion-usuarios/${user.id}`}>
+                                        <FaEye className="icon-action" title="Ver" />
+                                    </Link>
+
+                                    {/* Editar usuario */}
+                                    <Link to={`/modificar-usuarios/${user.id}`}>
+                                        <FaEdit className="icon-action" title="Editar" />
+                                    </Link>
+
+                                    {/* Eliminar usuario (no implementado aún) */}
+                                    <FaLock className="icon-action" title="Eliminar (no disponible)" />
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
 };
 
-export default ListarUsuarios;
+
+export default ListarUsuarios; // Exporta el componente
+

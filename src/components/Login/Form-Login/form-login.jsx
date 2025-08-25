@@ -14,7 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // Importar las alertas tipo popup
-import { toast } from "react-toastify"; 
+import { toast } from "react-toastify";
 
 // Importar las APIs y constantes de tokens
 import { apiLogin } from "../../../api/apis"; // Instancia Axios para login
@@ -33,37 +33,58 @@ function FormLogin() {
         navigate('/inicio');
     };
 
-    // Función que maneja el envío del formulario
+    // Función que maneja el envío del formulario de inicio de sesión
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Evita que la página se recargue al enviar el formulario
+        e.preventDefault(); // Evita que la página se recargue al enviar el formulario automáticamente
+
         try {
-            // Petición POST a la API para obtener tokens
+            // Se realiza una petición POST a la API para obtener el token JWT
             const response = await apiLogin.post(
-                "token/",
+                "token/", // Endpoint de autenticación
                 {
-                    username: username,
-                    password: contraseña
+                    username: username,     // Se envía el nombre de usuario
+                    password: contraseña,   // Se envía la contraseña
                 },
                 {
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { "Content-Type": "application/json" }, // Se especifica que los datos son JSON
                 }
             );
 
-            // Muestra los tokens en consola (puedes guardarlos en localStorage si lo deseas)
+            // Si la autenticación es exitosa, se muestran los tokens recibidos en consola
             console.log("Tokens recibidos:", response.data);
 
-            // Notificación de éxito
+            // Se muestra una notificación indicando que el login fue exitoso
             toast.success("Inicio de sesión exitoso");
 
-            // Redirige al usuario a la página principal después del login
+            // Se redirige al usuario a la página principal
             navigate("/home");
 
         } catch (error) {
-            // En caso de error, se muestra en consola y se notifica al usuario
+            // Si ocurre un error en la petición, se muestra en la consola
             console.error("Error en login:", error);
-            toast.error("Datos inválidos o credenciales incorrectas");
+
+            // Se valida la respuesta del servidor para mostrar mensajes específicos
+            if (error.response) {
+                // Si el servidor responde con 403 → el usuario está desactivado
+                if (error.response.status === 403) {
+                    toast.error("El usuario está desactivado");
+
+                    // Si responde con 401 → credenciales incorrectas
+                } else if (error.response.status === 401) {
+                    toast.error("Credenciales incorrectas");
+
+                    // Para otros errores desconocidos del backend
+                } else {
+                    toast.error("Error inesperado en el login");
+                }
+            } else {
+                // Si no hubo respuesta del servidor (por ejemplo, servidor caído o sin conexión)
+                toast.error("No se pudo conectar con el servidor");
+            }
         }
     };
+
+
 
     return (
         <div className="login">
@@ -107,7 +128,7 @@ function FormLogin() {
                     {/* Link para recuperar contraseña */}
                     <Link to="/forget-password" className="subtitle-password-forget">
                         ¿Olvidó su contraseña?
-                    </Link> 
+                    </Link>
 
                     {/* Botón de inicio de sesión */}
                     <button type="submit" className="iniciar-sesion">

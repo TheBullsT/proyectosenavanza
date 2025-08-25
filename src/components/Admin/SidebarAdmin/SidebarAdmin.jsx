@@ -110,12 +110,13 @@ function SidebarAdmin() {
                                 </Link>
                             </ul>
                         )}
+                        {/* Botón de cierre de sesión */}
+                        <div onClick={handleCerrarSesion} className="ButtonCerrarSesionAdmin">
+                            Cerrar Sesión
+                        </div>
                     </ul>
 
-                    {/* Botón de cierre de sesión */}
-                    <div onClick={handleCerrarSesion} className="ButtonCerrarSesionAdmin">
-                        Cerrar Sesión
-                    </div>
+
                 </div>
             )}
         </>

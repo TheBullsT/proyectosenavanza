@@ -156,7 +156,7 @@ function HomeRightBar() {
                 {/* Gráfico comparativo de líneas */}
                 <div className="MidleTaskChart">
                     <p className="TaskUsuariosvsEmpresas">
-                        Evolución: Usuarios vs Empresas
+                        Usuarios y Empresas: Totales
                     </p>
                     <LineChart
                         width={920}
@@ -175,7 +175,7 @@ function HomeRightBar() {
                 </div>
 
                 {/* Gráfico compuesto: barras + línea */}
-                <div className="MonthlyProgramas">
+                {/* <div className="MonthlyProgramas">
                     <p className="taskContainerText">
                         Evolución de Programas
                     </p>
@@ -193,7 +193,7 @@ function HomeRightBar() {
                         <Bar dataKey="programas" barSize={20} fill="#413ea0" />
                         <Line type="monotone" dataKey="programas" stroke="#ff7300" />
                     </ComposedChart>
-                </div>
+                </div> */}
             </div>
         </div>
     );
