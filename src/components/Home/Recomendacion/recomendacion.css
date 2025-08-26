@@ -1,141 +1,147 @@
 :root {
-  /* Colores Primarios */
-  --primary-1: #39A900;
-  --primary-2: #36AE0F;
-  --primary-3: #42B31E;
-  --primary-4: #4FB82D;
-  --primary-5: #5BBD3C;
-  --primary-6: #68C24B;
-  --primary-7: #75C75A;
-  --primary-8: #81CC69;
-  --primary-9: #8ED178;
-  --primary-10: #9AD787;
-  --primary-11: #A7DC96;
-  --primary-12: #B3E1A5;
-  --primary-13: #C0E6B4;
-  --primary-14: #CDEBC3;
-  --primary-15: #D9F0D2;
-  --primary-16: #E6F5E1;
-  --primary-17: #F2FAF0;
+    /* Variables CSS para definir colores primarios */
+    --primary-1: #39A900;
+    --primary-2: #36AE0F;
+    --primary-3: #42B31E;
+    --primary-4: #4FB82D;
+    --primary-5: #5BBD3C;
+    --primary-6: #68C24B;
+    --primary-7: #75C75A;
+    --primary-8: #81CC69;
+    --primary-9: #8ED178;
+    --primary-10: #9AD787;
+    --primary-11: #A7DC96;
+    --primary-12: #B3E1A5;
+    --primary-13: #C0E6B4;
+    --primary-14: #CDEBC3;
+    --primary-15: #D9F0D2;
+    --primary-16: #E6F5E1;
+    --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
-  --black: #000000;
-  --gray-1: #0F0F0F;
-  --gray-2: #1E1E1E;
-  --gray-3: #2D2D2D;
-  --gray-4: #3C3C3C;
-  --gray-5: #5A5A5A;
-  --gray-6: #696969;
-  --gray-7: #787878;
-  --gray-8: #878787;
-  --gray-9: #A5A5A5;
-  --gray-10: #969696;
-  --gray-11: #A5A5A5;
-  --gray-12: #B4B4B4;
-  --gray-13: #C3C3C3;
-  --gray-14: #D2D2D2;
-  --gray-15: #E1E1E1;
-  --gray-16: #F0F0F0;
-  --white: #FFFFFF;
+    /* Escala de grises y neutros para diseño */
+    --black: #000000;
+    --gray-1: #0F0F0F;
+    --gray-2: #1E1E1E;
+    --gray-3: #2D2D2D;
+    --gray-4: #3C3C3C;
+    --gray-5: #5A5A5A;
+    --gray-6: #696969;
+    --gray-7: #787878;
+    --gray-8: #878787;
+    --gray-9: #A5A5A5;
+    --gray-10: #969696;
+    --gray-11: #A5A5A5;
+    --gray-12: #B4B4B4;
+    --gray-13: #C3C3C3;
+    --gray-14: #D2D2D2;
+    --gray-15: #E1E1E1;
+    --gray-16: #F0F0F0;
+    --white: #FFFFFF;
 
-  /* Tipografía */
-  --font-primary: 'Work Sans', sans-serif;
-  --font-secondary: 'Calibri', sans-serif;
+    /* Fuentes principales del proyecto */
+    --font-primary: 'Work Sans', sans-serif;
+    --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
-  --h1: 32px;
-  --h2: 24px;
-  --h3: 20px;
-  --h4: 16px;
-  --h5: 14px;
-  --h6: 12px;
+    /* Tamaños de fuente para encabezados */
+    --h1: 32px;
+    --h2: 24px;
+    --h3: 20px;
+    --h4: 16px;
+    --h5: 14px;
+    --h6: 12px;
 }
 
-/* Reset y configuración base */
+/* Reset y estilos base para html */
 html {
-  margin: 0;
-  font-size: 62.5%; /* 1rem = 10px para facilitar cálculos */
-  box-sizing: border-box;
+    margin: 0;
+    font-size: 62.5%;
+    /* Esto facilita convertir rem a píxeles (1rem = 10px) */
+    box-sizing: border-box;
 }
 
 :before,
 *:after {
-  box-sizing: inherit;
+    box-sizing: inherit;
+    /* Hereda el box-sizing para todos los elementos */
 }
 
 body {
-  font-size: 16px;
-  font-family: var(--font-primary);
-  margin: 0;
+    font-size: 16px;
+    font-family: var(--font-primary);
+    margin: 0;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
+    /* Elimina subrayado en enlaces */
 }
 
-/* Contenedor principal del componente recomendaciones */
+/* Estilo principal del contenedor de recomendaciones */
 .recomendaciones {
-  position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -30%);
-  background-color: var(--gray-16); /* #f4f4f4 */
-  padding: 20px;
-  border-radius: 10px;
-  width: 780px;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background-color: var(--gray-16);
+    padding: 20px;
+    border-radius: 10px;
+    /* Bordes redondeados */
+    width: 780px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Título de las recomendaciones */
+/* Título de la sección de recomendaciones */
 .titulo-recomendacion {
-  color: var(--gray-8);
-  font-size: var(--h2);
-  margin-bottom: 15px;
+    color: var(--gray-8);
+    font-size: var(--h2);
+    margin-bottom: 15px;
 }
 
-/* Contenedor flex para icono, texto y botón */
+/* Contenedor flexible para alinear contenido */
 .conocer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Icono al lado del texto */
+/* Icono que acompaña el texto */
 .icono-recomendacion {
-  margin-right: 8px;
-  font-size: 24px;
-  transform: translateX(-10px);
+    margin-right: 8px;
+    font-size: 24px;
+    transform: translateX(-10px);
 }
 
-/* Párrafo junto al icono */
+/* Texto descriptivo al lado del icono */
 .conocer p {
-  font-size: 18px;
-  margin: 0;
+    font-size: 18px;
+    margin: 0;
 }
 
-/* Botón para pulsar */
+/* Botón de la recomendación */
 .boton-recomendacion {
-  position: relative;
-  left: 50px;
-  font-family: var(--font-primary);
-  font-size: 18px;
-  border-radius: 6px;
-  font-weight: bold;
-  color: var(--white);
-  background-color: var(--primary-1);
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-  height: 45px;
-  width: 180px;
-  cursor: pointer;
-  border: none;
-  transition: background-color 0.3s ease;
+    position: relative;
+    left: 50px;
+    font-family: var(--font-primary);
+    font-size: 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: var(--white);
+    background-color: var(--primary-1);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    height: 45px;
+    width: 180px;
+    cursor: pointer;
+    /* Muestra cursor de mano al pasar */
+    border: none;
+    transition: background-color 0.3s ease;
+    /* Animación de color al pasar el mouse */
 }
 
 .boton-recomendacion:hover {
-  background-color: var(--primary-5);
+    background-color: var(--primary-5);
 }
 
-/* --- Media Queries para responsividad --- */
+/* Adaptación para pantallas grandes */
 @media (max-width: 1920px) {
     .recomendaciones {
         position: absolute;
@@ -148,35 +154,32 @@ a {
     }
 }
 
-
-/* Responsive Ordenador */
+/* Ajustes para pantallas de ordenador estándar */
 @media (max-width: 1440px) {
     .recomendaciones {
         position: absolute;
         top: 450px;
-        width: 100% auto; 
+        width: 100% auto;
         left: 200px auto;
         margin: 20px auto;
         padding: 15px;
         text-align: center;
     }
-
 }
 
-
-
-/* Responsive Smartphone */
+/* Estilos responsivos para smartphones */
 @media (max-width: 768px) {
     .recomendaciones {
         position: relative;
         top: 100px;
-        width: 90%; 
+        width: 90%;
         left: 340px auto;
         margin: 20px auto;
         padding: 15px;
         text-align: center;
     }
 
+    /* Cambia a diseño vertical en móviles */
     .conocer {
         display: flex;
         flex-direction: column;
@@ -185,17 +188,16 @@ a {
     }
 
     .boton-recomendacion {
-        width: 200px; 
-
+        width: 200px;
     }
 }
 
-/* Responsive Movil medio */
+/* Ajuste para móviles pequeños */
 @media (max-width: 500px) {
     .recomendaciones {
         position: relative;
         top: 100px;
-        width: 80%; 
+        width: 80%;
         left: 300px auto;
         margin: 20px auto;
         padding: 15px;
@@ -210,7 +212,6 @@ a {
     }
 
     .boton-recomendacion {
-        width: 200px; 
-
+        width: 200px;
     }
 }

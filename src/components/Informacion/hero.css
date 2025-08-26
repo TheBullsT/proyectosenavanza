@@ -55,43 +55,46 @@
 html {
     margin: 0;
     font-size: 62.5%;
-    /* Facilita el uso de rem (1rem = 10px) */
+    /* Ajusta base a 10px para facilitar cálculos con rem */
     box-sizing: border-box;
+    /* Controla cómo se calculan los tamaños de los elementos */
 }
 
 /* Herencia de box-sizing para pseudoelementos */
 :before,
 *:after {
     box-sizing: inherit;
+    /* Mantiene coherencia en el cálculo de tamaño */
 }
 
 /* Estilos del contenedor principal del hero */
 .contenedor_principal {
     display: flex;
-    /* Usa Flexbox para distribuir contenido */
+    /* Habilita distribución flexible */
     background-image: url(../../assets/img/inicio/fondo_completo.png);
-    /* Imagen de fondo */
+    /* Imagen decorativa */
     background-size: 100% 80vh;
-    /* Escala la imagen al ancho completo y 80% del alto visible */
+    /* Ajusta proporción de imagen */
     background-repeat: no-repeat;
     flex-direction: column;
-    /* Apila elementos en columna */
+    /* Elementos apilados verticalmente */
     justify-content: center;
-    /* Centra verticalmente */
+    /* Centrado vertical */
     align-items: center;
-    /* Centra horizontalmente */
+    /* Centrado horizontal */
     text-align: center;
-    /* Alinea texto al centro */
+    /* Centra el texto */
     width: 100%;
     height: 80vh;
-    /* Altura del hero */
+    /* Ocupa gran parte de la altura visible */
     color: var(--white);
-    /* Texto blanco por defecto */
+    /* Texto en blanco para contraste */
 }
 
 /* Efecto al pasar el mouse por encima: invierte el color del texto en strong */
 .page-select:hover strong {
     filter: brightness(0) invert(1);
+    /* Invierte colores para dar efecto visual */
 }
 
 /* Al pasar el mouse, cambia el color del texto general a negro */
@@ -108,11 +111,11 @@ html {
 @media (max-width: 768px) {
     .contenedor_principal h1 {
         font-size: var(--h2);
-        /* Reduce el tamaño del h1 */
+        /* Reduce tamaño para mejor legibilidad */
     }
 
     .contenedor_principal h2 {
         font-size: var(--h3);
-        /* Reduce el tamaño del h2 */
+        /* Ajusta jerarquía visual en móvil */
     }
 }

@@ -1,56 +1,84 @@
+// Importar React
 import React from "react";
-// Importa React para poder usar JSX y crear componentes funcionales
-
+// Importar jsPDF para generar archivos PDF
+import { jsPDF } from "jspdf";
+// Importar CSS del componente
 import './generarreporte.css';
-// Importa el archivo CSS específico para los estilos de este componente
-
+// Importar imagen de apoyo para el componente
 import reporte from '../../../../assets/img/img-resultados-diagnostico/reporte.png';
-// Importa la imagen 'reporte.png' que se usará en el componente
 
 function GenerarReporte() {
-    // Define un componente funcional llamado GenerarReporte
+    // Recuperar los datos guardados en localStorage con la clave "resultadoDiagnostico"
+    // Si no existen, usar un objeto vacío como valor por defecto
+    const datos = JSON.parse(localStorage.getItem("resultadoDiagnostico")) || {};
+
+    // Función que se ejecuta al hacer clic en el botón para generar el PDF
+    const handleDescargarPDF = () => {
+        // Crear un nuevo documento PDF
+        const doc = new jsPDF();
+
+        // Establecer el tamaño de fuente para el título
+        doc.setFontSize(18);
+        // Agregar texto principal al PDF
+        doc.text("Programa recomendado", 20, 20);
+
+        // Cambiar el tamaño de fuente para el contenido
+        doc.setFontSize(14);
+
+        // Obtener el nombre y la descripción del programa recomendado desde los datos
+        // Si no existen, asignar un valor por defecto
+        const nombre = datos?.programa_recomendado?.nombre || "No disponible";
+        const descripcion = datos?.programa_recomendado?.descripcion || "";
+
+        // Agregar el nombre del programa al PDF
+        doc.text(`Recomendación: ${nombre}`, 20, 40);
+        // Agregar subtítulo "Descripción"
+        doc.text("Descripción:", 20, 50);
+        // Agregar la descripción, dividiendo el texto para que no se salga del ancho del PDF
+        doc.text(doc.splitTextToSize(descripcion, 170), 20, 60);
+
+        // Guardar y descargar el archivo PDF con un nombre específico
+        doc.save("programa_recomendado.pdf");
+    };
 
     return (
-        // Retorna el JSX que define la estructura visual del componente
+        // Contenedor principal del componente
         <div className="container-reporte">
-            {/* Contenedor principal del reporte */}
-
+            {/* Título principal */}
             <div className="titulo-reporte">
-                {/* Contenedor para el título */}
                 <h1>
                     ¿Quieres tener tus resultados
-                    <br /> {/* Salto de línea para mejor presentación */}
+                    <br />
                     del diagnóstico?
                 </h1>
             </div>
 
+            {/* Contenedor que agrupa el contenido de texto y la imagen */}
             <div className="generar-reporte">
-                {/* Contenedor principal para el contenido y la imagen */}
-
+                {/* Contenido textual y botón */}
                 <div className="contenido-reporte">
-                    {/* Sección que contiene el texto descriptivo y el botón */}
                     <p className="texto-reporte">
-                        Genera un <strong> reporte </strong> del
-                        <br /> {/* Saltos de línea para formato del texto */}
+                        Genera un <strong>reporte</strong> del
+                        <br />
                         resultado del diagnóstico
                         <br />
-                        para que puedas verlos
+                        para que puedas verlo
                         <br />
                         con más calma
                     </p>
 
-                    <button className="boton-generar-reporte">
-                        {/* Botón para que el usuario genere el reporte */}
-                        Generar Reporte
+                    {/* Botón que ejecuta la función para generar el PDF */}
+                    <button onClick={handleDescargarPDF} className="boton-generar-reporte" type="button">
+                        Generar reporte
                     </button>
                 </div>
 
-                <img src={reporte} alt="Imagen reporte" />
-                {/* Imagen ilustrativa relacionada con el reporte */}
+                {/* Imagen de apoyo al lado del contenido */}
+                <img src={reporte} alt="Imagen del reporte" />
             </div>
         </div>
     );
 }
 
+// Exportar el componente para usarlo en otras partes de la aplicación
 export default GenerarReporte;
-// Exporta el componente para que pueda ser usado en otras partes de la aplicación

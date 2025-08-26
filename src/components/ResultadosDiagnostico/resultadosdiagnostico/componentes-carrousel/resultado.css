@@ -1,296 +1,305 @@
 :root {
-  /* Colores Primarios */
-  --primary-1: #39A900;
-  --primary-2: #36AE0F;
-  --primary-3: #42B31E;
-  --primary-4: #4FB82D;
-  --primary-5: #5BBD3C;
-  --primary-6: #68C24B;
-  --primary-7: #75C75A;
-  --primary-8: #81CC69;
-  --primary-9: #8ED178;
-  --primary-10: #9AD787;
-  --primary-11: #A7DC96;
-  --primary-12: #B3E1A5;
-  --primary-13: #C0E6B4;
-  --primary-14: #CDEBC3;
-  --primary-15: #D9F0D2;
-  --primary-16: #E6F5E1;
-  --primary-17: #F2FAF0;
+    /* Colores Primarios */
+    --primary-1: #39A900;
+    --primary-2: #36AE0F;
+    --primary-3: #42B31E;
+    --primary-4: #4FB82D;
+    --primary-5: #5BBD3C;
+    --primary-6: #68C24B;
+    --primary-7: #75C75A;
+    --primary-8: #81CC69;
+    --primary-9: #8ED178;
+    --primary-10: #9AD787;
+    --primary-11: #A7DC96;
+    --primary-12: #B3E1A5;
+    --primary-13: #C0E6B4;
+    --primary-14: #CDEBC3;
+    --primary-15: #D9F0D2;
+    --primary-16: #E6F5E1;
+    --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
-  --black: #000000;
-  --gray-1: #0F0F0F;
-  --gray-2: #1E1E1E;
-  --gray-3: #2D2D2D;
-  --gray-4: #3C3C3C;
-  --gray-5: #5A5A5A;
-  --gray-6: #696969;
-  --gray-7: #787878;
-  --gray-8: #878787;
-  --gray-9: #A5A5A5;
-  --gray-10: #969696;
-  --gray-11: #A5A5A5;
-  --gray-12: #B4B4B4;
-  --gray-13: #C3C3C3;
-  --gray-14: #D2D2D2;
-  --gray-15: #E1E1E1;
-  --gray-16: #F0F0F0;
-  --white: #FFFFFF;
+    /* Grises y Neutros */
+    --black: #000000;
+    --gray-1: #0F0F0F;
+    --gray-2: #1E1E1E;
+    --gray-3: #2D2D2D;
+    --gray-4: #3C3C3C;
+    --gray-5: #5A5A5A;
+    --gray-6: #696969;
+    --gray-7: #787878;
+    --gray-8: #878787;
+    --gray-9: #A5A5A5;
+    --gray-10: #969696;
+    --gray-11: #A5A5A5;
+    --gray-12: #B4B4B4;
+    --gray-13: #C3C3C3;
+    --gray-14: #D2D2D2;
+    --gray-15: #E1E1E1;
+    --gray-16: #F0F0F0;
+    --white: #FFFFFF;
 
-  /* Tipografías principales */
-  --font-primary: 'Work Sans', sans-serif;
-  --font-secondary: 'Calibri', sans-serif;
+    /* Tipografías principales */
+    --font-primary: 'Work Sans', sans-serif;
+    --font-secondary: 'Calibri', sans-serif;
 
-  /* Tamaños estándar para encabezados */
-  --h1: 32px;
-  --h2: 24px;
-  --h3: 20px;
-  --h4: 16px;
-  --h5: 14px;
-  --h6: 12px;
+    /* Tamaños estándar para encabezados */
+    --h1: 32px;
+    --h2: 24px;
+    --h3: 20px;
+    --h4: 16px;
+    --h5: 14px;
+    --h6: 12px;
 }
 
 /* Reseteo y base para html */
 html {
-  margin: 0;
-  /* Eliminar margen por defecto */
-  font-size: 62.5%;
-  /* 1rem = 10px para facilitar cálculos */
-  box-sizing: border-box;
-  /* Incluir padding y border dentro del tamaño */
+    margin: 0;
+    /* Eliminar margen por defecto */
+    font-size: 62.5%;
+    /* 1rem = 10px para facilitar cálculos */
+    box-sizing: border-box;
+    /* Incluir padding y border dentro del tamaño */
 }
 
 /* Aplicar box-sizing a pseudo-elementos y todos los elementos */
 :before,
 *:after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 /* Quitar subrayado a todos los enlaces */
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
-/* Contenedor principal del componente Resultado, usando Grid para organizar filas */
+/* Contenedor principal del componente Resultado, usando Grid */
 .container-resultado {
-  display: grid;
-  grid-template-rows: auto auto;
-  /* Dos filas: una para título y otra para contenido */
-  grid-template-columns: 2fr;
-  /* Solo una columna, se usa 2fr para posible extensión futura */
-  text-align: center;
-  /* Centrar texto */
+    display: grid;
+    grid-template-rows: auto auto;
+    /* Dos filas: título y contenido */
+    grid-template-columns: 2fr;
+    /* Solo una columna, con posibilidad de extensión */
+    text-align: center;
+    /* Centrar texto */
 }
 
 /* Contenedor para el título del reporte */
 .titulo-reporte {
-  grid-column: 1;
-  /* Ocupa primera columna */
-  grid-row: 1;
-  /* Primera fila */
+    grid-column: 1;
+    /* Ocupa primera columna */
+    grid-row: 1;
+    /* Primera fila */
 }
 
-/* Contenedor que incluye la imagen y el bloque con el programa recomendado */
+/* Contenedor que incluye imagen y bloque de programa recomendado */
 .resultado-total {
-  grid-column: 1;
-  /* Columna 1 */
-  grid-row: 2;
-  /* Fila 2 */
-  display: flex;
-  /* Flexbox para alinear horizontalmente */
-  justify-content: space-between;
-  /* Separar elementos al máximo */
-  align-items: center;
-  /* Centrar verticalmente */
+    grid-column: 1;
+    /* Columna 1 */
+    grid-row: 2;
+    /* Fila 2 */
+    display: flex;
+    /* Flexbox para alinear horizontalmente */
+    justify-content: space-between;
+    /* Separar elementos al máximo */
+    align-items: center;
+    /* Centrar verticalmente */
 }
 
 /* Imagen del resultado */
 .resultado-total img {
-  width: 500px;
-  height: 500px;
+    width: 500px;
+    height: 500px;
 }
 
 /* Caja del programa recomendado */
 .programa-recomendado {
-  display: flex;
-  flex-direction: column;
-  /* Apilar elementos verticalmente */
-  align-items: center;
-  /* Centrar horizontalmente */
-  gap: 50px;
-  /* Separación entre elementos internos */
-  border-radius: 6px;
-  /* Bordes redondeados */
-  font-size: var(--h3);
-  /* Tamaño de fuente principal */
-  font-weight: bold;
-  /* Texto en negrita */
-  width: 530px;
-  height: 430px;
-  border: 1px solid var(--gray-12);
-  /* Borde gris claro */
-  margin-left: 10px;
-  /* Espacio a la izquierda */
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-  /* Sombra para dar profundidad */
+    display: flex;
+    flex-direction: column;
+    /* Apilar elementos verticalmente */
+    align-items: center;
+    /* Centrar horizontalmente */
+    gap: 50px;
+    /* Separación entre elementos internos */
+    border-radius: 6px;
+    /* Bordes redondeados */
+    font-size: var(--h3);
+    /* Tamaño de fuente principal */
+    font-weight: bold;
+    /* Texto en negrita */
+    width: 530px;
+    height: 430px;
+    border: 1px solid var(--gray-12);
+    /* Borde gris claro */
+    margin-left: 10px;
+    /* Espacio a la izquierda */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    /* Sombra para profundidad */
 }
 
 /* Estilos para el botón "Ver más" */
 .boton-ver-mas {
-  font-family: var(--font-primary);
-  /* Fuente principal */
-  font-size: 18px;
-  border-radius: 6px;
-  /* Bordes redondeados */
-  font-weight: bold;
-  color: white;
-  /* Texto blanco */
-  background-color: #32a900;
-  /* Fondo verde */
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-  /* Sombra */
-  height: 45px;
-  width: 180px;
+    font-family: var(--font-primary);
+    /* Fuente principal */
+    font-size: 18px;
+    border-radius: 6px;
+    /* Bordes redondeados */
+    font-weight: bold;
+    color: white;
+    /* Texto blanco */
+    background-color: #32a900;
+    /* Fondo verde */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    /* Sombra */
+    height: 45px;
+    width: 180px;
 }
 
-/* Media query para pantallas menores a 786px (tablets y móviles) */
+/* Media query para pantallas menores a 786px */
 @media(max-width: 786px) {
-  .resultado-total {
-    justify-content: center;
-    /* Centrar contenido horizontalmente */
-  }
+    .resultado-total {
+        justify-content: center;
+        /* Centrar contenido horizontalmente */
+    }
 
-  .resultado-total img {
-    width: 200px;
-    /* Reducir tamaño imagen */
-    height: 200px;
-  }
+    .resultado-total img {
+        width: 200px;
+        /* Reducir tamaño imagen */
+        height: 200px;
+    }
 
-  .programa-recomendado {
-    width: 350px;
-    /* Reducir ancho caja recomendada */
-  }
+    .programa-recomendado {
+        width: 350px;
+        /* Reducir ancho caja recomendada */
+    }
 }
 
 /* Pop-up que cubre toda la pantalla */
 .popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  /* Fondo oscuro semitransparente */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  /* Sobre todo lo demás */
-}
-
-/* Contenedor del contenido del pop-up */
-.popup-contenido {
-  background-color: var(--white);
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  border-radius: 10px;
-  padding: 30px;
-  max-width: 900px;
-  width: 90%;
-  gap: 30px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Transiciones de entrada/salida */
-.popup {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: all 0.3s ease;
-  pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Fondo oscuro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Sobre todo lo demás */
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+    pointer-events: none;
 }
 
 /* Cuando se activa el pop-up */
 .popup.mostrar {
-  opacity: 1;
-  transform: scale(1);
-  pointer-events: auto;
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
 }
 
 /* Cuando se inicia la salida (antes de desmontar) */
 .popup.ocultar {
-  opacity: 0;
-  transform: scale(0.95);
-  pointer-events: none;
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+/* Contenedor del contenido del pop-up */
+.popup-contenido {
+    background-color: var(--white);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    /* Imagen y texto lado a lado */
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 900px;
+    width: 90%;
+    gap: 30px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Imagen dentro del pop-up */
 .popup-imagen {
-  width: 400px;
-  height: 400px;
-  border-radius: 10px;
-  object-fit: cover;
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    object-fit: cover;
+    /* Ajusta imagen sin deformar */
 }
 
 /* Información del programa en el pop-up */
 .popup-info {
-  padding: 40px;
-  width: 60%;
-  font-family: var(--font-primary);
-  max-height: 400px;         /* Limita el alto para evitar desbordamiento */
-  overflow-y: auto;          /* Habilita scroll vertical */
-  white-space: pre-wrap;     /* Mantiene saltos de línea si los hay */
-  scrollbar-width: thin;     /* Estilo de scroll en Firefox */
+    padding: 40px;
+    width: 60%;
+    font-family: var(--font-primary);
+    max-height: 400px;
+    /* Limita alto */
+    overflow-y: auto;
+    /* Scroll vertical si excede */
+    white-space: pre-wrap;
+    /* Mantener saltos de línea */
+    line-height: 1.5;
+    /* Espaciado entre líneas */
+    scrollbar-width: thin;
+    /* Scroll delgado Firefox */
+    text-align: justify;
+    /* Justificar texto */
+    word-wrap: break-word;
+    /* Rompe palabras largas */
 }
 
-/* Opcional: scroll bonito en navegadores WebKit (Chrome, Edge, Safari) */
+/* Scroll personalizado para WebKit */
 .popup-info::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 .popup-info::-webkit-scrollbar-thumb {
-  background-color: var(--primary-1);
-  border-radius: 4px;
+    background-color: var(--primary-1);
+    border-radius: 4px;
 }
 
 .popup-info::-webkit-scrollbar-track {
-  background-color: #f0f0f0;
+    background-color: #f0f0f0;
 }
-
 
 /* Botón para cerrar el pop-up */
 .boton-cerrar {
-  margin-top: 20px;
-  background-color: var(--primary-1);
-  color: var(--white);
-  border: none;
-  padding: 12px 25px;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 4px;
-  text-align: center;
+    margin-top: 20px;
+    background-color: var(--primary-1);
+    color: var(--white);
+    border: none;
+    padding: 12px 25px;
+    margin-left: 35%;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    text-align: center;
 }
 
 /* Responsivo para pantallas pequeñas */
 @media(max-width: 786px) {
-  .popup-contenido {
-    flex-direction: column;
-    align-items: center;
-  }
+    .popup-contenido {
+        flex-direction: column;
+        /* Imagen arriba, texto abajo */
+        align-items: center;
+    }
 
-  .popup-imagen {
-    width: 100%;
-    height: auto;
-  }
+    .popup-imagen {
+        width: 100%;
+        height: auto;
+    }
 
-  .popup-info {
-    font-size: var(--h5);
-    text-align: center;
-  }
+    .popup-info {
+        font-size: var(--h5);
+        text-align: center;
+    }
 
-  .boton-cerrar {
-    align-self: center;
-  }
+    .boton-cerrar {
+        align-self: center;
+    }
 }

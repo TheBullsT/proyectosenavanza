@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 // Importa hooks de estado y efecto de React
 import { useState, useEffect } from "react";
 
-// Importa la instancia de API configurada para login y verificación
+// Importa la instancia de API configurada para inicio de sesión y verificación
 import { apiLogin } from "../api/apis";
 
 // Importa un componente de carga que se muestra mientras se valida la autenticación
@@ -17,7 +17,7 @@ import { toast } from "react-toastify";
  * Componente que protege rutas privadas.
  * Solo permite el acceso si hay una cookie JWT válida y, opcionalmente,
  * si el usuario tiene el rol correcto.
- * Si no cumple, redirige al login.
+ * Si no cumple, redirige al inicio de sesión.
  */
 function ProtectRoute({ children, rol = null }) {
     // Estado que indica si el usuario está autorizado:
@@ -47,7 +47,7 @@ function ProtectRoute({ children, rol = null }) {
                 // Si se requiere un rol específico y no coincide, deniega acceso
                 if (rol && user.rol !== rol) {
                     toast.warning("No tienes permisos para acceder a esta ruta.");
-                    navigate("/login"); // Redirige manualmente al login
+                    navigate("/login"); // Redirige manualmente al inicio de sesión
                     return;
                 }
 
@@ -59,7 +59,7 @@ function ProtectRoute({ children, rol = null }) {
             if (error.response?.status === 401) {
                 await handleRefresh();
             } else {
-                // Si es otro error, redirige directamente al login
+                // Si es otro error, redirige directamente al inicio de sesión
                 navigate("/login");
             }
         }

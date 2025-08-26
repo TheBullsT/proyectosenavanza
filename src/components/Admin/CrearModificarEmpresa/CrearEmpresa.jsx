@@ -1,22 +1,24 @@
-// Importación de React 
+// Importación de React y el hook useState para manejar estados locales
 import React, { useState } from "react";
-// Importación de estilos 
+// Importación del archivo de estilos CSS
 import './CrearModificar.css';
-// Importación del componente de NavBar
+// Componente de la barra de navegación del administrador
 import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
-// Importación de los iconos
+// Íconos de la librería react-icons
 import { MdHomeRepairService } from "react-icons/md";
-// Importar AXIOS
+// Cliente HTTP para realizar peticiones a la API
 import axios from "axios";
-// Importar Toast
+// Librería para mostrar notificaciones emergentes
 import { toast } from "react-toastify";
-// Importar APIS
+// API específica para crear usuarios/empresas
 import { apiCreateUser } from "../../../api/apis";
 
-// Componente funcional llamado CrearEmpresa
+import LoadingBaseDatos from "../../Loading/loading_base_datos";
+
+// Componente funcional principal para la creación de empresas
 const CrearEmpresa = () => {
 
-    // Creando Estado local
+    // Declaración de variables de estado para los campos del formulario
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [rol, setRol] = useState("");
@@ -28,12 +30,15 @@ const CrearEmpresa = () => {
     const [direccion, setDireccion] = useState("");
     const [actividad, setActividad] = useState("");
 
-    // Conectar a la base de datos para crear usuario
+    // Estado para indicar si la acción está en proceso
+    const [loading, setLoading] = useState(false);
 
+    // Función para manejar el envío del formulario
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Evita que se recargue la página
+        setLoading(true); // Activa la pantalla de carga
         try {
-
+            // Petición POST a la API para crear la empresa
             const response = await apiCreateUser.post("create/",
                 {
                     username: username,
@@ -50,9 +55,8 @@ const CrearEmpresa = () => {
                         actividad_economica: actividad
                     }
                 },
-
                 {
-                    withCredentials: true,
+                    withCredentials: true, // Incluye cookies de autenticación
                     headers: {
                         "Content-Type": "application/json",
                     },
@@ -60,12 +64,12 @@ const CrearEmpresa = () => {
             );
 
             console.log(response.data);
-            toast.success("Empresa creada correctamente");
+            toast.success("Empresa creada correctamente"); // Mensaje de éxito
 
-            // Se limpian los campos
+            // Limpieza de los campos después de enviar el formulario
             setUsername("");
             setPassword("");
-            setRol(""); 
+            setRol("");
             setCorreo("");
             setTipoDocumento("");
             setNumeroDocumento("");
@@ -73,8 +77,9 @@ const CrearEmpresa = () => {
             setTelefono("");
             setDireccion("");
             setActividad("");
-            
+
         } catch (error) {
+            // Captura y muestra el error si la creación falla
             console.error("Error al crear la empresa:", {
                 status: error.response?.status,
                 statusText: error.response?.statusText,
@@ -84,33 +89,39 @@ const CrearEmpresa = () => {
             toast.error(
                 `Error: ${error.response?.status} - ${error.response?.statusText}`
             );
+        } finally {
+            setLoading(false); // Finaliza el estado de carga
         }
     };
 
+    // Renderiza el componente de carga si está en proceso
+    if (loading) {
+        return <LoadingBaseDatos mensaje="Creando empresa, por favor espere..." />;
+    }
 
     return (
-        // Contenedor principal del lado derecho de la interfaz
+        // Contenedor general de la parte derecha del dashboard
         <div className="main-right-bar">
 
-            {/* Barra de navegación del administrador */}
+            {/* Barra de navegación superior para administrador */}
             <NavbarAdmin />
 
-            {/* Contenedor del formulario de empresa */}
+            {/* Contenedor principal del formulario */}
             <div className="empresa-container-modificar">
 
-                {/* Título y breadcrumbs (ruta de navegación) */}
+                {/* Encabezado y ruta de navegación */}
                 <p className="title">
                     Crear Empresa
                     <span className="breadcrumb">
-                        You are here: <strong className="breadcrumb-active">Empresas</strong>
+                        Usted se encuentra en: <strong className="breadcrumb-active">Empresas</strong>
                     </span>
                 </p>
 
-                {/* Información introductoria del formulario */}
+                {/* Sección con ícono e información introductoria */}
                 <div className="form-info">
                     <div className="icon">
-                        <MdHomeRepairService /> {/* Ícono de empresa */}
-                        <i className="fas fa-home"></i> {/* Ícono adicional (opcional) */}
+                        <MdHomeRepairService /> {/* Icono ilustrativo */}
+                        <i className="fas fa-home"></i>
                     </div>
                     <p>
                         En este espacio se podrá crear el usuario de la empresa que esté vinculada con nosotros.<br />
@@ -120,11 +131,11 @@ const CrearEmpresa = () => {
                     </p>
                 </div>
 
-                {/* Formulario de creación de empresa */}
+                {/* Formulario de ingreso de datos */}
                 <form method="POST" onSubmit={handleSubmit} className="form">
                     <h2 className="form-title">Nueva Empresa</h2>
 
-                    {/* Fila de tipo y número de documento */}
+                    {/* Fila para tipo y número de documento */}
                     <div className="form-row">
                         <div className="form-group">
                             <label>Tipo de documentos</label>
@@ -140,7 +151,7 @@ const CrearEmpresa = () => {
                         </div>
                     </div>
 
-                    {/* Campo para el rol*/}
+                    {/* Campo para seleccionar el rol */}
                     <div className="form-group">
                         <label>Rol</label>
                         <select onChange={(e) => setRol(e.target.value)} value={rol} required>
@@ -148,7 +159,8 @@ const CrearEmpresa = () => {
                             <option value="empresa">Empresa</option>
                         </select>
                     </div>
-                    {/* Nombre de usuario y contraseña */}
+
+                    {/* Campos para usuario y contraseña */}
                     <div className="form-group">
                         <label>Nombre de usuario</label>
                         <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} required />
@@ -159,13 +171,13 @@ const CrearEmpresa = () => {
                         <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} required />
                     </div>
 
-                    {/* Campo para alias o nombre corto de la empresa */}
+                    {/* Campo para la razón social de la empresa */}
                     <div className="form-group">
                         <label>Razón Social</label>
                         <input type="text" onChange={(e) => setNickName(e.target.value)} value={nickName} required />
                     </div>
 
-                    {/* Fila para teléfono y correo */}
+                    {/* Fila con teléfono y correo */}
                     <div className="form-row">
                         <div className="form-group">
                             <label>Número de Teléfono Actual</label>
@@ -178,7 +190,7 @@ const CrearEmpresa = () => {
                         </div>
                     </div>
 
-                    {/* Fila para dirección y actividad económica */}
+                    {/* Fila con dirección y actividad económica */}
                     <div className="form-row">
                         <div className="form-group">
                             <label>Dirección actual</label>
@@ -191,18 +203,16 @@ const CrearEmpresa = () => {
                         </div>
                     </div>
 
-                    {/* Botones de acción */}
+                    {/* Botones para crear o cancelar */}
                     <div className="form-actions">
                         <button type="submit" className="btn-create">Crear Empresa</button>
                         <button type="button" className="btn-cancel">Cancelar</button>
                     </div>
-
-
                 </form>
             </div>
         </div>
     );
 }
 
-// Exportación del componente para poder ser usado en otros archivos
+// Exporta el componente para su uso en otras partes de la app
 export default CrearEmpresa;

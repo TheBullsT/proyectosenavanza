@@ -1,5 +1,5 @@
 :root {
-  /* Colores Primarios */
+  /* Paleta de colores principal (variaciones de verde) */
   --primary-1: #39A900;
   --primary-2: #36AE0F;
   --primary-3: #42B31E;
@@ -18,7 +18,7 @@
   --primary-16: #E6F5E1;
   --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
+  /* Escala de grises para fondos, textos y bordes */
   --black: #000000;
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Tipografía usada en la interfaz */
   --font-primary: 'Work Sans', sans-serif;
   --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
+  /* Tamaños de fuente predefinidos */
   --h1: 32px;
   --h2: 24px;
   --h3: 20px;
@@ -53,6 +53,7 @@
 
 body {
   font-family: var(--font-primary);
+  /* Fuente principal */
   margin: 0;
   padding: 0;
 }
@@ -60,29 +61,34 @@ body {
 html {
   margin: 0;
   font-size: 62.5%;
+  /* Facilita usar rem para escalas */
   box-sizing: border-box;
 }
 
 .main-rightbar {
   flex: 4;
   background-color: rgb(228, 228, 228);
+  /* Fondo gris claro */
 }
 
 .ItemContainer {
   display: flex;
   margin: auto;
   justify-content: center;
+  /* Centra elementos hijos */
 }
 
 .ItemContainer1 {
   background-color: var(--white);
   width: 300px;
   height: 25vh;
+  /* Altura proporcional a la ventana */
   margin-left: 10px;
   margin-top: 10px;
   border-radius: 6px;
   display: flex;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  /* Sombra sutil */
 }
 
 .taskProgress {
@@ -94,7 +100,6 @@ html {
   font-size: var(--h5);
 }
 
-
 .taskCounter1 {
   text-align: start;
   font-size: 24px;
@@ -102,6 +107,7 @@ html {
   margin-left: 10px;
   margin-top: -15px;
   color: var(--primary-1);
+  /* Verde principal */
 }
 
 .taskCounter2 {
@@ -120,8 +126,8 @@ html {
   margin-left: 10px;
   margin-top: -15px;
   color: #ffa600;
+  /* Naranja */
 }
-
 
 .currentMonth1 {
   text-align: start;
@@ -130,7 +136,6 @@ html {
   color: var(--black);
   font-size: bold;
 }
-
 
 .barchartContainer {
   margin-left: 50px;
@@ -171,6 +176,7 @@ html {
 
 .TaskProgramas {
   flex: 1.5;
+  /* Ocupa más espacio relativo */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -219,4 +225,5 @@ html {
   color: var(--white);
   font-weight: bold;
   cursor: pointer;
+  /* Cambia el cursor al pasar */
 }

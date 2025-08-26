@@ -1,5 +1,5 @@
 :root {
-  /* Colores Primarios */
+  /* Colores primarios para la identidad visual */
   --primary-1: #39A900;
   --primary-2: #36AE0F;
   --primary-3: #42B31E;
@@ -18,14 +18,13 @@
   --primary-16: #E6F5E1;
   --primary-17: #F2FAF0;
 
-  /* Colores Secundarios*/
+  /* Color secundario para elementos de apoyo */
   --secundary-1: #50E5F9;
 
-  /* Colores Terciarios*/
+  /* Color terciario para elementos destacados */
   --terciary-1: #FDC300;
 
-
-  /* Grises y Neutros */
+  /* Escala de grises y neutros para fondos y textos */
   --black: #000000;
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
@@ -45,11 +44,11 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Tipografía principal y secundaria */
   --font-primary: 'Work Sans', sans-serif;
   --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
+  /* Tamaños de texto según jerarquía */
   --h1: 32px;
   --h2: 24px;
   --h3: 20px;
@@ -67,20 +66,18 @@ body {
 html {
   margin: 0;
   font-size: 62.5%;
+  /* Ajuste para trabajar con rem (1rem = 10px) */
   box-sizing: border-box;
 }
 
-
-
 .main-right-bar {
   flex: 4;
+  /* Ocupa una proporción dentro del layout */
   background-color: rgb(228, 228, 228);
 }
 
 .empresa-container-modificar {
-
   padding: 30px 40px;
-
 }
 
 .title {
@@ -105,6 +102,7 @@ html {
   display: flex;
   align-items: start;
   background: #e8f5e9;
+  /* Fondo de color verde claro */
   gap: 16px;
   padding: 15px;
   margin-top: 20px;
@@ -117,6 +115,7 @@ html {
   color: var(--white);
   padding: 16px;
   border-radius: 50%;
+  /* Ícono circular */
   font-size: 24px;
 }
 
@@ -137,7 +136,9 @@ html {
 .form-row {
   display: flex;
   gap: 20px;
+  /* Espaciado entre campos */
   flex-wrap: wrap;
+  /* Permite que los campos bajen a otra línea si no caben */
 }
 
 .form-group {
@@ -162,6 +163,7 @@ html {
 .form-actions {
   display: flex;
   justify-content: center;
+  /* Centra los botones */
   gap: 15px;
   margin-top: 25px;
 }
@@ -184,8 +186,10 @@ html {
   cursor: pointer;
 }
 
+/* Estilos responsivos para pantallas pequeñas */
 @media (max-width: 600px) {
   .form-row {
     flex-direction: column;
+    /* Apila los campos en una sola columna */
   }
 }

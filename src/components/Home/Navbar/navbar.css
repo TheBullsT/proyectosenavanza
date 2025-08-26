@@ -1,5 +1,5 @@
 :root {
-    /* Colores Primarios: diferentes tonos de verde para el diseño */
+    /* Paleta de colores principal en tonos verdes */
     --primary-1: #39A900;
     --primary-2: #36AE0F;
     --primary-3: #42B31E;
@@ -18,7 +18,7 @@
     --primary-16: #E6F5E1;
     --primary-17: #F2FAF0;
 
-    /* Grises y Neutros: tonos para textos y fondos neutrales */
+    /* Escala de grises para fondos, textos y bordes */
     --black: #000000;
     --gray-1: #0F0F0F;
     --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
     --gray-16: #F0F0F0;
     --white: #FFFFFF;
 
-    /* Tipografía: fuentes principales y secundarias para textos */
+    /* Tipografías para el sitio */
     --font-primary: 'Work Sans', sans-serif;
     --font-secondary: 'Calibri', sans-serif;
 
-    /* Jerarquías tipográficas: tamaños para títulos y subtítulos */
+    /* Tamaños para títulos */
     --h1: 32px;
     --h2: 24px;
     --h3: 20px;
@@ -51,95 +51,86 @@
     --h6: 12px;
 }
 
-/* Reset de márgenes y tamaño base de fuente para toda la página */
+/* Se ajusta tamaño base a 62.5% para que 1rem = 10px */
 html {
     margin: 0;
     font-size: 62.5%;
-    /* Esto facilita usar rem para escalas relativas */
     box-sizing: border-box;
-    /* Incluye padding y borde dentro del tamaño */
+    /* Controla cómo se calculan los anchos */
 }
 
-/* Hereda box-sizing para pseudo-elementos antes y después */
+/* Hereda box-sizing a pseudo-elementos */
 :before,
 *:after {
     box-sizing: inherit;
 }
 
-/* Estilos base para el cuerpo del documento */
+/* Estilo global del body */
 body {
     font-size: 16px;
+    /* Tamaño de texto base */
     font-family: var(--font-primary);
+    /* Fuente principal */
 }
 
-/* Remueve subrayado por defecto en todos los enlaces */
+/* Enlaces sin subrayado */
 a {
     text-decoration: none;
     cursor: pointer;
-    /* Mejor poner cursor pointer solo en los enlaces */
 }
 
-/* Contenedor principal de la barra de navegación */
+/* Contenedor de la barra de navegación */
 .nav-bar {
     display: flex;
     justify-content: center;
-    /* Centra horizontalmente el contenido */
+    /* Centrado horizontal */
     align-items: center;
-    /* Centra verticalmente el contenido */
-    text-align: center;
+    /* Centrado vertical */
     height: 40px;
     width: 100%;
     border-bottom: 1px solid rgb(185, 184, 184);
-    /* Línea inferior sutil */
+    /* Línea separadora */
 }
 
-/* El contenedor UL es flex para alinear horizontalmente los elementos */
+/* Lista de enlaces en la barra de navegación */
 .nav-links ul {
     display: flex;
     justify-content: center;
-    /* Centra horizontalmente los elementos */
     align-items: center;
-    /* Centra verticalmente */
     gap: 5rem;
-    /* Espacio entre los links, más escalable */
+    /* Espaciado entre enlaces */
     padding: 0;
-    /* Remueve padding predeterminado */
     margin: 0;
-    /* Remueve margen predeterminado */
     list-style: none;
-    /* Remueve los bullets por defecto */
 }
 
-/* Estilo para enlaces dentro de los elementos de la lista */
+/* Enlaces individuales */
 .nav-links li a {
     color: black;
-    text-decoration: none;
     font-size: 1.8rem;
     padding-bottom: 2px;
     border-bottom: 2px solid transparent;
-    /* Para animar el borde inferior */
+    /* Preparado para animación hover */
     transition: border-color 0.3s ease;
+    /* Suaviza el cambio */
 }
 
-/* Efecto hover en cada enlace: línea verde abajo */
+/* Efecto hover: línea inferior verde */
 .nav-links li a:hover {
     border-bottom: 3px solid var(--primary-1);
 }
 
-/* Responsive para pantallas medianas (tablets, etc) */
+/* Diseño para pantallas medianas */
 @media (max-width: 768px) {
     .nav-bar {
         flex-direction: column;
-        /* Apila verticalmente la barra */
+        /* Apila elementos */
         height: auto;
-        /* Ajusta altura automática */
     }
 
     .nav-links ul {
         flex-direction: column;
-        /* Lista vertical */
         gap: 2rem;
-        /* Espacio entre elementos más pequeño */
     }
 
     .nav-links li a {
@@ -147,18 +138,16 @@ a {
     }
 }
 
-/* Responsive para pantallas pequeñas (móviles) */
+/* Diseño para pantallas pequeñas */
 @media (max-width: 480px) {
     .nav-links ul {
         flex-direction: column;
         gap: 1rem;
-        /* Espacio aún menor entre links */
         padding: 0;
-        /* Quitar padding para mejor ajuste */
     }
 
     .nav-links li a {
         font-size: 1.4rem;
-        /* Reduce tamaño de fuente para móviles */
+        /* Texto más pequeño */
     }
 }

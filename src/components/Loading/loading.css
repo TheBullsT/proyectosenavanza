@@ -1,5 +1,5 @@
 :root {
-    /* Colores Primarios: tonos verdes para la paleta principal */
+    /* Paleta de colores principales: tonos verdes */
     --primary-1: #39A900;
     --primary-2: #36AE0F;
     --primary-3: #42B31E;
@@ -18,7 +18,7 @@
     --primary-16: #E6F5E1;
     --primary-17: #F2FAF0;
 
-    /* Grises y neutros para textos, fondos y bordes */
+    /* Colores grises y neutros para textos, fondos y bordes */
     --black: #000000;
     --gray-1: #0F0F0F;
     --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
     --gray-16: #F0F0F0;
     --white: #FFFFFF;
 
-    /* Tipografía principal y secundaria */
+    /* Fuentes principales y secundarias */
     --font-primary: 'Work Sans', sans-serif;
     --font-secondary: 'Calibri', sans-serif;
 
-    /* Tamaños base para jerarquías tipográficas */
+    /* Tamaños de fuente base */
     --h1: 32px;
     --h2: 24px;
     --h3: 20px;
@@ -51,98 +51,101 @@
     --h6: 12px;
 }
 
-/* Reseteo y configuración base del html */
+/* Configuración general del documento */
 html {
     margin: 0;
     font-size: 62.5%;
-    /* 1rem = 10px para facilitar cálculos */
+    /* 1rem = 10px */
     box-sizing: border-box;
-    /* Incluye padding y border en el ancho total */
+    /* Incluye padding y borde en el ancho total */
 }
 
-/* Asegura que todos los elementos y pseudoelementos usen box-sizing heredado */
+/* Asegura que todos los elementos usen box-sizing heredado */
 *:before,
 *:after {
     box-sizing: inherit;
 }
 
-/* Estilo base para el body */
+/* Estilos generales para el cuerpo */
 body {
     font-size: 16px;
-    /* Tamaño de fuente estándar para lectura */
+    /* Tamaño base de texto */
     font-family: var(--font-primary);
+    /* Fuente principal */
 }
 
-/* Estilo base para enlaces */
+/* Quita subrayado de enlaces */
 a {
     text-decoration: none;
-    /* Quita el subrayado */
 }
 
-/* Tamaños tipográficos con rem basados en variables definidas */
+/* Tamaños para títulos */
 h1 {
     font-size: 3.2rem;
-    /* 32px */
 }
 
+/* 32px */
 h2 {
     font-size: 2.4rem;
-    /* 24px */
 }
 
+/* 24px */
 h3 {
     font-size: 2.0rem;
-    /* 20px */
 }
 
+/* 20px */
 h4 {
     font-size: 1.6rem;
-    /* 16px */
 }
 
+/* 16px */
 h5 {
     font-size: 1.4rem;
-    /* 14px */
 }
 
-/* Contenedor principal del componente de carga */
+/* 14px */
+
+/* Contenedor principal del loading */
 .loading-container {
     display: flex;
     flex-direction: column;
+    /* Elementos en columna */
     align-items: center;
+    /* Centra horizontal */
+    justify-content: center;
+    /* Centra vertical */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 9999;
-    /* Centra horizontalmente */
-    justify-content: center;
-    /* Centra verticalmente */
+    /* Siempre encima */
     height: 100vh;
-    /* Ocupa toda la altura de la pantalla */
+    /* Toda la pantalla */
     background: #ffffff;
     /* Fondo blanco */
     color: #333;
-    /* Color de texto gris oscuro */
+    /* Texto gris oscuro */
     font-size: 20px;
-    /* Tamaño del texto */
+    /* Texto del mensaje */
 }
 
-/* Estilo del spinner circular */
+/* Spinner circular animado */
 .spinner {
     width: 50px;
     height: 50px;
     border: 5px solid #ccc;
-    /* Borde gris claro */
+    /* Gris claro */
     border-top: 5px solid #007bff;
-    /* Borde superior azul para animar */
+    /* Azul para animar */
     border-radius: 50%;
-    /* Forma circular */
+    /* Redondo */
     animation: spin 1s linear infinite;
-    /* Animación giratoria infinita */
+    /* Gira infinitamente */
 }
 
-/* Definición de la animación giratoria */
+/* Animación para rotación del spinner */
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -153,14 +156,15 @@ h5 {
     }
 }
 
-/* Estilo del texto de carga debajo del spinner */
+/* Texto del mensaje de carga */
 .loading-text {
     margin-top: 15px;
-    /* Separación superior */
+    /* Separación del spinner */
     font-weight: bold;
+    /* Texto en negrita */
 }
 
-/* Opcional: estilo para un logo dentro del loading (si se usa) */
+/* Si se usa un logo en el loading */
 .loading-logo {
     width: 100px;
     margin-bottom: 20px;

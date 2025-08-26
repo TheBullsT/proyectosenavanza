@@ -1,5 +1,5 @@
 :root {
-    /* Colores Primarios */
+    /* Colores primarios: degradado de verdes */
     --primary-1: #39A900;
     --primary-2: #36AE0F;
     --primary-3: #42B31E;
@@ -18,7 +18,7 @@
     --primary-16: #E6F5E1;
     --primary-17: #F2FAF0;
 
-    /* Grises y Neutros */
+    /* Colores neutros: grises y blanco/negro */
     --black: #000000;
     --gray-1: #0F0F0F;
     --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
     --gray-16: #F0F0F0;
     --white: #FFFFFF;
 
-    /* Tipografía */
+    /* Tipografía principal y secundaria */
     --font-primary: 'Work Sans', sans-serif;
     --font-secondary: 'Calibri', sans-serif;
 
-    /* Jerarquías tipográficas */
+    /* Jerarquías tipográficas para títulos y subtítulos */
     --h1: 32px;
     --h2: 24px;
     --h3: 20px;
@@ -51,44 +51,64 @@
     --h6: 12px;
 }
 
+/* Quita márgenes por defecto del body */
 body {
     margin: 0;
 }
 
-/* Para que se quede en la izquierda y no se repita */
+/* Contenedor principal del fondo de la página */
 .background {
     background-image: url(../../../assets/img/img-login/fondo.png);
+    /* Imagen de fondo */
     background-repeat: no-repeat;
+    /* No repetir la imagen */
     background-size: contain;
+    /* Ajustar la imagen al contenedor */
     background-position: center right;
+    /* Posicionar la imagen a la derecha y centrada verticalmente */
     width: 100vw;
+    /* Ancho completo de la ventana */
     height: 100vh;
+    /* Alto completo de la ventana */
     overflow: hidden;
+    /* Ocultar cualquier contenido que se desborde */
 }
 
-/* Ajustar la iamgen en general */
+/* Imagen adicional dentro del fondo */
 .imgage {
     position: absolute;
+    /* Posición absoluta respecto al contenedor */
     right: 0;
+    /* Pegada a la derecha */
     top: 140px;
+    /* Separación desde la parte superior */
     height: 50%;
+    /* Ocupa la mitad de la altura del viewport */
     z-index: 1;
+    /* Se coloca detrás de otros elementos si es necesario */
 }
 
-
-/* Responsive */
+/* Estilos responsivos para pantallas pequeñas */
 @media (max-width: 786px) {
+
+    /* Para pantallas menores a 786px, ocultar fondo original */
     .background {
         background: none;
         position: relative;
+        /* Cambia posición a relativa para adaptar contenido */
     }
 
+    /* Ajusta la imagen para ocupar toda la pantalla y cubrir el fondo */
     .imgage {
         top: 0;
         left: 0;
         width: 100vw;
+        /* Ancho completo de la ventana */
         height: 100vh;
+        /* Alto completo de la ventana */
         object-fit: cover;
+        /* Escala la imagen para cubrir el contenedor sin deformar */
         z-index: -1;
+        /* La imagen queda detrás de todos los elementos */
     }
 }

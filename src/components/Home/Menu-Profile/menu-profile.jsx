@@ -1,60 +1,49 @@
-// Importa React para poder usar JSX
-import React, { forwardRef, useState } from "react";
-// Importa Link para navegación interna entre rutas
-import { Link } from "react-router-dom";
-// Importa los estilos CSS
-import "../Busqueda/busqueda.css";
-// Importar navigate para poder navegar entre paginas
-import { useNavigate } from "react-router-dom";
-// Importamos el componente donde mostrara la pantalla de cerrar sesion
-import CerrarSesion from "../../Loading/cerrar-sesion";
-// Importar API
-import { apiLogin } from "../../../api/apis"
-// Imporar TOAST
-import { toast } from "react-toastify";
+import React, { forwardRef, useState } from "react"; // forwardRef permite recibir refs externas
+import { Link } from "react-router-dom"; // Componente para navegación interna
+import "../Busqueda/busqueda.css"; // Estilos del menú
+import { useNavigate } from "react-router-dom"; // Hook para redirecciones
+import CerrarSesion from "../../Loading/cerrar-sesion"; // Pantalla de carga al cerrar sesión
+import { apiLogin } from "../../../api/apis"; // API de autenticación
+import { toast } from "react-toastify"; // Notificaciones
 
-// Define el componente con forwardRef para recibir la referencia externa del DOM
+import '../Busqueda/busqueda.css';
+
 const MenuProfile = forwardRef(function MenuProfileComponent(props, ref) {
 
-    const [cerrandoSesion, setCerrandoSesion] = useState(false);
-    const navigate = useNavigate();
+    const [cerrandoSesion, setCerrandoSesion] = useState(false); // Estado para loader
+    const navigate = useNavigate(); // Redirección de rutas
 
     const handleCerrarSesion = async () => {
-        setCerrandoSesion(true); // Muestra el loader
+        setCerrandoSesion(true); // Activa el estado de cierre
 
         try {
-            // Llama a tu backend para borrar cookies
-            await apiLogin.post("logout/", {}, { withCredentials: true });
-
+            await apiLogin.post("logout/", {}, { withCredentials: true }); // Solicitud al backend
             toast.success("Sesión cerrada correctamente");
 
-            // Si tienes tokens en localStorage, los borras
+            // Limpieza de tokens en el almacenamiento local
             localStorage.removeItem("access");
             localStorage.removeItem("refresh");
 
-            // Redirige a inicio o login
-            navigate("/inicio");
+            navigate("/inicio"); // Redirige al inicio
         } catch (error) {
             toast.error("Error al cerrar sesión");
-            console.error(error);
+            console.error(error); // Muestra error en consola
         } finally {
             setCerrandoSesion(false);
         }
     };
+
     return (
         <>
-            {/* Si está cerrando sesión, mostramos la pantalla de carga */}
             {cerrandoSesion ? (
-                <CerrarSesion />
+                <CerrarSesion /> // Loader durante el cierre
             ) : (
                 <div ref={ref} className="dropdown-menu">
-                    {/* Encabezado de la sección "Información de perfil" */}
                     <div className="section-header">
-                        <div className="subtitulo">Información de perfil</div>
+                        <div className="subtitulo">Información del perfil</div>
                         <div className="linea"></div>
                     </div>
 
-                    {/* Lista de enlaces relacionados al perfil */}
                     <ul className="menu-list">
                         <li>
                             <Link to="/perfil">Perfil</Link>
@@ -64,28 +53,24 @@ const MenuProfile = forwardRef(function MenuProfileComponent(props, ref) {
                         </li>
                     </ul>
 
-                    {/* Encabezado de la sección "Opciones de empresa" */}
                     <div className="section-header">
-                        <div className="subtitulo">Opciones de empresa</div>
+                        <div className="subtitulo">Opciones de la empresa</div>
                         <div className="linea"></div>
                     </div>
 
-                    {/* Lista de enlaces relacionados a la empresa */}
                     <ul className="menu-list">
                         <li>
-                            <Link to="/diagnostico-empresarial">Diagnóstico Empresarial</Link>
+                            <Link to="/diagnostico-empresarial">Diagnóstico empresarial</Link>
                         </li>
                         <li>
-                            <Link to="/resultado-diagnostico">Resultados de Diagnóstico</Link>
+                            <Link to="/resultado-diagnostico">Resultados del diagnóstico</Link>
                         </li>
                     </ul>
 
-                    {/* Línea separadora final */}
                     <div className="linea"></div>
 
-                    {/* Enlace para cerrar sesión */}
                     <ul className="menu-list">
-                        <li onClick={handleCerrarSesion}>Cerrar Sesión</li>
+                        <li onClick={handleCerrarSesion}>Cerrar sesión</li>
                     </ul>
                 </div>
             )}

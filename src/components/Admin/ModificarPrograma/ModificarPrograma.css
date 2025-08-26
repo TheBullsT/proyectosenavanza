@@ -1,5 +1,5 @@
 :root {
-  /* Colores Primarios */
+  /* Colores principales de la paleta */
   --primary-1: #39A900;
   --primary-2: #36AE0F;
   --primary-3: #42B31E;
@@ -18,7 +18,7 @@
   --primary-16: #E6F5E1;
   --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
+  /* Escala de grises */
   --black: #000000;
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Tipografía global */
   --font-primary: 'Work Sans', sans-serif;
   --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
+  /* Tamaños para jerarquía tipográfica */
   --h1: 32px;
   --h2: 24px;
   --h3: 20px;
@@ -54,16 +54,14 @@
 html {
   margin: 0;
   font-size: 62.5%;
+  /* 1rem = 10px */
   box-sizing: border-box;
-  text-decoration: none;
-
 }
 
 body {
   font-family: var(--font-primary);
   margin: 0;
   padding: 0;
-  text-decoration: none;
 }
 
 :before,
@@ -75,15 +73,14 @@ a {
   text-decoration: none;
 }
 
-
-
+/* Contenedor principal del lado derecho */
 .main-right-bar {
   flex: 4;
   background-color: rgb(228, 228, 228);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
+/* Caja donde va el formulario */
 .formacion-container {
   border-radius: 8px;
   padding: 30px;
@@ -107,6 +104,7 @@ a {
   color: var(--primary-1);
 }
 
+/* Bloque informativo con icono */
 .form-info {
   display: flex;
   align-items: flex-start;
@@ -131,12 +129,14 @@ a {
   color: var(--black);
 }
 
+/* Nombre del programa */
 .program-name {
   color: var(--primary-1);
   font-weight: bold;
   margin: 10px 0 20px;
 }
 
+/* Estilos del formulario */
 .form {
   display: flex;
   flex-direction: column;
@@ -153,6 +153,7 @@ a {
   margin-bottom: 5px;
 }
 
+/* Inputs, textareas y selects */
 .form-group input,
 .form-group textarea,
 .form-group select {
@@ -164,8 +165,10 @@ a {
 .form-row {
   display: flex;
   gap: 20px;
+  /* Espaciado entre columnas */
 }
 
+/* Botonera de acciones */
 .form-actions {
   display: flex;
   justify-content: flex-end;

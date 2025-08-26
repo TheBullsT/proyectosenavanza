@@ -1,5 +1,5 @@
 :root {
-    /* Colores Primarios */
+    /* Colores primarios degradados de verde */
     --primary-1: #39A900;
     --primary-2: #36AE0F;
     --primary-3: #42B31E;
@@ -18,7 +18,7 @@
     --primary-16: #E6F5E1;
     --primary-17: #F2FAF0;
 
-    /* Grises y Neutros */
+    /* Grises y neutros para textos, fondos y sombras */
     --black: #000000;
     --gray-1: #0F0F0F;
     --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
     --gray-16: #F0F0F0;
     --white: #FFFFFF;
 
-    /* Tipografía */
+    /* Tipografía principal y secundaria */
     --font-primary: 'Work Sans', sans-serif;
     --font-secondary: 'Calibri', sans-serif;
 
-    /* Jerarquías tipográficas */
+    /* Tamaños estándar para encabezados h1-h6 */
     --h1: 32px;
     --h2: 24px;
     --h3: 20px;
@@ -51,114 +51,111 @@
     --h6: 12px;
 }
 
+/* Reseteo y box-sizing global */
 html {
-    margin: 0;
-    font-size: 62.5%;
-    box-sizing: border-box;
+    margin: 0; /* Quitar margen por defecto */
+    font-size: 62.5%; /* 1rem = 10px para cálculos más sencillos */
+    box-sizing: border-box; /* Incluye padding y borde en ancho/alto */
 }
 
+/* Aplicar box-sizing a pseudo-elementos y todos los elementos */
 :before,
 *:after {
     box-sizing: inherit;
 }
 
+/* Estilo base para body */
 body {
     font-size: 16px;
     font-family: 'Work Sans', sans-serif;
 }
 
+/* Quitar subrayado en enlaces */
 a {
     text-decoration: none;
 }
 
-h1 {
-    font-size: 3.2rem;
-}
+/* Tamaños de encabezados usando rem */
+h1 { font-size: 3.2rem; }
+h2 { font-size: 2.4rem; }
+h3 { font-size: 2.0rem; }
+h4 { font-size: 1.6rem; }
+h5 { font-size: 1.4rem; }
 
-h2 {
-    font-size: 2.4rem;
-}
-
-h3 {
-    font-size: 2.0rem;
-}
-
-h4 {
-    font-size: 1.6rem;
-}
-
-h5 {
-    font-size: 1.4rem;
-}
-
-
+/* Contenedor principal del carrusel */
 .carousel-wrapper {
-    display: flex;
+    display: flex; /* Flexbox para alineación horizontal */
     max-width: 1200px;
-    margin: 0 auto;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    margin: 0 auto; /* Centrar horizontalmente */
+    flex-direction: row; /* Elementos en fila */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    gap: 2rem; /* Separación entre items */
 }
 
+/* Contenedor de indicadores verticales del carrusel */
 .carousel-indicators {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 2rem 0 0 1rem;
+    flex-direction: column; /* Columna de círculos */
+    gap: 1rem; /* Espacio entre indicadores */
+    padding: 2rem 0 0 1rem; /* Padding superior e izquierdo */
 }
 
+/* Estilo de cada círculo indicador */
 .circle {
     width: 16px;
     height: 16px;
-    border-radius: 50%;
+    border-radius: 50%; /* Circular */
     background-color: var(--black);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; /* Animación suave al cambiar color */
 }
 
+/* Círculo activo */
 .circle.active {
     background-color: var(--white);
-    box-shadow: 0 0 8px var(--primary-5);
+    box-shadow: 0 0 8px var(--primary-5); /* Resalta con sombra */
 }
 
+/* Lista de items del carrusel (vertical) */
 .carousel-list-vertical {
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    height: 600px;
-    list-style: none;
+    overflow-y: hidden; /* Oculta scroll vertical automático */
+    overflow-x: auto; /* Permite scroll horizontal si hay overflow */
+    scroll-behavior: smooth; /* Movimiento suave al hacer scroll */
+    height: 600px; /* Altura del carrusel */
+    list-style: none; /* Quitar viñetas */
     padding: 0;
     margin: 0;
-    scroll-snap-type: y mandatory;
-
+    scroll-snap-type: y mandatory; /* Snap al inicio de cada item vertical */
 }
 
+/* Cada item individual del carrusel */
 .carousel-item-vertical {
-    min-height: 600px;
-    scroll-snap-align: start;
-    flex-shrink: 0;
+    min-height: 600px; /* Altura mínima igual al contenedor */
+    scroll-snap-align: start; /* Snap al inicio del item */
+    flex-shrink: 0; /* Evita encogerse */
     padding: 1rem;
     box-sizing: border-box;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eee; /* Separación visual */
 }
 
+/* Ajustes para pantallas medianas */
 @media(max-width: 1440px) {
     .carousel-list-vertical {
-        height: 600px;
+        height: 600px; /* Mantiene altura consistente */
     }
 }
 
+/* Ajustes responsivos para móviles y tablets */
 @media(max-width: 786px) {
     .carousel-wrapper {
         width: 100%;
-        flex-direction: column;
+        flex-direction: column; /* Elementos apilados */
     }
 
     .carousel-indicators {
-        flex-direction: row;
+        flex-direction: row; /* Indicadores horizontales */
     }
 }

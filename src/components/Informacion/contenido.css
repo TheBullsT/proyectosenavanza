@@ -1,5 +1,5 @@
 :root {
-    /* Colores Primarios*/
+    /* Paleta principal de verdes para la marca */
     --primary-1: #39A900;
     --primary-2: #36AE0F;
     --primary-3: #42B31E;
@@ -18,7 +18,7 @@
     --primary-16: #E6F5E1;
     --primary-17: #F2FAF0;
 
-    /* Escala de grises y neutros */
+    /* Escala de grises y neutros para textos y fondos */
     --black: #000000;
     --gray-1: #0F0F0F;
     --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
     --gray-16: #F0F0F0;
     --white: #FFFFFF;
 
-    /* Tipografías principales */
+    /* Tipografía principal y secundaria */
     --font-primary: 'Work Sans', sans-serif;
     --font-secondary: 'Calibri', sans-serif;
 
-    /* Jerarquía tipográfica por tamaño */
+    /* Tamaños tipográficos jerarquizados */
     --h1: 32px;
     --h2: 24px;
     --h3: 20px;
@@ -51,21 +51,21 @@
     --h6: 12px;
 }
 
-/* Configuración base para todo el documento */
+/* Configuración base para rems y modelo de caja */
 html {
     margin: 0;
-    font-size: 62.5%;
-    /* 1rem = 10px */
+    font-size: 62.5%; /* 1rem = 10px para cálculo sencillo */
     box-sizing: border-box;
 }
 
-/* Asegura que todos los elementos hereden box-sizing */
-:before,
-*:after {
+/* Todos los elementos usan box-sizing heredado */
+*,
+*::before,
+*::after {
     box-sizing: inherit;
 }
 
-/* Contenedor general del componente */
+/* Contenedor principal que centra contenido */
 .contenedor-principal {
     display: flex;
     flex-direction: column;
@@ -74,7 +74,7 @@ html {
     margin-top: 100px;
 }
 
-/* Imagen principal */
+/* Imagen destacada del contenido */
 .imagen_ayuda {
     width: 70%;
     height: 70%;
@@ -82,7 +82,7 @@ html {
     border-radius: 6px;
 }
 
-/* Contenedor del texto principal */
+/* Contenedor para título y párrafo */
 .contenedor-texto {
     display: flex;
     flex-direction: column;
@@ -92,29 +92,28 @@ html {
     margin-top: 20px;
 }
 
-/* Color para títulos dentro del contenedor de texto */
+/* Color destacado para títulos */
 .contenedor-texto h2 {
     color: var(--primary-1);
 }
 
-/* Color para párrafos dentro del contenedor de texto */
+/* Color neutro para párrafos */
 .contenedor-texto p {
     color: var(--gray-7);
 }
 
-/* Contenedor de las dos secciones de ventajas y razones */
+/* Sección con dos bloques de texto */
 .textos2 {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 200px;
-    /* Separación horizontal entre bloques */
+    gap: 200px; /* separación horizontal */
     margin-top: 20px;
 }
 
-/* Segundo contenedor con texto + imagen pequeña */
+/* Segunda sección con texto e imagen */
 .contenedor2 {
     display: flex;
     flex-direction: row;
@@ -126,17 +125,17 @@ html {
     margin-bottom: 50px;
 }
 
-/* Color de los títulos en el segundo contenedor */
+/* Colorea títulos de segunda sección */
 .contenedor2 h2 {
     color: var(--primary-1);
 }
 
-/* Color de los párrafos en el segundo contenedor */
+/* Colorea párrafos de segunda sección */
 .contenedor2 p {
     color: var(--gray-7);
 }
 
-/* Imagen del segundo contenedor (más pequeña) */
+/* Imagen pequeña de segunda sección */
 .cultivo {
     width: 500px;
     height: 500px;
@@ -145,10 +144,10 @@ html {
 }
 
 /* ------------------- */
-/* Estilos responsivos */
+/* Diseño adaptable */
 /* ------------------- */
 
-/* Para pantallas medianas */
+/* Ajustes para pantallas medianas */
 @media (max-width: 768px) {
     .contenedor-principal {
         margin-top: 50px;
@@ -170,7 +169,7 @@ html {
     }
 }
 
-/* Para pantallas pequeñas (móviles) */
+/* Ajustes para móviles pequeños */
 @media (max-width: 430px) {
     .cultivo {
         width: 300px;

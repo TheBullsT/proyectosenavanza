@@ -7,41 +7,53 @@ import LoadingBaseDatos from "../../Loading/loading_base_datos";
 import './VisualizacionUsuario.css';
 
 const VisualizacionUsuario = () => {
+    // Hook para obtener el parámetro "id" de la URL
     const { id } = useParams();
+    // Hook para navegar entre rutas
     const navigate = useNavigate();
+    // Estado para guardar los datos del usuario
     const [usuario, setUsuario] = useState(null);
+    // Estado para controlar el estado de carga
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        // Función asincrónica para obtener los datos de un usuario específico
         const fetchUsuario = async () => {
             try {
+                // Petición GET a la API para obtener la información del usuario
                 const response = await apiGeneral.get(`/users/${id}/`);
-                setUsuario(response.data);
+                setUsuario(response.data); // Guardar la respuesta en el estado
             } catch (error) {
                 console.error("Error al obtener datos del usuario:", error);
             } finally {
-                setLoading(false);
+                setLoading(false); // Finaliza el estado de carga
             }
         };
 
-        fetchUsuario();
-    }, [id]);
+        fetchUsuario(); // Ejecuta la función al montar el componente
+    }, [id]); // Se ejecuta cuando el "id" cambia
 
+    // Mostrar pantalla de carga mientras se obtienen los datos
     if (loading) return <LoadingBaseDatos />;
+    // Mostrar mensaje si no se encuentra el usuario
     if (!usuario) return <p>No se encontró el usuario.</p>;
 
     return (
         <div className="main-right-bar">
+            {/* Navbar del panel administrador */}
             <NavbarAdmin />
+
             <div className="visualizacion-usuario-contenido">
                 <div className="visualizacion-usuario-container">
+                    {/* Título y breadcrumb */}
                     <h1 className="titulo-usuario">
                         Visualización de Usuario
                         <span className="breadcrumb-usuario">
-                            You are here: <strong className="breadcrumb-actual-usuario">Usuarios</strong>
+                            Usted se encuentra en: <strong className="breadcrumb-actual-usuario">Usuarios</strong>
                         </span>
                     </h1>
 
+                    {/* Caja con ícono y descripción */}
                     <div className="icon-box-usuario">
                         <div className="icon-usuario">
                             <MdPersonSearch />
@@ -52,14 +64,18 @@ const VisualizacionUsuario = () => {
                         </p>
                     </div>
 
+                    {/* Contenedor de datos del usuario */}
                     <div className="info-box-visualizacion-usuario">
                         <h2 className="subtitulo-usuario">Datos del Usuario</h2>
+
                         <div className="formulario-usuario">
+                            {/* Nombre de usuario */}
                             <div className="campo-form-usuario campo-nombre-usuario">
                                 <label>Nombre de Usuario</label>
                                 <p>{usuario.username}</p>
                             </div>
 
+                            {/* Nombre y apellido */}
                             <div className="grid-doble-usuario">
                                 <div className="campo-form-usuario">
                                     <label>Nombre</label>
@@ -72,12 +88,14 @@ const VisualizacionUsuario = () => {
                                 </div>
                             </div>
 
+                            {/* Correo electrónico */}
                             <div className="campo-form-usuario">
                                 <label>Correo Electrónico</label>
                                 <p>{usuario.email}</p>
                             </div>
                         </div>
 
+                        {/* Botón para regresar */}
                         <div className="boton-contenedor-usuario">
                             <button className="boton-regresar-usuario" onClick={() => navigate(-1)}>
                                 Regresar

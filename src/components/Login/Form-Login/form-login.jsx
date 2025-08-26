@@ -1,38 +1,43 @@
-// Importar React y useState
+// Importar React y useState para manejar el estado en componentes funcionales
 import React, { useState } from "react";
-// Importar el logo
+
+// Importar el logo de la aplicación
 import logoLogin from '../../../assets/img/Logo_SENAVANZA.jpg';
-// Importar el css
+
+// Importar el CSS del formulario de login
 import './form-login.css';
-// Importar el navigate para navegar entre rutas sin hacer una carga previa
-import { useNavigate } from "react-router-dom";
-// Axios para Validacion de backend
+
+// Importar Link y useNavigate para la navegación entre rutas sin recargar la página
+import { Link, useNavigate } from "react-router-dom";
+
+// Axios para hacer peticiones HTTP al backend
 import axios from "axios";
-// Importar las alertas
-import { toast } from "react-toastify"; // Notificaciones tipo popup
-// Apis 
-import { apiLogin } from "../../../api/apis" // Axios para la Login
+
+// Importar las alertas tipo pop-up
+import { toast } from "react-toastify";
+
+// Importar las APIs y constantes de tokens
+import { apiLogin } from "../../../api/apis"; // Instancia de Axios para login
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../api/constans"; // Claves para localStorage
 
-
-
 function FormLogin() {
-    // Hooks para capturar correo, contraseña
+    // Hooks para capturar los valores de usuario y contraseña
     const [username, setUsername] = useState("");
     const [contraseña, setContraseña] = useState("");
 
-    // Hook para redireccionar al usuario a otras rutas
+    // Hook para redirigir a otras rutas
     const navigate = useNavigate();
 
-    // Función que redirige a la página de inicio al hacer clic en el logo
+    // Función para ir a la página de inicio al hacer clic en el logo
     const irInicio = () => {
         navigate('/inicio');
     };
 
-
+    // Función que maneja el envío del formulario
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Evita que la página se recargue al enviar el formulario
         try {
+            // Petición POST a la API para obtener los tokens
             const response = await apiLogin.post(
                 "token/",
                 {
@@ -44,47 +49,49 @@ function FormLogin() {
                 }
             );
 
-            // const { access, refresh } = response.data;
-
-            // // Guardar tokens en localStorage
-            // localStorage.setItem(ACCESS_TOKEN, access);
-            // localStorage.setItem(REFRESH_TOKEN, refresh);
-
+            // Muestra los tokens en consola (pueden guardarse en localStorage si se desea)
             console.log("Tokens recibidos:", response.data);
 
+            // Notificación de éxito
             toast.success("Inicio de sesión exitoso");
+
+            // Redirige al usuario a la página principal después del inicio de sesión
             navigate("/home");
 
         } catch (error) {
-            console.error("Error en login:", error);
+            // En caso de error, se muestra en consola y se notifica al usuario
+            console.error("Error en el login:", error);
             toast.error("Datos inválidos o credenciales incorrectas");
         }
     };
 
-
-
     return (
         <div className="login">
+            {/* Logo clickeable que redirige al inicio */}
             <div onClick={irInicio} className="logoLogin">
                 <img src={logoLogin} alt="Logo de SENAVANZA" />
             </div>
 
+            {/* Contenedor del formulario de login */}
             <div className="form-login">
                 <form onSubmit={handleSubmit} method="POST">
-                    <h1 className="titulo">Iniciar Sesión</h1>
-                    <h4 className="subtitulo">¡Vamos a Empezar!</h4>
+                    <h1 className="titulo">Iniciar sesión</h1>
+                    <h4 className="subtitulo">¡Vamos a empezar!</h4>
 
+                    {/* Contenedor de inputs */}
                     <div className="contenido">
+                        {/* Input para usuario */}
                         <label className="usernameType" htmlFor="usernameType">
                             Usuario
                             <input
                                 type="username"
                                 onChange={(e) => setUsername(e.target.value)}
-                                placeholder="Nombre de Usuario"
+                                placeholder="Nombre de usuario"
                                 required
                             />
                         </label>
 
+                        {/* Input para contraseña */}
                         <label className="passwordType" htmlFor="passwordType">
                             Contraseña
                             <input
@@ -97,8 +104,14 @@ function FormLogin() {
                         </label>
                     </div>
 
+                    {/* Link para recuperar contraseña */}
+                    <Link to="/forget-password" className="subtitle-password-forget">
+                        ¿Olvidó su contraseña?
+                    </Link>
+
+                    {/* Botón de inicio de sesión */}
                     <button type="submit" className="iniciar-sesion">
-                        Iniciar Sesión
+                        Iniciar sesión
                     </button>
                 </form>
             </div>

@@ -1,288 +1,294 @@
-/* ================= VARIABLES ================= */
 :root {
-  /* Colores Primarios */
-  --primary-1: #39A900;
-  --primary-2: #36AE0F;
-  --primary-3: #42B31E;
-  --primary-4: #4FB82D;
-  --primary-5: #5BBD3C;
-  --primary-6: #68C24B;
-  --primary-7: #75C75A;
-  --primary-8: #81CC69;
-  --primary-9: #8ED178;
-  --primary-10: #9AD787;
-  --primary-11: #A7DC96;
-  --primary-12: #B3E1A5;
-  --primary-13: #C0E6B4;
-  --primary-14: #CDEBC3;
-  --primary-15: #D9F0D2;
-  --primary-16: #E6F5E1;
-  --primary-17: #F2FAF0;
+    /* Colores principales en tonalidades verdes para identidad visual */
+    --primary-1: #39A900;
+    --primary-2: #36AE0F;
+    --primary-3: #42B31E;
+    --primary-4: #4FB82D;
+    --primary-5: #5BBD3C;
+    --primary-6: #68C24B;
+    --primary-7: #75C75A;
+    --primary-8: #81CC69;
+    --primary-9: #8ED178;
+    --primary-10: #9AD787;
+    --primary-11: #A7DC96;
+    --primary-12: #B3E1A5;
+    --primary-13: #C0E6B4;
+    --primary-14: #CDEBC3;
+    --primary-15: #D9F0D2;
+    --primary-16: #E6F5E1;
+    --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
-  --black: #000000;
-  --gray-1: #0F0F0F;
-  --gray-2: #1E1E1E;
-  --gray-3: #2D2D2D;
-  --gray-4: #3C3C3C;
-  --gray-5: #5A5A5A;
-  --gray-6: #696969;
-  --gray-7: #787878;
-  --gray-8: #878787;
-  --gray-9: #A5A5A5;
-  --gray-10: #969696;
-  --gray-11: #A5A5A5;
-  --gray-12: #B4B4B4;
-  --gray-13: #C3C3C3;
-  --gray-14: #D2D2D2;
-  --gray-15: #E1E1E1;
-  --gray-16: #F0F0F0;
-  --white: #FFFFFF;
+    /* Colores grises para fondos, textos y elementos neutrales */
+    --black: #000000;
+    --gray-1: #0F0F0F;
+    --gray-2: #1E1E1E;
+    --gray-3: #2D2D2D;
+    --gray-4: #3C3C3C;
+    --gray-5: #5A5A5A;
+    --gray-6: #696969;
+    --gray-7: #787878;
+    --gray-8: #878787;
+    --gray-9: #A5A5A5;
+    --gray-10: #969696;
+    --gray-11: #A5A5A5;
+    --gray-12: #B4B4B4;
+    --gray-13: #C3C3C3;
+    --gray-14: #D2D2D2;
+    --gray-15: #E1E1E1;
+    --gray-16: #F0F0F0;
+    --white: #FFFFFF;
 
-  /* Tipografía */
-  --font-primary: 'Work Sans', sans-serif;
-  --font-secondary: 'Calibri', sans-serif;
+    /* Tipografía principal y secundaria */
+    --font-primary: 'Work Sans', sans-serif;
+    --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
-  --h1: 32px;
-  --h2: 24px;
-  --h3: 20px;
-  --h4: 16px;
-  --h5: 14px;
-  --h6: 12px;
+    /* Tamaños de fuente para títulos (jerarquía tipográfica) */
+    --h1: 32px;
+    --h2: 24px;
+    --h3: 20px;
+    --h4: 16px;
+    --h5: 14px;
+    --h6: 12px;
 }
 
 /* ================= RESET ================= */
 html {
-  margin: 0;
-  font-size: 62.5%;
-  box-sizing: border-box;
+    margin: 0;
+    font-size: 62.5%;
+    /* Facilita trabajar con rem (1rem = 10px) */
+    box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 body {
-  font-family: var(--font-primary);
-  color: var(--black);
-  margin: 0;
-  padding: 0;
-  background-color: var(--white);
+    font-family: var(--font-primary);
+    color: var(--black);
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 /* ================= NAVBAR ================= */
 .header {
-  position: absolute;
-  top: 30px; /* Queda justo debajo de GOV.CO */
-  height: 70px;
-  width: 100%;
-  left: 0;
-  z-index: 10;
-  transition: .3s ease-in;
-  overflow: hidden;
+    position: absolute;
+    top: 30px;
+    /* Posiciona debajo del banner GOV.CO */
+    height: 70px;
+    width: 100%;
+    left: 0;
+    z-index: 10;
+    transition: .3s ease-in;
+    overflow: hidden;
 }
-
 
 .header-bg {
-  background-image: url(../../assets/img/inicio/Fondo-navbar.png);
-  object-fit: contain;
+    background-image: url(../../assets/img/inicio/Fondo-navbar.png);
+    object-fit: contain;
 }
 
-.imagen-navbar{
-  object-fit: contain;
+.imagen-navbar {
+    object-fit: contain;
 }
+
 .inicio-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 18px;
-  color: var(--white);
-  width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 18px;
+    color: var(--white);
+    width: 100%;
 }
 
 .marca-sena {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  cursor: pointer;
-  color: var(--white);
-  gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--white);
+    gap: 10px;
+    /* Espacio entre logo y texto */
 }
 
 .nav-links .marca-sena p {
-  font-weight: bolder;
-  font-size: 20px;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .button-init {
-  width: 120px;
-  height: 40px;
-  background-color: var(--gray-1);
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
+    width: 120px;
+    height: 40px;
+    background-color: var(--gray-1);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
 .button-init:hover {
-  background-color: var(--primary-2);
-  transform: scale(1.05);
+    background-color: var(--primary-2);
+    transform: scale(1.05);
+    /* Efecto de aumento al pasar el cursor */
 }
 
 /* ================= HERO ================= */
 .hero {
-  position: relative;
-  width: 100%;
-  height: 700px;
-  background-image: url('/src/assets/img/inicio/fondo_completo.png');
-  object-fit: contain;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  text-align: center;
+    position: relative;
+    width: 100%;
+    height: 700px;
+    background-image: url('/src/assets/img/inicio/fondo_completo.png');
+    object-fit: contain;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-align: center;
 }
 
 .hero-content {
-  display: flex;
-  flex-direction: row;
-  margin: 20px;
-  animation: fadeInUp 1s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    animation: fadeInUp 1s ease-in-out;
+    /* Animación de entrada */
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-text {
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
 }
 
 .titulo-principal {
-  font-size: var(--h1);
-  font-weight: bold;
-  margin: 0;
+    font-size: var(--h1);
+    font-weight: bold;
+    margin: 0;
 }
 
 .texto-ayuda {
-  font-weight: lighter;
-  font-size: 24px;
-  margin: 0;
+    font-weight: lighter;
+    font-size: 24px;
+    margin: 0;
 }
 
 .texto-ayuda2 {
-  font-family: var(--font-secondary);
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--white);
-  margin-top: 10px;
+    font-family: var(--font-secondary);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--white);
+    margin-top: 10px;
 }
 
 .apuntar-boton {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 10px;
-  gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    gap: 10px;
 }
 
 .apuntar-boton img {
-  transform: translate(0px, -10px);
+    transform: translate(0px, -10px);
 }
 
 .button-init2 {
-  width: 120px;
-  height: 40px;
-  background: var(--black);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
+    width: 120px;
+    height: 40px;
+    background: var(--black);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
 .button-init2:hover {
-  background-color: var(--primary-2);
-  color: var(--white);
-  transform: scale(1.05);
+    background-color: var(--primary-2);
+    color: var(--white);
+    transform: scale(1.05);
 }
 
 .image-person img {
-  width: 500px;
-  height: 500px;
+    width: 500px;
+    height: 500px;
 }
-
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 786px) {
-  .hero-content {
-    width: 90%;
-  }
+    .hero-content {
+        width: 90%;
+    }
 
-  .image-person {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .image-person {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-  .image-person img {
-    width: 400px;
-    height: 400px;
-  }
+    .image-person img {
+        width: 400px;
+        height: 400px;
+    }
 }
 
 @media (max-width: 676px) {
-  .inicio-nav {
-    width: 100%;
-    flex-direction: column;
-  }
+    .inicio-nav {
+        width: 100%;
+        flex-direction: column;
+        /* Navbar en vertical */
+    }
 
-  .image-person img {
-    width: 100%;
-    height: auto;
-  }
+    .image-person img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 @media (max-width: 430px) {
-  .hero-content {
-    flex-direction: column;
-  }
+    .hero-content {
+        flex-direction: column;
+        /* Pila textos e imagen */
+    }
 
-  .hero-text {
-    font-size: var(--h4);
-  }
+    .hero-text {
+        font-size: var(--h4);
+    }
 
-  .titulo-principal {
-    font-size: var(--h3);
-  }
+    .titulo-principal {
+        font-size: var(--h3);
+    }
 
-  .image-person {
-    position: absolute;
-    z-index: -1;
-  }
+    .image-person {
+        position: absolute;
+        /* Imagen pasa al fondo */
+        z-index: -1;
+    }
 }

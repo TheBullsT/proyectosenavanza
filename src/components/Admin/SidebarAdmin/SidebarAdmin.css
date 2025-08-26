@@ -1,5 +1,5 @@
 :root {
-  /* Colores Primarios */
+  /* Colores Primarios (Verde degradado principal de la app) */
   --primary-1: #39A900;
   --primary-2: #36AE0F;
   --primary-3: #42B31E;
@@ -18,7 +18,7 @@
   --primary-16: #E6F5E1;
   --primary-17: #F2FAF0;
 
-  /* Grises y Neutros */
+  /* Escala de grises y neutros para fondos, bordes y textos */
   --black: #000000;
   --gray-1: #0F0F0F;
   --gray-2: #1E1E1E;
@@ -38,11 +38,11 @@
   --gray-16: #F0F0F0;
   --white: #FFFFFF;
 
-  /* Tipografía */
+  /* Fuentes principales del proyecto */
   --font-primary: 'Work Sans', sans-serif;
   --font-secondary: 'Calibri', sans-serif;
 
-  /* Jerarquías tipográficas */
+  /* Tamaños de títulos y jerarquías tipográficas */
   --h1: 32px;
   --h2: 24px;
   --h3: 20px;
@@ -54,9 +54,9 @@
 html {
   margin: 0;
   font-size: 62.5%;
+  /* Hace que 1rem = 10px para facilitar cálculos */
   box-sizing: border-box;
   text-decoration: none;
-
 }
 
 body {
@@ -69,6 +69,7 @@ body {
 :before,
 *:after {
   box-sizing: inherit;
+  /* Asegura que el padding y border se incluyan en el tamaño */
 }
 
 a {
@@ -80,7 +81,7 @@ a {
   text-decoration: none;
 }
 
-
+/* Contenedor principal del sidebar */
 .sidebar-admin {
   display: flex;
   flex: 1;
@@ -109,6 +110,7 @@ a {
   font-weight: bold;
 }
 
+/* Elementos del menú lateral */
 .liContainer {
   display: flex;
   margin-top: 20px;
@@ -122,6 +124,7 @@ a {
   transform: translateX(10px);
 }
 
+/* Hover del ítem principal */
 .liContainer:hover {
   background-color: var(--primary-1);
   color: var(--white);
@@ -141,8 +144,7 @@ a {
   border-radius: 6px;
 }
 
-/* SubMenu */
-
+/* Estilos del submenú desplegable */
 .subMenu {
   list-style-type: none;
   padding-left: 5px;
@@ -158,12 +160,14 @@ a {
   transition: background 0.2s ease;
 }
 
+/* Hover de elementos del submenú */
 .subMenu li:hover {
   background-color: var(--primary-5);
   color: var(--white);
   border-radius: 6px;
 }
 
+/* Botón para cerrar sesión */
 .ButtonCerrarSesionAdmin {
   width: 80%;
   margin: 20px auto;

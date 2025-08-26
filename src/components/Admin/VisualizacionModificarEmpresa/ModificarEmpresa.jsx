@@ -1,17 +1,21 @@
+// Importaciones principales de React y librerías necesarias
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
-import { MdHomeRepairService } from "react-icons/md";
-import { apiEmpresa } from "../../../api/apis";
-import LoadingBaseDatos from "../../Loading/loading_base_datos";
-import '../CrearModificarEmpresa/CrearModificar.css';
-import { toast } from "react-toastify";
+import { useParams, useNavigate } from "react-router-dom"; // Hooks para obtener parámetros y navegación
+import NavbarAdmin from "../NavbarAdmin/NavbarAdmin"; // Navbar de administración
+import { MdHomeRepairService } from "react-icons/md"; // Icono de reparación
+import { apiEmpresa } from "../../../api/apis"; // API de empresas
+import LoadingBaseDatos from "../../Loading/loading_base_datos"; // Componente de carga
+import '../CrearModificarEmpresa/CrearModificar.css'; // Estilos CSS
+import { toast } from "react-toastify"; // Notificaciones
 
+// Componente para modificar datos de una empresa
 const ModificarEmpresa = () => {
-    const { id } = useParams();
-    const navigate = useNavigate();
-    const [empresa, setEmpresa] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const { id } = useParams(); // Obtiene el ID desde la URL
+    const navigate = useNavigate(); // Permite redirigir al usuario
+    const [empresa, setEmpresa] = useState(null); // Estado para almacenar la empresa
+    const [loading, setLoading] = useState(true); // Estado de carga
+
+    // Estado del formulario con datos de la empresa
     const [form, setForm] = useState({
         username: "",
         razon_social: "",
@@ -21,25 +25,28 @@ const ModificarEmpresa = () => {
         actividad_economica: ""
     });
 
+    // Hook para obtener datos al cargar el componente
     useEffect(() => {
         const fetchEmpresa = async () => {
             try {
-                const response = await apiEmpresa.get(`/${id}`);
-                setEmpresa(response.data);
-                setForm(response.data);
+                const response = await apiEmpresa.get(`/${id}`); // Petición a la API
+                setEmpresa(response.data); // Guardar en estado
+                setForm(response.data); // Llenar formulario
             } catch (error) {
                 console.error("Error al obtener datos:", error);
             } finally {
-                setLoading(false);
+                setLoading(false); // Desactiva el loader
             }
         };
         fetchEmpresa();
     }, [id]);
 
+    // Actualiza el estado del formulario al cambiar un campo
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
+    // Envía los datos actualizados al backend
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -52,21 +59,24 @@ const ModificarEmpresa = () => {
         }
     };
 
+    // Renderiza loader mientras carga
     if (loading) return <LoadingBaseDatos />;
     if (!empresa) return <p>No se encontró la empresa.</p>;
 
     return (
         <div className="main-right-bar">
-            <NavbarAdmin />
+            <NavbarAdmin /> {/* Barra de navegación */}
 
             <div className="empresa-container-modificar">
+                {/* Encabezado con breadcrumb */}
                 <p className="title">
                     Modificar Empresa
                     <span className="breadcrumb">
-                        You are here: <strong className="breadcrumb-active">Empresas</strong>
+                        Usted se encuentra en: <strong className="breadcrumb-active">Empresas</strong>
                     </span>
                 </p>
 
+                {/* Caja de información */}
                 <div className="form-info">
                     <div className="icon">
                         <MdHomeRepairService />
@@ -77,6 +87,7 @@ const ModificarEmpresa = () => {
                     </p>
                 </div>
 
+                {/* Formulario de modificación */}
                 <form className="form" onSubmit={handleSubmit}>
                     <h2 className="form-title">{form.razon_social}</h2>
 
@@ -85,6 +96,7 @@ const ModificarEmpresa = () => {
                         <input type="text" name="razon_social" value={form.razon_social} onChange={handleChange} />
                     </div>
 
+                    {/* Campos de teléfono y correo */}
                     <div className="form-row">
                         <div className="form-group">
                             <label>Número de Teléfono Actual</label>
@@ -96,6 +108,7 @@ const ModificarEmpresa = () => {
                         </div>
                     </div>
 
+                    {/* Campos de dirección y actividad económica */}
                     <div className="form-row">
                         <div className="form-group">
                             <label>Dirección actual</label>
@@ -107,6 +120,7 @@ const ModificarEmpresa = () => {
                         </div>
                     </div>
 
+                    {/* Botones de acción */}
                     <div className="form-actions">
                         <button type="submit" className="btn-create">Modificar Empresa</button>
                         <button type="button" className="btn-cancel" onClick={() => navigate(-1)}>Cancelar</button>

@@ -4,18 +4,23 @@ import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
 import { MdSchool } from "react-icons/md";
 import { toast } from "react-toastify";
 import { apiGeneral } from "../../../api/apis";
+import LoadingBaseDatos from "../../Loading/loading_base_datos";
 
 const CrearProgramaFormacion = () => {
+  // Estados locales para manejar los valores de los campos del formulario
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [modalidad, setModalidad] = useState("");
   const [nivel_programa, setNivelPrograma] = useState("");
   const [duracion, setDuracion] = useState("");
+  const [loading, setLoading] = useState(false); // Estado para mostrar la pantalla de carga
 
+  // Función que se ejecuta al enviar el formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
+      // Petición POST a la API para crear el programa de formación
       const response = await apiGeneral.post("programa/create/", {
         nombre: nombre,
         descripcion: descripcion,
@@ -26,6 +31,8 @@ const CrearProgramaFormacion = () => {
 
       console.log("Programa creado:", response.data);
       toast.success("Programa creado exitosamente");
+
+      // Reseteo de campos del formulario
       setNombre("");
       setDescripcion("");
       setModalidad("");
@@ -33,10 +40,18 @@ const CrearProgramaFormacion = () => {
       setDuracion("");
 
     } catch (error) {
+      // Manejo de errores al crear el programa
       console.error("Error al crear el programa:", error.response?.data || error.message);
       toast.error("Error al crear el programa");
+    } finally {
+      setLoading(false); // Quita la pantalla de carga
     }
   };
+
+  // Si el estado loading es verdadero, se muestra componente de carga
+  if (loading) {
+    return <LoadingBaseDatos mensaje="Creando programa de formación, por favor espere..." />;
+  }
 
   return (
     <div className="main-right-bar">
@@ -46,10 +61,11 @@ const CrearProgramaFormacion = () => {
         <p className="title">
           Crear Programa de Formación
           <span className="breadcrumb">
-            You are here: <strong className="breadcrumb-active">Programas de Formación</strong>
+            Usted se encuentra en: <strong className="breadcrumb-active">Programas de Formación</strong>
           </span>
         </p>
 
+        {/* Sección informativa con ícono */}
         <div className="form-info">
           <div className="icon"><MdSchool /></div>
           <p>
@@ -58,6 +74,7 @@ const CrearProgramaFormacion = () => {
           </p>
         </div>
 
+        {/* Formulario de creación */}
         <form className="form" onSubmit={handleSubmit}>
           <h2 className="form-title">Nuevo Programa de Formación</h2>
 
@@ -103,15 +120,22 @@ const CrearProgramaFormacion = () => {
             />
           </div>
 
+          {/* Botones de acción del formulario */}
           <div className="form-actions">
             <button className="btn-create" type="submit">Crear PF</button>
-            <button className="btn-cancel" type="button" onClick={() => {
-              setNombre("");
-              setDescripcion("");
-              setModalidad("");
-              setNivelPrograma("");
-              setDuracion("");
-            }}>Cancelar</button>
+            <button
+              className="btn-cancel"
+              type="button"
+              onClick={() => {
+                setNombre("");
+                setDescripcion("");
+                setModalidad("");
+                setNivelPrograma("");
+                setDuracion("");
+              }}
+            >
+              Cancelar
+            </button>
           </div>
         </form>
       </div>

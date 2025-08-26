@@ -7,40 +7,45 @@ import { apiGeneral } from "../../../api/apis";
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
 
 const Visualizacion_Programa = () => {
-  const { id } = useParams();
-  const [programa, setPrograma] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { id } = useParams(); // Obtiene el ID del programa desde la URL
+  const [programa, setPrograma] = useState(null); // Estado para guardar los datos del programa
+  const [loading, setLoading] = useState(true); // Estado para manejar el indicador de carga
 
+  // Función para obtener los datos de un programa específico desde la API
   const obtenerPrograma = async () => {
     try {
-      const response = await apiGeneral.get(`programa/${id}/`);
-      setPrograma(response.data);
+      const response = await apiGeneral.get(`programa/${id}/`); // Llamada a la API con el ID
+      setPrograma(response.data); // Guarda la información obtenida en el estado
     } catch (error) {
-      console.error("Error al obtener programa:", error);
+      console.error("Error al obtener programa:", error); // Manejo de errores en la petición
     } finally {
-      setLoading(false);
+      setLoading(false); // Quita el estado de carga sin importar si hubo error o éxito
     }
   };
 
+  // Efecto que se ejecuta cuando cambia el ID o al cargar el componente
   useEffect(() => {
     obtenerPrograma();
   }, [id]);
 
+  // Muestra el componente de carga mientras se obtienen los datos
   if (loading) return <LoadingBaseDatos />;
+  // Mensaje en caso de que no se encuentre el programa
   if (!programa) return <p>No se encontró información del programa.</p>;
 
   return (
     <div className="visualizacion-programa-container">
-      <NavbarAdmin />
+      <NavbarAdmin /> {/* Barra de navegación del administrador */}
 
       <div className="visualizacion-programa-contenido">
         <h1 className="titulo-programa">
           Visualización de Programa de Formación
           <span className="breadcrumb-programa">
-            You are here: <strong className="breadcrumb-actual-programa">Programa de Formación</strong>
+            Usted se encuentra en: <strong className="breadcrumb-actual-programa">Programa de Formación</strong>
           </span>
         </h1>
 
+        {/* Sección con ícono y texto explicativo */}
         <div className="icon-box-programa">
           <div className="icon-programa">
             <MdHomeRepairService />
@@ -51,6 +56,7 @@ const Visualizacion_Programa = () => {
           </p>
         </div>
 
+        {/* Sección principal con los datos del programa */}
         <div className="info-box-visualizacion-programa">
           <h2 className="subtitulo-programa">{programa.nombre}</h2>
 
@@ -65,6 +71,7 @@ const Visualizacion_Programa = () => {
               />
             </div>
 
+            {/* Grid con dos campos: modalidad y nivel formativo */}
             <div className="grid-doble-programa">
               <div className="campo-form-programa">
                 <label>Modalidad</label>
