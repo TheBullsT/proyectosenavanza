@@ -22,7 +22,7 @@ function ContenidoInicio() {
 
     const programas = [
         {
-            nombre: "Analisis y desarrollo de osftware",
+            nombre: "Análisis y desarrollo de software",
             descripcion: "Programa de formación en desarrollo de software, enfocado en las últimas tecnologías y metodologías ágiles.",
         },
         {
