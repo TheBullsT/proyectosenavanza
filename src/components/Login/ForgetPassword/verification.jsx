@@ -61,47 +61,50 @@ export default function Verification() {
 
     // Renderizado del componente
     return (
-        <div className="verification-container">
+        <div className="container">
             {/* Logo que al hacer clic redirige al inicio */}
             <div onClick={irInicio} className="logoLogin">
                 <img src={logoLogin} alt="Logo de SENAVANZA" />
             </div>
+            <div className="verification-container">
 
-            {/* Título principal */}
-            <h2 className="forgot-title">¿Olvidaste <br />tu contraseña?</h2>
 
-            {/* Caja del formulario de verificación */}
-            <div className="verification-box">
-                {/* Subtítulo */}
-                <h3>Código de verificación</h3>
-                {/* Texto de instrucciones */}
-                <p>
-                    Ingresa el código de 4 dígitos que enviamos a tu correo <br />
-                    ***************@gmail.com
-                </p>
-                {/* Contenedor de los inputs */}
-                <div className="code-inputs">
-                    {/* Renderiza los 4 inputs según el estado 'code' */}
-                    {code.map((digit, index) => (
-                        <input
-                            key={index} // Clave única por índice
-                            type="text" // Tipo texto (limitado por maxLength)
-                            maxLength="1" // Solo permite un carácter
-                            value={digit} // Valor actual del input
-                            ref={(el) => (inputsRef.current[index] = el)} // Guarda la referencia
-                            onChange={(e) => handleChange(e.target.value, index)} // Maneja cambios
-                            onKeyDown={(e) => handleKeyDown(e, index)} // Maneja tecla Backspace
-                        />
-                    ))}
+                {/* Título principal */}
+                <h2 className="forgot-title">¿Olvidaste <br />tu contraseña?</h2>
+
+                {/* Caja del formulario de verificación */}
+                <div className="verification-box">
+                    {/* Subtítulo */}
+                    <h3>Código de verificación</h3>
+                    {/* Texto de instrucciones */}
+                    <p>
+                        Ingresa el código de 4 dígitos que enviamos a tu correo <br />
+                        ***************@gmail.com
+                    </p>
+                    {/* Contenedor de los inputs */}
+                    <div className="code-inputs">
+                        {/* Renderiza los 4 inputs según el estado 'code' */}
+                        {code.map((digit, index) => (
+                            <input
+                                key={index} // Clave única por índice
+                                type="text" // Tipo texto (limitado por maxLength)
+                                maxLength="1" // Solo permite un carácter
+                                value={digit} // Valor actual del input
+                                ref={(el) => (inputsRef.current[index] = el)} // Guarda la referencia
+                                onChange={(e) => handleChange(e.target.value, index)} // Maneja cambios
+                                onKeyDown={(e) => handleKeyDown(e, index)} // Maneja tecla Backspace
+                            />
+                        ))}
+                    </div>
+
+                    {/* Texto de reenvío */}
+                    <p className="resend-text">
+                        ¿No recibiste el código?{" "}
+                        <span onClick={handleResend} className="resend-link">
+                            Reenviar
+                        </span>
+                    </p>
                 </div>
-
-                {/* Texto de reenvío */}
-                <p className="resend-text">
-                    ¿No recibiste el código?{" "}
-                    <span onClick={handleResend} className="resend-link">
-                        Reenviar
-                    </span>
-                </p>
             </div>
         </div>
     );

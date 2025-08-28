@@ -86,8 +86,26 @@ a {
     /* Elimina el subrayado por defecto en enlaces */
 }
 
+/* Logo de la pantalla de login */
+.logoLogin {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 80px;
+    cursor: pointer;
+    /* Aparece cursor de puntero al pasar sobre el logo */
+}
+
+.logoLogin img {
+    width: 100%;
+    display: block;
+}
+
 /* Contenedor principal de la sección de verificación */
 .verification-container {
+    position: absolute;
+    top: -15%;
+    left: 20%;
     display: flex;
     /* Usar flexbox para organizar elementos */
     flex-direction: column;
