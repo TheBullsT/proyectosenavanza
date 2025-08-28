@@ -82,7 +82,7 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                             value={descripcion}
                             onChange={(e) => SetDescripcion(e.target.value)}
                             required
-                            minLength={50} />
+                            minLength={30} />
                     </div>
 
                     {/* Campo para herramientas necesarias */}

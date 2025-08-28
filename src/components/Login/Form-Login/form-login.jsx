@@ -33,39 +33,54 @@ function FormLogin() {
         navigate('/inicio');
     };
 
-    // Función que maneja el envío del formulario de inicio de sesión
+    // Función que maneja el envío del formulario
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Evita que la página se recargue al enviar el formulario automáticamente
+        e.preventDefault(); // Evita que se recargue
 
         try {
-            // Petición POST a la API para obtener tokens
             const response = await apiLogin.post(
-                "token/", // Endpoint de autenticación
+                "token/",
                 {
-                    username: username,     // Se envía el nombre de usuario
-                    password: contraseña,   // Se envía la contraseña
+                    username: username,
+                    password: contraseña,
                 },
                 {
-                    headers: { "Content-Type": "application/json" }, // Se especifica que los datos son JSON
+                    headers: { "Content-Type": "application/json" },
                 }
             );
 
-            // Muestra los tokens en consola (puedes guardarlos en localStorage si lo deseas)
             console.log("Tokens recibidos:", response.data);
+            if (response.data.rol == 'admin') {
+                toast.success("Inicio de sesión exitoso");
+                navigate("/adminhome");
+            } else {
+                toast.success("Inicio de sesión exitoso");
+                navigate("/home");
+            }
 
-            // Se muestra una notificación indicando que el login fue exitoso
-            toast.success("Inicio de sesión exitoso");
-
-            // Redirige al usuario a la página principal después del login
-            navigate("/home");
 
         } catch (error) {
-            // En caso de error, se muestra en consola y se notifica al usuario
             console.error("Error en login:", error);
-            toast.error("Datos inválidos o credenciales incorrectas");
+
+            if (error.response) {
+                if (error.response.status === 403) {
+                    // Usuario desactivado (is_active=false o estado==2)
+                    // Por el momento no funciona 
+                    toast.error("El usuario está desactivado");
+                } else if (error.response.status === 401) {
+                    // Credenciales malas
+                    toast.error("Credenciales incorrectas");
+                } else if (error.response.status === 400) {
+                    // El backend manda "Bad Request" si no existe
+                    toast.error("El usuario no existe o está inactivo");
+                } else {
+                    toast.error("Error inesperado en el login");
+                }
+            } else {
+                toast.error("No se pudo conectar con el servidor");
+            }
         }
     };
-
 
 
     return (

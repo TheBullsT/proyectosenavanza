@@ -218,6 +218,7 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Subtítulo de olvido de contraseña */
 .subtitle-password-forget {
     margin-left: 35%;
+    top: 100%;
     color: var(--primary-1);
 }
 
