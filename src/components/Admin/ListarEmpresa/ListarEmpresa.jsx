@@ -7,52 +7,85 @@ import { FaEye, FaEdit, FaLock, FaLockOpen } from "react-icons/fa";
 import { apiEmpresa } from "../../../api/apis";
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
 import { toast } from "react-toastify";
+import { jsPDF } from "jspdf";
 
 const Listar_Empresa = () => {
-  const [empresas, setEmpresas] = useState([]); // Lista de empresas obtenidas de la API
-  const [loadingBaseDatos, setLoadingBaseDatos] = useState(true); // Estado para mostrar el loader
-  const [search, setSearch] = useState(""); // Barra de búsqueda
+  // Estado para guardar las empresas obtenidas desde la API
+  const [empresas, setEmpresas] = useState([]);
 
-  // Función para obtener empresas desde la API
+  // Estado para mostrar u ocultar el loader
+  const [loadingBaseDatos, setLoadingBaseDatos] = useState(true);
+
+  // Estado para controlar el texto ingresado en la barra de búsqueda
+  const [search, setSearch] = useState("");
+
+  // Función para obtener la lista de empresas desde el backend
   const obtenerEmpresas = async () => {
-    setLoadingBaseDatos(true);
+    setLoadingBaseDatos(true); // Activar loader mientras carga
     try {
       const response = await apiEmpresa.get("", {
-        headers: {
-          "Content-Type": "application/json"
-        }
+        headers: { "Content-Type": "application/json" }
       });
-      setEmpresas(response.data); // Guardar las empresas en el estado
+      setEmpresas(response.data); // Guardar empresas en el estado
     } catch (error) {
       console.error("Error al obtener las empresas:", error);
     } finally {
-      setLoadingBaseDatos(false); // Ocultar el loader
+      setLoadingBaseDatos(false); // Ocultar loader
     }
   };
 
+  // Llamar a la API cuando se carga el componente
   useEffect(() => {
-    obtenerEmpresas(); // Llamar a la API al cargar el componente
+    obtenerEmpresas();
   }, []);
 
-  // Función para cambiar estado de la empresa (activar/desactivar)
+  // Función para cambiar el estado de una empresa (activar o desactivar)
   const cambiarEstadoEmpresa = async (empresa) => {
-    const nuevoEstado = empresa.estado === 1 ? 2 : 1; // Cambia entre activo (1) y desactivado (2)
-
+    const nuevoEstado = empresa.estado === 1 ? 2 : 1; // Alterna entre 1 (activo) y 2 (inactivo)
     try {
       await apiEmpresa.put(`update/${empresa.id}/`, {
         estado: nuevoEstado
       }, {
-        headers: {
-          "Content-Type": "application/json"
-        }
+        headers: { "Content-Type": "application/json" }
       });
 
-      obtenerEmpresas(); // Refrescar lista después del cambio
+      obtenerEmpresas(); // Refrescar lista después de actualizar
       toast.success("Estado cambiado con éxito");
     } catch (error) {
-      console.error("Error al cambiar el estado de la empresa:", error);
+      console.error("Error al cambiar el estado:", error);
       toast.error("Error al cambiar el estado de la empresa");
     }
+  };
+
+  // Función para generar y descargar el reporte PDF de empresas
+  const generarReportePDF = () => {
+    const doc = new jsPDF();
+
+    // Título del reporte
+    doc.setFontSize(18);
+    doc.text("Reporte de Empresas", 20, 20);
+
+    doc.setFontSize(12);
+    let y = 40; // posición inicial vertical del contenido
+
+    // Recorrer todas las empresas y agregarlas al PDF
+    empresas.forEach((empresa, index) => {
+      doc.text(`${index + 1}. ${empresa.razon_social}`, 20, y);
+      doc.text(`Teléfono: ${empresa.telefono || "N/A"}`, 20, y + 8);
+      doc.text(`Dirección: ${empresa.direccion || "N/A"}`, 20, y + 16);
+      doc.text(`Estado: ${empresa.estado === 1 ? "Activo" : "Inactivo"}`, 20, y + 24);
+
+      y += 35; // espacio entre empresas
+
+      // Si llega al final de la hoja, agregar una nueva página
+      if (y > 270) {
+        doc.addPage();
+        y = 20;
+      }
+    });
+
+    // Descargar el archivo generado
+    doc.save("reporte_empresas.pdf");
   };
 
   // Filtrar empresas según el texto de búsqueda
@@ -60,26 +93,27 @@ const Listar_Empresa = () => {
     empresa.razon_social.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Mostrar loader mientras carga la base de datos
+  // Mostrar loader mientras carga la información
   if (loadingBaseDatos) return <LoadingBaseDatos />;
-  // Mostrar mensaje si no hay empresas registradas
+
+  // Mostrar mensaje si no existen empresas
   if (!empresas || empresas.length === 0) return <p>No hay empresas registradas.</p>;
 
   return (
     <div className="empresa-container">
-      <NavbarAdmin /> {/* Barra de navegación del administrador */}
+      {/* Barra de navegación del administrador */}
+      <NavbarAdmin />
 
       <div className="visualizar-empresa-contenido">
+        {/* Título y breadcrumb */}
         <p className="title">
           Listar Empresa
           <span className="breadcrumb"> Usted se encuentra en: <strong className="breadcrumb-active">Empresas</strong></span>
         </p>
 
-        {/* Información introductoria */}
+        {/* Sección informativa */}
         <div className="form-info">
-          <div className="icon">
-            <MdHomeRepairService />
-          </div>
+          <div className="icon"><MdHomeRepairService /></div>
           <p>
             En este espacio podrás ver absolutamente todas las empresas<br />
             que <strong>están registradas en la BASE DE DATOS.</strong>
@@ -90,8 +124,13 @@ const Listar_Empresa = () => {
         <div className="header-bar">
           <h2 className="empresas-label">Empresas</h2>
           <div className="button-group">
+            {/* Botón para agregar empresa (falta enlazarlo a la ruta de creación) */}
             <button className="add-button">Agregar Empresa</button>
-            <button className="report-button">Generar Reporte</button>
+
+            {/* Botón para generar reporte PDF */}
+            <button className="report-button" onClick={generarReportePDF}>
+              Generar Reporte
+            </button>
           </div>
         </div>
 
@@ -104,7 +143,7 @@ const Listar_Empresa = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
 
-        {/* Tabla con listado de empresas */}
+        {/* Tabla con el listado de empresas */}
         <table className="empresa-table">
           <thead>
             <tr>
@@ -121,15 +160,15 @@ const Listar_Empresa = () => {
                 <td>{empresa.telefono}</td>
                 <td>{empresa.direccion}</td>
                 <td className="opciones">
-                  {/* Botón para ver detalles */}
+                  {/* Ver detalles */}
                   <Link to={`/visualizacion-empresa/${empresa.id}`}>
                     <FaEye className="icon-action" />
                   </Link>
-                  {/* Botón para editar */}
+                  {/* Editar empresa */}
                   <Link to={`/modificar-empresa/${empresa.id}`}>
                     <FaEdit className="icon-action" />
                   </Link>
-                  {/* Botón para activar/desactivar */}
+                  {/* Cambiar estado empresa */}
                   {empresa.estado === 1 ? (
                     <FaLockOpen
                       className="icon-action icon-lock"
