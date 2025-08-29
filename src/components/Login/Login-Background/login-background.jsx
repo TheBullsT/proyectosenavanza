@@ -4,8 +4,7 @@ import React from "react";
 import mobile from '../../../assets/img/img-login/mobile.png';
 // Importar estilos CSS del componente
 import './login-background.css';
-// Importar Link para navegación interna sin recargar la página
-import { Link } from 'react-router-dom';
+
 
 // Componente principal que muestra el fondo del login
 function LoginBackground() {
@@ -13,14 +12,12 @@ function LoginBackground() {
         // Contenedor principal del background
         <div className="background">
             {/* Link para redirigir al login del administrador */}
-            <Link to="/login-admin" className="hidden-link">
                 {/* Imagen que se posiciona en el lado derecho del fondo */}
                 <img
                     className="imgage"
                     src={mobile}
                     alt="Imagen del login"
                 />
-            </Link>
         </div>
     );
 }

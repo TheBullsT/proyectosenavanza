@@ -1,12 +1,11 @@
 import React, { forwardRef, useState } from "react"; // forwardRef permite recibir refs externas
 import { Link } from "react-router-dom"; // Componente para navegación interna
-import "../Busqueda/busqueda.css"; // Estilos del menú
+import './menu.css';// Estilos del menú
 import { useNavigate } from "react-router-dom"; // Hook para redirecciones
-import CerrarSesion from "../../Loading/cerrar-sesion"; // Pantalla de carga al cerrar sesión
+import CerrarSesion from '../../Loading/cerrar-sesion-admin'; // Pantalla de carga al cerrar sesión
 import { apiLogin } from "../../../api/apis"; // API de autenticación
 import { toast } from "react-toastify"; // Notificaciones
-
-
+    
 
 const MenuProfile = forwardRef(function MenuProfileComponent(props, ref) {
 
@@ -40,30 +39,40 @@ const MenuProfile = forwardRef(function MenuProfileComponent(props, ref) {
             ) : (
                 <div ref={ref} className="dropdown-menu">
                     <div className="section-header">
-                        <div className="subtitulo">Información del perfil</div>
+                        <div className="subtitulo">Empresas</div>
                         <div className="linea"></div>
                     </div>
 
                     <ul className="menu-list">
                         <li>
-                            <Link to="/perfil">Perfil</Link>
+                            <Link to="/crear-empresa">Crear Empresa</Link>
                         </li>
                         <li>
-                            <Link to="/editarperfil">Editar perfil</Link>
+                            <Link to="/listar-empresa">Listar Empresa</Link>
                         </li>
                     </ul>
 
                     <div className="section-header">
-                        <div className="subtitulo">Opciones de la empresa</div>
+                        <div className="subtitulo">Programas</div>
                         <div className="linea"></div>
                     </div>
 
                     <ul className="menu-list">
                         <li>
-                            <Link to="/diagnostico-empresarial">Diagnóstico empresarial</Link>
+                            <Link to="/crear-programa">Crear Programa</Link>
                         </li>
                         <li>
-                            <Link to="/resultado-diagnostico">Resultados del diagnóstico</Link>
+                            <Link to="/listar-programa">Listar Programa</Link>
+                        </li>
+                    </ul>
+
+                    <div className="section-header">
+                        <div className="subtitulo">Usuarios</div>
+                        <div className="linea"></div>
+                    </div>
+                    <ul className="menu-list">
+                        <li>
+                            <Link to="/listar-usuarios">Listar Usuarios </Link>
                         </li>
                     </ul>
 

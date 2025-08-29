@@ -8,7 +8,6 @@ import { TiThMenu } from "react-icons/ti";
 // Menú de perfil y utilidad para cerrar al hacer clic fuera
 import MenuProfile from '../Menu-Profile/menu-profile';
 import ClickOutMenu from '../Menu-Profile/click-out-menu';
-
 // Navegación
 import { useNavigate } from 'react-router-dom';
 

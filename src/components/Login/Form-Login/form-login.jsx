@@ -123,7 +123,7 @@ function FormLogin() {
                     </div>
 
                     {/* Link para recuperar contraseña */}
-                    <Link to="/forget-password" className="subtitle-password-forget">
+                    <Link to="/pedir-nit" className="subtitle-password-forget">
                         ¿Olvidó su contraseña?
                     </Link>
 

@@ -16,8 +16,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
 const ForgetPassword = lazy(() => import('./pages/ForgetPassword'));
+const PedirNit = lazy(() => import('./pages/PedirNit'));
 const CambioDeContraseña = lazy(() => import('./pages/CambioDeContraseña'));
-const LoginAdministrador = lazy(() => import('./pages/LoginAdmin'));
 const PerfilPage = lazy(() => import('./pages/PerfilPage'));
 const EditarPerfilPage = lazy(() => import('./pages/EditarPerfilPage'));
 const AdminHome = lazy(() => import('./pages/AdminHome'));
@@ -73,8 +73,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forget-password" element={<ForgetPassword />} />
           <Route path="/cambio-contraseña" element={<CambioDeContraseña />} />
+          <Route path="/pedir-nit" element={<PedirNit />} />
+          
           <Route path="/logout" element={<Logout />} />
-          <Route path="/login-admin" element={<LoginAdministrador />} />
           <Route path="/inicio" element={<Inicio />} />
           <Route path="/informacion" element={<Informacion />} />
 
