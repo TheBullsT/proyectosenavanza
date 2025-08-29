@@ -18,6 +18,9 @@ import { toast } from "react-toastify";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
+// Importar librería para generar PDFs
+import { jsPDF } from "jspdf";
+
 // Crear instancia con integración de React
 const MySwal = withReactContent(Swal);
 
@@ -90,6 +93,37 @@ const ListarProgramas = () => {
             });
     };
 
+    // Generar y descargar reporte PDF de programas
+    const generarReportePDF = () => {
+        const doc = new jsPDF();
+
+        // Título
+        doc.setFontSize(18);
+        doc.text("Reporte de Programas de Formación", 20, 20);
+
+        // Subtítulo
+        doc.setFontSize(12);
+        let y = 40; // Posición inicial en Y
+
+        // Recorrer programas y agregarlos al PDF
+        programas.forEach((pf, index) => {
+            doc.text(`${index + 1}. ${pf.nombre}`, 20, y);
+            doc.text(`Nivel: ${pf.nivel_programa || "N/A"}`, 20, y + 8);
+            doc.text(`Estado: ${pf.estado === 1 ? "Activo" : "Inactivo"}`, 20, y + 16);
+
+            y += 28;
+
+            // Si se acaba la hoja, crear una nueva
+            if (y > 270) {
+                doc.addPage();
+                y = 20;
+            }
+        });
+
+        // Descargar archivo
+        doc.save("reporte_programas.pdf");
+    };
+
     // Filtrar programas según búsqueda
     const filteredProgramas = programas.filter((pf) =>
         pf.id.toString().includes(search) ||
@@ -104,6 +138,7 @@ const ListarProgramas = () => {
             <NavbarAdmin />
 
             <div className="visualizar-container">
+                {/* Título principal */}
                 <p className="title">
                     Listar Programa de formación
                     <span className="breadcrumb"> Usted se encuentra en: <strong className="breadcrumb-active">Programas</strong></span>
@@ -122,11 +157,15 @@ const ListarProgramas = () => {
                 <div className="search-bar">
                     <h2 className="empresas-label">Programas</h2>
                     <div className="grupo-botones">
+                        {/* Botón para crear un nuevo programa */}
                         <button className="btn-agregar" onClick={() => navigate("/crear-programa")}>Agregar PF</button>
-                        <button className="btn-reporte">Generar Reporte</button>
+
+                        {/* Botón para generar reporte PDF */}
+                        <button className="btn-reporte" onClick={generarReportePDF}>Generar Reporte</button>
                     </div>
                 </div>
 
+                {/* Campo de búsqueda */}
                 <input
                     type="text"
                     placeholder="Buscar por nombre"

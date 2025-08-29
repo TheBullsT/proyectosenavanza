@@ -1,71 +1,80 @@
 import React, { useEffect, useState } from "react";
-import './ListarUsuarios.css'; // Estilos propios del componente
-import NavbarAdmin from "../NavbarAdmin/NavbarAdmin"; // Navbar del admin
-import { FaEye, FaEdit, FaLock } from "react-icons/fa"; // Íconos de acciones
-import { MdPeople } from "react-icons/md"; // Ícono para la sección
-import { Link, useNavigate } from "react-router-dom"; // Navegación entre páginas
-import { apiGeneral } from "../../../api/apis"; // Configuración de Axios (llamadas a la API)
-import LoadingBaseDatos from "../../Loading/loading_base_datos"; // Componente de carga
-
+import './ListarUsuarios.css';
+import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
+import { FaEye, FaEdit, FaLock, FaDownload } from "react-icons/fa";
+import { MdPeople } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
+import { apiGeneral } from "../../../api/apis";
+import LoadingBaseDatos from "../../Loading/loading_base_datos";
+import { jsPDF } from "jspdf";
 
 const ListarUsuarios = () => {
-    // Estado que guarda la lista de usuarios
     const [usuarios, setUsuarios] = useState([]);
-
-    // Estado para manejar el texto de búsqueda
     const [search, setSearch] = useState("");
-
-    // Estado para mostrar pantalla de carga
     const [loading, setLoading] = useState(true);
-
-    // Hook de navegación
     const navigate = useNavigate();
 
-
-    // useEffect: carga los usuarios cuando se monta el componente
     useEffect(() => {
         const fetchUsuarios = async () => {
-            setLoading(true); // Activa el loader
+            setLoading(true);
             try {
-                const response = await apiGeneral.get("users/"); // Llamada GET a la API
-                setUsuarios(response.data); // Guarda los usuarios en el estado
+                const response = await apiGeneral.get("users/");
+                setUsuarios(response.data);
             } catch (error) {
                 console.error("Error al obtener usuarios:", error);
             } finally {
-                setLoading(false); // Quita el loader
+                setLoading(false);
             }
         };
-
-        fetchUsuarios(); // Ejecuta la función
+        fetchUsuarios();
     }, []);
 
-
-    // Filtra los usuarios según el texto buscado (por username o correo)
     const filteredUsuarios = usuarios.filter(
         (user) =>
             user.username.toLowerCase().includes(search.toLowerCase()) ||
             user.email.toLowerCase().includes(search.toLowerCase())
     );
 
+    const generarReporte = () => {
+        const doc = new jsPDF();
 
-    // Si está cargando, muestra el componente Loading
+        doc.setFontSize(18);
+        doc.text("Reporte de Usuarios", 20, 20);
+
+        doc.setFontSize(12);
+        let y = 40;
+
+        filteredUsuarios.forEach((user, index) => {
+            doc.text(
+                `${index + 1}. Usuario: ${user.username} | Correo: ${user.email}`,
+                20,
+                y
+            );
+            y += 10;
+
+            if (y > 270) {
+                doc.addPage();
+                y = 20;
+            }
+        });
+
+        doc.save("reporte_usuarios.pdf");
+    };
+
     if (loading) {
         return <LoadingBaseDatos />;
     }
 
     return (
         <div className="main-right-bar">
-            {/* Navbar del administrador */}
             <NavbarAdmin />
 
-            {/* Encabezado con título y breadcrumb */}
             <div className="visualizar-container">
                 <p className="title">
                     Listar Usuarios
                     <span className="breadcrumb"> Usted se encuentra en: <strong className="breadcrumb-active">Usuarios</strong></span>
                 </p>
 
-                {/* Info introductoria */}
                 <div className="form-info">
                     <div className="icon"><MdPeople /></div>
                     <p>
@@ -74,15 +83,15 @@ const ListarUsuarios = () => {
                     </p>
                 </div>
 
-                {/* Barra superior con título y botón de reporte */}
                 <div className="search-bar">
                     <h2 className="empresas-label">Usuarios</h2>
                     <div className="grupo-botones">
-                        <button className="btn-reporte">Generar Reporte</button>
+                        <button className="btn-reporte" onClick={generarReporte}>
+                            <FaDownload /> Generar Reporte
+                        </button>
                     </div>
                 </div>
 
-                {/* Input para filtrar usuarios */}
                 <input
                     type="text"
                     placeholder="Buscar por nombre o correo"
@@ -91,7 +100,6 @@ const ListarUsuarios = () => {
                     onChange={(e) => setSearch(e.target.value)}
                 />
 
-                {/* Tabla que lista los usuarios */}
                 <table className="program-table">
                     <thead>
                         <tr>
@@ -106,17 +114,14 @@ const ListarUsuarios = () => {
                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
                                 <td className="opciones">
-                                    {/* Ver detalle de usuario */}
                                     <Link to={`/visualizacion-usuarios/${user.id}`}>
                                         <FaEye className="icon-action" title="Ver" />
                                     </Link>
 
-                                    {/* Editar usuario */}
                                     <Link to={`/modificar-usuarios/${user.id}`}>
                                         <FaEdit className="icon-action" title="Editar" />
                                     </Link>
 
-                                    {/* Eliminar usuario (no implementado aún) */}
                                     <FaLock className="icon-action" title="Eliminar (no disponible)" />
                                 </td>
                             </tr>
@@ -128,6 +133,4 @@ const ListarUsuarios = () => {
     );
 };
 
-
-export default ListarUsuarios; // Exporta el componente
-
+export default ListarUsuarios;
