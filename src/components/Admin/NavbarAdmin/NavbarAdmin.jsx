@@ -46,14 +46,10 @@ function NavbarAdmin() {
                     <img src={logo} alt="Logo Senavanza" />
                 </div>
 
-                {/* Información del usuario administrador */}
-                <div className="logoAdmin">
-                    {/* Nombre de perfil mostrado con @ */}
-                    <p className="profileName">@{nombreAdmin}</p>
-                </div>
+                {/* opciones de administrador */}
                 <div className='opciones'>
                     {/* Botón que alterna la visibilidad del menú de usuario */}
-                    <button
+                    <button 
                         className='avatar'
                         onClick={() => setMenuVisible(!menuVisible)}
                         aria-label="Abrir menú de usuario"
