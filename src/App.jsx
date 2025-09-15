@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // CARGA PEREZOSA (Lazy loading) de páginas principales
 const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
-const ForgetPassword = lazy(() => import('./pages/ForgetPassword'));
+const ValidarNit = lazy(() => import('./pages/ValidarNit'));
 const PedirNit = lazy(() => import('./pages/PedirNit'));
 const CambioDeContraseña = lazy(() => import('./pages/CambioDeContraseña'));
 const PerfilPage = lazy(() => import('./pages/PerfilPage'));
@@ -71,7 +71,7 @@ function App() {
 
           {/* Rutas públicas */}
           <Route path="/login" element={<Login />} />
-          <Route path="/forget-password" element={<ForgetPassword />} />
+          <Route path="/validar-nit" element={<ValidarNit />} />
           <Route path="/cambio-contraseña" element={<CambioDeContraseña />} />
           <Route path="/pedir-nit" element={<PedirNit />} />
           
