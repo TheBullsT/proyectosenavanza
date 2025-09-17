@@ -59,7 +59,7 @@ export default function Verification() {
 
         try {
             // Llamada al backend solo para validar código
-            await apiLogin.post("confirm-reset/", {
+            await apiLogin.post("confirm-code/", {
                 nit: parseInt(nit),
                 code: fullCode,
             });

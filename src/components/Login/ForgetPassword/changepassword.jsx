@@ -36,9 +36,12 @@ export default function ChangePassword() {
 
         try {
             // Llamada al backend
-            await apiLogin.post("confirm-reset/", {
+            await apiLogin.post("confirm-password/", {
+                nit: parseInt(nit),
+                code: code,
                 new_password: password,
             });
+
 
             toast.success("Contraseña cambiada con éxito.");
 
@@ -53,36 +56,40 @@ export default function ChangePassword() {
     };
 
     return (
-        <div className="change-container">
+        <div className="container">
+            {/* Logo que al hacer clic redirige al inicio */}
             <div onClick={irInicio} className="logoLogin">
                 <img src={logoLogin} alt="Logo de SENAVANZA" />
             </div>
+            <div className="change-container">
+                <div className="change-box">
+                    <h2>Cambio de contraseña</h2>
+                    <p>¡Asegura tu cuenta!</p>
 
-            <div className="change-box">
-                <h2>Cambio de contraseña</h2>
-                <p>¡Asegura tu cuenta!</p>
+                    <form onSubmit={handleSubmit}>
+                        <label>Nueva contraseña</label>
+                        <input
+                            type="password"
+                            placeholder="Nueva contraseña"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            minLength={8}
+                            required
+                        />
 
-                <form onSubmit={handleSubmit}>
-                    <label>Nueva contraseña</label>
-                    <input
-                        type="password"
-                        placeholder="Nueva contraseña"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
+                        <label>Confirmar contraseña</label>
+                        <input
+                            type="password"
+                            placeholder="Confirmar contraseña"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            minLength={8}
+                            required
+                        />
 
-                    <label>Confirmar contraseña</label>
-                    <input
-                        type="password"
-                        placeholder="Confirmar contraseña"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                    />
-
-                    <button type="submit">Cambiar contraseña</button>
-                </form>
+                        <button type="submit">Cambiar contraseña</button>
+                    </form>
+                </div>
             </div>
         </div>
     );
