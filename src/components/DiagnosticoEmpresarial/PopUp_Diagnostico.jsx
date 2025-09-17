@@ -62,7 +62,7 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
                     {/* Selección de nivel del programa */}
                     <div className="form-group">
                         <select
-                            className="input-box"
+                            className="input-box-select"
                             value={area}
                             onChange={(e) => SetArea(e.target.value)}
                             required
