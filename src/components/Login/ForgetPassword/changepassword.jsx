@@ -1,89 +1,95 @@
 // Importa React y el hook useState para manejar el estado interno
 import React, { useState } from "react";
-
-// Importa el hook useNavigate para redirigir entre rutas
 import { useNavigate } from "react-router-dom";
-
-// Importa la imagen del logo desde la carpeta de assets
+import { apiLogin } from "../../../api/apis"; // tu cliente Axios
+import { toast } from "react-toastify"; // para notificaciones
 import logoLogin from "../../../assets/img/Logo_SENAVANZA.jpg";
-
-// Importa los estilos CSS específicos para este componente
 import "./changepassword.css";
 
-// Componente funcional ChangePassword
 export default function ChangePassword() {
-
-    // Hook para poder redirigir a otras rutas
     const navigate = useNavigate();
 
-    // Estado para almacenar la nueva contraseña
     const [password, setPassword] = useState("");
-
-    // Estado para almacenar la confirmación de la nueva contraseña
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    // Función que redirige al inicio al hacer clic en el logo
     const irInicio = () => {
         navigate("/inicio");
     };
 
-    // Función que maneja el envío del formulario
-    const handleSubmit = (e) => {
-        e.preventDefault(); // Evita que la página se recargue
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-        // Verifica que ambas contraseñas coincidan
         if (password !== confirmPassword) {
-            alert("Las contraseñas no coinciden.");
-            return; // Detiene la ejecución si no son iguales
+            toast.error("Las contraseñas no coinciden.");
+            return;
         }
 
-        // Si coinciden, muestra mensaje de éxito
-        alert("Contraseña cambiada con éxito.");
+        // Obtenemos datos guardados en localStorage
+        const nit = localStorage.getItem("nitTemp");
+        const code = localStorage.getItem("resetCode");
 
-        // Redirige al usuario a la página de inicio de sesión
-        navigate("/login");
+        if (!nit || !code) {
+            toast.error("Faltan datos de validación. Intenta nuevamente.");
+            navigate("/recuperar"); // o la ruta donde empieza el flujo
+            return;
+        }
+
+        try {
+            // Llamada al backend
+            await apiLogin.post("confirm-password/", {
+                nit: parseInt(nit),
+                code: code,
+                new_password: password,
+            });
+
+
+            toast.success("Contraseña cambiada con éxito.");
+
+            // Limpiamos datos temporales
+            localStorage.removeItem("nitTemp");
+            localStorage.removeItem("resetCode");
+
+            navigate("/login");
+        } catch (error) {
+            toast.error(error.response?.data?.detail || "Error al cambiar la contraseña.");
+        }
     };
 
-    // Renderizado del componente
     return (
-        <div className="change-container">
-            {/* Logo que al hacer clic lleva al inicio */}
+        <div className="container">
+            {/* Logo que al hacer clic redirige al inicio */}
             <div onClick={irInicio} className="logoLogin">
                 <img src={logoLogin} alt="Logo de SENAVANZA" />
             </div>
+            <div className="change-container">
+                <div className="change-box">
+                    <h2>Cambio de contraseña</h2>
+                    <p>¡Asegura tu cuenta!</p>
 
-            {/* Caja principal del formulario */}
-            <div className="change-box">
-                {/* Título de la vista */}
-                <h2>Cambio de contraseña</h2>
-                {/* Subtítulo motivacional */}
-                <p>¡Asegura tu cuenta!</p>
+                    <form onSubmit={handleSubmit}>
+                        <label>Nueva contraseña</label>
+                        <input
+                            type="password"
+                            placeholder="Nueva contraseña"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            minLength={8}
+                            required
+                        />
 
-                {/* Formulario de cambio de contraseña */}
-                <form onSubmit={handleSubmit}>
-                    {/* Campo para la nueva contraseña */}
-                    <label>Nueva contraseña</label>
-                    <input
-                        type="password" // Campo oculto
-                        placeholder="Nueva contraseña" // Texto de ayuda
-                        value={password} // Valor controlado por estado
-                        onChange={(e) => setPassword(e.target.value)} // Actualiza el estado
-                        required // Campo obligatorio
-                    />
+                        <label>Confirmar contraseña</label>
+                        <input
+                            type="password"
+                            placeholder="Confirmar contraseña"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            minLength={8}
+                            required
+                        />
 
-                    {/* Campo para confirmar la contraseña */}
-                    <label>Confirmar contraseña</label>
-                    <input
-                        type="password" // Campo oculto
-                        placeholder="Confirmar contraseña" // Texto de ayuda
-                        value={confirmPassword} // Valor controlado por estado
-                        onChange={(e) => setConfirmPassword(e.target.value)} // Actualiza el estado
-                        required // Campo obligatorio
-                    />
-
-                    {/* Botón para enviar el formulario */}
-                    <button type="submit">Cambiar contraseña</button>
-                </form>
+                        <button type="submit">Cambiar contraseña</button>
+                    </form>
+                </div>
             </div>
         </div>
     );

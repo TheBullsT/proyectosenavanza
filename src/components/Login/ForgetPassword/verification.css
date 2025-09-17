@@ -205,3 +205,16 @@ a {
     /* Cambia el cursor al pasar por encima */
     font-weight: bold;
 }
+
+.btn-submit{
+    height: 40px;
+    cursor: pointer;
+    width: 280px;
+    border-radius: 6px;
+    background-color: #39a900;
+    color: white;
+    display: block;
+    margin: 30px auto;
+    transition: background-color 0.3s ease;
+}
+
