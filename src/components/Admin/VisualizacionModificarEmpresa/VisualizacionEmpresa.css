@@ -69,7 +69,6 @@ body {
 .visualizacion-empresa-container {
   flex: 4;
   background-color: rgb(228, 228, 228);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .visualizacion-empresa-contenido {
