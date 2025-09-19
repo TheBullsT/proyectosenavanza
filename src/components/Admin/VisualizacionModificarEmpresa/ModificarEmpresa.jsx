@@ -93,14 +93,14 @@ const ModificarEmpresa = () => {
 
                     <div className="form-group">
                         <label>Razón Social de la empresa</label>
-                        <input type="text" name="razon_social" value={form.razon_social} onChange={handleChange} pattern="[a-zA-Z\s]+" placeholder="Ingrese la razón social"/>
+                        <input type="text" name="razon_social" value={form.razon_social} onChange={handleChange} placeholder="Ingrese la razón social"/>
                     </div>
 
                     {/* Campos de teléfono y correo */}
                     <div className="form-row">
                         <div className="form-group">
                             <label>Número de Teléfono Actual</label>
-                            <input type="tel" name="telefono" value={form.telefono} onChange={handleChange} min="0" pattern="[1-9][0-9]*" placeholder="Ingrese el número de teléfono" />
+                            <input type="tel" min="0" inputMode="numeric" minLength={10} maxLength={12} name="telefono" value={form.telefono} onChange={handleChange} pattern="^[3-9][0-9]{11,}$" placeholder="Ingrese el número de teléfono" />
                         </div>
                         <div className="form-group">
                             <label>Correo electrónico</label>
@@ -116,7 +116,7 @@ const ModificarEmpresa = () => {
                         </div>
                         <div className="form-group">
                             <label>Actividad económica</label>
-                            <input type="text" name="actividad_economica" value={form.actividad_economica} onChange={handleChange} pattern="[a-zA-Z\s]+" placeholder="Ingrese la actividad económica"/>
+                            <input type="text" name="actividad_economica" value={form.actividad_economica} onChange={handleChange} pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\\s]+$" placeholder="Ingrese la actividad económica"/>
                         </div>
                     </div>
 

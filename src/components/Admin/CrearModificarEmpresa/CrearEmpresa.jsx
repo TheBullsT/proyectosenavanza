@@ -147,7 +147,7 @@ const CrearEmpresa = () => {
 
                         <div className="form-group">
                             <label>Número de documento</label>
-                            <input type="text" min="0" pattern="[1-9][0-9]*" onChange={(e) => setNumeroDocumento(e.target.value)} value={numeroDocumento} required  placeholder="Ingrese el número de documento"/>
+                            <input type="number" min="0" minLength={9} maxLength={9} pattern="[1-9][0-9]*" onChange={(e) => setNumeroDocumento(e.target.value)} value={numeroDocumento} required  placeholder="Ingrese el número de documento (De 9 dígitos)"/>
                         </div>
                     </div>
 
@@ -174,14 +174,14 @@ const CrearEmpresa = () => {
                     {/* Campo para la razón social de la empresa */}
                     <div className="form-group">
                         <label>Razón Social</label>
-                        <input type="text" onChange={(e) => setNickName(e.target.value)} value={nickName} required pattern="[a-zA-Z\s]+" placeholder="Ingrese la razón social"/>
+                        <input type="text" onChange={(e) => setNickName(e.target.value)} value={nickName} required placeholder="Ingrese la razón social"/>
                     </div>
 
                     {/* Fila con teléfono y correo */}
                     <div className="form-row">
                         <div className="form-group">
                             <label>Número de Teléfono Actual</label>
-                            <input type="tel" min="0" onChange={(e) => setTelefono(e.target.value)} value={telefono}  required placeholder="Ingrese el número de teléfono"  />
+                            <input type="tel" min='0' inputMode="numeric" pattern="^[3-9][0-9]{11,}$" minLength={10} maxLength={12} onChange={(e) => setTelefono(e.target.value)} value={telefono}  required placeholder="Ingrese el número de teléfono"  />
                         </div>
 
                         <div className="form-group">
@@ -199,7 +199,7 @@ const CrearEmpresa = () => {
 
                         <div className="form-group">
                             <label>Actividad económica</label>
-                            <input type="text" onChange={(e) => setActividad(e.target.value)} value={actividad} pattern="[a-zA-Z\s]+" placeholder="Ingrese la actividad Económica"/>
+                            <input type="text" onChange={(e) => setActividad(e.target.value)} value={actividad} pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\\s]+$"  placeholder="Ingrese la actividad Económica"/>
                         </div>
                     </div>
 
