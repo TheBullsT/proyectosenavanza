@@ -13,7 +13,7 @@ function Pregunta() {
 
     // Función que redirige al usuario a la página del diagnóstico
     const diagnosticoEmpresarial = () => {
-        navigate('/diagnostico-empresarial');
+        navigate('/resultado-diagnostico');
     };
 
     return (

@@ -48,7 +48,7 @@ function Caprendizaje() {
                         {/* Contenedor del logo y botón de acción */}
                         <div className="direccion">
                             <img className="logo-capre" src={CaprendizajeLogo} alt="Logo de Caprendizaje" />
-                            <button className="boton-ir-a-buscar">Ir a buscar</button>
+                            <button className="boton-ir-a-buscar" onClick={() => window.open("https://caprendizaje.sena.edu.co/sgva/SGVA_Diseno/pag/login.aspx/", "_blank")}>Ir a buscar</button>
                         </div>
                     </div>
 
