@@ -87,7 +87,7 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
 
                     {/* Campo para herramientas necesarias */}
                     <div className="form-group">
-                        <input type="text" placeholder="¿Cuáles son las herramientas que el aprendiz debe utilizar?"
+                        <input type="text" placeholder="¿Cuáles son las herramientas que el aprendiz debe utilizar en el cargo?"
                             className="input-box"
                             value={herramientas}
                             onChange={(e) => SetHerramientas(e.target.value)}
@@ -97,7 +97,7 @@ function Popup_Diagnostico({ cerrar, onResultado }) {
 
                     {/* Campo para habilidades técnicas requeridas */}
                     <div className="form-group">
-                        <input type="text" placeholder="¿Cuáles serían las habilidades técnicas que el aprendiz debe tener previamente?"
+                        <input type="text" placeholder="¿Qué conocimientos básicos debería tener el aprendiz que va a ocupar el cargo?"
                             className="input-box"
                             value={habilidades}
                             onChange={(e) => SetHabilidades(e.target.value)}
