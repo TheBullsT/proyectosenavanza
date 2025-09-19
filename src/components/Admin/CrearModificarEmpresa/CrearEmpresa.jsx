@@ -147,7 +147,7 @@ const CrearEmpresa = () => {
 
                         <div className="form-group">
                             <label>Número de documento</label>
-                            <input type="number" min="0" minLength={9} maxLength={9} pattern="[1-9][0-9]*" onChange={(e) => setNumeroDocumento(e.target.value)} value={numeroDocumento} required  placeholder="Ingrese el número de documento (De 9 dígitos)"/>
+                            <input type="number" min="0" minLength={9} maxLength={9} pattern="[1-9][0-9]{9,}*" onChange={(e) => setNumeroDocumento(e.target.value)} value={numeroDocumento} required  placeholder="Ingrese el número de documento (De 9 dígitos)"/>
                         </div>
                     </div>
 
@@ -163,7 +163,7 @@ const CrearEmpresa = () => {
                     {/* Campos para usuario y contraseña */}
                     <div className="form-group">
                         <label>Nombre de usuario</label>
-                        <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} required placeholder="Ingrese el nombre de usuario" />
+                        <input type="text" pattern="^[^\s]+$" onChange={(e) => setUsername(e.target.value)} value={username} required placeholder="Ingrese el nombre de usuario (Sin espacioes)"  />
                     </div>
 
                     <div className="form-group">
