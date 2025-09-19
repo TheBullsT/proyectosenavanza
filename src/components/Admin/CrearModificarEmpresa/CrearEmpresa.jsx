@@ -147,7 +147,7 @@ const CrearEmpresa = () => {
 
                         <div className="form-group">
                             <label>Número de documento</label>
-                            <input type="number" min="0" minLength={9} maxLength={9} pattern="[1-9][0-9]{9,}*" onChange={(e) => setNumeroDocumento(e.target.value)} value={numeroDocumento} required  placeholder="Ingrese el número de documento (De 9 dígitos)"/>
+                            <input type="text" inputMode="numeric" min="0" maxLength={9} pattern="^[0-9]{9}$" onChange={(e) => setNumeroDocumento(e.target.value)} value={numeroDocumento} required  placeholder="Ingrese el número de documento (De 9 dígitos)"/>
                         </div>
                     </div>
 
@@ -181,7 +181,7 @@ const CrearEmpresa = () => {
                     <div className="form-row">
                         <div className="form-group">
                             <label>Número de Teléfono Actual</label>
-                            <input type="tel" min='0' inputMode="numeric" pattern="^[3-9][0-9]{11,}$" minLength={10} maxLength={12} onChange={(e) => setTelefono(e.target.value)} value={telefono}  required placeholder="Ingrese el número de teléfono"  />
+                            <input type="tel" min='0' inputMode="numeric" pattern="^3[0-9]{9}$" minLength={10} maxLength={12} onChange={(e) => setTelefono(e.target.value)} value={telefono}  required placeholder="Ingrese el número de teléfono"  />
                         </div>
 
                         <div className="form-group">

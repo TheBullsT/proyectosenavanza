@@ -100,7 +100,7 @@ const ModificarEmpresa = () => {
                     <div className="form-row">
                         <div className="form-group">
                             <label>Número de Teléfono Actual</label>
-                            <input type="tel" min="0" inputMode="numeric" minLength={10} maxLength={12} name="telefono" value={form.telefono} onChange={handleChange} pattern="^[3-9][0-9]{11,}$" placeholder="Ingrese el número de teléfono" />
+                            <input type="tel" min="0" inputMode="numeric" minLength={10} maxLength={12} name="telefono" value={form.telefono} onChange={handleChange} pattern="^3[0-9]{9}$" placeholder="Ingrese el número de teléfono" />
                         </div>
                         <div className="form-group">
                             <label>Correo electrónico</label>
