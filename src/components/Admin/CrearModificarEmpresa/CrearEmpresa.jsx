@@ -147,7 +147,7 @@ const CrearEmpresa = () => {
 
                         <div className="form-group">
                             <label>Número de documento</label>
-                            <input type="text" inputMode="numeric" min="0" maxLength={9} pattern="^[0-9]{9}$" onChange={(e) => setNumeroDocumento(e.target.value)} value={numeroDocumento} required  placeholder="Ingrese el número de documento (De 9 dígitos)"/>
+                            <input type="text" inputMode="numeric" min="0" maxLength={9} pattern="^[0-9]{9}$" onChange={(e) => setNumeroDocumento(e.target.value)} value={numeroDocumento} required  placeholder="Ingrese el número de documento (De 9 dígitos)" title="Tiene que ser positivo y de 9 digitos"/>
                         </div>
                     </div>
 
@@ -163,12 +163,12 @@ const CrearEmpresa = () => {
                     {/* Campos para usuario y contraseña */}
                     <div className="form-group">
                         <label>Nombre de usuario</label>
-                        <input type="text" pattern="^[^\s]+$" onChange={(e) => setUsername(e.target.value)} value={username} required placeholder="Ingrese el nombre de usuario (Sin espacioes)"  />
+                        <input type="text" pattern="^[^\s]+$" onChange={(e) => setUsername(e.target.value)} value={username} required placeholder="Ingrese el nombre de usuario (Sin espacioes)" title="Sin espacios" />
                     </div>
 
                     <div className="form-group">
                         <label>Contraseña</label>
-                        <input type="password" minLength="8" onChange={(e) => setPassword(e.target.value)} value={password} required placeholder="Contraseña minimo 8 carácteres"/>
+                        <input type="password" minLength="8" onChange={(e) => setPassword(e.target.value)} value={password} required placeholder="Contraseña minimo 8 carácteres" title="Contraseña mínima de 8 carácteres"/>
                     </div>
 
                     {/* Campo para la razón social de la empresa */}
@@ -181,7 +181,7 @@ const CrearEmpresa = () => {
                     <div className="form-row">
                         <div className="form-group">
                             <label>Número de Teléfono Actual</label>
-                            <input type="tel" min='0' inputMode="numeric" pattern="^3[0-9]{9}$" minLength={10} maxLength={12} onChange={(e) => setTelefono(e.target.value)} value={telefono}  required placeholder="Ingrese el número de teléfono"  />
+                            <input type="tel" min='0' inputMode="numeric" pattern="^3[0-9]{9}$" minLength={10} maxLength={12} onChange={(e) => setTelefono(e.target.value)} value={telefono}  required placeholder="Ingrese el número de teléfono" />
                         </div>
 
                         <div className="form-group">
@@ -199,7 +199,7 @@ const CrearEmpresa = () => {
 
                         <div className="form-group">
                             <label>Actividad económica</label>
-                            <input type="text" onChange={(e) => setActividad(e.target.value)} value={actividad} pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\\s]+$"  placeholder="Ingrese la actividad Económica"/>
+                            <input type="text" onChange={(e) => setActividad(e.target.value)} value={actividad} pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+"  placeholder="Ingrese la actividad Económica" title="No debe contener números"/>
                         </div>
                     </div>
 

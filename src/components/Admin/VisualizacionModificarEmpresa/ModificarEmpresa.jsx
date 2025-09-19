@@ -116,7 +116,7 @@ const ModificarEmpresa = () => {
                         </div>
                         <div className="form-group">
                             <label>Actividad económica</label>
-                            <input type="text" name="actividad_economica" value={form.actividad_economica} onChange={handleChange} pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\\s]+$" placeholder="Ingrese la actividad económica"/>
+                            <input type="text" name="actividad_economica" value={form.actividad_economica} onChange={handleChange} pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+" placeholder="Ingrese la actividad económica" title="No debe contener números"/ >
                         </div>
                     </div>
 
