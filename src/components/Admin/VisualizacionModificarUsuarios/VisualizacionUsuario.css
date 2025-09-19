@@ -112,7 +112,7 @@ body {
   /* Caja de icono con fondo verde claro */
   display: flex;
   align-items: start;
-  background: #e8f5e9;
+  background: var(--primary-16);
   gap: 16px;
   padding: 15px;
   margin-top: 20px;
