@@ -105,28 +105,6 @@ const ModificarUsuario = () => {
               />
             </div>
 
-            {/* Campos nombre y apellido */}
-            <div className="grid-doble-usuario">
-              <div className="campo-form-usuario">
-                <label>Nombre</label>
-                <input
-                  type="text"
-                  name="first_name"
-                  value={form.first_name}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="campo-form-usuario">
-                <label>Apellido</label>
-                <input
-                  type="text"
-                  name="last_name"
-                  value={form.last_name}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
             {/* Campo email */}
             <div className="campo-form-usuario">
               <label>Correo Electrónico</label>
@@ -137,6 +115,50 @@ const ModificarUsuario = () => {
                 onChange={handleChange}
               />
             </div>
+
+            {/* Numero de documento */}
+            <div className="campo-form-usuario">
+              <label>Número de Documento</label>
+              <input
+                type="number"
+                name="number"
+                value={form.empresa.numero_documento}
+                onChange={handleChange}
+                disabled
+              />
+            </div>
+            {/* Razón Social */}
+            <div className="campo-form-usuario">
+              <label>Razón Social</label>
+              <input
+                type="text"
+                name="text"
+                value={form.empresa.razon_social}
+                onChange={handleChange}
+              />
+            </div>
+            {/* Dirección*/}
+            <div className="campo-form-usuario">
+              <label>Dirección</label>
+              <input
+                type="text"
+                name="text"
+                value={form.empresa.direccion}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* Telefono */}
+            <div className="campo-form-usuario">
+              <label>Telefono</label>
+              <input
+                type="tel"
+                name="tel"
+                value={form.empresa.telefono}
+                onChange={handleChange}
+              />
+            </div>
+
 
             {/* Botones de acción */}
             <div className="boton-contenedor-usuario">
