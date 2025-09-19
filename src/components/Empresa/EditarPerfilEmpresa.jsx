@@ -122,6 +122,8 @@ const EditarPerfilEmpresa = () => {
                         <input
                             className="answer-details"
                             name="telefono"
+                            type='tel'
+                            min={0}
                             value={empresa.telefono}
                             onChange={handleChange}
                         />
@@ -132,6 +134,7 @@ const EditarPerfilEmpresa = () => {
                         <strong>Correo Electrónico:</strong><br />
                         <input
                             className="answer-details"
+                            type='text'
                             name="correo_electronico"
                             value={empresa.correo_electronico}
                             onChange={handleChange}

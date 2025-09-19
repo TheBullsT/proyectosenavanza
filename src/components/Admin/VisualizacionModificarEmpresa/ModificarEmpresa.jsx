@@ -93,14 +93,14 @@ const ModificarEmpresa = () => {
 
                     <div className="form-group">
                         <label>Razón Social de la empresa</label>
-                        <input type="text" name="razon_social" value={form.razon_social} onChange={handleChange} />
+                        <input type="text" name="razon_social" value={form.razon_social} onChange={handleChange} pattern="[a-zA-Z\s]+"/>
                     </div>
 
                     {/* Campos de teléfono y correo */}
                     <div className="form-row">
                         <div className="form-group">
                             <label>Número de Teléfono Actual</label>
-                            <input type="text" name="telefono" value={form.telefono} onChange={handleChange} />
+                            <input type="tel" name="telefono" value={form.telefono} onChange={handleChange} min={0} />
                         </div>
                         <div className="form-group">
                             <label>Correo electrónico</label>
@@ -116,7 +116,7 @@ const ModificarEmpresa = () => {
                         </div>
                         <div className="form-group">
                             <label>Actividad económica</label>
-                            <input type="text" name="actividad_economica" value={form.actividad_economica} onChange={handleChange} />
+                            <input type="text" name="actividad_economica" value={form.actividad_economica} onChange={handleChange} pattern="[a-zA-Z\s]+"/>
                         </div>
                     </div>
 

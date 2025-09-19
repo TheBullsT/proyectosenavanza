@@ -80,7 +80,7 @@ const CrearProgramaFormacion = () => {
 
           <div className="form-group">
             <label>Nombre de Programa de Formación</label>
-            <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+            <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required pattern="[a-zA-Z\s]+"/>
           </div>
 
           <div className="form-group">

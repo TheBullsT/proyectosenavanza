@@ -153,6 +153,7 @@ const ModificarUsuario = () => {
                                 name="text"
                                 value={form.empresa.razon_social}
                                 onChange={handleChange}
+                                pattern="[a-zA-Z\s]+"
                             />
                         </div>
                         {/* Dirección*/}
@@ -174,6 +175,7 @@ const ModificarUsuario = () => {
                                 name="tel"
                                 value={form.empresa.telefono}
                                 onChange={handleChange}
+                                min={0}
                             />
                         </div>
 

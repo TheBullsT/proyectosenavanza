@@ -147,7 +147,7 @@ const CrearEmpresa = () => {
 
                         <div className="form-group">
                             <label>Número de documento</label>
-                            <input type="text" onChange={(e) => setNumeroDocumento(e.target.value)} value={numeroDocumento} required />
+                            <input type="text" onChange={(e) => setNumeroDocumento(e.target.value)} value={numeroDocumento} required min={0}/>
                         </div>
                     </div>
 
@@ -163,7 +163,7 @@ const CrearEmpresa = () => {
                     {/* Campos para usuario y contraseña */}
                     <div className="form-group">
                         <label>Nombre de usuario</label>
-                        <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} required />
+                        <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} required  />
                     </div>
 
                     <div className="form-group">
@@ -174,14 +174,14 @@ const CrearEmpresa = () => {
                     {/* Campo para la razón social de la empresa */}
                     <div className="form-group">
                         <label>Razón Social</label>
-                        <input type="text" onChange={(e) => setNickName(e.target.value)} value={nickName} required />
+                        <input type="text" onChange={(e) => setNickName(e.target.value)} value={nickName} required pattern="[a-zA-Z\s]+"/>
                     </div>
 
                     {/* Fila con teléfono y correo */}
                     <div className="form-row">
                         <div className="form-group">
                             <label>Número de Teléfono Actual</label>
-                            <input type="text" onChange={(e) => setTelefono(e.target.value)} value={telefono} required />
+                            <input type="tel" onChange={(e) => setTelefono(e.target.value)} value={telefono}  required  min={0} />
                         </div>
 
                         <div className="form-group">
@@ -199,7 +199,7 @@ const CrearEmpresa = () => {
 
                         <div className="form-group">
                             <label>Actividad económica</label>
-                            <input type="text" onChange={(e) => setActividad(e.target.value)} value={actividad} />
+                            <input type="text" onChange={(e) => setActividad(e.target.value)} value={actividad} pattern="[a-zA-Z\s]+" />
                         </div>
                     </div>
 
