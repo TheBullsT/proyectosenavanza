@@ -8,6 +8,7 @@ import { apiGeneral } from "../../../api/apis";
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
 import { jsPDF } from "jspdf";
 
+
 const ListarUsuarios = () => {
     const [usuarios, setUsuarios] = useState([]);
     const [search, setSearch] = useState("");
@@ -36,30 +37,6 @@ const ListarUsuarios = () => {
             user.empresa?.numero_documento?.toString().includes(search)
     );
     
-    // Eliminar usuario con confirmación
-    const eliminarUsuario = (usuarioId) => {
-        MySwal.fire({
-            title: '¿Eliminar Usuario?',
-            html: '<p style="font-size: 2rem;">¿Estás seguro de que deseas eliminar este usuario?</p>',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#39a900',
-            cancelButtonColor: '#50E5F9',
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar',
-        }).then(async (result) => {
-            if (result.isConfirmed) {
-                try {
-                    await apiGeneral.delete(`users/${usuarioId}/`);
-                    toast.success("Usuario eliminado correctamente");
-                    fetchUsuarios(); // Recargar lista
-                } catch (error) {
-                    console.error("Error al eliminar usuario:", error);
-                    toast.error("Error al eliminar el usuario");
-                }
-            }
-        });
-    };
 
 
     const generarReporte = () => {
@@ -150,12 +127,6 @@ const ListarUsuarios = () => {
                                     <Link to={`/modificar-usuarios/${user.id}`}>
                                         <FaEdit className="icon-action" title="Editar" />
                                     </Link>
-                                    <FaTrash
-                                        className="icon-action icon-delete"
-                                        title="Eliminar"
-                                        style={{ cursor: 'pointer' }}
-                                        onClick={() => eliminarUsuario(user.id)}
-                                    />
                                 </td>
                             </tr>
                         ))}
