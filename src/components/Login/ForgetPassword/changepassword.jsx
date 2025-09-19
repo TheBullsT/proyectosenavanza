@@ -70,10 +70,11 @@ export default function ChangePassword() {
                         <label>Nueva contraseña</label>
                         <input
                             type="password"
-                            placeholder="Nueva contraseña"
+                            placeholder="Nueva contraseña (Mínimo de 8 caracteres)"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             minLength={8}
+                            title="La contraseña debe de tener mínimo 8 caracteres"
                             required
                         />
 
@@ -84,6 +85,7 @@ export default function ChangePassword() {
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             minLength={8}
+                            title="La contraseñas no son iguales"
                             required
                         />
 
