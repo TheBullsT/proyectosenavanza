@@ -75,23 +75,16 @@ const VisualizacionUsuario = () => {
                                 <p>{usuario.username}</p>
                             </div>
 
-                            {/* Nombre y apellido */}
-                            <div className="grid-doble-usuario">
-                                <div className="campo-form-usuario">
-                                    <label>Nombre</label>
-                                    <p>{usuario.first_name}</p>
-                                </div>
-
-                                <div className="campo-form-usuario">
-                                    <label>Apellido</label>
-                                    <p>{usuario.last_name}</p>
-                                </div>
-                            </div>
-
                             {/* Correo electrónico */}
                             <div className="campo-form-usuario">
                                 <label>Correo Electrónico</label>
                                 <p>{usuario.email}</p>
+                            </div>
+
+                            {/* NIT */}
+                            <div className="campo-form-usuario">
+                                <label>NIT</label>
+                                <p>{usuario.nit}</p>
                             </div>
                         </div>
 
