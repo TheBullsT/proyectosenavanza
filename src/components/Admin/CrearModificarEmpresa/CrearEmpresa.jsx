@@ -147,7 +147,7 @@ const CrearEmpresa = () => {
 
                         <div className="form-group">
                             <label>Número de documento</label>
-                            <input type="text" onChange={(e) => setNumeroDocumento(e.target.value)} value={numeroDocumento} required min={0}/>
+                            <input type="text" min="0" pattern="[1-9][0-9]*" onChange={(e) => setNumeroDocumento(e.target.value)} value={numeroDocumento} required  placeholder="Ingrese el número de documento"/>
                         </div>
                     </div>
 
@@ -155,7 +155,7 @@ const CrearEmpresa = () => {
                     <div className="form-group">
                         <label>Rol</label>
                         <select onChange={(e) => setRol(e.target.value)} value={rol} required>
-                            <option value="">Seleccione</option>
+                            <option value="">Seleccione su rol</option>
                             <option value="empresa">Empresa</option>
                         </select>
                     </div>
@@ -163,30 +163,30 @@ const CrearEmpresa = () => {
                     {/* Campos para usuario y contraseña */}
                     <div className="form-group">
                         <label>Nombre de usuario</label>
-                        <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} required  />
+                        <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} required placeholder="Ingrese el nombre de usuario" />
                     </div>
 
                     <div className="form-group">
                         <label>Contraseña</label>
-                        <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} required />
+                        <input type="password" minLength="8" onChange={(e) => setPassword(e.target.value)} value={password} required placeholder="Contraseña minimo 8 carácteres"/>
                     </div>
 
                     {/* Campo para la razón social de la empresa */}
                     <div className="form-group">
                         <label>Razón Social</label>
-                        <input type="text" onChange={(e) => setNickName(e.target.value)} value={nickName} required pattern="[a-zA-Z\s]+"/>
+                        <input type="text" onChange={(e) => setNickName(e.target.value)} value={nickName} required pattern="[a-zA-Z\s]+" placeholder="Ingrese la razón social"/>
                     </div>
 
                     {/* Fila con teléfono y correo */}
                     <div className="form-row">
                         <div className="form-group">
                             <label>Número de Teléfono Actual</label>
-                            <input type="tel" onChange={(e) => setTelefono(e.target.value)} value={telefono}  required  min={0} />
+                            <input type="tel" min="0" onChange={(e) => setTelefono(e.target.value)} value={telefono}  required placeholder="Ingrese el número de teléfono"  />
                         </div>
 
                         <div className="form-group">
                             <label>Correo electrónico</label>
-                            <input type="email" onChange={(e) => setCorreo(e.target.value)} value={correo} required />
+                            <input type="email" onChange={(e) => setCorreo(e.target.value)} value={correo} required placeholder="Ingrese el correo electrónico"/>
                         </div>
                     </div>
 
@@ -194,12 +194,12 @@ const CrearEmpresa = () => {
                     <div className="form-row">
                         <div className="form-group">
                             <label>Dirección actual</label>
-                            <input type="text" onChange={(e) => setDireccion(e.target.value)} value={direccion} required />
+                            <input type="text" onChange={(e) => setDireccion(e.target.value)} value={direccion} required placeholder="Ingrese la dirección actual" />
                         </div>
 
                         <div className="form-group">
                             <label>Actividad económica</label>
-                            <input type="text" onChange={(e) => setActividad(e.target.value)} value={actividad} pattern="[a-zA-Z\s]+" />
+                            <input type="text" onChange={(e) => setActividad(e.target.value)} value={actividad} pattern="[a-zA-Z\s]+" placeholder="Ingrese la actividad Económica"/>
                         </div>
                     </div>
 
