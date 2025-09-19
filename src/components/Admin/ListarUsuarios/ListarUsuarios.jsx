@@ -32,8 +32,10 @@ const ListarUsuarios = () => {
     const filteredUsuarios = usuarios.filter(
         (user) =>
             user.username.toLowerCase().includes(search.toLowerCase()) ||
-            user.email.toLowerCase().includes(search.toLowerCase())
+            user.email.toLowerCase().includes(search.toLowerCase()) ||
+            user.empresa?.numero_documento?.toString().includes(search)
     );
+
 
     const generarReporte = () => {
         const doc = new jsPDF();
@@ -46,10 +48,11 @@ const ListarUsuarios = () => {
 
         filteredUsuarios.forEach((user, index) => {
             doc.text(
-                `${index + 1}. Usuario: ${user.username} | Correo: ${user.email}`,
+                `${index + 1}. Usuario: ${user.username} | Correo: ${user.email} | NIT: ${user.empresa?.numero_documento ?? "N/A"}`,
                 20,
                 y
             );
+
             y += 10;
 
             if (y > 270) {
@@ -101,10 +104,11 @@ const ListarUsuarios = () => {
                 />
 
                 <table className="program-table">
-                    <thead>
+                  <thead>
                         <tr>
                             <th>Username</th>
                             <th>Correo</th>
+                            <th>NIT</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
@@ -113,15 +117,14 @@ const ListarUsuarios = () => {
                             <tr key={user.id} className={index % 2 === 1 ? "odd" : ""}>
                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
+                                <td>{user.empresa?.numero_documento ?? "N/A"}</td>
                                 <td className="opciones">
                                     <Link to={`/visualizacion-usuarios/${user.id}`}>
                                         <FaEye className="icon-action" title="Ver" />
                                     </Link>
-
                                     <Link to={`/modificar-usuarios/${user.id}`}>
                                         <FaEdit className="icon-action" title="Editar" />
                                     </Link>
-
                                     <FaLock className="icon-action" title="Eliminar (no disponible)" />
                                 </td>
                             </tr>

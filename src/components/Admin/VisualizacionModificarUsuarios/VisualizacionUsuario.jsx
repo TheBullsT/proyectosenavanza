@@ -84,8 +84,38 @@ const VisualizacionUsuario = () => {
                             {/* NIT */}
                             <div className="campo-form-usuario">
                                 <label>NIT</label>
-                                <p>{usuario.nit}</p>
+                                <p>
+                                    {usuario.empresa?.documento === "nit"
+                                        ? usuario.empresa.numero_documento
+                                        : "No aplica"}
+                                </p>
                             </div>
+
+                            {/* Razon Social */}
+                            <div className="campo-form-usuario">
+                                <label>Razón Social</label>
+                                <p>{usuario.empresa.razon_social}</p>
+                            </div>
+
+                            {/* Dirección */}
+                            <div className="campo-form-usuario">
+                                <label>Dirección</label>
+                                <p>{usuario.empresa.direccion}</p>
+                            </div> 
+
+                            {/* Telefono */}
+                            <div className="campo-form-usuario">
+                                <label>Teléfono</label>
+                                <p>{usuario.empresa.telefono}</p>
+                            </div>
+
+                            {/* Estado */}
+                            <div className="campo-form-usuario">
+                                <label>Estado</label>
+                                <p>{usuario.empresa.estado}</p>
+                            </div>
+
+
                         </div>
 
                         {/* Botón para regresar */}
