@@ -7,11 +7,11 @@ import NavbarAdmin from "../NavbarAdmin/NavbarAdmin";
 // Icono para la sección de usuario
 import { MdPeopleAlt } from "react-icons/md";
 // Cliente API para solicitudes HTTP
-import { apiGeneral } from "../../../api/apis";
+import { apiGeneral, apiEmpresa } from "../../../api/apis";
 // Componente de carga para la base de datos
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
 // Estilos CSS para la vista
-import './ModificarUsuario.css';
+import "./ModificarUsuario.css";
 // Notificaciones de éxito/error
 import { toast } from "react-toastify";
 
@@ -32,10 +32,9 @@ const ModificarUsuario = () => {
             telefono: "",
             correo_electronico: "",
             direccion: "",
-            actividad_economica: ""
-        }
+            actividad_economica: "",
+        },
     });
-
 
     // Cargar datos del usuario al montar el componente
     useEffect(() => {
@@ -62,7 +61,7 @@ const ModificarUsuario = () => {
             const field = name.split(".")[1];
             setForm({
                 ...form,
-                empresa: { ...form.empresa, [field]: value }
+                empresa: { ...form.empresa, [field]: value },
             });
         } else {
             setForm({ ...form, [name]: value });
@@ -70,17 +69,67 @@ const ModificarUsuario = () => {
     };
 
     // Envía los datos modificados al servidor
+    // ... (Importaciones y estados anteriores)
+
+    // Envía los datos modificados al servidor
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // 1. Datos para la solicitud PUT del Usuario
+        // Solo incluimos los campos directos del modelo User.
+        // Excluimos 'password' (a menos que se esté cambiando) y, crucialmente, el objeto 'empresa'.
+        const userPayload = {
+            username: form.username,
+            email: form.email,
+            rol: form.rol,
+        };
+
+        // 2. Datos para la solicitud PUT de la Empresa
+        // Solo incluimos los campos modificables de la Empresa.
+        const empresaPayload = {
+            razon_social: form.empresa.razon_social,
+            direccion: form.empresa.direccion,
+            telefono: form.empresa.telefono,
+            correo_electronico: form.empresa.correo_electronico,
+        };
+
+        // NECESITAMOS EL ID DE LA EMPRESA para la segunda solicitud.
+        // Asumo que tu GET inicial proporciona el ID de la empresa en form.empresa.id.
+        const empresaId = form.empresa.id;
+
+        if (!empresaId) {
+            toast.error(
+                "Error: No se encontró el ID de la empresa. No se puede actualizar."
+            );
+            console.error(
+                "Falta form.empresa.id. Asegúrate de que tu endpoint GET /users/{id}/ lo devuelva."
+            );
+            return;
+        }
+
         try {
-            await apiGeneral.put(`/users/${id}/`, form);
-            toast.success("Usuario modificado con éxito");
+            // PRIMER PUT: Actualización del Usuario (solo username, email, rol)
+            // Llama a la vista user_detail_by_pk (sin datos anidados)
+            await apiGeneral.put(`/users/${id}/`, userPayload);
+
+            // SEGUNDO PUT: Actualización de la Empresa
+            // Llama a la vista user_empresa_update
+            await apiEmpresa.put(`/update/${empresaId}/`, empresaPayload);
+
+            toast.success("Usuario y Empresa modificados con éxito");
             navigate("/listar-usuarios");
         } catch (error) {
-            console.error("Error al modificar usuario:", error);
-            toast.error("Error al modificar el usuario");
+            console.error(
+                "Error al modificar usuario:",
+                error.response?.data || error.message
+            );
+            toast.error(
+                `Error al Modificar`
+            );
         }
     };
+
+
 
     if (loading) return <LoadingBaseDatos />;
     if (!usuario) return <p>No se encontró el usuario.</p>;
@@ -96,7 +145,8 @@ const ModificarUsuario = () => {
                     <h1 className="titulo-usuario">
                         Modificar Usuario
                         <span className="breadcrumb-usuario">
-                            Usted se encuentra en: <strong className="breadcrumb-actual-usuario">Usuarios</strong>
+                            Usted se encuentra en:{" "}
+                            <strong className="breadcrumb-actual-usuario">Usuarios</strong>
                         </span>
                     </h1>
 
@@ -106,8 +156,12 @@ const ModificarUsuario = () => {
                             <MdPeopleAlt />
                         </div>
                         <p>
-                            Aquí puedes modificar la información de un usuario registrado.<br />
-                            <strong>Los cambios se guardarán en la <span className="highlight">BASE DE DATOS</span>.</strong>
+                            Aquí puedes modificar la información de un usuario registrado.
+                            <br />
+                            <strong>
+                                Los cambios se guardarán en la{" "}
+                                <span className="highlight">BASE DE DATOS</span>.
+                            </strong>
                         </p>
                     </div>
 
@@ -142,10 +196,10 @@ const ModificarUsuario = () => {
                             <label>Número de Documento</label>
                             <input
                                 type="number"
-                                name="number"
+                                name="empresa.numero_documento"
                                 value={form.empresa.numero_documento}
                                 onChange={handleChange}
-                                disabled
+                                readOnly
                             />
                         </div>
                         {/* Razón Social */}
@@ -182,13 +236,16 @@ const ModificarUsuario = () => {
                             />
                         </div>
 
-
                         {/* Botones de acción */}
                         <div className="boton-contenedor-usuario">
                             <button type="submit" className="boton-modificar-usuario">
                                 Modificar Usuario
                             </button>
-                            <button type="button" className="boton-regresar-usuario" onClick={() => navigate(-1)}>
+                            <button
+                                type="button"
+                                className="boton-regresar-usuario"
+                                onClick={() => navigate(-1)}
+                            >
                                 Cancelar
                             </button>
                         </div>
