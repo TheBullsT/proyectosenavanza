@@ -7,7 +7,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { apiGeneral } from "../../../api/apis";
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
 import { jsPDF } from "jspdf";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { toast } from "react-toastify";
 
+const MySwal = withReactContent(Swal);
 
 const ListarUsuarios = () => {
     const [usuarios, setUsuarios] = useState([]);
@@ -15,18 +19,19 @@ const ListarUsuarios = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
+    const fetchUsuarios = async () => {
+        setLoading(true);
+        try {
+            const response = await apiGeneral.get("users/");
+            setUsuarios(response.data);
+        } catch (error) {
+            console.error("Error al obtener usuarios:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchUsuarios = async () => {
-            setLoading(true);
-            try {
-                const response = await apiGeneral.get("users/");
-                setUsuarios(response.data);
-            } catch (error) {
-                console.error("Error al obtener usuarios:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
         fetchUsuarios();
     }, []);
 
@@ -36,7 +41,7 @@ const ListarUsuarios = () => {
             user.email.toLowerCase().includes(search.toLowerCase()) ||
             user.empresa?.numero_documento?.toString().includes(search)
     );
-    
+
 
 
     const generarReporte = () => {
@@ -65,6 +70,32 @@ const ListarUsuarios = () => {
 
         doc.save("reporte_usuarios.pdf");
     };
+
+    // Eliminar usuario con confirmación
+    const eliminarUsuario = (usuarioId) => {
+        MySwal.fire({
+            title: '¿Eliminar Usuario?',
+            html: '<p style="font-size: 2rem;">¿Estás seguro de que deseas eliminar este usuario?</p>',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#39a900',
+            cancelButtonColor: '#50E5F9',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await apiGeneral.delete(`delete-user/${usuarioId}/`);
+                    toast.success("Usuario eliminado correctamente");
+                    fetchUsuarios(); // Recargar lista
+                } catch (error) {
+                    console.error("Error al eliminar usuario:", error);
+                    toast.error("Error al eliminar el usuario");
+                }
+            }
+        });
+    };
+
 
     if (loading) {
         return <LoadingBaseDatos />;
@@ -106,7 +137,7 @@ const ListarUsuarios = () => {
                 />
 
                 <table className="program-table">
-                  <thead>
+                    <thead>
                         <tr>
                             <th>Username</th>
                             <th>Correo</th>
@@ -127,6 +158,12 @@ const ListarUsuarios = () => {
                                     <Link to={`/modificar-usuarios/${user.id}`}>
                                         <FaEdit className="icon-action" title="Editar" />
                                     </Link>
+                                    <FaTrash
+                                        className="icon-action icon-delete"
+                                        title="Eliminar"
+                                        style={{ cursor: 'pointer' }}
+                                        onClick={() => eliminarUsuario(user.id)}
+                                    />
                                 </td>
                             </tr>
                         ))}
