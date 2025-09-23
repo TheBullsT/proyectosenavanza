@@ -22,14 +22,17 @@ const ModificarUsuario = () => {
     const [loading, setLoading] = useState(true); // Estado para mostrar carga
     const [form, setForm] = useState({
         username: "",
+        password: "",
+        rol: "",
         email: "",
-        first_name: "",
-        last_name: "",
         empresa: {
+            documento: "",
             numero_documento: "",
             razon_social: "",
+            telefono: "",
+            correo_electronico: "",
             direccion: "",
-            telefono: ""
+            actividad_economica: ""
         }
     });
 
@@ -52,18 +55,18 @@ const ModificarUsuario = () => {
 
     // Maneja cambios en los campos del formulario
     const handleChange = (e) => {
-    const { name, value } = e.target;
+        const { name, value } = e.target;
 
-    if (name.startsWith("empresa.")) {
-        // ej: name="empresa.razon_social"
-        const field = name.split(".")[1];
-        setForm({
-        ...form,
-        empresa: { ...form.empresa, [field]: value }
-        });
-    } else {
-        setForm({ ...form, [name]: value });
-    }
+        if (name.startsWith("empresa.")) {
+            // ej: name="empresa.razon_social"
+            const field = name.split(".")[1];
+            setForm({
+                ...form,
+                empresa: { ...form.empresa, [field]: value }
+            });
+        } else {
+            setForm({ ...form, [name]: value });
+        }
     };
 
     // Envía los datos modificados al servidor
@@ -150,7 +153,7 @@ const ModificarUsuario = () => {
                             <label>Razón Social</label>
                             <input
                                 type="text"
-                                name="text"
+                                name="empresa.razon_social"
                                 value={form.empresa.razon_social}
                                 onChange={handleChange}
                                 pattern="[a-zA-Z\s]+"
@@ -161,7 +164,7 @@ const ModificarUsuario = () => {
                             <label>Dirección</label>
                             <input
                                 type="text"
-                                name="text"
+                                name="empresa.direccion"
                                 value={form.empresa.direccion}
                                 onChange={handleChange}
                             />
@@ -172,7 +175,7 @@ const ModificarUsuario = () => {
                             <label>Telefono</label>
                             <input
                                 type="tel"
-                                name="tel"
+                                name="empresa.telefono"
                                 value={form.empresa.telefono}
                                 onChange={handleChange}
                                 min={0}
