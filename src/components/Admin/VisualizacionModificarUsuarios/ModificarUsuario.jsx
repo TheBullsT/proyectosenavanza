@@ -123,6 +123,7 @@ const ModificarUsuario = () => {
                                 name="username"
                                 value={form.username}
                                 onChange={handleChange}
+                                placeholder="Ingrese su nuevo nombre de usuario"
                             />
                         </div>
 
@@ -134,6 +135,7 @@ const ModificarUsuario = () => {
                                 name="empresa.correo_electronico"
                                 value={form.empresa.correo_electronico}
                                 onChange={handleChange}
+                                placeholder="Ingrese el nuevo correo electrónico"
                             />
                         </div>
 
@@ -141,7 +143,8 @@ const ModificarUsuario = () => {
                         <div className="campo-form-usuario">
                             <label>Número de Documento</label>
                             <input
-                                type="number"
+                                type="text"
+                                inputMode="numeric"
                                 name="empresa.numero_documento"
                                 value={form.empresa.numero_documento}
                                 onChange={handleChange}
@@ -157,6 +160,7 @@ const ModificarUsuario = () => {
                                 value={form.empresa.razon_social}
                                 onChange={handleChange}
                                 pattern="[a-zA-Z\s]+"
+                                placeholder="Ingrese la razón social nueva"
                             />
                         </div>
                         {/* Dirección*/}
@@ -167,6 +171,7 @@ const ModificarUsuario = () => {
                                 name="empresa.direccion"
                                 value={form.empresa.direccion}
                                 onChange={handleChange}
+                                placeholder="Ingrese la dirección nueva"
                             />
                         </div>
 
@@ -175,10 +180,14 @@ const ModificarUsuario = () => {
                             <label>Telefono</label>
                             <input
                                 type="tel"
+                                min="0" inputMode="numeric" 
+                                minLength={10} 
+                                maxLength={12}
                                 name="empresa.telefono"
                                 value={form.empresa.telefono}
                                 onChange={handleChange}
-                                min={0}
+                                pattern="^3[0-9]{9}$"
+                                placeholder="Ingrese el número de teléfono"
                             />
                         </div>
 

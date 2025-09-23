@@ -121,10 +121,13 @@ const EditarPerfilEmpresa = () => {
                         <strong>Teléfono Móvil:</strong><br />
                         <input
                             className="answer-details"
+                            inputMode='numeric'
                             name="telefono"
                             type='tel'
+                            minLength={10}
+                            maxLength={12}
                             min="0"
-                            pattern='[1-9][0-9]*'
+                            pattern="^3[0-9]{9}$"
                             value={empresa.telefono}
                             onChange={handleChange}
                             placeholder='Ingrese su número de teléfono'
@@ -136,7 +139,7 @@ const EditarPerfilEmpresa = () => {
                         <strong>Correo Electrónico:</strong><br />
                         <input
                             className="answer-details"
-                            type='text'
+                            type='email'
                             name="correo_electronico"
                             value={empresa.correo_electronico}
                             onChange={handleChange}
@@ -149,6 +152,7 @@ const EditarPerfilEmpresa = () => {
                         <strong>Dirección Actual:</strong><br />
                         <input
                             className="answer-details"
+                            type='text'
                             name="direccion"
                             value={empresa.direccion}
                             onChange={handleChange}
