@@ -130,7 +130,7 @@ const ListarUsuarios = () => {
 
                 <input
                     type="text"
-                    placeholder="Buscar por nombre o correo"
+                    placeholder="Buscar por nombre o correo o NIT"
                     className="input-busqueda"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
