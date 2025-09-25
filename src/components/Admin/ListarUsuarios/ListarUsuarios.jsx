@@ -149,7 +149,7 @@ const ListarUsuarios = () => {
                         {filteredUsuarios.map((user, index) => (
                             <tr key={user.id} className={index % 2 === 1 ? "odd" : ""}>
                                 <td>{user.username}</td>
-                                <td>{user.empresa?.correo_electronico}</td>
+                                <td>{user.email}</td>
                                 <td>{user.empresa?.numero_documento ?? "N/A"}</td>
                                 <td className="opciones">
                                     <Link to={`/visualizacion-usuarios/${user.id}`}>

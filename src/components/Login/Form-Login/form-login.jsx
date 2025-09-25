@@ -37,16 +37,20 @@ function FormLogin() {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Evita que se recargue
 
+        const loginPerfil = {
+            username: username,
+            password: contraseña
+        }
+
+        const config = {
+            headers: { "Content-Type": "application/json" },
+        }
+        
         try {
             const response = await apiLogin.post(
                 "token/",
-                {
-                    username: username,
-                    password: contraseña,
-                },
-                {
-                    headers: { "Content-Type": "application/json" },
-                }
+                loginPerfil,
+                config,
             );
 
             console.log("Tokens recibidos:", response.data);
@@ -68,9 +72,6 @@ function FormLogin() {
                     // Por el momento no funciona 
                     toast.error("El usuario está desactivado");
                 } else if (error.response.status === 401) {
-                    // Credenciales malas
-                    toast.error("Credenciales incorrectas");
-                } else if (error.response.status === 400) {
                     // El backend manda "Bad Request" si no existe
                     toast.error("El usuario no existe o está inactivo");
                 } else {
