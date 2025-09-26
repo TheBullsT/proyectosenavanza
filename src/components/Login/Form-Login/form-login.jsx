@@ -71,9 +71,12 @@ function FormLogin() {
                     // Usuario desactivado (is_active=false o estado==2)
                     // Por el momento no funciona 
                     toast.error("El usuario está desactivado");
-                } else if (error.response.status === 401) {
+                } else if (error.response.status === 400) {
                     // El backend manda "Bad Request" si no existe
-                    toast.error("El usuario no existe o está inactivo");
+                    toast.error("Usuario o contraseña incorrecta");
+                } else if (error.response.status === 404) {
+                    // El backend manda "Bad Request" si no existe
+                    toast.error("La empresa no existe");
                 } else {
                     toast.error("Error inesperado en el login");
                 }
