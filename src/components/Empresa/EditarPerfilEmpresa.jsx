@@ -119,19 +119,15 @@ const EditarPerfilEmpresa = () => {
                     </div>
                     <div>
                         <strong>Teléfono Móvil:</strong><br />
-                        <input
-                            className="answer-details"
-                            inputMode='numeric'
-                            name="telefono"
-                            type='tel'
-                            minLength={10}
-                            maxLength={12}
-                            min="0"
-                            pattern="^3[0-9]{9}$"
-                            value={empresa.telefono}
-                            onChange={handleChange}
-                            placeholder='Ingrese su número de teléfono'
-                        />
+                            <input 
+                            type="tel" 
+                            min='0' 
+                            inputMode="numeric" 
+                            pattern="^3[0-9]{9}$" 
+                            minLength={10} maxLength={12} 
+                            onChange={(e) => setTelefono(e.target.value)} value={telefono}  
+                            required 
+                            placeholder="Ingrese el número de teléfono" />
                         <hr />
                     </div>
 
