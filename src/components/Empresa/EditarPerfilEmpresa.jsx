@@ -120,16 +120,22 @@ const EditarPerfilEmpresa = () => {
                     <div>
                         <strong>Teléfono Móvil:</strong><br />
                         <input 
-                        className="answer-details"
-                        name='telefono'
-                        type="tel" 
-                        min='0' 
-                        inputMode="numeric" 
-                        pattern="^3[0-9]{9}$" 
-                        minLength={10} maxLength={12} 
-                        value={empresa.telefono}
-                        onChange={handleChange}
-                        placeholder="Ingrese el número de teléfono" />
+                            className="answer-details"
+                            name='telefono'
+                            type="tel" 
+                            // Ajuste: Usamos el atributo 'pattern' para la validación de formato
+                            pattern="3[0-9]{9}" 
+                            title="El teléfono debe tener 10 dígitos y empezar por 3 (formato móvil colombiano)."
+                            inputMode="numeric" 
+                            // Establece la longitud exacta de 10 dígitos (Móvil colombiano)
+                            minLength={10} 
+                            maxLength={10} 
+                            // 💡 Nuevo: Agregamos 'required' para asegurar que el campo no esté vacío
+                            required
+                            value={empresa.telefono}
+                            onChange={handleChange}
+                            placeholder="Ingrese el número de teléfono" 
+                        />
                         <hr />
                     </div>
 
