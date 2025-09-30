@@ -130,14 +130,16 @@ const ListarProgramas = () => {
         pf.nombre.toLowerCase().includes(search.toLowerCase())
     );
 
+    
+    // Mostrar pantalla de carga si está en loading
+    if (loading) return <LoadingBaseDatos />;
+    
     // Mostrar mensaje si no existen empresas (cuando no hay programas en absoluto)
     if (!programas || programas.length === 0) return <p> Programa de formación no encontrado.</p>;
 
     // 💡 Lógica para mostrar el mensaje de "No encontrada"
     const mostrarMensajeNoEncontrada = search.length > 0 && filteredProgramas.length === 0;
 
-    // Mostrar pantalla de carga si está en loading
-    if (loading) return <LoadingBaseDatos />;
 
     return (
         <div className="main-right-bar">

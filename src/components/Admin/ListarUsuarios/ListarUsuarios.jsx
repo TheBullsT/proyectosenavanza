@@ -96,15 +96,16 @@ const ListarUsuarios = () => {
         });
     };
 
-        // Mostrar mensaje si no existen empresas (cuando no hay programas en absoluto)
+        
+    // Mostrar pantalla de carga si está en loading
+    if (loading) return <LoadingBaseDatos />;
+    
+    // Mostrar mensaje si no existen empresas (cuando no hay programas en absoluto)
     if (!usuarios || usuarios.length === 0) return <p> Usuario no encontrado.</p>;
 
     // 💡 Lógica para mostrar el mensaje de "No encontrada"
     const mostrarMensajeNoEncontrada = search.length > 0 && filteredUsuarios.length === 0;
 
-    if (loading) {
-        return <LoadingBaseDatos />;
-    }
 
     return (
         <div className="main-right-bar">

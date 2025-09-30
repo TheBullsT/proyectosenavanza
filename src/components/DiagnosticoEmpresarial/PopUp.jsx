@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import exito from '../../assets/img/img-resultados-diagnostico/exito.png'
 
 // Importar el logo
-import logo from '../../../assets/img/Logo_SENAVANZA.jpg';
+import logo from '../../assets/img/Logo_SENAVANZA.jpg';
 // Importa íconos desde react-icons
 import { FaDownload } from "react-icons/fa";
 import { FaRegFileArchive } from "react-icons/fa";
