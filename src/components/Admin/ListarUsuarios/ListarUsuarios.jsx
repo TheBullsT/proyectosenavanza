@@ -96,6 +96,11 @@ const ListarUsuarios = () => {
         });
     };
 
+        // Mostrar mensaje si no existen empresas (cuando no hay programas en absoluto)
+    if (!usuarios || usuarios.length === 0) return <p> Usuario no encontrado.</p>;
+
+    // 💡 Lógica para mostrar el mensaje de "No encontrada"
+    const mostrarMensajeNoEncontrada = search.length > 0 && filteredUsuarios.length === 0;
 
     if (loading) {
         return <LoadingBaseDatos />;
@@ -135,40 +140,46 @@ const ListarUsuarios = () => {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
-
-                <table className="program-table">
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Correo</th>
-                            <th>NIT</th>
-                            <th>Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredUsuarios.map((user, index) => (
-                            <tr key={user.id} className={index % 2 === 1 ? "odd" : ""}>
-                                <td>{user.username}</td>
-                                <td>{user.email}</td>
-                                <td>{user.empresa?.numero_documento ?? "N/A"}</td>
-                                <td className="opciones">
-                                    <Link to={`/visualizacion-usuarios/${user.id}`}>
-                                        <FaEye className="icon-action" title="Ver" />
-                                    </Link>
-                                    <Link to={`/modificar-usuarios/${user.id}`}>
-                                        <FaEdit className="icon-action" title="Editar" />
-                                    </Link>
-                                    <FaTrash
-                                        className="icon-action icon-delete"
-                                        title="Eliminar"
-                                        style={{ cursor: 'pointer' }}
-                                        onClick={() => eliminarUsuario(user.id)}
-                                    />
-                                </td>
+                {/* 💡 Nuevo bloque para mostrar el mensaje "Empresa no encontrada" */}
+                {mostrarMensajeNoEncontrada ? (
+                    <div className="mensaje-no-encontrada-container" style={{ marginTop: '20px', textAlign: 'center', color: '#39a900', fontSize: '1.2em' }}>
+                        <p><strong>Usuario no encontrado.</strong></p>
+                    </div>
+                ) : (
+                    <table className="program-table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Correo</th>
+                                <th>NIT</th>
+                                <th>Opciones</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {filteredUsuarios.map((user, index) => (
+                                <tr key={user.id} className={index % 2 === 1 ? "odd" : ""}>
+                                    <td>{user.username}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.empresa?.numero_documento ?? "N/A"}</td>
+                                    <td className="opciones">
+                                        <Link to={`/visualizacion-usuarios/${user.id}`}>
+                                            <FaEye className="icon-action" title="Ver" />
+                                        </Link>
+                                        <Link to={`/modificar-usuarios/${user.id}`}>
+                                            <FaEdit className="icon-action" title="Editar" />
+                                        </Link>
+                                        <FaTrash
+                                            className="icon-action icon-delete"
+                                            title="Eliminar"
+                                            style={{ cursor: 'pointer' }}
+                                            onClick={() => eliminarUsuario(user.id)}
+                                        />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
             </div>
         </div>
     );

@@ -93,7 +93,7 @@ const Listar_Empresa = () => {
         empresa.razon_social.toLowerCase().includes(search.toLowerCase())
     );
 
-    // Mostrar loader mientras carga la información
+    // Mostrar loader mientras carga la información de la base datos
     if (loadingBaseDatos) return <LoadingBaseDatos />;
 
     // Mostrar mensaje si no existen empresas (cuando no hay empresas en absoluto)

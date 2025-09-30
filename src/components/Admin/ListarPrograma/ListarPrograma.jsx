@@ -130,6 +130,12 @@ const ListarProgramas = () => {
         pf.nombre.toLowerCase().includes(search.toLowerCase())
     );
 
+    // Mostrar mensaje si no existen empresas (cuando no hay programas en absoluto)
+    if (!programas || programas.length === 0) return <p> Programa de formación no encontrado.</p>;
+
+    // 💡 Lógica para mostrar el mensaje de "No encontrada"
+    const mostrarMensajeNoEncontrada = search.length > 0 && filteredProgramas.length === 0;
+
     // Mostrar pantalla de carga si está en loading
     if (loading) return <LoadingBaseDatos />;
 
@@ -173,58 +179,60 @@ const ListarProgramas = () => {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
-
-                {/* Tabla con la lista de programas */}
-                <table className="program-table">
-                    <thead>
-                        <tr>
-                            <th>Nombre del PF</th>
-                            <th>Nivel Formativo</th>
-                            <th>Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredProgramas.map((pf, index) => (
-                            <tr key={pf.id} className={index % 2 === 1 ? "odd" : ""}>
-                                <td>{pf.nombre}</td>
-                                <td>{pf.nivel_programa}</td>
-                                <td className="opciones">
-                                    {/* Botón para ver */}
-                                    <Link to={`/visualizacion-programa/${pf.id}`}>
-                                        <FaEye className="icon-action" title="Ver" />
-                                    </Link>
-                                    {/* Botón para editar */}
-                                    <Link to={`/modificar-programa/${pf.id}`}>
-                                        <FaEdit className="icon-action" title="Editar" />
-                                    </Link>
-                                    {/* Botón para activar/desactivar */}
-                                    {pf.estado === 1 ? (
-                                        <FaLockOpen
-                                            className="icon-action icon-lock"
-                                            title="Desactivar"
-                                            onClick={() => cambiarEstadoPrograma(pf)}
-                                            style={{ cursor: 'pointer' }}
-                                        />
-                                    ) : (
-                                        <FaLock
-                                            className="icon-action icon-lock"
-                                            title="Activar"
-                                            onClick={() => cambiarEstadoPrograma(pf)}
-                                            style={{ cursor: 'pointer' }}
-                                        />
-                                    )}
-                                    {/* Botón para eliminar */}
-                                    <FaTrash
-                                        className="icon-action icon-delete"
-                                        title="Eliminar"
-                                        onClick={() => eliminarPrograma(pf.id)}
-                                        style={{ cursor: 'pointer' }}
-                                    />
-                                </td>
+                {/* 💡 Nuevo bloque para mostrar el mensaje "Empresa no encontrada" */}
+                {mostrarMensajeNoEncontrada ? (
+                    <div className="mensaje-no-encontrada-container" style={{ marginTop: '20px', textAlign: 'center', color: '#39a900', fontSize: '1.2em' }}>
+                        <p><strong>Programa de formación no encontrado.</strong></p>
+                    </div>
+                ) : (
+                    <table className="program-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre del PF</th>
+                                <th>Nivel Formativo</th>
+                                <th>Opciones</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {filteredProgramas.map((pf, index) => (
+                                <tr key={pf.id} className={index % 2 === 1 ? "odd" : ""}>
+                                    <td>{pf.nombre}</td>
+                                    <td>{pf.nivel_programa}</td>
+                                    <td className="opciones">
+                                        <Link to={`/visualizacion-programa/${pf.id}`}>
+                                            <FaEye className="icon-action" title="Ver" />
+                                        </Link>
+                                        <Link to={`/modificar-programa/${pf.id}`}>
+                                            <FaEdit className="icon-action" title="Editar" />
+                                        </Link>
+                                        {pf.estado === 1 ? (
+                                            <FaLockOpen
+                                                className="icon-action icon-lock"
+                                                title="Desactivar"
+                                                onClick={() => cambiarEstadoPrograma(pf)}
+                                                style={{ cursor: 'pointer' }}
+                                            />
+                                        ) : (
+                                            <FaLock
+                                                className="icon-action icon-lock"
+                                                title="Activar"
+                                                onClick={() => cambiarEstadoPrograma(pf)}
+                                                style={{ cursor: 'pointer' }}
+                                            />
+                                        )}
+                                        <FaTrash
+                                            className="icon-action icon-delete"
+                                            title="Eliminar"
+                                            onClick={() => eliminarPrograma(pf.id)}
+                                            style={{ cursor: 'pointer' }}
+                                        />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+
             </div>
         </div>
     );

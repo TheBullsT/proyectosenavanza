@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { apiPerfil } from '../../api/apis';
 import LoadingDatos from '../Loading/loading_datos';
 import { useNavigate } from 'react-router-dom';
-// Importar las notificaciones
 import { toast } from 'react-toastify';
 import './PerfilEmpresa.css';
 
@@ -24,6 +23,8 @@ const EditarPerfilEmpresa = () => {
                 setEmpresa(response.data); // Guardar datos recibidos en el estado
             } catch (error) {
                 console.error("Error al traer los datos de la empresa", error);
+                // 💡 Mejora: Muestra un error al usuario si la carga inicial falla
+                toast.error("No se pudieron cargar los datos del perfil.");
             } finally {
                 setLoadingDatos(false); // Finaliza el estado de carga
             }
@@ -41,17 +42,27 @@ const EditarPerfilEmpresa = () => {
         setEmpresa(prev => ({ ...prev, [name]: value }));
     };
 
-    // Función para enviar los datos actualizados al backend
-    const handleGuardar = async () => {
+    // 💡 CAMBIO CLAVE: Función para enviar los datos, ahora recibe el evento del formulario.
+    const handleGuardar = async (e) => {
+        // Detiene el envío por defecto del formulario (recarga de página)
+        // PERMITE QUE LA VALIDACIÓN NATIVA DE HTML SE EJECUTE PRIMERO.
+        e.preventDefault();
+
+        // Si la validación nativa fallara (ej: campo requerido vacío), 
+        // esta línea no se alcanzaría porque el navegador mostraría un error.
+        // Si llegamos aquí, los datos cumplen con las reglas de HTML.
+
         try {
             console.log('Datos a guardar:', empresa);
-            const actu = await apiPerfil.put(" ", empresa);
+            // El endpoint correcto es solo '/', no ' '.
+            const actu = await apiPerfil.put("/", empresa);
             console.log(actu.data);
             toast.success("Datos guardados correctamente");
             navigate('/perfil'); // Redirige después de guardar
         } catch (error) {
             console.error("Error al guardar:", error);
-            toast.error("Error al guardar los datos");
+            // 💡 Mejora: Mostrar un mensaje más específico si es posible.
+            toast.error("Error al guardar los datos. Revisa la consola para más detalles.");
         }
     };
 
@@ -60,22 +71,17 @@ const EditarPerfilEmpresa = () => {
 
     return (
         <div className="profile-layout">
-            {/* Encabezado de la página */}
+            {/* ... Resto del encabezado ... */}
             <div className="title-empresa">
                 <h1>Editar Información de Perfil</h1>
             </div>
-
-            {/* Barra decorativa bajo el título */}
             <div className="barra-empresa">
                 <span className="linea2"></span>
             </div>
-
-            {/* Ruta de navegación */}
             <nav className="breadcrumb">Inicio / Editar Perfil</nav>
 
-            {/* Contenedor principal con información y formulario */}
             <div className="main-section">
-                {/* Tarjeta con datos generales de la empresa */}
+                {/* ... Tarjeta de la empresa ... */}
                 <div className="company-card">
                     <div className="company-image" />
                     <h2 className="company-name">{empresa.razon_social}</h2>
@@ -92,8 +98,13 @@ const EditarPerfilEmpresa = () => {
                     </div>
                 </div>
 
-                {/* Lista con detalles de la empresa y campos editables */}
-                <div className="company-details">
+                {/* 💡 CAMBIO CLAVE: Agregamos onSubmit={handleGuardar} al formulario */}
+                <form
+                    method='PUT'
+                    className="company-details"
+                    onSubmit={handleGuardar} // ¡Aquí adjuntamos la función!
+                >
+                    {/* Campos no editables */}
                     <div>
                         <div className="blocked">
                             <strong>Tipo de Documento:</strong><br />
@@ -117,24 +128,24 @@ const EditarPerfilEmpresa = () => {
                         <div className="answer-details">{empresa.razon_social}</div>
                         <hr />
                     </div>
+
+                    {/* Campos editables con validación HTML nativa */}
                     <div>
                         <strong>Teléfono Móvil:</strong><br />
-                        <input 
+                        <input
                             className="answer-details"
                             name='telefono'
-                            type="tel" 
-                            // Ajuste: Usamos el atributo 'pattern' para la validación de formato
-                            pattern="3[0-9]{9}" 
+                            type="tel"
+                            // Validación para móvil colombiano
+                            pattern="3[0-9]{9}"
                             title="El teléfono debe tener 10 dígitos y empezar por 3 (formato móvil colombiano)."
-                            inputMode="numeric" 
-                            // Establece la longitud exacta de 10 dígitos (Móvil colombiano)
-                            minLength={10} 
-                            maxLength={10} 
-                            // 💡 Nuevo: Agregamos 'required' para asegurar que el campo no esté vacío
-                            required
-                            value={empresa.telefono}
+                            inputMode="numeric"
+                            minLength={10}
+                            maxLength={10}
+                            required // ¡Asegura que no esté vacío!
+                            value={empresa.telefono || ''} // Usar || '' para evitar warning si es null/undefined
                             onChange={handleChange}
-                            placeholder="Ingrese el número de teléfono" 
+                            placeholder="Ingrese el número de teléfono"
                         />
                         <hr />
                     </div>
@@ -143,9 +154,10 @@ const EditarPerfilEmpresa = () => {
                         <strong>Correo Electrónico:</strong><br />
                         <input
                             className="answer-details"
-                            type='email'
+                            type='email' // ¡Valida formato de correo!
                             name="correo_electronico"
-                            value={empresa.correo_electronico}
+                            required // ¡Asegura que no esté vacío!
+                            value={empresa.correo_electronico || ''}
                             onChange={handleChange}
                             placeholder='Ingrese su correo electrónico'
                         />
@@ -158,7 +170,8 @@ const EditarPerfilEmpresa = () => {
                             className="answer-details"
                             type='text'
                             name="direccion"
-                            value={empresa.direccion}
+                            required // ¡Asegura que no esté vacío!
+                            value={empresa.direccion || ''}
                             onChange={handleChange}
                             placeholder='Ingrese su dirección actual'
                         />
@@ -172,17 +185,20 @@ const EditarPerfilEmpresa = () => {
                         <div className="answer-details">{empresa.actividad_economica}</div>
                         <hr />
                     </div>
-                </div>
+                    <footer className="footer-section-1">
+                        <button className="cancel-button" type='button' onClick={irAPerfil}>Cancelar</button>
+                        {/* El botón de 'Guardar' ahora solo necesita type='submit' */}
+                        <button className="edit-button" type='submit'>Guardar</button>
+                    </footer>
+                </form>
             </div>
 
-            {/* Controles para guardar o cancelar cambios */}
+            {/* ... Resto del pie de página ... */}
             <footer className="footer-section-1">
                 <p>
                     Estás editando el perfil de <br />
                     <strong>{empresa.razon_social}</strong>
                 </p>
-                <button className="cancel-button" onClick={irAPerfil}>Cancelar</button>
-                <button className="edit-button" onClick={handleGuardar}>Guardar</button>
             </footer>
         </div>
     );
