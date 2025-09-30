@@ -17,7 +17,7 @@ const VisualizacionUsuario = () => {
     const [loading, setLoading] = useState(true);
 
     const irListarUsuario = () => {
-        navigate('/listar-usuario');
+        navigate('/listar-usuarios');
     }
 
     useEffect(() => {
