@@ -66,7 +66,7 @@ function Popup({ cerrar, datos }) {
 
         y_position += 10;
         doc.setFontSize(12);
-        // 💡 CORRECCIÓN: Uso de backticks (``) para plantillas literales
+        // CORRECCIÓN: Uso de backticks (``) para plantillas literales
         doc.text(`Nombre: ${nombre}`, 20, y_position);
 
         y_position += 10;
@@ -84,7 +84,7 @@ function Popup({ cerrar, datos }) {
 
         // 6. Nivel (Colocado dinámicamente)
         y_position += 10;
-        // 💡 CORRECCIÓN: Uso de backticks (``) para plantillas literales
+        // CORRECCIÓN: Uso de backticks (``) para plantillas literales
         doc.text(`Nivel: ${nivel}`, 20, y_position);
 
         // 7. Pie de página (Se mantiene al final de la página)

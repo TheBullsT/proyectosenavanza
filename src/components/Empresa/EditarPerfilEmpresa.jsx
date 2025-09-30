@@ -23,7 +23,7 @@ const EditarPerfilEmpresa = () => {
                 setEmpresa(response.data); // Guardar datos recibidos en el estado
             } catch (error) {
                 console.error("Error al traer los datos de la empresa", error);
-                // 💡 Mejora: Muestra un error al usuario si la carga inicial falla
+                // Mejora: Muestra un error al usuario si la carga inicial falla
                 toast.error("No se pudieron cargar los datos del perfil.");
             } finally {
                 setLoadingDatos(false); // Finaliza el estado de carga
@@ -54,14 +54,13 @@ const EditarPerfilEmpresa = () => {
 
         try {
             console.log('Datos a guardar:', empresa);
-            // El endpoint correcto es solo '/', no ' '.
             const actu = await apiPerfil.put("/", empresa);
             console.log(actu.data);
             toast.success("Datos guardados correctamente");
             navigate('/perfil'); // Redirige después de guardar
         } catch (error) {
             console.error("Error al guardar:", error);
-            // 💡 Mejora: Mostrar un mensaje más específico si es posible.
+            // Mejora: Mostrar un mensaje más específico si es posible.
             toast.error("Error al guardar los datos. Revisa la consola para más detalles.");
         }
     };
