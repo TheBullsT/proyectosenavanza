@@ -108,7 +108,10 @@ h5 {
 
 /* Contenedor principal del loading */
 .loading-container {
+    position: fixed;
     display: flex;
+    height: 100%;
+    width: 100%;
     flex-direction: column;
     /* Elementos en columna */
     align-items: center;
@@ -117,8 +120,6 @@ h5 {
     /* Centra vertical */
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
     z-index: 9999;
     /* Siempre encima */
     height: 100vh;
@@ -129,6 +130,7 @@ h5 {
     /* Texto gris oscuro */
     font-size: 20px;
     /* Texto del mensaje */
+    overflow: hidden;
 }
 
 /* Spinner circular animado */
