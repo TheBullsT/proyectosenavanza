@@ -51,6 +51,12 @@
   --h6: 1.2rem;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 html {
   /* Tamaño base de fuente y box-sizing global */
   font-size: 62.5%;

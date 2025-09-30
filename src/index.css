@@ -67,14 +67,14 @@ html {
 }
 
 /* Aplica el modelo de caja heredado a pseudoelementos */
-:before,
-*:after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 /* Configuración base del body */
 body {
-  font-size: 16px;
   /* Establece el tamaño base del texto */
   font-family: 'Work Sans', sans-serif;
   /* Fuente predeterminada */
