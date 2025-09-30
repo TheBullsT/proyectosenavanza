@@ -98,7 +98,7 @@ const EditarPerfilEmpresa = () => {
                     </div>
                 </div>
 
-                {/* 💡 CAMBIO CLAVE: Agregamos onSubmit={handleGuardar} al formulario */}
+                {/*  CAMBIO CLAVE: Agregamos onSubmit={handleGuardar} al formulario */}
                 <form
                     method='PUT'
                     className="company-details"
