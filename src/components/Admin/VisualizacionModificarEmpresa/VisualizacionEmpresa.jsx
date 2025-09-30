@@ -5,11 +5,19 @@ import { MdHomeRepairService } from "react-icons/md";
 import { apiEmpresa } from "../../../api/apis"; // Cliente Axios para peticiones a la API de empresas
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
 import "./VisualizacionEmpresa.css";
+import { useNavigate } from "react-router-dom";
 
 const Visualizacion_Empresa = () => {
     const { id } = useParams(); // Capturamos el id de la empresa desde la URL
     const [empresa, setEmpresa] = useState(null); // Estado para almacenar los datos de la empresa
     const [loading, setLoading] = useState(true); // Estado para manejar la carga
+
+    const navigate = useNavigate();
+
+    const irListarEmpresa = () =>{
+        navigate('/listar-empresa');
+    }
+
 
     useEffect(() => {
         const fetchEmpresa = async () => {
@@ -83,6 +91,12 @@ const Visualizacion_Empresa = () => {
                         <div className="campo-form">
                             <label>Actividad Económica</label>
                             <input type="text" value={empresa.actividad_economica} readOnly />
+                        </div>
+                        {/* Botón para regresar */}
+                        <div className="boton-contenedor-empresa">
+                            <button type="button" className="boton-regresar-empresa" onClick={irListarEmpresa}>
+                                Regresar
+                            </button>
                         </div>
                     </form>
                 </div>

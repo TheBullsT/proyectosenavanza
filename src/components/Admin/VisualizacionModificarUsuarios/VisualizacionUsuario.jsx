@@ -16,6 +16,10 @@ const VisualizacionUsuario = () => {
     // Estado para controlar el estado de carga
     const [loading, setLoading] = useState(true);
 
+    const irListarUsuario = () => {
+        navigate('/listar-usuario');
+    }
+
     useEffect(() => {
         // Función asincrónica para obtener los datos de un usuario específico
         const fetchUsuario = async () => {
@@ -119,8 +123,8 @@ const VisualizacionUsuario = () => {
                         </div>
 
                         {/* Botón para regresar */}
-                        <div className="boton-contenedor-usuario">
-                            <button className="boton-regresar-usuario" onClick={() => navigate(-1)}>
+                        <div className="boton-contenedor-visualizar-usuario">
+                            <button type="button" className="boton-regresar-visualizar-usuario" onClick={irListarUsuario}>
                                 Regresar
                             </button>
                         </div>

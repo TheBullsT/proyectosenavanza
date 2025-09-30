@@ -102,7 +102,6 @@ body {
 
 .info-box-visualizacion-usuario {
   display: flex;
-  align-items: start;
   gap: 1.6rem;
   margin: 3rem 0;
   flex-direction: column;
@@ -188,13 +187,13 @@ body {
   min-width: 20rem;
 }
 
-.boton-contenedor-usuario {
+.boton-contenedor-visualizar-usuario {
   margin-top: 3rem;
   display: flex;
   justify-content: center;
 }
 
-.boton-regresar-usuario {
+.boton-regresar-visualizar-usuario {
   background-color: var(--primary-1);
   color: var(--white);
   padding: 1.2rem 3rem;
@@ -206,6 +205,6 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.boton-regresar-usuario:hover {
+.boton-regresar-visualizar-usuario:hover {
   background-color: var(--primary-2);
 }

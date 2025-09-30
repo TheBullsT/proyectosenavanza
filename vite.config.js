@@ -11,6 +11,9 @@ export default defineConfig({
 
   // Configuración del servidor de desarrollo
   server: {
-    port: 5173, // Puerto donde se levantará el servidor local (http://localhost:5173)
+    port: 5173, 
+    watch:{
+      usePolling: true
+    }// Puerto donde se levantará el servidor local (http://localhost:5173)
   },
 });
