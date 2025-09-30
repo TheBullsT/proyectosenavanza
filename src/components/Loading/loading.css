@@ -108,7 +108,7 @@ h5 {
 
 /* Contenedor principal del loading */
 .loading-container {
-    position: fixed;
+    /* position: fixed; */
     display: flex;
     height: 100%;
     width: 100%;
