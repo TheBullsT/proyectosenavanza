@@ -109,6 +109,9 @@ const PerfilEmpresa = () => {
                         <div className="answer-details">{empresa.actividad_economica}</div>
                         <hr />
                     </div>
+                    <footer className="footer-section-1">
+                        <button className="edit-button" onClick={editar}>Editar</button>
+                    </footer>
                 </div>
             </div>
 
@@ -118,7 +121,6 @@ const PerfilEmpresa = () => {
                     Estás revisando el perfil de <br />
                     <strong>{empresa.razon_social}</strong>
                 </p>
-                <button className="edit-button" onClick={editar}>Editar</button>
             </footer>
         </div>
     );
