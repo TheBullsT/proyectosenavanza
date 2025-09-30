@@ -194,18 +194,20 @@ const ModificarUsuario = () => {
                                 />
                             </div>
 
-                            <div className="campo-form-usuario">
+                            <div className="campo-form-usuario blocked">
                                 <label>Actividad Económica</label>
                                 <input
+                                    className="answer-details"
                                     type="text"
                                     name="empresa.actividad_economica"
                                     value={form.empresa.actividad_economica}
                                     readOnly // 
                                 />
                             </div>
-                            <div className="campo-form-usuario">
+                            <div className="campo-form-usuario blocked">
                                 <label>Tipo de Documento</label>
                                 <input
+                                    className="answer-details"
                                     type="text"
                                     inputMode="numeric"
                                     name="empresa.documento"
@@ -213,9 +215,10 @@ const ModificarUsuario = () => {
                                     readOnly // 
                                 />
                             </div>
-                            <div className="campo-form-usuario">
+                            <div className="campo-form-usuario blocked">
                                 <label>Número de Documento</label>
                                 <input
+                                    className="answer-details"
                                     type="text"
                                     inputMode="numeric"
                                     name="empresa.numero_documento"
@@ -223,9 +226,10 @@ const ModificarUsuario = () => {
                                     readOnly // 
                                 />
                             </div>
-                            <div className="campo-form-usuario">
+                            <div className="campo-form-usuario blocked">
                                 <label>Estado</label>
                                 <input
+                                    className="answer-details"
                                     type="text"
                                     inputMode="numeric"
                                     name="empresa.estado"

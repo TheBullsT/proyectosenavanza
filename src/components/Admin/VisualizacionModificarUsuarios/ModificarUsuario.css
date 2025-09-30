@@ -119,6 +119,13 @@ a {
   margin-bottom: 30px;
 }
 
+.blocked {
+    color: #777;
+}
+.answer-details {
+    color: #777;
+}
+
 .icon-usuario {
   background: var(--primary-1);
   color: var(--white);
