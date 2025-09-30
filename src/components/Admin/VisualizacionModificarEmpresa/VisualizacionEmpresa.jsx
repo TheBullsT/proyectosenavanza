@@ -53,7 +53,7 @@ const Visualizacion_Empresa = () => {
                 <div className="icon-box">
                     <div className="icon">
                         {/* Ícono representativo del módulo */}
-                        <i className="fas fa-building"><MdHomeRepairService /></i>
+                        <MdHomeRepairService />
                     </div>
                     <p>
                         Aquí puedes visualizar la información detallada de la empresa registrada.

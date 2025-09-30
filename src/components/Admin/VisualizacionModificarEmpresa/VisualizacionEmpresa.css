@@ -113,8 +113,10 @@ body {
 /* Caja que incluye ícono y texto */
 .icon-box {
   display: flex;
-  align-items: start;
-  background: var(--gray-16);
+  align-items: flex-start;
+  background: var(--primary-16);
+  /* Fondo verde claro */
+  border: 1px solid var(--primary-14);
   gap: 16px;
   padding: 15px;
   margin-top: 20px;
@@ -125,11 +127,21 @@ body {
 .icon-box .icon {
   background: var(--primary-1);
   color: var(--white);
-  padding: 1.6rem;
   border-radius: 50%;
-  font-size: 2.4rem;
-  width: 25px;
-  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Dimensiones fijas para evitar el salto de layout */
+  width: 6.0rem;
+  /* 60px */
+  height: 6.0rem;
+  /* 60px */
+  flex-shrink: 0;
+}
+
+.icon-box .icon svg {
+  /* Ajusta el tamaño del ícono interno */
+  font-size: 3.0rem;
 }
 
 /* Subtítulos de secciones */

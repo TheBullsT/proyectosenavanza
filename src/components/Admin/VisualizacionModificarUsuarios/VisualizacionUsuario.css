@@ -74,7 +74,6 @@ body {
 .visualizacion-usuario-container {
   /* Contenedor principal con sombra y fondo gris */
   flex: 4;
-  background-color: var(--gray-16);
 }
 
 .visualizacion-usuario-contenido {
@@ -85,7 +84,6 @@ body {
   max-width: 90rem;
   margin: 0 auto;
   padding: 4rem;
-  background-color: var(--gray-16);
 }
 
 .titulo-usuario {
@@ -116,23 +114,34 @@ body {
 .icon-box-usuario {
   /* Caja de icono con fondo verde claro */
   display: flex;
-  align-items: start;
+  align-items: flex-start;
+  /* Asegura que el ícono esté alineado con la primera línea de texto */
   background: var(--primary-16);
   gap: 16px;
   padding: 15px;
   margin-top: 20px;
   border-radius: 6px;
   margin-bottom: 30px;
+  border: 1px solid var(--primary-14);
 }
 
 .icon-box-usuario .icon-usuario {
   background: var(--primary-1);
   color: var(--white);
-  padding: 1.6rem;
   border-radius: 50%;
-  font-size: 2.4rem;
-  width: 25px;
-  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.0rem;
+  /* 60px fijo */
+  height: 6.0rem;
+  /* 60px fijo */
+  flex-shrink: 0;
+  /* Evita que se encoja */
+}
+.icon-box-usuario .icon-usuario svg {
+  /* Ajusta el tamaño del ícono interno */
+  font-size: 3.0rem;
 }
 
 .subtitulo-usuario {

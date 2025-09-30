@@ -99,24 +99,38 @@ html {
 }
 
 .form-info {
-  display: flex;
-  align-items: start;
-  background: #e8f5e9;
-  /* Fondo de color verde claro */
-  gap: 16px;
-  padding: 15px;
-  margin-top: 20px;
-  border-radius: 6px;
-  margin-bottom: 30px;
+    display: flex;
+    align-items: flex-start; 
+    gap: 16px;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    background: var(--primary-16);
+    border: 1px solid var(--primary-14);
 }
 
 .form-info .icon {
-  background: var(--primary-1);
-  color: var(--white);
-  padding: 16px;
-  border-radius: 50%;
-  /* Ícono circular */
-  font-size: 24px;
+ width: 60px; 
+    height: 60px;
+    
+    /* Centrado del contenido del ícono (MdHomeRepairService y <i>) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Estilos visuales */
+    background: var(--primary-1);
+    color: var(--white);
+    border-radius: 50%;
+    
+    /* Previene que el ícono se encoja en pantallas pequeñas */
+    flex-shrink: 0; 
+}
+
+/* Ajusta el tamaño de los íconos (tanto el componente React SVG como el <i>) */
+.form-info .icon svg {
+    font-size: 28px; /* Un tamaño adecuado para el contenedor de 60px */
 }
 
 .highlight {

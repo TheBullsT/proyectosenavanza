@@ -121,7 +121,6 @@ const CrearEmpresa = () => {
                 <div className="form-info">
                     <div className="icon">
                         <MdHomeRepairService /> {/* Icono ilustrativo */}
-                        <i className="fas fa-home"></i>
                     </div>
                     <p>
                         En este espacio se podrá crear el usuario de la empresa que esté vinculada con nosotros.<br />
