@@ -35,60 +35,36 @@ function ProtectRoute({ children, rol = null }) {
     // Función que verifica si el usuario está autenticado (token válido)
     const verifyAuth = async () => {
         try {
-            // Llama al endpoint /verify/ para validar la sesión actual
+            // Llama al endpoint /verify/. Si el token de acceso expira, 
+            // el interceptor de Axios intentará refrescarlo automáticamente.
             const res = await apiLogin.get("verify/", {
                 headers: { 'Content-Type': 'application/json' },
             });
 
-            // Si la verificación es exitosa (HTTP 200)
             if (res.status === 200) {
                 const user = res.data;
 
-                // Si se requiere un rol específico y no coincide, deniega acceso
                 if (rol && user.rol !== rol) {
                     toast.warning("No tienes permisos para acceder a esta ruta.");
-                    navigate("/login"); // Redirige manualmente al inicio de sesión
+                    navigate("/login");
                     return;
                 }
 
-                // Autorización concedida
                 setIsAuthorized(true);
             }
         } catch (error) {
-            // Si falla por token expirado, intenta refrescar el token
-            if (error.response?.status === 401) {
-                await handleRefresh();
-            } else {
-                // Si es otro error, redirige directamente al inicio de sesión
-                navigate("/login");
-            }
-        }
-    };
 
-    // Función que intenta refrescar el token de acceso usando el refresh_token
-    const handleRefresh = async () => {
-        try {
-            // Llama al endpoint /token/refresh/ para obtener un nuevo access_token
-            const res = await apiLogin.post(
-                "token/refresh/",
-                {},
-                { headers: { 'Content-Type': 'application/json' } }
-            );
-
-            // Si el refresh es exitoso, vuelve a verificar la autenticación
-            if (res.status === 200) {
-                await verifyAuth();
-            } else {
-                // Si falla, muestra mensaje y redirige
-                toast.error("Sesión expirada, inicia sesión de nuevo.");
-                navigate("/login");
-            }
-        } catch {
-            // Si hay error en el refresh (token expirado o inválido)
+            console.error("Fallo de autenticación o Refresh Token expirado:", error);
             toast.error("Sesión expirada, inicia sesión de nuevo.");
+
+            localStorage.removeItem(ACCESS_TOKEN); 
+            localStorage.removeItem(REFRESH_TOKEN); 
+
             navigate("/login");
         }
     };
+
+
 
     // Mientras se verifica la autenticación, muestra el componente de carga
     if (isAuthorized === null) return <Loading />;

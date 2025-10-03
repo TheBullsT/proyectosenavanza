@@ -53,7 +53,16 @@ function FormLogin() {
                 config,
             );
 
+            
+
             console.log("Tokens recibidos:", response.data);
+
+            const { access, refresh } = response.data;
+
+            // Guardar en localstorage
+            localStorage.setItem(ACCESS_TOKEN, access);
+            localStorage.setItem(REFRESH_TOKEN, refresh);
+
             if (response.data.rol == 'admin') {
                 toast.success("Inicio de sesión exitoso");
                 navigate("/adminhome");
