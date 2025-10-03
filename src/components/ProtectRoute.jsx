@@ -38,7 +38,6 @@ function ProtectRoute({ children, rol = null }) {
             // Llama al endpoint /verify/. Si el token de acceso expira, 
             // el interceptor de Axios intentará refrescarlo automáticamente.
             const res = await apiLogin.get("verify/", {
-                headers: { 'Content-Type': 'application/json' },
             });
 
             if (res.status === 200) {
@@ -57,8 +56,6 @@ function ProtectRoute({ children, rol = null }) {
             console.error("Fallo de autenticación o Refresh Token expirado:", error);
             toast.error("Sesión expirada, inicia sesión de nuevo.");
 
-            localStorage.removeItem(ACCESS_TOKEN); 
-            localStorage.removeItem(REFRESH_TOKEN); 
 
             navigate("/login");
         }
