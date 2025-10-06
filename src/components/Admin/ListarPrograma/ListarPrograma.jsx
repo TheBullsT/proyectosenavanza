@@ -102,7 +102,7 @@ const ListarProgramas = () => {
         const img = new Image();
         // ASUME QUE 'logo' ESTÁ DISPONIBLE EN EL ÁMBITO SUPERIOR
         img.src = logo; 
-        doc.addImage(img, "PNG", 20, 10, 40, 20); // Logo
+        doc.addImage(img, "PNG", 10, 5, 20, 10); // Logo
 
         // 2. Título y Subtítulo
         doc.setFontSize(18);

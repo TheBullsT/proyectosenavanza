@@ -38,7 +38,7 @@ function Popup({ cerrar, datos }) {
         // Esperamos a que la imagen cargue antes de continuar
         await new Promise((resolve, reject) => {
             img.onload = () => {
-                doc.addImage(img, "PNG", 20, 10, 40, 20); // x, y, width, height
+                doc.addImage(img, "PNG", 10, 5, 20, 10); // x, y, width, height
                 resolve();
             };
             img.onerror = reject; // Manejo básico de errores si el logo no carga

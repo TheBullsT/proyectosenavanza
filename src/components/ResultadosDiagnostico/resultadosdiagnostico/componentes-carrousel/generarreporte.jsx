@@ -22,7 +22,7 @@ function GenerarReporte() {
         const img = new Image();
         // ASUME QUE 'logo' ESTÁ DISPONIBLE EN EL ÁMBITO SUPERIOR
         img.src = logo; 
-        doc.addImage(img, "PNG", 20, y, 40, 20); 
+        doc.addImage(img, "PNG", 10, y, 20, 10); 
         y += 10;
 
         // Título Principal

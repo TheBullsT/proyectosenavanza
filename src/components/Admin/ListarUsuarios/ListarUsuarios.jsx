@@ -54,7 +54,7 @@ const ListarUsuarios = () => {
         const img = new Image();
         // ASUME QUE 'logo' ESTÁ DISPONIBLE EN EL ÁMBITO SUPERIOR
         img.src = logo; 
-        doc.addImage(img, "PNG", 20, 10, 40, 20); // x, y, width, height
+        doc.addImage(img, "PNG", 10, 5, 20, 10); // x, y, width, height
 
         // Título y Subtítulo
         doc.setFontSize(18);
