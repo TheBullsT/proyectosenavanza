@@ -11,8 +11,7 @@ import Loading from './components/Loading/loading';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-// CARGA PEREZOSA (Lazy loading) de páginas principales
+// CARGA PEREZOSA (Lazy loading) de páginas principales (Omisiones por brevedad)
 const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
 const ValidarNit = lazy(() => import('./pages/ValidarNit'));
@@ -41,83 +40,83 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Componente para cerrar sesión (limpia storage y redirige a login)
 function Logout() {
-  localStorage.clear(); // Elimina tokens u otros datos de sesión
-  return <Navigate to="/login" />; // Redirecciona al login
+    localStorage.clear(); // Elimina tokens u otros datos de sesión
+    return <Navigate to="/login" />; // Redirecciona al login
 }
 
 // Componente principal de la App
 function App() {
-  // Estado para mostrar un loader inicial por 1 segundo
-  const [isLoading, setIsLoading] = useState(true);
+    // Estado para mostrar un loader inicial por 1 segundo
+    const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    // Simula una carga inicial
-    setTimeout(() => setIsLoading(false), 1000);
-  }, []);
+    useEffect(() => {
+        // Simula una carga inicial
+        setTimeout(() => setIsLoading(false), 1000);
+    }, []);
 
-  // Si está cargando, muestra spinner/animación
-  if (isLoading) {
-    return <Loading />;
-  }
+    // Si está cargando, muestra spinner/animación
+    if (isLoading) {
+        return <Loading />;
+    }
 
-  return (
-    // Provee el contexto de tema oscuro/claro a toda la app
-    <Router>
-      {/* Suspense permite mostrar un fallback mientras se cargan los componentes de forma lazy */}
-      <Suspense fallback={<Loading />}>
-        <Routes>
-          {/* Redirección desde / al inicio principal */}
-          <Route path="/" element={<Navigate to="/inicio" />} />
+    return (
+        <Router>
+            {/* Suspense permite mostrar un fallback mientras se cargan los componentes de forma lazy */}
+            <Suspense fallback={<Loading />}>
+                <Routes>
+                    {/* Redirección desde / al inicio principal */}
+                    <Route path="/" element={<Navigate to="/inicio" />} />
 
-          {/* Rutas públicas */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/validar-nit" element={<ValidarNit />} />
-          <Route path="/cambio-contraseña" element={<CambioDeContraseña />} />
-          <Route path="/pedir-nit" element={<PedirNit />} />
-          
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/inicio" element={<Inicio />} />
-          <Route path="/informacion" element={<Informacion />} />
+                    {/* Rutas públicas */}
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/validar-nit" element={<ValidarNit />} />
+                    <Route path="/cambio-contraseña" element={<CambioDeContraseña />} />
+                    <Route path="/pedir-nit" element={<PedirNit />} />
+                    
 
-          {/* Rutas protegidas para usuario con rol 'empresa' */}
-          <Route path="/home" element={<ProtectRoute rol="empresa"><Home /></ProtectRoute>} />
-          <Route path="/perfil" element={<ProtectRoute rol="empresa"><PerfilPage /></ProtectRoute>} />
-          <Route path="/editarperfil" element={<ProtectRoute rol="empresa"><EditarPerfilPage /></ProtectRoute>} />
-          <Route path="/diagnostico-empresarial" element={<ProtectRoute rol="empresa"><DiagnosticoEmpresarial /></ProtectRoute>} />
-          <Route path="/resultado-diagnostico" element={<ProtectRoute rol="empresa"><ResultadosDiagnostico /></ProtectRoute>} />
+                    <Route path="/logout" element={<Logout />} />
+                    <Route path="/inicio" element={<Inicio />} />
+                    <Route path="/informacion" element={<Informacion />} />
 
-          {/* Rutas protegidas para usuario con rol 'admin' */}
-          <Route path="/adminhome" element={<ProtectRoute rol="admin"><AdminHome /></ProtectRoute>} />
-          <Route path="/crear-empresa" element={<ProtectRoute rol="admin"><CrearEmpresa /></ProtectRoute>} />
-          <Route path="/listar-empresa" element={<ProtectRoute rol="admin"><ListarEmpresa /></ProtectRoute>} />
-          <Route path="/listar-usuarios" element={<ProtectRoute rol="admin"><ListarUsuarios /></ProtectRoute>} />
-          <Route path="/modificar-usuarios/:id" element={<ProtectRoute rol="admin"><ModificarUsuarios /></ProtectRoute>} />
-          <Route path="/modificar-empresa/:id" element={<ProtectRoute rol="admin"><ModificarEmpresa /></ProtectRoute>} />
-          <Route path="/crear-programa" element={<ProtectRoute rol="admin"><CrearProgramaDeFormacion /></ProtectRoute>} />
-          <Route path="/modificar-programa/:id" element={<ProtectRoute rol="admin"><ModificarPrograma /></ProtectRoute>} />
-          <Route path="/listar-programa" element={<ProtectRoute rol="admin"><ListarPrograma /></ProtectRoute>} />
-          <Route path="/visualizacion-empresa/:id" element={<ProtectRoute rol="admin"><VisualizacionEmpresa /></ProtectRoute>} />
-          <Route path="/visualizacion-programa/:id" element={<ProtectRoute rol="admin"><VisualizacionPrograma /></ProtectRoute>} />
-          <Route path="/visualizacion-usuarios/:id" element={<ProtectRoute rol="admin"><VisualizacionUsuarios /></ProtectRoute>} />
+                    {/* Rutas protegidas para usuario con rol 'empresa' */}
+                    <Route path="/home" element={<ProtectRoute rol="empresa"><Home /></ProtectRoute>} />
+                    <Route path="/perfil" element={<ProtectRoute rol="empresa"><PerfilPage /></ProtectRoute>} />
+                    <Route path="/editarperfil" element={<ProtectRoute rol="empresa"><EditarPerfilPage /></ProtectRoute>} />
+                    <Route path="/diagnostico-empresarial" element={<ProtectRoute rol="empresa"><DiagnosticoEmpresarial /></ProtectRoute>} />
+                    <Route path="/resultado-diagnostico" element={<ProtectRoute rol="empresa"><ResultadosDiagnostico /></ProtectRoute>} />
 
-          {/* Ruta para error 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
+                    {/* Rutas protegidas para usuario con rol 'admin' */}
+                    <Route path="/adminhome" element={<ProtectRoute rol="admin"><AdminHome /></ProtectRoute>} />
+                    <Route path="/crear-empresa" element={<ProtectRoute rol="admin"><CrearEmpresa /></ProtectRoute>} />
+                    <Route path="/listar-empresa" element={<ProtectRoute rol="admin"><ListarEmpresa /></ProtectRoute>} />
+                    <Route path="/listar-usuarios" element={<ProtectRoute rol="admin"><ListarUsuarios /></ProtectRoute>} />
+                    <Route path="/modificar-usuarios/:id" element={<ProtectRoute rol="admin"><ModificarUsuarios /></ProtectRoute>} />
+                    <Route path="/modificar-empresa/:id" element={<ProtectRoute rol="admin"><ModificarEmpresa /></ProtectRoute>} />
+                    <Route path="/crear-programa" element={<ProtectRoute rol="admin"><CrearProgramaDeFormacion /></ProtectRoute>} />
+                    <Route path="/modificar-programa/:id" element={<ProtectRoute rol="admin"><ModificarPrograma /></ProtectRoute>} />
+                    <Route path="/listar-programa" element={<ProtectRoute rol="admin"><ListarPrograma /></ProtectRoute>} />
+                    <Route path="/visualizacion-empresa/:id" element={<ProtectRoute rol="admin"><VisualizacionEmpresa /></ProtectRoute>} />
+                    <Route path="/visualizacion-programa/:id" element={<ProtectRoute rol="admin"><VisualizacionPrograma /></ProtectRoute>} />
+                    <Route path="/visualizacion-usuarios/:id" element={<ProtectRoute rol="admin"><VisualizacionUsuarios /></ProtectRoute>} />
 
-      {/* Contenedor de notificaciones tipo toast */}
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        pauseOnHover
-        draggable
-        theme="colored"
-      />
-    </Router>
-  );
+                    {/* Ruta para error 404 */}
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </Suspense>
+
+            {/* Contenedor de notificaciones tipo toast */}
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                pauseOnHover
+                draggable
+                theme="colored"
+            />
+        </Router>
+    );
 }
 
 export default App;

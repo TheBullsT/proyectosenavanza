@@ -159,7 +159,7 @@ function HomeRightBar() {
                         Usuarios y Empresas: Totales
                     </p>
                     <LineChart
-                        width={920}
+                        width={820}
                         height={250}
                         data={dataLineas}
                         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}

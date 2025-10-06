@@ -105,7 +105,7 @@ const ModificarProgramaFormacion = () => {
                             value={programa.nombre}
                             onChange={handleChange}
                             required
-                            pattern="[a-zA-Z\s]+"
+                            pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+"
                         />
                     </div>
 

@@ -33,17 +33,15 @@ const setAuthResponseInterceptor = (apiInstancia) => {
             if (error.response?.status === 401 && !originalRequest._retry) {
                 originalRequest._retry = true;
                 try {
-                    // La petición /token/refresh/ se hace con withCredentials: true, 
-                    // y el navegador adjunta la cookie REFRESH_TOKEN.
+                    // ... (Intenta el refresco)
                     await apiLogin.post("token/refresh/", {}, { withCredentials: true });
 
-
-                    // Se reintenta la petición original con la nueva cookie adjunta.
+                    // ... (Reintenta la petición original)
                     return apiInstancia(originalRequest);
                 } catch (refreshError) {
-                    // Si falla el refresco, la sesión ha terminado.
                     toast.error("Sesión expirada, inicia sesión de nuevo.");
-                    window.location.href = "/login";
+                    localStorage.clear();
+                    // window.location.href = "/login"; // Redirección Fuerte
                     return Promise.reject(refreshError);
                 }
             }
@@ -51,7 +49,6 @@ const setAuthResponseInterceptor = (apiInstancia) => {
         }
     );
 };
-
 // =======================================================
 // 3. FUNCIÓN FACTORÍA (Sin Interceptor de Solicitud)
 // =======================================================

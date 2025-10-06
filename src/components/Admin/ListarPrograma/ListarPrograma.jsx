@@ -13,7 +13,8 @@ import { apiGeneral } from "../../../api/apis";
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
 // Importar notificaciones tipo toast
 import { toast } from "react-toastify";
-
+// Importar logo para el reporte PDF
+import logo from '../../../assets/img/Logo_SENAVANZA.jpg';
 // Librerías para alertas personalizadas
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -93,35 +94,84 @@ const ListarProgramas = () => {
             });
     };
 
-    // Generar y descargar reporte PDF de programas
+    // Generar y descargar reporte PDF de programas (CON FORMATO PROFESIONAL)
     const generarReportePDF = () => {
         const doc = new jsPDF();
 
-        // Título
-        doc.setFontSize(18);
-        doc.text("Reporte de Programas de Formación", 20, 20);
+        // 1. Insertar logo y encabezado
+        const img = new Image();
+        // ASUME QUE 'logo' ESTÁ DISPONIBLE EN EL ÁMBITO SUPERIOR
+        img.src = logo; 
+        doc.addImage(img, "PNG", 30, 15, 20, 10); // Logo
 
-        // Subtítulo
+        // 2. Título y Subtítulo
+        doc.setFontSize(18);
+        doc.text("Reporte de Programas de Formación", 70, 20);
         doc.setFontSize(12);
-        let y = 40; // Posición inicial en Y
+        doc.text("Listado de Oferta Educativa", 70, 28);
+
+        // Línea divisoria
+        doc.setLineWidth(0.5);
+        doc.line(20, 35, 190, 35);
+
+        // 3. Contenido
+        let y = 50; // Posición inicial en Y
+
+        doc.setFontSize(14);
+        doc.text("Detalle de Programas:", 20, y);
+        y += 10;
+        
+        // Configuración para el contenido del programa
+        doc.setFontSize(12);
 
         // Recorrer programas y agregarlos al PDF
         programas.forEach((pf, index) => {
+            // Nombre del programa
+            doc.setFontSize(13); 
             doc.text(`${index + 1}. ${pf.nombre}`, 20, y);
-            doc.text(`Nivel: ${pf.nivel_programa || "N/A"}`, 20, y + 8);
-            doc.text(`Estado: ${pf.estado === 1 ? "Activo" : "Inactivo"}`, 20, y + 16);
+            y += 7;
+            
+            // Detalles
+            doc.setFontSize(11);
+            doc.text(`Nivel: ${pf.nivel_programa || "N/A"}`, 25, y);
+            y += 6;
+            
+            // Estado (SIN EMOJIS)
+            const estadoTexto = pf.estado === 1 ? "Activo" : "Inactivo";
+            doc.text(`Estado: ${estadoTexto}`, 25, y);
 
-            y += 28;
+            y += 10;
 
-            // Si se acaba la hoja, crear una nueva
+            // 4. Manejo de páginas
             if (y > 270) {
+                // Pie de página de la hoja actual
+                doc.setFontSize(10);
+                doc.text(`Página ${doc.internal.getNumberOfPages()}`, 170, 290);
+                
                 doc.addPage();
-                y = 20;
+                y = 20; // Reiniciar posición Y
+                
+                // Re-imprimir encabezado en la nueva página
+                doc.setFontSize(18);
+                doc.text("Reporte de Programas (Cont.)", 70, 20);
+                doc.line(20, 35, 190, 35);
+                y = 40;
+                doc.setFontSize(12); // Restablecer tamaño de fuente
             }
         });
 
-        // Descargar archivo
-        doc.save("reporte_programas.pdf");
+        // 5. Pie de página final
+        doc.setFontSize(10);
+        doc.text(
+            `Este informe lista ${programas.length} programas de formación.`,
+            20,
+            280
+        );
+        // Número de página final
+        doc.text(`Página ${doc.internal.getNumberOfPages()}`, 170, 280);
+
+        // 6. Descargar archivo
+        doc.save("reporte_programas_detallado.pdf");
     };
 
     // Filtrar programas según búsqueda
@@ -181,7 +231,7 @@ const ListarProgramas = () => {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
-                {/* 💡 Nuevo bloque para mostrar el mensaje "Empresa no encontrada" */}
+                {/* 💡 Nuevo bloque para mostrar el mensaje "Programa no encontrado" */}
                 {mostrarMensajeNoEncontrada ? (
                     <div className="mensaje-no-encontrada-container" style={{ marginTop: '20px', textAlign: 'center', color: '#39a900', fontSize: '1.2em' }}>
                         <p><strong>Programa de formación no encontrado.</strong></p>

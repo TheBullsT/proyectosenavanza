@@ -7,6 +7,8 @@ import { FaEye, FaEdit, FaLock, FaLockOpen } from "react-icons/fa";
 import { apiEmpresa } from "../../../api/apis";
 import LoadingBaseDatos from "../../Loading/loading_base_datos";
 import { toast } from "react-toastify";
+// Importar logo para el reporte PDF
+import logo from '../../../assets/img/Logo_SENAVANZA.jpg';
 import { jsPDF } from "jspdf";
 
 const Listar_Empresa = () => {
@@ -59,33 +61,85 @@ const Listar_Empresa = () => {
 
     // Función para generar y descargar el reporte PDF de empresas
     const generarReportePDF = () => {
+        // 1. Inicialización de jsPDF
         const doc = new jsPDF();
 
-        // Título del reporte
+        // 2. Insertar logo y encabezado
+        const img = new Image();
+        // ASUME QUE 'logo' ESTÁ DISPONIBLE EN EL ÁMBITO GLOBAL O SUPERIOR
+        img.src = logo; 
+        doc.addImage(img, "PNG",30, 15, 20, 10); // Logo
+
+        // 3. Título del reporte
         doc.setFontSize(18);
-        doc.text("Reporte de Empresas", 20, 20);
-
+        doc.text("Reporte Detallado de Empresas", 70, 20);
         doc.setFontSize(12);
-        let y = 40; // posición inicial vertical del contenido
+        doc.text("Generado por el Sistema de Gestión", 70, 28);
 
-        // Recorrer todas las empresas y agregarlas al PDF
+        // Línea divisoria
+        doc.setLineWidth(0.5);
+        doc.line(20, 35, 190, 35);
+
+        // 4. Posición inicial vertical del contenido
+        let y = 50; 
+
+        doc.setFontSize(14);
+        doc.text("Listado de Empresas Registradas:", 20, y);
+        y += 10;
+        
+        // Configuración para el contenido de la empresa
+        doc.setFontSize(12);
+
+        // 5. Recorrer todas las empresas y agregarlas al PDF
         empresas.forEach((empresa, index) => {
+            // Nombre de la empresa
+            doc.setFontSize(13); 
             doc.text(`${index + 1}. ${empresa.razon_social}`, 20, y);
-            doc.text(`Teléfono: ${empresa.telefono || "N/A"}`, 20, y + 8);
-            doc.text(`Dirección: ${empresa.direccion || "N/A"}`, 20, y + 16);
-            doc.text(`Estado: ${empresa.estado === 1 ? "Activo" : "Inactivo"}`, 20, y + 24);
+            y += 7;
+            
+            // Detalles
+            doc.setFontSize(11);
+            doc.text(`Teléfono: ${empresa.telefono || "N/A"}`, 25, y);
+            y += 6;
+            doc.text(`Dirección: ${empresa.direccion || "N/A"}`, 25, y);
+            y += 6;
+            
+            // Estado (SIN EMOJIS)
+            const estadoTexto = empresa.estado === 1 ? "Activo" : "Inactivo";
+            doc.text(`Estado: ${estadoTexto}`, 25, y);
 
-            y += 35; // espacio entre empresas
+            y += 10; // Espacio entre empresas
 
-            // Si llega al final de la hoja, agregar una nueva página
+            // 6. Si llega al final de la hoja, agregar una nueva página
             if (y > 270) {
+                // Pie de página de la hoja actual
+                doc.setFontSize(10);
+                doc.text(`Página ${doc.internal.getNumberOfPages()}`, 170, 290);
+                
                 doc.addPage();
-                y = 20;
+                y = 20; // Reiniciar posición Y
+                
+                // Re-imprimir el encabezado en la nueva página
+                doc.setFontSize(18);
+                doc.text("Reporte Detallado de Empresas (Cont.)", 70, 20);
+                doc.line(20, 35, 190, 35);
+                y = 40;
+                doc.setFontSize(12); // Restablecer tamaño de fuente
             }
         });
 
-        // Descargar el archivo generado
-        doc.save("reporte_empresas.pdf");
+        // 7. Pie de página
+        doc.setFontSize(10);
+        doc.text(
+            `Este informe contiene ${empresas.length} registros.`,
+            20,
+            280
+        );
+        doc.text(`Página ${doc.internal.getNumberOfPages()}`, 170, 280);
+
+
+        // 8. Guardar PDF
+        doc.save("reporte_empresas_detallado.pdf");
     };
 
     // Filtrar empresas según el texto de búsqueda
@@ -99,7 +153,7 @@ const Listar_Empresa = () => {
     // Mostrar mensaje si no existen empresas (cuando no hay empresas en absoluto)
     if (!empresas || empresas.length === 0) return <p>No hay empresas registradas.</p>;
 
-    // 💡 Lógica para mostrar el mensaje de "No encontrada"
+    // Lógica para mostrar el mensaje de "No encontrada"
     const mostrarMensajeNoEncontrada = search.length > 0 && filteredEmpresas.length === 0;
 
     return (
@@ -146,7 +200,7 @@ const Listar_Empresa = () => {
                     onChange={(e) => setSearch(e.target.value)}
                 />
                 
-                {/* 💡 Nuevo bloque para mostrar el mensaje "Empresa no encontrada" */}
+                {/* Nuevo bloque para mostrar el mensaje "Empresa no encontrada" */}
                 {mostrarMensajeNoEncontrada ? (
                     <div className="mensaje-no-encontrada-container" style={{ marginTop: '20px', textAlign: 'center', color: '#39a900', fontSize: '1.2em' }}>
                         <p><strong>Empresa no encontrada</strong></p>

@@ -18,6 +18,9 @@ import { toast } from "react-toastify";
  * Solo permite el acceso si hay una cookie JWT válida y, opcionalmente,
  * si el usuario tiene el rol correcto.
  * Si no cumple, redirige al inicio de sesión.
+ *
+ * @param {ReactNode} children - Componente(s) hijo(s) a renderizar.
+ * @param {string | null} rol - Rol requerido para acceder a la ruta (ej: "admin" o "empresa").
  */
 function ProtectRoute({ children, rol = null }) {
     // Estado que indica si el usuario está autorizado:
@@ -35,20 +38,30 @@ function ProtectRoute({ children, rol = null }) {
     // Función que verifica si el usuario está autenticado (token válido)
     const verifyAuth = async () => {
         try {
-            // Llama al endpoint /verify/. Si el token de acceso expira, 
-            // el interceptor de Axios intentará refrescarlo automáticamente.
-            const res = await apiLogin.get("verify/", {
-            });
+            // Llama al endpoint /verify/
+            const res = await apiLogin.get("verify/", {});
 
             if (res.status === 200) {
                 const user = res.data;
 
+                // 1. Lógica de Redirección por Rol (si rol es null)
+                if (rol === null) {
+                    if (user.rol === 'admin') {
+                        navigate("/adminhome", { replace: true });
+                    } else {
+                        navigate("/home", { replace: true });
+                    }
+                    return;
+                }
+
+                // 2. Lógica de Verificación de Rol
                 if (rol && user.rol !== rol) {
                     toast.warning("No tienes permisos para acceder a esta ruta.");
                     navigate("/login");
                     return;
                 }
 
+                // 3. Permiso Concedido
                 setIsAuthorized(true);
             }
         } catch (error) {
@@ -56,18 +69,24 @@ function ProtectRoute({ children, rol = null }) {
             console.error("Fallo de autenticación o Refresh Token expirado:", error);
             toast.error("Sesión expirada, inicia sesión de nuevo.");
 
+            // 1. Limpieza de sesión
+            localStorage.clear();
 
-            navigate("/login");
+            // 2. CRÍTICO: Detener la autorización.
+            setIsAuthorized(false);
+
+            // 3.CAMBIO CLAVE PARA DEPURAR:
+            // Comenta o elimina la línea de redirección interna
+            navigate("/login"); // <--- COMENTAR O ELIMINAR ESTA LÍNEA SOLO PARA DEPURAR
+
         }
     };
-
-
 
     // Mientras se verifica la autenticación, muestra el componente de carga
     if (isAuthorized === null) return <Loading />;
 
     // Si está autorizado, renderiza los hijos de la ruta protegida.
-    // Si no, no muestra nada (porque ya redirigió).
+    // Si no, no muestra nada (porque ya redirigió a /login).
     return isAuthorized ? children : null;
 }
 

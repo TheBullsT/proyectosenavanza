@@ -81,7 +81,7 @@ html {
 .ItemContainer1 {
   background-color: var(--white);
   width: 300px;
-  height: 25vh;
+  height: 28vh;
   /* Altura proporcional a la ventana */
   margin-left: 10px;
   margin-top: 10px;
