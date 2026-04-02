@@ -33,7 +33,6 @@ const setAuthResponseInterceptor = (apiInstancia) => {
             if (error.response?.status === 401 && !originalRequest._retry) {
                 originalRequest._retry = true;
                 try {
-                    // ... (Intenta el refresco)
                     await apiLogin.post("token/refresh/", {}, { withCredentials: true });
 
                     // ... (Reintenta la petición original)
